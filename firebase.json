@@ -1,0 +1,25 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "it-can-cook-d543a",
+          "appId": "1:929202616425:android:07bea12a043005218d4af8",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "it-can-cook-d543a",
+          "configurations": {
+            "android": "1:929202616425:android:07bea12a043005218d4af8",
+            "ios": "1:929202616425:ios:c2168d233e352ade8d4af8",
+            "macos": "1:929202616425:ios:c2168d233e352ade8d4af8",
+            "web": "1:929202616425:web:e6263b93981802348d4af8",
+            "windows": "1:929202616425:web:4e44398ea47dae998d4af8"
+          }
+        }
+      }
+    }
+  }
+}
