@@ -1,0 +1,74 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - mains
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '3.x'
+          channel: 'stable'
+
+      - name: Install jq
+        run: brew install jq
+
+      - name: Read version from file
+        id: read_version
+        run: echo "::set-output name=VERSION::$(cat version.txt)"
+
+      - name: Display version
+        run: echo "Version is ${{ steps.read_version.outputs.VERSION }}"
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Generate IPA
+        run: flutter build ios --no-codesign --build-number=${{ steps.read_version.outputs.VERSION }}
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v4
+        id: artifacts_id
+        with:
+          name: Releases
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.read_version.outputs.VERSION }}
+          release_name: Release ${{ steps.read_version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        id: upload-release-asset-apk
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-release.apk
+          asset_name: app-${{ steps.read_version.outputs.VERSION }}.apk
+          asset_content_type: application/vnd.android.package-archive
