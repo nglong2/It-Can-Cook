@@ -29,6 +29,7 @@ class _Onboarding extends State<Onboarding> {
             Image.asset(
               'assets/images/onboarding/0.png',
               scale: 0.8,
+              height: 280,
             ),
             SizedBox(
               height: size.height * 0.1,
@@ -112,6 +113,7 @@ class _Onboarding extends State<Onboarding> {
             Image.asset(
               'assets/images/onboarding/1.png',
               scale: 0.8,
+              height: 280,
             ),
             SizedBox(
               height: size.height * 0.1,
@@ -195,6 +197,7 @@ class _Onboarding extends State<Onboarding> {
             Image.asset(
               'assets/images/onboarding/2.png',
               scale: 0.8,
+              height: 280,
             ),
             SizedBox(
               height: size.height * 0.1,
