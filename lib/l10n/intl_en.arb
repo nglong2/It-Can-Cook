@@ -1,0 +1,20 @@
+{
+  "appTitle": "it_can_cook",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "appDescription": "A simple recipe app",
+  "onboardTitle1": "Discover a menu that fully meets health needs!",
+  "onboardTitle2": "What do you need, We have it all!",
+  "onboardTitle3": "Connect with many experts",
+  "onboardDescription1": "1500+ standard meals help you get enough nutrients while still \"saving money\"",
+  "onboardDescription2": "Connect with delicious - nutritious - cheap supermarket partners",
+  "onboardDescription3": "Do you have any questions? Chat with real chefs",
+  "passed": "Passed",
+  "next": "Next",
+  "done": "Get started!",
+  "login_welcome": "Cooking is really easy with I.T Can Cook!",
+  "register": "Register",
+  "already_have_account": "Already have an account?",
+  "login": "Log in"
+}

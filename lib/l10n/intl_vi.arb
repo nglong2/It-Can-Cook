@@ -1,0 +1,20 @@
+{
+  "appTitle": "it_can_cook",
+  "@appTitle": {
+    "description": "day la tieu de cua app"
+  },
+  "appDescription": "Ứng dụng nấu ăn",
+  "onboardTitle1": "Khám phá thực đơn đáp ứng đầy đủ sức khóe!",
+  "onboardTitle2": "Cần gì ư, Chúng tôi có đủ!",
+  "onboardTitle3": "Kết nối với nhiều chuyên gia",
+  "onboardDescription1": "1500+ bữa ăn tiêu chuẩn giúp bạn đủ chất mà vẫn \"khỏe túi tiền\" ",
+  "onboardDescription2": "Kết nối với những đối tác siêu thị ngon - bổ - rẻ",
+  "onboardDescription3": "Bạn có thắc mắc? Hãy trò chuyện với những đầu bếp thật nhé",
+  "passed": "Bỏ qua",
+  "next": "Tiếp tục",
+  "done": "Bắt đầu nào!",
+  "login_welcome": "Làm bếp thật dễ dàng cùng I.T Can Cook!",
+  "register": "Đăng ký",
+  "already_have_account": "Đã có tài khoản?",
+  "login": "Đăng nhập"
+}
