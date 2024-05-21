@@ -37,7 +37,7 @@ class Welcome extends StatelessWidget {
                             10.0), // Adjust the value as needed
                       )),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'welcome');
+                    Navigator.pushNamed(context, 'login');
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -65,25 +65,29 @@ class Welcome extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, 'login');
+                        },
                         child: Padding(
-                      padding: EdgeInsets.only(top: 7),
-                      child: Text(
-                        S.of(context).login,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          height: 1,
-                          shadows: [
-                            Shadow(color: Colors.white, offset: Offset(0, -5))
-                          ],
-                          color: Colors.transparent,
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.white,
-                          decorationThickness: 2,
-                          decorationStyle: TextDecorationStyle.solid,
-                        ),
-                      ),
-                    ))
+                          padding: EdgeInsets.only(top: 7),
+                          child: Text(
+                            S.of(context).login,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              height: 1,
+                              shadows: [
+                                Shadow(
+                                    color: Colors.white, offset: Offset(0, -5))
+                              ],
+                              color: Colors.transparent,
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.white,
+                              decorationThickness: 2,
+                              decorationStyle: TextDecorationStyle.solid,
+                            ),
+                          ),
+                        ))
                   ],
                 ),
               )

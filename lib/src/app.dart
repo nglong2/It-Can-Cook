@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/system_bloc.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
+import 'package:it_can_cook/src/screens/login/login.dart';
 import 'package:it_can_cook/src/screens/login/welcome/welcome.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
                   switch (routeSettings.name) {
                     case "welcome":
                       return const Welcome();
+                    case "login":
+                      return LoginPage();
                     default:
                       return Onboarding();
                   }
