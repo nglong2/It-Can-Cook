@@ -3,7 +3,12 @@ class SystemModel {
   String country;
   String timezone;
   String themeMode;
-
+  SystemModel({
+    required this.language,
+    required this.country,
+    required this.timezone,
+    required this.themeMode,
+  });
   //add copyWith method
   SystemModel copyWith({
     String? language,
@@ -19,10 +24,22 @@ class SystemModel {
     );
   }
 
-  SystemModel({
-    required this.language,
-    required this.country,
-    required this.timezone,
-    required this.themeMode,
-  });
+  //add fromJson method
+  factory SystemModel.fromJson(Map<String, dynamic> json) {
+    return SystemModel(
+      language: json['language'],
+      country: json['country'],
+      timezone: json['timezone'],
+      themeMode: json['themeMode'],
+    );
+  }
+  //add toJson method
+  Map<String, dynamic> toJson() {
+    return {
+      'language': language,
+      'country': country,
+      'timezone': timezone,
+      'themeMode': themeMode,
+    };
+  }
 }

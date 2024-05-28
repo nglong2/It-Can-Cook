@@ -16,8 +16,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SystemBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SystemBloc>(
+          create: (BuildContext context) => SystemBloc(),
+        ),
+      ],
       child: BlocBuilder<SystemBloc, SystemModel>(
         builder: (context, state) {
           return MaterialApp(
@@ -46,7 +50,7 @@ class MyApp extends StatelessWidget {
                     case "welcome":
                       return const Welcome();
                     case "login":
-                      return LoginPage();
+                      return const LoginPage();
                     default:
                       return Onboarding();
                   }
@@ -54,7 +58,6 @@ class MyApp extends StatelessWidget {
               );
             },
           );
-          ;
         },
       ),
     );
