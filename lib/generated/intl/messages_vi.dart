@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ứng dụng nấu ăn"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
         "done": MessageLookupByLibrary.simpleMessage("Bắt đầu nào!"),
+        "dont_have_account":
+            MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Làm bếp thật dễ dàng cùng I.T Can Cook!"),

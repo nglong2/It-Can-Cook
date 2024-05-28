@@ -16,5 +16,6 @@
   "login_welcome": "Cooking is really easy with I.T Can Cook!",
   "register": "Register",
   "already_have_account": "Already have an account?",
-  "login": "Log in"
+  "login": "Log in",
+  "dont_have_account": "Dont have an account?"
 }

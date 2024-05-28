@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("A simple recipe app"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
         "done": MessageLookupByLibrary.simpleMessage("Get started!"),
+        "dont_have_account":
+            MessageLookupByLibrary.simpleMessage("Dont have an account?"),
         "login": MessageLookupByLibrary.simpleMessage("Log in"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Cooking is really easy with I.T Can Cook!"),

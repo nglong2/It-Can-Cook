@@ -16,5 +16,6 @@
   "login_welcome": "Làm bếp thật dễ dàng cùng I.T Can Cook!",
   "register": "Đăng ký",
   "already_have_account": "Đã có tài khoản?",
-  "login": "Đăng nhập"
+  "login": "Đăng nhập",
+  "dont_have_account": "Chưa có tài khoản?"
 }
