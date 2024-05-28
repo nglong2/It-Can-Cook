@@ -37,7 +37,7 @@ class Welcome extends StatelessWidget {
                             10.0), // Adjust the value as needed
                       )),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'login');
+                    Navigator.pushNamed(context, 'register');
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
