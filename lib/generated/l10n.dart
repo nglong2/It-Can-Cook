@@ -160,10 +160,10 @@ class S {
     );
   }
 
-  /// `Cooking is really easy with I.T Can Cook!`
+  /// `Cooking is really easy with WeMealKit!`
   String get login_welcome {
     return Intl.message(
-      'Cooking is really easy with I.T Can Cook!',
+      'Cooking is really easy with WeMealKit!',
       name: 'login_welcome',
       desc: '',
       args: [],
@@ -205,6 +205,286 @@ class S {
     return Intl.message(
       'Dont have an account?',
       name: 'dont_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter phone number`
+  String get please_enter_phone_number {
+    return Intl.message(
+      'Please enter phone number',
+      name: 'please_enter_phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter last name`
+  String get please_enter_last_name {
+    return Intl.message(
+      'Please enter last name',
+      name: 'please_enter_last_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter first name`
+  String get please_enter_first_name {
+    return Intl.message(
+      'Please enter first name',
+      name: 'please_enter_first_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter password`
+  String get please_enter_password {
+    return Intl.message(
+      'Please enter password',
+      name: 'please_enter_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter confirm password`
+  String get please_enter_confirm_password {
+    return Intl.message(
+      'Please enter confirm password',
+      name: 'please_enter_confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password does not match`
+  String get password_not_match {
+    return Intl.message(
+      'Password does not match',
+      name: 'password_not_match',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid phone number`
+  String get please_enter_valid_phone_number {
+    return Intl.message(
+      'Please enter a valid phone number',
+      name: 'please_enter_valid_phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email`
+  String get please_enter_valid_email {
+    return Intl.message(
+      'Please enter a valid email',
+      name: 'please_enter_valid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter email`
+  String get please_enter_email {
+    return Intl.message(
+      'Please enter email',
+      name: 'please_enter_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters long`
+  String get please_enter_valid_password {
+    return Intl.message(
+      'Password must be at least 6 characters long',
+      name: 'please_enter_valid_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter email or phone number`
+  String get please_enter_email_or_phone_number {
+    return Intl.message(
+      'Please enter email or phone number',
+      name: 'please_enter_email_or_phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number must be 10 digits long`
+  String get please_enter_valid_phone_number_length {
+    return Intl.message(
+      'Phone number must be 10 digits long',
+      name: 'please_enter_valid_phone_number_length',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number must contain only digits`
+  String get phone_number_must_contain_only_digits {
+    return Intl.message(
+      'Phone number must contain only digits',
+      name: 'phone_number_must_contain_only_digits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First name`
+  String get first_name {
+    return Intl.message(
+      'First name',
+      name: 'first_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last name`
+  String get last_name {
+    return Intl.message(
+      'Last name',
+      name: 'last_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get phone_number {
+    return Intl.message(
+      'Phone number',
+      name: 'phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get confirm_password {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get forgot_password {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter verification code`
+  String get enter_verification_code {
+    return Intl.message(
+      'Enter verification code',
+      name: 'enter_verification_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter verification code`
+  String get please_enter_verification_code {
+    return Intl.message(
+      'Please enter verification code',
+      name: 'please_enter_verification_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message(
+      'Verify',
+      name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification code must be 6 digits long`
+  String get verification_code_must_be_6_digits_long {
+    return Intl.message(
+      'Verification code must be 6 digits long',
+      name: 'verification_code_must_be_6_digits_long',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
       desc: '',
       args: [],
     );

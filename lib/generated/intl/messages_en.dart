@@ -27,12 +27,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "appDescription":
             MessageLookupByLibrary.simpleMessage("A simple recipe app"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
         "done": MessageLookupByLibrary.simpleMessage("Get started!"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Dont have an account?"),
+        "enter_verification_code":
+            MessageLookupByLibrary.simpleMessage("Enter verification code"),
+        "error": MessageLookupByLibrary.simpleMessage("Error"),
+        "first_name": MessageLookupByLibrary.simpleMessage("First name"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "last_name": MessageLookupByLibrary.simpleMessage("Last name"),
         "login": MessageLookupByLibrary.simpleMessage("Log in"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
-            "Cooking is really easy with I.T Can Cook!"),
+            "Cooking is really easy with WeMealKit!"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ standard meals help you get enough nutrients while still \"saving money\""),
@@ -47,6 +57,46 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardTitle3":
             MessageLookupByLibrary.simpleMessage("Connect with many experts"),
         "passed": MessageLookupByLibrary.simpleMessage("Passed"),
-        "register": MessageLookupByLibrary.simpleMessage("Register")
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "password_not_match":
+            MessageLookupByLibrary.simpleMessage("Password does not match"),
+        "phone_number": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "phone_number_must_contain_only_digits":
+            MessageLookupByLibrary.simpleMessage(
+                "Phone number must contain only digits"),
+        "please_enter_confirm_password": MessageLookupByLibrary.simpleMessage(
+            "Please enter confirm password"),
+        "please_enter_email":
+            MessageLookupByLibrary.simpleMessage("Please enter email"),
+        "please_enter_email_or_phone_number":
+            MessageLookupByLibrary.simpleMessage(
+                "Please enter email or phone number"),
+        "please_enter_first_name":
+            MessageLookupByLibrary.simpleMessage("Please enter first name"),
+        "please_enter_last_name":
+            MessageLookupByLibrary.simpleMessage("Please enter last name"),
+        "please_enter_password":
+            MessageLookupByLibrary.simpleMessage("Please enter password"),
+        "please_enter_phone_number":
+            MessageLookupByLibrary.simpleMessage("Please enter phone number"),
+        "please_enter_valid_email":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
+        "please_enter_valid_password": MessageLookupByLibrary.simpleMessage(
+            "Password must be at least 6 characters long"),
+        "please_enter_valid_phone_number": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid phone number"),
+        "please_enter_valid_phone_number_length":
+            MessageLookupByLibrary.simpleMessage(
+                "Phone number must be 10 digits long"),
+        "please_enter_verification_code": MessageLookupByLibrary.simpleMessage(
+            "Please enter verification code"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "verification_code_must_be_6_digits_long":
+            MessageLookupByLibrary.simpleMessage(
+                "Verification code must be 6 digits long"),
+        "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

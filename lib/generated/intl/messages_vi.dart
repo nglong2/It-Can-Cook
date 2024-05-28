@@ -27,12 +27,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "appDescription":
             MessageLookupByLibrary.simpleMessage("Ứng dụng nấu ăn"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
         "done": MessageLookupByLibrary.simpleMessage("Bắt đầu nào!"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
+        "enter_verification_code":
+            MessageLookupByLibrary.simpleMessage("Nhập mã xác thực"),
+        "error": MessageLookupByLibrary.simpleMessage("Lỗi"),
+        "first_name": MessageLookupByLibrary.simpleMessage("Tên"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "last_name": MessageLookupByLibrary.simpleMessage("Họ"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
-            "Làm bếp thật dễ dàng cùng I.T Can Cook!"),
+            "Làm bếp thật dễ dàng cùng WeMealKit!"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ bữa ăn tiêu chuẩn giúp bạn đủ chất mà vẫn \"khỏe túi tiền\" "),
@@ -47,6 +57,44 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardTitle3": MessageLookupByLibrary.simpleMessage(
             "Kết nối với nhiều chuyên gia"),
         "passed": MessageLookupByLibrary.simpleMessage("Bỏ qua"),
-        "register": MessageLookupByLibrary.simpleMessage("Đăng ký")
+        "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "password_not_match":
+            MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
+        "phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
+        "phone_number_must_contain_only_digits":
+            MessageLookupByLibrary.simpleMessage("Số điện thoại chỉ chứa số"),
+        "please_enter_confirm_password":
+            MessageLookupByLibrary.simpleMessage("Vui lòng xác nhận mật khẩu"),
+        "please_enter_email":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập email"),
+        "please_enter_email_or_phone_number":
+            MessageLookupByLibrary.simpleMessage(
+                "Vui lòng nhập email hoặc số điện thoại"),
+        "please_enter_first_name":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập tên"),
+        "please_enter_last_name":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập họ"),
+        "please_enter_password":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập mật khẩu"),
+        "please_enter_phone_number":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập số điện thoại"),
+        "please_enter_valid_email":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập email hợp lệ"),
+        "please_enter_valid_password": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu phải có ít nhất 6 ký tự"),
+        "please_enter_valid_phone_number": MessageLookupByLibrary.simpleMessage(
+            "Vui lòng nhập số điện thoại hợp lệ"),
+        "please_enter_valid_phone_number_length":
+            MessageLookupByLibrary.simpleMessage("Số điện thoại phải có 10 số"),
+        "please_enter_verification_code":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã xác thực"),
+        "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "submit": MessageLookupByLibrary.simpleMessage("Gửi"),
+        "success": MessageLookupByLibrary.simpleMessage("Thành công"),
+        "verification_code_must_be_6_digits_long":
+            MessageLookupByLibrary.simpleMessage(
+                "Mã xác thực phải có 6 chữ số"),
+        "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),
+        "yes": MessageLookupByLibrary.simpleMessage("Có")
       };
 }

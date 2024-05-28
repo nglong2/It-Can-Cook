@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:it_can_cook/src/api/rest.dart';
@@ -20,7 +21,12 @@ class RegisterPageState extends State<RegisterPage> {
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
-  final _formKey = GlobalKey<FormState>(); // Add the form key
+  final TextEditingController _verificationCodeController =
+      TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final _formKeyVerification = GlobalKey<FormState>();
+
+  // Add the form key
 
   @override
   void dispose() {
@@ -30,6 +36,7 @@ class RegisterPageState extends State<RegisterPage> {
     _firstNameController.dispose();
     _lastNameController.dispose();
     _phoneController.dispose();
+    _verificationCodeController.dispose();
     super.dispose();
   }
 
@@ -44,9 +51,12 @@ class RegisterPageState extends State<RegisterPage> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            decoration: const BoxDecoration(
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/login/bg.png"),
+                opacity: // theme is bright then 1 else 0.5
+                    Theme.of(context).brightness == Brightness.light ? 1 : 0.4,
+                image: const AssetImage("assets/images/login/bg.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -64,19 +74,12 @@ class RegisterPageState extends State<RegisterPage> {
                             duration: const Duration(milliseconds: 1000),
                             child: Text(
                               S.of(context).register,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 30, fontWeight: FontWeight.bold),
                             )),
                         const SizedBox(
                           height: 20,
                         ),
-                        FadeInUp(
-                            duration: Duration(milliseconds: 1200),
-                            child: Text(
-                              "Register account",
-                              style: TextStyle(
-                                  fontSize: 15, color: Colors.grey[700]),
-                            )),
                       ],
                     ),
                     Padding(
@@ -95,7 +98,7 @@ class RegisterPageState extends State<RegisterPage> {
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter some text';
+                                  return S.of(context).please_enter_email;
                                 }
                                 // Add your email validation logic here
                                 return null;
@@ -108,17 +111,19 @@ class RegisterPageState extends State<RegisterPage> {
                             child: TextFormField(
                               controller: _passwordController,
                               decoration: InputDecoration(
-                                labelText: 'Password',
+                                labelText: S.of(context).password,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter some text';
+                                  return S.of(context).please_enter_password;
                                 }
                                 if (value.length < 6) {
-                                  return 'Password must be at least 6 characters long';
+                                  return S
+                                      .of(context)
+                                      .please_enter_valid_password;
                                 }
                                 // Add your password validation logic here
                                 return null;
@@ -132,20 +137,24 @@ class RegisterPageState extends State<RegisterPage> {
                             child: TextFormField(
                               controller: _passwordConfirmController,
                               decoration: InputDecoration(
-                                labelText: 'Confirm Password',
+                                labelText: S.of(context).confirm_password,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter some text';
+                                  return S
+                                      .of(context)
+                                      .please_enter_confirm_password;
                                 }
                                 if (value.length < 6) {
-                                  return 'Password must be at least 6 characters long';
+                                  return S
+                                      .of(context)
+                                      .please_enter_valid_password;
                                 }
                                 if (value != _passwordController.text) {
-                                  return 'Passwords do not match';
+                                  return S.of(context).password_not_match;
                                 }
                                 // Add your password validation logic here
                                 return null;
@@ -159,14 +168,14 @@ class RegisterPageState extends State<RegisterPage> {
                             child: TextFormField(
                               controller: _firstNameController,
                               decoration: InputDecoration(
-                                labelText: 'First Name',
+                                labelText: S.of(context).first_name,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter some text';
+                                  return S.of(context).please_enter_first_name;
                                 }
                                 // Add your email validation logic here
                                 return null;
@@ -179,14 +188,14 @@ class RegisterPageState extends State<RegisterPage> {
                             child: TextFormField(
                               controller: _lastNameController,
                               decoration: InputDecoration(
-                                labelText: 'Last Name',
+                                labelText: S.of(context).last_name,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter some text';
+                                  return S.of(context).please_enter_last_name;
                                 }
                                 // Add your email validation logic here
                                 return null;
@@ -199,15 +208,28 @@ class RegisterPageState extends State<RegisterPage> {
                             child: TextFormField(
                               controller: _phoneController,
                               decoration: InputDecoration(
-                                labelText: 'Phone Number',
+                                labelText: S.of(context).phone_number,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter some text';
+                                  return S
+                                      .of(context)
+                                      .please_enter_phone_number;
                                 }
+                                if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                                  return S
+                                      .of(context)
+                                      .phone_number_must_contain_only_digits;
+                                }
+                                if (value.length != 10) {
+                                  return S
+                                      .of(context)
+                                      .please_enter_valid_phone_number_length;
+                                }
+
                                 // Add your email validation logic here
                                 return null;
                               },
@@ -263,17 +285,76 @@ class RegisterPageState extends State<RegisterPage> {
                                             context: context,
                                             builder: (context) {
                                               return AlertDialog(
-                                                title: Text('Success'),
-                                                content: Text(
-                                                    'Your account has been created successfully.'),
+                                                title: Text(S
+                                                    .of(context)
+                                                    .enter_verification_code),
+                                                content: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Form(
+                                                      key: _formKeyVerification,
+                                                      child: TextFormField(
+                                                        controller:
+                                                            _verificationCodeController,
+                                                        keyboardType:
+                                                            TextInputType
+                                                                .number,
+                                                        maxLength: 6,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              'Verification Code',
+                                                          border:
+                                                              OutlineInputBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15),
+                                                          ),
+                                                        ),
+                                                        validator: (value) {
+                                                          if (value!.isEmpty) {
+                                                            return S
+                                                                .of(context)
+                                                                .please_enter_verification_code;
+                                                          }
+                                                          if (value.length !=
+                                                              6) {
+                                                            return S
+                                                                .of(context)
+                                                                .verification_code_must_be_6_digits_long;
+                                                          }
+                                                          // Add your verification code validation logic here
+                                                          return null;
+                                                        },
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
                                                 actions: <Widget>[
                                                   TextButton(
                                                     onPressed: () {
                                                       Navigator.pop(context);
-                                                      Navigator.pushNamed(
-                                                          context, 'login');
                                                     },
-                                                    child: Text('OK'),
+                                                    child: Text(
+                                                        S.of(context).cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      if (_formKeyVerification
+                                                          .currentState!
+                                                          .validate()) {
+                                                        // Process the verification code
+                                                        String
+                                                            verificationCode =
+                                                            _verificationCodeController
+                                                                .text;
+                                                        // Add your verification code processing logic here
+                                                      }
+                                                    },
+                                                    child: Text(
+                                                        S.of(context).submit),
                                                   ),
                                                 ],
                                               );
@@ -283,7 +364,8 @@ class RegisterPageState extends State<RegisterPage> {
                                             context: context,
                                             builder: (context) {
                                               return AlertDialog(
-                                                title: Text('Error'),
+                                                title:
+                                                    Text(S.of(context).error),
                                                 content: Text(jsonDecode(
                                                     response.body)['message']),
                                                 actions: <Widget>[
@@ -303,7 +385,7 @@ class RegisterPageState extends State<RegisterPage> {
                                           context: context,
                                           builder: (context) {
                                             return AlertDialog(
-                                              title: Text('Error'),
+                                              title: Text(S.of(context).error),
                                               content: Text(
                                                   'An error occurred. Please try again later.'),
                                               actions: <Widget>[
@@ -321,7 +403,7 @@ class RegisterPageState extends State<RegisterPage> {
                                   // Add your login logic here using email and password
                                 }
                               },
-                              color: Colors.greenAccent,
+                              color: Colors.orangeAccent,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50)),
@@ -338,16 +420,18 @@ class RegisterPageState extends State<RegisterPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(S.of(context).already_have_account),
+                            SizedBox(height: 120),
+                            Text(S.of(context).already_have_account + " ",
+                                style: const TextStyle(fontSize: 16)),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushNamed(context, 'login');
+                                Navigator.pushReplacementNamed(
+                                    context, 'login');
                               },
                               child: Text(
                                 S.of(context).login,
                                 style: const TextStyle(
-                                  fontSize: 14,
-                                ),
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             )
                           ],

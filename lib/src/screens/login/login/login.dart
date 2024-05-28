@@ -35,9 +35,12 @@ class LoginPageState extends State<LoginPage> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            decoration: const BoxDecoration(
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/login/bg.png"),
+                opacity: // theme is bright then 1 else 0.5
+                    Theme.of(context).brightness == Brightness.light ? 1 : 0.4,
+                image: const AssetImage("assets/images/login/bg.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -61,13 +64,6 @@ class LoginPageState extends State<LoginPage> {
                         const SizedBox(
                           height: 20,
                         ),
-                        FadeInUp(
-                            duration: const Duration(milliseconds: 1200),
-                            child: Text(
-                              "Login to your account",
-                              style: TextStyle(
-                                  fontSize: 15, color: Colors.grey[700]),
-                            )),
                       ],
                     ),
                     Padding(
@@ -86,7 +82,7 @@ class LoginPageState extends State<LoginPage> {
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter some text';
+                                  return S.of(context).please_enter_email;
                                 }
                                 // Add your email validation logic here
                                 return null;
@@ -99,17 +95,19 @@ class LoginPageState extends State<LoginPage> {
                             child: TextFormField(
                               controller: _passwordController,
                               decoration: InputDecoration(
-                                labelText: 'Password',
+                                labelText: S.of(context).password,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter some text';
+                                  return S.of(context).please_enter_password;
                                 }
                                 if (value.length < 6) {
-                                  return 'Password must be at least 6 characters long';
+                                  return S
+                                      .of(context)
+                                      .please_enter_valid_password;
                                 }
                                 // Add your password validation logic here
                                 return null;
@@ -122,7 +120,7 @@ class LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 20),
                     FadeInUp(
-                        duration: Duration(milliseconds: 1400),
+                        duration: const Duration(milliseconds: 1400),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
                           child: Container(
@@ -211,7 +209,7 @@ class LoginPageState extends State<LoginPage> {
                                   // Add your login logic here using email and password
                                 }
                               },
-                              color: Colors.greenAccent,
+                              color: Colors.orangeAccent,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50)),
@@ -228,15 +226,17 @@ class LoginPageState extends State<LoginPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(S.of(context).dont_have_account),
+                            Text(S.of(context).dont_have_account + " ",
+                                style: const TextStyle(fontSize: 16)),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushNamed(context, 'register');
+                                Navigator.pushReplacementNamed(
+                                    context, 'register');
                               },
                               child: Text(
                                 S.of(context).register,
                                 style: const TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
