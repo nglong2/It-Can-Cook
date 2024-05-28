@@ -4,7 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/system_bloc.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
-import 'package:it_can_cook/src/screens/login/login.dart';
+import 'package:it_can_cook/src/screens/login/login/login.dart';
+import 'package:it_can_cook/src/screens/login/register/register.dart';
 import 'package:it_can_cook/src/screens/login/welcome/welcome.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 
@@ -47,6 +48,8 @@ class MyApp extends StatelessWidget {
                       return const Welcome();
                     case "login":
                       return LoginPage();
+                    case "register":
+                      return const RegisterPage();
                     default:
                       return Onboarding();
                   }
