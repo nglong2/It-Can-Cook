@@ -10,7 +10,6 @@ class InitSystemEvent extends SystemEvent {
 
 class ChangeThemeEvent extends SystemEvent {
   final String themeMode;
-
   ChangeThemeEvent(this.themeMode);
 }
 

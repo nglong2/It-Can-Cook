@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
@@ -24,9 +25,14 @@ class MyApp extends StatelessWidget {
         BlocProvider<SystemBloc>(
           create: (BuildContext context) => SystemBloc(),
         ),
+        BlocProvider<AccountBloc>(
+          create: (BuildContext context) => AccountBloc(),
+        ),
       ],
-      child: BlocBuilder<SystemBloc, SystemModel>(
-        builder: (context, state) {
+      child: Builder(
+        builder: (context) {
+          final systemState = context.watch<SystemBloc>().state;
+          final accountState = context.watch<AccountBloc>()?.state;
           return MaterialApp(
             restorationScopeId: 'app',
             localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
@@ -37,14 +43,15 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: S.delegate.supportedLocales,
             debugShowCheckedModeBanner: false,
-            locale: state.language == 'en'
+            locale: systemState.language == 'en'
                 ? const Locale('en')
                 : const Locale('vi'),
             onGenerateTitle: (BuildContext context) => S.of(context).appTitle,
             theme: ThemeData(),
             darkTheme: ThemeData.dark(),
-            themeMode:
-                state.themeMode == 'dark' ? ThemeMode.dark : ThemeMode.light,
+            themeMode: systemState.themeMode == 'dark'
+                ? ThemeMode.dark
+                : ThemeMode.light,
             onGenerateRoute: (RouteSettings routeSettings) {
               return MaterialPageRoute<void>(
                 settings: routeSettings,
@@ -57,13 +64,15 @@ class MyApp extends StatelessWidget {
                     case "register":
                       return const RegisterPage();
                     case "home":
-                      return HomePage();
+                      return const HomePage();
                     case "weekly_detail":
                       return WeeklyDetailPage(
                         title: routeSettings.arguments.toString(),
                       );
                     default:
-                      return Onboarding();
+                      return accountState != null
+                          ? const HomePage()
+                          : Onboarding();
                   }
                 },
               );
