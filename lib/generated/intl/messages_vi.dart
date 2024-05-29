@@ -103,6 +103,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Mã xác thực phải có 6 chữ số"),
         "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),
-        "yes": MessageLookupByLibrary.simpleMessage("Có")
+        "yes": MessageLookupByLibrary.simpleMessage("Đồng ý")
       };
 }

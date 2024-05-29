@@ -40,6 +40,153 @@ class RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
+  Future<void> hanleRegister(response) async {
+    if (response.statusCode == 200) {
+      // Handle successful response
+      if (jsonDecode(response.body)['statusCode'] == 200) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text(S.of(context).enter_verification_code),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Form(
+                      key: _formKeyVerification,
+                      child: TextFormField(
+                        controller: _verificationCodeController,
+                        keyboardType: TextInputType.number,
+                        maxLength: 6,
+                        decoration: InputDecoration(
+                          labelText: 'Verification Code',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return S.of(context).please_enter_verification_code;
+                          }
+                          if (value.length != 6) {
+                            return S
+                                .of(context)
+                                .verification_code_must_be_6_digits_long;
+                          }
+                          // Add your verification code validation logic here
+                          return null;
+                        },
+                      ),
+                    )
+                  ],
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(S.of(context).cancel),
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      if (_formKeyVerification.currentState!.validate()) {
+                        // Process the verification code
+                        String verificationCode =
+                            _verificationCodeController.text;
+
+                        var valueVerification = await RestApi().get(
+                            "api/auth/confirm-mail?Email=${_emailController.text}&Code=$verificationCode");
+                        if (valueVerification.statusCode == 200) {
+                          if (jsonDecode(
+                                  valueVerification.body)['statusCode'] ==
+                              200) {
+                            await Navigator.pushReplacementNamed(
+                                context, 'login');
+                          } else {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text(S.of(context).error),
+                                    content: Text(jsonDecode(
+                                        valueVerification.body)['message']),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(S.of(context).yes),
+                                      ),
+                                    ],
+                                  );
+                                });
+                          }
+                        } else {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text(S.of(context).error),
+                                  content: Text(jsonDecode(
+                                      valueVerification.body)['message']),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(S.of(context).yes),
+                                    ),
+                                  ],
+                                );
+                              });
+                        }
+                        // Add your verification code processing logic here
+                      }
+                    },
+                    child: Text(S.of(context).submit),
+                  ),
+                ],
+              );
+            });
+      } else {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text(S.of(context).error),
+                content: Text(jsonDecode(response.body)['message']),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(S.of(context).yes),
+                  ),
+                ],
+              );
+            });
+      }
+    } else {
+      // Handle error response
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(S.of(context).error),
+              content: Text('An error occurred. Please try again later.'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(S.of(context).yes),
+                ),
+              ],
+            );
+          });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -256,7 +403,7 @@ class RegisterPageState extends State<RegisterPage> {
                             child: MaterialButton(
                               minWidth: double.infinity,
                               height: 60,
-                              onPressed: () {
+                              onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   final email = _emailController.text;
                                   final password = _passwordController.text;
@@ -273,135 +420,10 @@ class RegisterPageState extends State<RegisterPage> {
                                     'lastName': lastName,
                                     'phone': phone
                                   };
-                                  RestApi()
-                                      .post('api/auth/register', data)
-                                      .then((response) {
-                                    if (response.statusCode == 200) {
-                                      // Handle successful response
-                                      if (jsonDecode(
-                                              response.body)['statusCode'] ==
-                                          200) {
-                                        showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                title: Text(S
-                                                    .of(context)
-                                                    .enter_verification_code),
-                                                content: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Form(
-                                                      key: _formKeyVerification,
-                                                      child: TextFormField(
-                                                        controller:
-                                                            _verificationCodeController,
-                                                        keyboardType:
-                                                            TextInputType
-                                                                .number,
-                                                        maxLength: 6,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          labelText:
-                                                              'Verification Code',
-                                                          border:
-                                                              OutlineInputBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        15),
-                                                          ),
-                                                        ),
-                                                        validator: (value) {
-                                                          if (value!.isEmpty) {
-                                                            return S
-                                                                .of(context)
-                                                                .please_enter_verification_code;
-                                                          }
-                                                          if (value.length !=
-                                                              6) {
-                                                            return S
-                                                                .of(context)
-                                                                .verification_code_must_be_6_digits_long;
-                                                          }
-                                                          // Add your verification code validation logic here
-                                                          return null;
-                                                        },
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                actions: <Widget>[
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Text(
-                                                        S.of(context).cancel),
-                                                  ),
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      if (_formKeyVerification
-                                                          .currentState!
-                                                          .validate()) {
-                                                        // Process the verification code
-                                                        String
-                                                            verificationCode =
-                                                            _verificationCodeController
-                                                                .text;
-                                                        // Add your verification code processing logic here
-                                                      }
-                                                    },
-                                                    child: Text(
-                                                        S.of(context).submit),
-                                                  ),
-                                                ],
-                                              );
-                                            });
-                                      } else {
-                                        showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                title:
-                                                    Text(S.of(context).error),
-                                                content: Text(jsonDecode(
-                                                    response.body)['message']),
-                                                actions: <Widget>[
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child:
-                                                        Text(S.of(context).yes),
-                                                  ),
-                                                ],
-                                              );
-                                            });
-                                      }
-                                    } else {
-                                      // Handle error response
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return AlertDialog(
-                                              title: Text(S.of(context).error),
-                                              content: Text(
-                                                  'An error occurred. Please try again later.'),
-                                              actions: <Widget>[
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child:
-                                                      Text(S.of(context).yes),
-                                                ),
-                                              ],
-                                            );
-                                          });
-                                    }
-                                  });
+                                  var value = await RestApi()
+                                      .post('api/auth/register', data);
+                                  await hanleRegister(value);
+
                                   // Add your login logic here using email and password
                                 }
                               },
