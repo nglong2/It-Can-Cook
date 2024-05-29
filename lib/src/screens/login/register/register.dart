@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:it_can_cook/src/api/rest.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   RegisterPageState createState() => RegisterPageState();
@@ -373,7 +373,8 @@ class RegisterPageState extends State<RegisterPage> {
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: Text('OK'),
+                                                    child:
+                                                        Text(S.of(context).yes),
                                                   ),
                                                 ],
                                               );
@@ -393,7 +394,8 @@ class RegisterPageState extends State<RegisterPage> {
                                                   onPressed: () {
                                                     Navigator.pop(context);
                                                   },
-                                                  child: Text('OK'),
+                                                  child:
+                                                      Text(S.of(context).yes),
                                                 ),
                                               ],
                                             );
@@ -420,8 +422,8 @@ class RegisterPageState extends State<RegisterPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            SizedBox(height: 120),
-                            Text(S.of(context).already_have_account + " ",
+                            const SizedBox(height: 120),
+                            Text("${S.of(context).already_have_account} ",
                                 style: const TextStyle(fontSize: 16)),
                             GestureDetector(
                               onTap: () {

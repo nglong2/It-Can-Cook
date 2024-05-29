@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_to_cart": MessageLookupByLibrary.simpleMessage("Add to cart"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "appDescription":
@@ -39,10 +40,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "first_name": MessageLookupByLibrary.simpleMessage("First name"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "hello": MessageLookupByLibrary.simpleMessage("Hello"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "last_name": MessageLookupByLibrary.simpleMessage("Last name"),
         "login": MessageLookupByLibrary.simpleMessage("Log in"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Cooking is really easy with WeMealKit!"),
+        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ standard meals help you get enough nutrients while still \"saving money\""),
@@ -91,8 +96,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_enter_verification_code": MessageLookupByLibrary.simpleMessage(
             "Please enter verification code"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "verification_code_must_be_6_digits_long":
             MessageLookupByLibrary.simpleMessage(
                 "Verification code must be 6 digits long"),

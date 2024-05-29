@@ -45,5 +45,12 @@
   "verification_code_must_be_6_digits_long": "Mã xác thực phải có 6 chữ số",
   "cancel": "Hủy",
   "yes": "Có",
-  "submit": "Gửi"
+  "submit": "Gửi",
+  "language": "Ngôn ngữ",
+  "theme": "Chủ đề",
+  "home": "Trang chủ",
+  "settings": "Cài đặt",
+  "hello": "Xin chào",
+  "logout": "Đăng xuất",
+  "add_to_cart": "Thêm vào giỏ hàng"
 }

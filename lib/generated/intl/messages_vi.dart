@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_to_cart":
+            MessageLookupByLibrary.simpleMessage("Thêm vào giỏ hàng"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
         "appDescription":
@@ -39,10 +41,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "first_name": MessageLookupByLibrary.simpleMessage("Tên"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "hello": MessageLookupByLibrary.simpleMessage("Xin chào"),
+        "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "last_name": MessageLookupByLibrary.simpleMessage("Họ"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Làm bếp thật dễ dàng cùng WeMealKit!"),
+        "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ bữa ăn tiêu chuẩn giúp bạn đủ chất mà vẫn \"khỏe túi tiền\" "),
@@ -89,8 +95,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_enter_verification_code":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã xác thực"),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "submit": MessageLookupByLibrary.simpleMessage("Gửi"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
+        "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
         "verification_code_must_be_6_digits_long":
             MessageLookupByLibrary.simpleMessage(
                 "Mã xác thực phải có 6 chữ số"),

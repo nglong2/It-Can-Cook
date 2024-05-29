@@ -9,6 +9,7 @@ import 'package:it_can_cook/src/screens/login/login/login.dart';
 import 'package:it_can_cook/src/screens/login/register/register.dart';
 import 'package:it_can_cook/src/screens/login/welcome/welcome.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
+import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly_detail.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -57,6 +58,10 @@ class MyApp extends StatelessWidget {
                       return const RegisterPage();
                     case "home":
                       return HomePage();
+                    case "weekly_detail":
+                      return WeeklyDetailPage(
+                        title: routeSettings.arguments.toString(),
+                      );
                     default:
                       return Onboarding();
                   }

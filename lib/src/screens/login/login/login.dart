@@ -144,68 +144,72 @@ class LoginPageState extends State<LoginPage> {
                                     'emailOrUserName': email,
                                     'password': password,
                                   };
-                                  Navigator.pushReplacementNamed(
-                                      context, "home");
-                                  // RestApi()
-                                  //     .post("/api/auth/login", body)
-                                  //     .then((value) async => {
-                                  //           if (value.statusCode == 200)
-                                  //             {
-                                  //               if (jsonDecode(
-                                  //                       value.body)["StatusCode"] ==
-                                  //                   200)
-                                  //                 {
-                                  //                   await Navigator
-                                  //                       .pushReplacementNamed(
-                                  //                           context, "home")
-                                  //                 }
-                                  //               else
-                                  //                 {
-                                  //                   showDialog(
-                                  //                       context: context,
-                                  //                       builder: (context) {
-                                  //                         return AlertDialog(
-                                  //                           title: Text("Fail"),
-                                  //                           content: Text(
-                                  //                               jsonDecode(
-                                  //                                       value.body)[
-                                  //                                   "Message"]),
-                                  //                           actions: <Widget>[
-                                  //                             TextButton(
-                                  //                               onPressed: () {
-                                  //                                 Navigator.of(
-                                  //                                         context)
-                                  //                                     .pop();
-                                  //                               },
-                                  //                               child: Text("OK"),
-                                  //                             )
-                                  //                           ],
-                                  //                         );
-                                  //                       })
-                                  //                 }
-                                  //             }
-                                  //           else
-                                  //             {
-                                  //               showDialog(
-                                  //                   context: context,
-                                  //                   builder: (context) {
-                                  //                     return AlertDialog(
-                                  //                       title: Text("Error"),
-                                  //                       content: Text(
-                                  //                           "Error From Server"),
-                                  //                       actions: <Widget>[
-                                  //                         TextButton(
-                                  //                           onPressed: () {
-                                  //                             Navigator.of(context)
-                                  //                                 .pop();
-                                  //                           },
-                                  //                           child: Text("OK"),
-                                  //                         )
-                                  //                       ],
-                                  //                     );
-                                  //                   })
-                                  //             }
-                                  //         });
+                                  // Navigator.pushReplacementNamed(
+                                  //     context, "home");
+                                  RestApi()
+                                      .post("api/auth/login", body)
+                                      .then((value) async => {
+                                            if (value.statusCode == 200)
+                                              {
+                                                if (jsonDecode(value.body)[
+                                                        "statusCode"] ==
+                                                    200)
+                                                  {
+                                                    //decode jwt
+
+                                                    await Navigator
+                                                        .pushReplacementNamed(
+                                                            context, "home")
+                                                  }
+                                                else
+                                                  {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return AlertDialog(
+                                                            title: Text("Fail"),
+                                                            content: Text(
+                                                                jsonDecode(value
+                                                                        .body)[
+                                                                    "message"]),
+                                                            actions: <Widget>[
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                },
+                                                                child:
+                                                                    Text("OK"),
+                                                              )
+                                                            ],
+                                                          );
+                                                        })
+                                                  }
+                                              }
+                                            else
+                                              {
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return AlertDialog(
+                                                        title: Text("Error"),
+                                                        content: Text(
+                                                            "Error From Server"),
+                                                        actions: <Widget>[
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
+                                                            child: Text("OK"),
+                                                          )
+                                                        ],
+                                                      );
+                                                    })
+                                              }
+                                          });
                                   // Add your login logic here using email and password
                                 }
                               },
@@ -226,7 +230,7 @@ class LoginPageState extends State<LoginPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(S.of(context).dont_have_account + " ",
+                            Text("${S.of(context).dont_have_account} ",
                                 style: const TextStyle(fontSize: 16)),
                             GestureDetector(
                               onTap: () {

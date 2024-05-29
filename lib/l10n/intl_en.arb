@@ -45,5 +45,12 @@
   "verification_code_must_be_6_digits_long": "Verification code must be 6 digits long",
   "cancel": "Cancel",
   "yes": "Yes",
-  "submit": "Submit"
+  "submit": "Submit",
+  "language": "Language",
+  "theme": "Theme",
+  "home": "Home",
+  "settings": "Settings",
+  "hello": "Hello",
+  "logout": "Log out",
+  "add_to_cart": "Add to cart"
 }

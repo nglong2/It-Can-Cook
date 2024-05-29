@@ -27,6 +27,8 @@ dependencies:
   shared_preferences: ^2.2.3
   shelf: ^1.4.1
   shelf_router: ^1.1.4
+  intl: ^0.18.1
+  date_picker_timeline: ^1.2.5
 
 dev_dependencies:
   flutter_test:
@@ -46,5 +48,6 @@ flutter:
     - assets/images/onboarding/
     - assets/images/login/
     - assets/images/flag/
+    - assets/images/weekly-demo/
 flutter_intl:
   enabled: true
