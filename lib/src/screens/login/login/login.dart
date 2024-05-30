@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:it_can_cook/src/api/rest.dart';
 import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
+import 'package:it_can_cook/src/controller/account.dart';
 import 'package:it_can_cook/src/models/account.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,57 +25,29 @@ class LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  Future<void> hadleLogin(value) async {
-    if (value.statusCode == 200) {
-      if (jsonDecode(value.body)["statusCode"] == 200) {
-        //decode jwt
-        String jwt = jsonDecode(value.body)["message"];
-        var valueUser =
-            await RestApi().get("api/user/get-user-token?token=$jwt");
-
-        if (valueUser.statusCode == 200) {
-          if (jsonDecode(valueUser.body)["statusCode"] == 200) {
-            context.read<AccountBloc>().add(LoginEvent(
-                AccountModel.fromJson(jsonDecode(valueUser.body)["data"])));
-            await Navigator.pushReplacementNamed(context, "home");
-          }
-        }
-      } else {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text("Fail"),
-                content: Text(jsonDecode(value.body)["message"]),
-                actions: <Widget>[
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text("OK"),
-                  )
-                ],
-              );
-            });
+  Future<void> hadleLogin(String email, String pass) async {
+    AccountController().login(email, pass).then((value) {
+      if (value != null) {
+        context.read<AccountBloc>().add(LoginEvent(value));
+        Navigator.pushReplacementNamed(context, 'home');
       }
-    } else {
+    }).onError((error, stackTrace) {
       showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text("Error"),
-              content: Text("Error From Server"),
-              actions: <Widget>[
+              title: Text(S.of(context).error),
+              content: Text(error.toString()),
+              actions: [
                 TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text("OK"),
-                )
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(S.of(context).yes))
               ],
             );
           });
-    }
+    });
   }
 
   @override
@@ -210,9 +180,8 @@ class LoginPageState extends State<LoginPage> {
                                         'password': password,
                                       };
 
-                                      var value = await RestApi()
-                                          .post("api/auth/login", body);
-                                      await hadleLogin(value);
+                                      await hadleLogin(body['emailOrUserName']!,
+                                          body['password']!);
                                       // Add your login logic here using email and password
                                     }
                                   },

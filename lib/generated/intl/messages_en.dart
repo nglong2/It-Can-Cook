@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
+        "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "last_name": MessageLookupByLibrary.simpleMessage("Last name"),
@@ -48,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Cooking is really easy with WeMealKit!"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
+        "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to log out?"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ standard meals help you get enough nutrients while still \"saving money\""),

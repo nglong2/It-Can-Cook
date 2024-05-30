@@ -66,9 +66,9 @@ class HomePageState extends State<HomePage> {
                 icon: const Icon(Icons.home),
                 label: S.of(context).home,
               ),
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.history_rounded),
+                label: S.of(context).history,
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.settings),

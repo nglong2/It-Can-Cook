@@ -9,3 +9,8 @@ class LoginEvent extends AccountEvent {
 
   LoginEvent(this.accountModel);
 }
+
+class LogOutEvent extends AccountEvent {
+  String email;
+  LogOutEvent(this.email);
+}

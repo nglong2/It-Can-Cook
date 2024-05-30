@@ -52,5 +52,7 @@
   "settings": "Settings",
   "hello": "Hello",
   "logout": "Log out",
-  "add_to_cart": "Add to cart"
+  "add_to_cart": "Add to cart",
+  "logoutConfirmation": "Are you sure you want to log out?",
+  "history": "History"
 }

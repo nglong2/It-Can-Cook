@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "hello": MessageLookupByLibrary.simpleMessage("Xin chào"),
+        "history": MessageLookupByLibrary.simpleMessage("Lịch sử"),
         "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "last_name": MessageLookupByLibrary.simpleMessage("Họ"),
@@ -49,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Làm bếp thật dễ dàng cùng WeMealKit!"),
         "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+        "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn đăng xuất?"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ bữa ăn tiêu chuẩn giúp bạn đủ chất mà vẫn \"khỏe túi tiền\" "),

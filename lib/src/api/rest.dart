@@ -25,6 +25,7 @@ class RestApi {
 
   Future<String> getJwtToken() async {
     final prefs = await SharedPreferences.getInstance();
+    //get jwtToken from shared preferences
     final jwtToken = prefs.getString('jwtToken');
     return jwtToken ?? ''; // Return empty string if token is null
   }

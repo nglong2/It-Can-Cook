@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:it_can_cook/src/models/account.dart';
 import 'package:meta/meta.dart';
@@ -10,6 +12,8 @@ class AccountBloc extends HydratedBloc<AccountEvent, AccountModel?> {
     on<AccountEvent>((event, emit) {
       if (event is LoginEvent) {
         login(event.accountModel, emit);
+      } else if (event is LogOutEvent) {
+        emit(null);
       }
     });
   }
