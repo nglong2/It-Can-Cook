@@ -9,12 +9,15 @@ part 'account_state.dart';
 
 class AccountBloc extends HydratedBloc<AccountEvent, AccountModel?> {
   AccountBloc() : super(null) {
-    on<AccountEvent>((event, emit) {
-      if (event is LoginEvent) {
-        login(event.accountModel, emit);
-      } else if (event is LogOutEvent) {
-        emit(null);
-      }
+    on<AccountEvent>((event, emit) {});
+    on<LoginEvent>((event, emit) {
+      login(event.accountModel, emit);
+    });
+    on<LogOutEvent>((event, emit) {
+      emit(null);
+    });
+    on<FetchAccountEvent>((event, emit) {
+      emit(state);
     });
   }
 
@@ -24,7 +27,7 @@ class AccountBloc extends HydratedBloc<AccountEvent, AccountModel?> {
 
   @override
   AccountModel? fromJson(Map<String, dynamic> json) {
-    return AccountModel.fromJson(json);
+    return json.isEmpty ? null : AccountModel.fromJson(json);
   }
 
   @override

@@ -4,6 +4,10 @@ part of 'account_bloc.dart';
 sealed class AccountEvent {}
 
 //event login
+class FetchAccountEvent extends AccountEvent {
+  FetchAccountEvent();
+}
+
 class LoginEvent extends AccountEvent {
   final AccountModel accountModel;
 
@@ -11,6 +15,5 @@ class LoginEvent extends AccountEvent {
 }
 
 class LogOutEvent extends AccountEvent {
-  String email;
-  LogOutEvent(this.email);
+  LogOutEvent();
 }

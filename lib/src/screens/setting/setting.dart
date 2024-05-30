@@ -115,9 +115,7 @@ class _SettingsViewState extends State<SettingsView> {
                             var prefs = await SharedPreferences.getInstance();
                             await prefs.remove('jwtToken');
                             if (accountState?.email != null) {
-                              context
-                                  .read<AccountBloc>()
-                                  .add(LogOutEvent(accountState!.email!));
+                              context.read<AccountBloc>().add(LogOutEvent());
                             }
                             Navigator.of(context).pushNamedAndRemoveUntil(
                                 'login', (Route<dynamic> route) => false);
