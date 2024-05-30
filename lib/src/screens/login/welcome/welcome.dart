@@ -5,16 +5,13 @@ class Welcome extends StatelessWidget {
   const Welcome({super.key});
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
           padding: const EdgeInsets.all(20),
           color: const Color(0xFFFF7A00),
           child: Column(
             children: <Widget>[
-              SizedBox(height: size.height * 0.1),
               const Image(image: AssetImage('assets/images/login/1.png')),
-              SizedBox(height: size.height * 0.1),
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Text(
@@ -60,7 +57,7 @@ class Welcome extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "${S.of(context).already_have_account} ",
+                      "${S.of(context).already_have_account}  ",
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
@@ -69,7 +66,7 @@ class Welcome extends StatelessWidget {
                           Navigator.pushNamed(context, 'login');
                         },
                         child: Padding(
-                          padding: EdgeInsets.only(top: 7),
+                          padding: const EdgeInsets.only(top: 7),
                           child: Text(
                             S.of(context).login,
                             style: const TextStyle(

@@ -103,8 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
         "verification_code_must_be_6_digits_long":
-            MessageLookupByLibrary.simpleMessage(
-                "Mã xác thực phải có 6 chữ số"),
+            MessageLookupByLibrary.simpleMessage("Mã xác thực phải có 6 ký tự"),
         "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "yes": MessageLookupByLibrary.simpleMessage("Đồng ý")
       };

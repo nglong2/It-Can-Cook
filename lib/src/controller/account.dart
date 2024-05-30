@@ -22,6 +22,9 @@ class AccountController {
         return await getUserToken(token);
       }
       throw Exception(jsonDecode(value.body)["message"]);
+    }
+    if (value.statusCode == 405) {
+      throw Exception("emailnotconfirm");
     } else {
       throw Exception('Failed to login');
     }

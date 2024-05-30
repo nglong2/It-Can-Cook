@@ -450,10 +450,10 @@ class S {
     );
   }
 
-  /// `Verification code must be 6 digits long`
+  /// `Verification code must be 6 digits`
   String get verification_code_must_be_6_digits_long {
     return Intl.message(
-      'Verification code must be 6 digits long',
+      'Verification code must be 6 digits',
       name: 'verification_code_must_be_6_digits_long',
       desc: '',
       args: [],

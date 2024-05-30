@@ -42,7 +42,7 @@
   "enter_verification_code": "Nhập mã xác thực",
   "please_enter_verification_code": "Vui lòng nhập mã xác thực",
   "verify": "Xác thực",
-  "verification_code_must_be_6_digits_long": "Mã xác thực phải có 6 chữ số",
+  "verification_code_must_be_6_digits_long": "Mã xác thực phải có 6 ký tự",
   "cancel": "Hủy",
   "yes": "Đồng ý",
   "submit": "Gửi",

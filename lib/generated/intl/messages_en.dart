@@ -105,7 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "verification_code_must_be_6_digits_long":
             MessageLookupByLibrary.simpleMessage(
-                "Verification code must be 6 digits long"),
+                "Verification code must be 6 digits"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
