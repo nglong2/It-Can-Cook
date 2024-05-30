@@ -61,7 +61,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              """ Week ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).weekday}, ${DateFormat('MMMM').format(DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
+              """ ${S.of(context).week} ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).weekday}, ${DateFormat('MMMM').format(DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
               // get moth name
 
               style: const TextStyle(

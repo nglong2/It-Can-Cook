@@ -54,5 +54,6 @@
   "logout": "Đăng xuất",
   "add_to_cart": "Thêm vào giỏ hàng",
   "logoutConfirmation": "Bạn có chắc chắn muốn đăng xuất?",
-  "history": "Lịch sử"
+  "history": "Lịch sử",
+  "week": "Tuần"
 }

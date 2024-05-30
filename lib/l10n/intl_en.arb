@@ -54,5 +54,6 @@
   "logout": "Log out",
   "add_to_cart": "Add to cart",
   "logoutConfirmation": "Are you sure you want to log out?",
-  "history": "History"
+  "history": "History",
+  "week": "Week"
 }
