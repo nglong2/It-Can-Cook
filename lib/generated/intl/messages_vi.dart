@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
+        "custom_package": MessageLookupByLibrary.simpleMessage("Gói tùy chỉnh"),
         "done": MessageLookupByLibrary.simpleMessage("Bắt đầu nào!"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
@@ -109,10 +110,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_enter_verification_code":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã xác thực"),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "submit": MessageLookupByLibrary.simpleMessage("Gửi"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
+        "verification_code":
+            MessageLookupByLibrary.simpleMessage("Mã xác thực"),
         "verification_code_must_be_6_digits_long":
             MessageLookupByLibrary.simpleMessage("Mã xác thực phải có 6 ký tự"),
         "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),

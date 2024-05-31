@@ -26,9 +26,9 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      side: BorderSide(color: Color(0xFF02335A)))),
+                      side: const BorderSide(color: Color(0xFF02335A)))),
               backgroundColor:
-                  MaterialStateProperty.all<Color>(Color(0xFF02335A)),
+                  MaterialStateProperty.all<Color>(const Color(0xFF02335A)),
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -38,13 +38,13 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.shopping_cart_checkout_sharp,
                     color: Colors.white,
                   ),
                   Text(
                     S.of(context).add_to_cart,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),

@@ -62,5 +62,8 @@
   "confirm_new_password": "Confirm new password",
   "please_enter_old_password": "Please enter old password",
   "please_enter_new_password": "Please enter new password",
-  "change_password_success": "Change password successfully"
+  "change_password_success": "Change password successfully",
+  "custom_package": "Custom package",
+  "search": "Search",
+  "verification_code": "Verification code"
 }

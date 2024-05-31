@@ -139,7 +139,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
             icon: const Icon(Icons.add_rounded),
             iconSize: 50,
           ),
-          const Text("Add custom package")
+          Text(S.current.custom_package)
         ],
       ),
     ));
@@ -155,7 +155,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
       child: TextField(
         decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            hintText: 'Search',
+            hintText: S.current.search,
             prefixIcon: IconButton(
               onPressed: () => {},
               icon: const Icon(Icons.search),

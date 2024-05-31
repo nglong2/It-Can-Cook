@@ -81,7 +81,7 @@ class LoginPageState extends State<LoginPage> {
                       keyboardType: TextInputType.text,
                       maxLength: 6,
                       decoration: InputDecoration(
-                        labelText: 'Verification Code',
+                        labelText: S.current.verification_code,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),

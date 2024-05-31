@@ -113,8 +113,8 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
                         context.loaderOverlay.hide();
                         if (value) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Change password success'),
+                            SnackBar(
+                              content: Text(S.current.change_password_success),
                             ),
                           );
                           Navigator.of(context).pop();
@@ -139,7 +139,7 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
                       });
                     }
                   },
-                  child: const Text('Change password'),
+                  child: Text(S.current.change_password),
                 )
               ],
             ),
@@ -179,7 +179,7 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
               //change password
               ListTile(
                 leading: const Icon(Icons.lock),
-                title: const Text('Change password'),
+                title: Text(S.current.change_password),
                 onTap: () {
                   changePassword(state?.id ?? '');
                 },

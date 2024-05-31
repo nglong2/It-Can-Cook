@@ -659,6 +659,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Custom package`
+  String get custom_package {
+    return Intl.message(
+      'Custom package',
+      name: 'custom_package',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification code`
+  String get verification_code {
+    return Intl.message(
+      'Verification code',
+      name: 'verification_code',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

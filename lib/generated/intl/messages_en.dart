@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "custom_package":
+            MessageLookupByLibrary.simpleMessage("Custom package"),
         "done": MessageLookupByLibrary.simpleMessage("Get started!"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Dont have an account?"),
@@ -111,10 +113,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_enter_verification_code": MessageLookupByLibrary.simpleMessage(
             "Please enter verification code"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "verification_code":
+            MessageLookupByLibrary.simpleMessage("Verification code"),
         "verification_code_must_be_6_digits_long":
             MessageLookupByLibrary.simpleMessage(
                 "Verification code must be 6 digits"),

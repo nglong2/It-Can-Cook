@@ -62,5 +62,8 @@
   "confirm_new_password": "Xác nhận mật khẩu mới",
   "please_enter_old_password": "Vui lòng nhập mật khẩu cũ",
   "please_enter_new_password": "Vui lòng nhập mật khẩu mới",
-  "change_password_success": "Đổi mật khẩu thành công"
+  "change_password_success": "Đổi mật khẩu thành công",
+  "custom_package": "Gói tùy chỉnh",
+  "search": "Tìm kiếm",
+  "verification_code": "Mã xác thực"
 }

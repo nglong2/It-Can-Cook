@@ -94,7 +94,7 @@ class RegisterPageState extends State<RegisterPage> {
                       keyboardType: TextInputType.number,
                       maxLength: 6,
                       decoration: InputDecoration(
-                        labelText: 'Verification Code',
+                        labelText: S.current.verification_code,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
