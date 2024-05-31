@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("A simple recipe app"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "change_password":
+            MessageLookupByLibrary.simpleMessage("Change password"),
+        "confirm_new_password":
+            MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "done": MessageLookupByLibrary.simpleMessage("Get started!"),
@@ -51,7 +55,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to log out?"),
+        "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ standard meals help you get enough nutrients while still \"saving money\""),
         "onboardDescription2": MessageLookupByLibrary.simpleMessage(
@@ -83,6 +89,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter first name"),
         "please_enter_last_name":
             MessageLookupByLibrary.simpleMessage("Please enter last name"),
+        "please_enter_new_password":
+            MessageLookupByLibrary.simpleMessage("Please enter new password"),
+        "please_enter_old_password":
+            MessageLookupByLibrary.simpleMessage("Please enter old password"),
         "please_enter_password":
             MessageLookupByLibrary.simpleMessage("Please enter password"),
         "please_enter_phone_number":

@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc.dart';
-import 'package:it_can_cook/src/models/system/system.dart';
+import 'package:it_can_cook/src/models/system/bottom_modal.dart';
+
+import 'package:it_can_cook/src/screens/account/account_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsView extends StatefulWidget {
@@ -43,7 +45,18 @@ class _SettingsViewState extends State<SettingsView> {
               title:
                   Text('${accountState?.firstName} ${accountState?.lastName}'),
               onTap: () {
-                // Navigate to the theme setting page
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  scrollControlDisabledMaxHeightRatio: 0.5,
+                  showDragHandle: true,
+                  context: context,
+                  builder: (context) {
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      child: AccountInfoScreen(),
+                    );
+                  },
+                );
               },
             ),
             const Divider(),

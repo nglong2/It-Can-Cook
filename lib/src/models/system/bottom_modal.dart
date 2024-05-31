@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const double _defaultScrollControlDisabledMaxHeightRatio =
     0.5; // Define the variable with a default value
-Future<T?> showModalBottomSheet<T>({
+Future<T?> showModalBottomSheets<T>({
   required BuildContext context,
   required WidgetBuilder builder,
   Color? backgroundColor,
