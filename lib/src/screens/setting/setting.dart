@@ -6,6 +6,7 @@ import 'package:it_can_cook/src/bloc/system_bloc.dart';
 import 'package:it_can_cook/src/models/system/bottom_modal.dart';
 
 import 'package:it_can_cook/src/screens/account/account_info.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsView extends StatefulWidget {
@@ -53,7 +54,7 @@ class _SettingsViewState extends State<SettingsView> {
                   builder: (context) {
                     return SizedBox(
                       height: MediaQuery.of(context).size.height * 0.5,
-                      child: AccountInfoScreen(),
+                      child: const AccountInfoScreen(),
                     );
                   },
                 );

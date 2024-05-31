@@ -61,5 +61,6 @@
   "new_password": "New password",
   "confirm_new_password": "Confirm new password",
   "please_enter_old_password": "Please enter old password",
-  "please_enter_new_password": "Please enter new password"
+  "please_enter_new_password": "Please enter new password",
+  "change_password_success": "Change password successfully"
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
+import 'package:it_can_cook/src/controller/account.dart';
 import 'package:it_can_cook/src/models/account.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 class AccountInfoScreen extends StatefulWidget {
   const AccountInfoScreen({super.key});
@@ -33,12 +35,13 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
     super.dispose();
   }
 
-  Future<void> changePassword() async {
+  Future<void> changePassword(String id) async {
     //show poup have form to change password
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
+        return LoaderOverlay(
+            child: AlertDialog(
           title: Text(S.of(context).change_password),
           content: Form(
             key: _formKey,
@@ -98,7 +101,42 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      //call api to change password
+                      context.loaderOverlay.show();
+                      AccountController()
+                          .changePassword(
+                        id,
+                        _oldPasswordController.text,
+                        _newPasswordController.text,
+                        _newPasswordConfirmController.text,
+                      )
+                          .then((value) {
+                        context.loaderOverlay.hide();
+                        if (value) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Change password success'),
+                            ),
+                          );
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        }
+                      }).onError((error, stackTrace) {
+                        context.loaderOverlay.hide();
+                        showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                                  title: Text(S.current.error),
+                                  content: Text(error.toString()),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text(S.current.yes),
+                                    )
+                                  ],
+                                ));
+                      });
                     }
                   },
                   child: const Text('Change password'),
@@ -106,7 +144,7 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
               ],
             ),
           ),
-        );
+        ));
       },
     );
   }
@@ -143,7 +181,7 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
                 leading: const Icon(Icons.lock),
                 title: const Text('Change password'),
                 onTap: () {
-                  changePassword();
+                  changePassword(state?.id ?? '');
                 },
               ),
             ],

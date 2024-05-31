@@ -90,4 +90,77 @@ class AccountController {
     }
     return null;
   }
+
+// curl -X 'PUT' \
+//   'https://api.wemealkit.shop/api/auth/reset-password' \
+//   -H 'accept: */*' \
+//   -H 'Content-Type: application/json' \
+//   -d '{
+//   "id": "string",
+//   "oldPassword": "string",
+//   "newPassword": "string",
+//   "confirmPassword": "string"
+// }'
+
+  Future<bool> changePassword(String id, String oldPassword, String newPassword,
+      String confirmPassword) async {
+    var data = {
+      'id': id,
+      'oldPassword': oldPassword,
+      'newPassword': newPassword,
+      'confirmPassword': confirmPassword
+    };
+    var value = await api.put("api/auth/reset-password", data);
+    if (value.statusCode == 200) {
+      if (jsonDecode(value.body)["statusCode"] == 200) {
+        return true;
+      }
+      throw Exception(jsonDecode(value.body)["message"]);
+    }
+
+    if (value.statusCode != 200) {
+      throw Exception('Failed to change password');
+    }
+    return false;
+  }
+
+  Future<bool> forgotPassword(String email) async {
+    var data = {
+      'email': email,
+    };
+    var value = await api.post("api/auth/forgot-password", data);
+    if (value.statusCode == 200) {
+      if (jsonDecode(value.body)["statusCode"] == 200) {
+        return true;
+      }
+      throw Exception(jsonDecode(value.body)["message"]);
+    }
+
+    if (value.statusCode != 200) {
+      throw Exception('Failed to forgot password');
+    }
+    return false;
+  }
+
+  Future<bool> resetPassword(String email, String code, String newPassword,
+      String confirmPassword) async {
+    var data = {
+      'email': email,
+      'code': code,
+      'newPassword': newPassword,
+      'confirmPassword': confirmPassword
+    };
+    var value = await api.post("api/auth/reset-password", data);
+    if (value.statusCode == 200) {
+      if (jsonDecode(value.body)["statusCode"] == 200) {
+        return true;
+      }
+      throw Exception(jsonDecode(value.body)["message"]);
+    }
+
+    if (value.statusCode != 200) {
+      throw Exception('Failed to reset password');
+    }
+    return false;
+  }
 }

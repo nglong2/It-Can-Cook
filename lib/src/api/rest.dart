@@ -23,6 +23,18 @@ class RestApi {
     return response;
   }
 
+  //httpput
+  Future<http.Response> put(String path, Map<String, dynamic> body) async {
+    final jsonBody = jsonEncode(body);
+    final url = Uri.parse('$baseUrl/$path');
+    final response = await http.put(url, body: jsonBody, headers: {
+      'Content-Type': 'application/json',
+      'Authorization':
+          await getJwtToken(), // Add Authorization header with JWT token
+    });
+    return response;
+  }
+
   Future<String> getJwtToken() async {
     final prefs = await SharedPreferences.getInstance();
     //get jwtToken from shared preferences

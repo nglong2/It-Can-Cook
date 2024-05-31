@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
+        "change_password_success":
+            MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thành công"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_password":
