@@ -3,10 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc.dart';
-import 'package:it_can_cook/src/models/system/bottom_modal.dart';
-
 import 'package:it_can_cook/src/screens/account/account_info.dart';
-import 'package:loader_overlay/loader_overlay.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsView extends StatefulWidget {
@@ -131,7 +128,7 @@ class _SettingsViewState extends State<SettingsView> {
                             if (accountState?.email != null) {
                               context.read<AccountBloc>().add(LogOutEvent());
                             }
-                            Navigator.of(context).pushNamedAndRemoveUntil(
+                            await Navigator.of(context).pushNamedAndRemoveUntil(
                                 'login', (Route<dynamic> route) => false);
                           },
                           child: Text(S.of(context).logout),

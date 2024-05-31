@@ -32,6 +32,6 @@ class AccountBloc extends HydratedBloc<AccountEvent, AccountModel?> {
 
   @override
   Map<String, dynamic>? toJson(AccountModel? state) {
-    return state?.toJson();
+    return state == null ? <String, dynamic>{} : state.toJson();
   }
 }
