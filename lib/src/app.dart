@@ -11,7 +11,9 @@ import 'package:it_can_cook/src/screens/login/login/login.dart';
 import 'package:it_can_cook/src/screens/login/register/register.dart';
 import 'package:it_can_cook/src/screens/login/welcome/welcome.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly_detail.dart';
+import 'package:it_can_cook/src/screens/weekly_plane.dart/dish/dish_detail.dart';
+import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/template_day.dart';
+import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/weekly_detail.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -69,6 +71,10 @@ class MyApp extends StatelessWidget {
                     case "weekly_detail":
                       return WeeklyDetailPage(
                         title: routeSettings.arguments.toString(),
+                      );
+                    case "dish_detail":
+                      return DishDetail(
+                        menuItem: routeSettings.arguments as MenuItem,
                       );
 
                     case "delivery":

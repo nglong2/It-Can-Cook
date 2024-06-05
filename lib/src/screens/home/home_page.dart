@@ -5,7 +5,7 @@ import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
 import 'package:it_can_cook/src/models/account.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 import 'package:it_can_cook/src/screens/setting/setting.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly.dart';
+import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/weekly.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

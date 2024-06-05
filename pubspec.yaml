@@ -50,5 +50,8 @@ flutter:
     - assets/images/login/
     - assets/images/flag/
     - assets/images/weekly-demo/
+    - assets/images/dishesdemo/
+    - assets/images/ingredientdemo/
+    - assets/images/stepsdemo/
 flutter_intl:
   enabled: true

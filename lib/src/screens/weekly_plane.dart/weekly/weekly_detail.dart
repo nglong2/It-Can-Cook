@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/template_day.dart';
+import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/part.dart';
+import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/template_day.dart';
 
 class WeeklyDetailPage extends StatefulWidget {
   final String title;
@@ -80,7 +81,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  """ ${S.of(context).week} ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).weekday}, ${DateFormat('MMMM').format(DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
+                  """ ${S.of(context).week} ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).toUtc().weekday + 1}, ${DateFormat('MMMM').format(DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
                   // get moth name
 
                   style: const TextStyle(
@@ -138,7 +139,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
           SizedBox(
             height: MediaQuery.of(context).size.height - 360,
             child: SingleChildScrollView(
-              child: TemplateDay(),
+              child: Part(),
             ),
           )
         ],
