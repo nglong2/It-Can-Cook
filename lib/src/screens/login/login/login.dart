@@ -36,13 +36,17 @@ class LoginPageState extends State<LoginPage> {
       if (value != null) {
         context.loaderOverlay.hide();
         context.read<AccountBloc>().add(LoginEvent(value));
-        Navigator.pushReplacementNamed(context, 'home');
+        if (value.role?.toLowerCase() == 'shiper') {
+          Navigator.pushNamedAndRemoveUntil(
+              context, 'delivery', (route) => false);
+        } else {
+          Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+        }
       }
     }).onError((error, stackTrace) {
       context.loaderOverlay.hide();
       if (error.toString() == 'Exception: emailnotconfirm') {
         handleVerifite(email);
-
         return;
       } else {
         context.loaderOverlay.hide();

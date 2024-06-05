@@ -5,6 +5,7 @@ import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
+import 'package:it_can_cook/src/screens/delivery/home.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
 import 'package:it_can_cook/src/screens/login/login/login.dart';
 import 'package:it_can_cook/src/screens/login/register/register.dart';
@@ -69,9 +70,14 @@ class MyApp extends StatelessWidget {
                       return WeeklyDetailPage(
                         title: routeSettings.arguments.toString(),
                       );
+
+                    case "delivery":
+                      return DeliveryHome();
                     default:
                       return accountState != null
-                          ? const HomePage()
+                          ? accountState.role?.toLowerCase() == 'shiper'
+                              ? DeliveryHome()
+                              : const HomePage()
                           : Onboarding();
                   }
                 },
