@@ -118,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "total": MessageLookupByLibrary.simpleMessage("Total: "),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Verification code"),
         "verification_code_must_be_6_digits_long":

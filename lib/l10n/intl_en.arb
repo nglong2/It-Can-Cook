@@ -65,5 +65,6 @@
   "change_password_success": "Change password successfully",
   "custom_package": "Custom package",
   "search": "Search",
-  "verification_code": "Verification code"
+  "verification_code": "Verification code",
+  "total": "Total: "
 }

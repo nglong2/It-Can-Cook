@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "submit": MessageLookupByLibrary.simpleMessage("Gửi"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
+        "total": MessageLookupByLibrary.simpleMessage("Tổng: "),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
         "verification_code_must_be_6_digits_long":

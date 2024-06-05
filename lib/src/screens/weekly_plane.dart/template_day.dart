@@ -33,25 +33,29 @@ class MenuPart extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
+              //uppercase
             ),
           ),
           SizedBox(height: 8),
           Container(
-            height: 80,
+            height: 82,
             width: MediaQuery.of(context).size.width - 20,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(8),
-            ),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.grey[400]!
+                      : Colors.grey[800]!,
+                )),
             child: Row(
               children: [
                 Image.network(
                   'https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVsaWNpb3VzJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D',
                   width: 80,
                   height: 80,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
                 Expanded(
                   child: Column(
@@ -75,34 +79,40 @@ class MenuPart extends StatelessWidget {
                   flex: 3,
                 ),
                 Expanded(
+                    flex: 2,
                     child: Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(2),
-                      margin: EdgeInsets.only(top: 6, right: 6),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey[400]!),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        "4 person",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    IconButton(onPressed: () => {}, icon: Icon(Icons.delete))
-                  ],
-                )),
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(2),
+                          margin: EdgeInsets.only(top: 6, right: 12),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey[400]!),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            "4 person",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () => {}, icon: Icon(Icons.delete))
+                      ],
+                    )),
               ],
             ),
           ),
           SizedBox(height: 8),
           Container(
-            height: 80,
+            height: 82,
             width: MediaQuery.of(context).size.width - 20,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(8),
-            ),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.grey[400]!
+                      : Colors.grey[800]!,
+                )),
             child: Row(
               children: [
                 Image.network(
@@ -133,34 +143,40 @@ class MenuPart extends StatelessWidget {
                   flex: 3,
                 ),
                 Expanded(
+                    flex: 2,
                     child: Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(2),
-                      margin: EdgeInsets.only(top: 6, right: 6),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey[400]!),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        "4 person",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    IconButton(onPressed: () => {}, icon: Icon(Icons.delete))
-                  ],
-                )),
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(2),
+                          margin: EdgeInsets.only(top: 6, right: 12),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey[400]!),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            "4 person",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () => {}, icon: Icon(Icons.delete))
+                      ],
+                    )),
               ],
             ),
           ),
           SizedBox(height: 8),
           Container(
-            height: 80,
+            height: 82,
             width: MediaQuery.of(context).size.width - 20,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(8),
-            ),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.grey[400]!
+                      : Colors.grey[800]!,
+                )),
             child: Row(
               children: [
                 Image.network(
@@ -191,23 +207,26 @@ class MenuPart extends StatelessWidget {
                   flex: 3,
                 ),
                 Expanded(
+                    flex: 2,
                     child: Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(2),
-                      margin: EdgeInsets.only(top: 6, right: 6),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey[400]!),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        "2 person",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    IconButton(onPressed: () => {}, icon: Icon(Icons.delete))
-                  ],
-                )),
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(2),
+                          margin: EdgeInsets.only(top: 6, right: 12),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey[400]!),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            "2 person",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () => {}, icon: Icon(Icons.delete))
+                      ],
+                    )),
               ],
             ),
           ),
@@ -216,7 +235,6 @@ class MenuPart extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey[400]!),
-              color: Colors.grey[300],
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
@@ -231,7 +249,7 @@ class MenuPart extends StatelessWidget {
                   icon: Icon(Icons.add_rounded),
                   iconSize: 40,
                 ),
-                Text("Add ")
+                Text("Add Dishes")
               ],
             ),
           )
