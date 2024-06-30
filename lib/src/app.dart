@@ -11,6 +11,7 @@ import 'package:it_can_cook/src/screens/login/login/login.dart';
 import 'package:it_can_cook/src/screens/login/register/register.dart';
 import 'package:it_can_cook/src/screens/login/welcome/welcome.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
+import 'package:it_can_cook/src/screens/payment/payment.dart';
 import 'package:it_can_cook/src/screens/weekly_plane.dart/dish/dish_detail.dart';
 import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/template_day.dart';
 import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/weekly_detail.dart';
@@ -80,11 +81,12 @@ class MyApp extends StatelessWidget {
                     case "delivery":
                       return DeliveryHome();
                     default:
-                      return accountState != null
-                          ? accountState.role?.toLowerCase() == 'shiper'
-                              ? DeliveryHome()
-                              : const HomePage()
-                          : Onboarding();
+                      return Payment("hello");
+                    // return accountState != null
+                    //     ? accountState.role?.toLowerCase() == 'shiper'
+                    //         ? DeliveryHome()
+                    //         : const HomePage()
+                    //     : Onboarding();
                   }
                 },
               );
