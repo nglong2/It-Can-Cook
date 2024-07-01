@@ -82,12 +82,12 @@ class MyApp extends StatelessWidget {
                     case "delivery":
                       return DeliveryHome();
                     default:
-                      return Payment("hello");
-                    // return accountState != null
-                    //     ? accountState.role?.toLowerCase() == 'shiper'
-                    //         ? DeliveryHome()
-                    //         : const HomePage()
-                    //     : Onboarding();
+                      // return Payment("hello");
+                      return accountState != null
+                          ? accountState.role?.toLowerCase() == 'shiper'
+                              ? DeliveryHome()
+                              : const HomePage()
+                          : Onboarding();
                   }
                 },
               );
