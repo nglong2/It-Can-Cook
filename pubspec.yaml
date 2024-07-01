@@ -30,6 +30,7 @@ dependencies:
   intl: any
   date_picker_timeline: ^1.2.5
   loader_overlay: ^4.0.0
+  sprintf: ^7.0.0
 
 dev_dependencies:
   flutter_test:
