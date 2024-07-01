@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:it_can_cook/src/models/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plane.dart/dish/tab_ingredient.dart';
 import 'package:it_can_cook/src/screens/weekly_plane.dart/dish/tab_step.dart';
 import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/template_day.dart';
 
 class DishDetail extends StatefulWidget {
-  final MenuItem menuItem;
+  final RecipeModel menuItem;
 
   const DishDetail({super.key, required this.menuItem});
   @override
@@ -16,7 +17,7 @@ class _DishDetailState extends State<DishDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.menuItem.title),
+          title: Text(widget.menuItem.name ?? ''),
         ),
         body: DefaultTabController(
           length: 2,

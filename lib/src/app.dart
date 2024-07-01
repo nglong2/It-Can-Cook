@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc.dart';
+import 'package:it_can_cook/src/models/recipe.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
 import 'package:it_can_cook/src/screens/delivery/home.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
@@ -74,7 +75,7 @@ class MyApp extends StatelessWidget {
                       );
                     case "dish_detail":
                       return DishDetail(
-                        menuItem: routeSettings.arguments as MenuItem,
+                        menuItem: routeSettings.arguments as RecipeModel,
                       );
 
                     case "delivery":
