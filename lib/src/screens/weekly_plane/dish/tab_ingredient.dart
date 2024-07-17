@@ -33,8 +33,7 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
                 Row(
                   children: [
                     Text("${S.current.amount} ${step.amount} "),
-                    Text("${step.ingredient?.unit}"),
-                    Text(" x "),
+                    Text("x"),
                     Text(systemBloc.numberPersonInHouse.toString()),
                     Text("= "),
                     Text("${step.amount! * systemBloc.numberPersonInHouse} "),

@@ -139,7 +139,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height - 360,
+            height: MediaQuery.of(context).size.height - 380,
             child: SingleChildScrollView(
               child: Part(
                 dayInWeek: _selectedValue,

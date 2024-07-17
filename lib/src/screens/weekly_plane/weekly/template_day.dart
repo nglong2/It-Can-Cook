@@ -32,8 +32,8 @@ class _TemplateDayState extends State<TemplateDay> {
             Navigator.pushNamed(context, 'dish_detail', arguments: menuItem);
           },
           child: Container(
-            height: 82,
-            margin: const EdgeInsets.only(bottom: 4),
+            height: 86,
+            margin: const EdgeInsets.only(bottom: 2),
             width: MediaQuery.of(context).size.width - 20,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
@@ -47,8 +47,8 @@ class _TemplateDayState extends State<TemplateDay> {
               children: [
                 CachedNetworkImage(
                   imageUrl: menuItem.recipe?.img ?? "",
-                  width: 100,
-                  height: 100,
+                  width: 80,
+                  height: 80,
                   fit: BoxFit.cover,
                 ),
                 Expanded(
@@ -59,13 +59,13 @@ class _TemplateDayState extends State<TemplateDay> {
                       Text(
                         "   ${menuItem.recipe?.name}",
                         style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 22),
+                            fontWeight: FontWeight.bold, fontSize: 18),
                       ),
                       Text(
                         "    ${60} minutes",
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Colors.grey[600]),
                       ),
                     ],
@@ -73,7 +73,7 @@ class _TemplateDayState extends State<TemplateDay> {
                 ),
                 Expanded(
                   flex: 0,
-                  child: Row(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Container(
@@ -93,15 +93,16 @@ class _TemplateDayState extends State<TemplateDay> {
                               value: menuItem.numberPerson ??
                                   systemStateBloc.numberPersonInHouse,
                               minValue: 1,
-                              itemHeight: 28,
+                              itemHeight: 18,
                               selectedTextStyle: const TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                               ),
                               itemCount: 1,
+                              itemWidth: 60,
                               haptics: true,
-                              maxValue: 16,
+                              maxValue: 10,
                               textStyle: const TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                               ),
                               onChanged: (value) {
                                 setState(() {
