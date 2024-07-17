@@ -34,11 +34,14 @@ class _DishDetailState extends State<DishDetail> {
                   children: [
                     // Ingredients tab content
                     Container(
-                      child: IngredientTabWidget(),
+                      child: IngredientTabWidget(
+                          ingredients: widget.recipe.recipeIngredients),
                     ),
                     // Steps tab content
                     Container(
-                      child: StepTabWidget(),
+                      child: StepTabWidget(
+                        steps: widget.recipe.recipeSteps,
+                      ),
                     ),
                   ],
                 ),

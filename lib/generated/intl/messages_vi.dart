@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thêm vào giỏ hàng"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
+        "amount": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "appDescription":
             MessageLookupByLibrary.simpleMessage("Ứng dụng nấu ăn"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),

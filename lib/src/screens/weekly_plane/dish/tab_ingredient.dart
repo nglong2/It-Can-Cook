@@ -1,6 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
+import 'package:it_can_cook/src/models/weekly/recipe.dart';
 
 class IngredientTabWidget extends StatefulWidget {
+  final List<RecipeIngredient> ingredients;
+
+  const IngredientTabWidget({super.key, required this.ingredients});
+
   @override
   _IngredientTabWidgetState createState() => _IngredientTabWidgetState();
 }
@@ -8,24 +17,37 @@ class IngredientTabWidget extends StatefulWidget {
 class _IngredientTabWidgetState extends State<IngredientTabWidget> {
   @override
   Widget build(BuildContext context) {
+    var systemBloc = context.watch<SystemBloc>().state;
     return Container(
       width: MediaQuery.of(context).size.width - 20,
       child: ListView.builder(
-        itemCount: ingredients.length,
+        itemCount: widget.ingredients.length,
         itemBuilder: (context, index) {
-          final step = ingredients[index];
+          final step = widget.ingredients[index];
           return ListTile(
-            title:
-                Text(step.title, style: TextStyle(fontWeight: FontWeight.bold)),
+            title: Text(step.ingredient?.name ?? "name",
+                style: TextStyle(fontWeight: FontWeight.bold)),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [step.quantity].map((desc) => Text("- $desc")).toList(),
+              children: [
+                Row(
+                  children: [
+                    Text("${S.current.amount} ${step.amount} "),
+                    Text("${step.ingredient?.unit}"),
+                    Text(" x "),
+                    Text(systemBloc.numberPersonInHouse.toString()),
+                    Text("= "),
+                    Text("${step.amount! * systemBloc.numberPersonInHouse} "),
+                    Text("${step.ingredient?.unit}"),
+                  ],
+                )
+              ],
             ),
             leading: SizedBox(
               width: 100,
               height: 100,
-              child: Image.asset(
-                step.imageUrl,
+              child: CachedNetworkImage(
+                imageUrl: step.ingredient?.img ?? "",
                 fit: BoxFit.cover,
               ),
             ),
@@ -35,67 +57,3 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
     );
   }
 }
-
-//ingredient class with title and quantity and image
-class Ingredient {
-  final String title;
-  final String quantity;
-  final String imageUrl;
-
-  Ingredient(
-      {required this.title, required this.quantity, required this.imageUrl});
-}
-
-final List<Ingredient> ingredients = [
-  Ingredient(
-    title: "Beef Bones",
-    quantity: "2 lbs x 2 person = 4 lbs",
-    imageUrl: "assets/images/ingredientdemo/beef_bones.jpg",
-  ),
-  Ingredient(
-    title: "Beef Slices",
-    quantity: "1 lb x 2 person = 2 lbs",
-    imageUrl: "assets/images/ingredientdemo/beef_slices.jpg",
-  ),
-  Ingredient(
-    title: "Pork Blood",
-    quantity: "1/2 cup x 2 person = 1 cup",
-    imageUrl: "assets/images/ingredientdemo/pork_blood.jpg",
-  ),
-  Ingredient(
-    title: "Lemongrass",
-    quantity: "3 stalks x 2 person = 6 stalks",
-    imageUrl: "assets/images/ingredientdemo/lemongrass.jpg",
-  ),
-  Ingredient(
-    title: "Shallots",
-    quantity: "5 bulbs x 2 person = 10 bulbs",
-    imageUrl: "assets/images/ingredientdemo/shallots.jpg",
-  ),
-  Ingredient(
-    title: "Rice Noodles",
-    quantity: "1 lb x 2 person = 2 lbs",
-    imageUrl: "assets/images/ingredientdemo/rice_noodles.jpg",
-  ),
-  Ingredient(
-    title: "Banana Blossom",
-    quantity: "1 bunch x 2 person = 2 bunches",
-    imageUrl: "assets/images/ingredientdemo/banana_blossom.jpg",
-  ),
-  Ingredient(
-    title: "Herbs (Mint, Cilantro)",
-    quantity: "1 bunch x 2 person = 2 bunches",
-    imageUrl: "assets/images/ingredientdemo/herbs.jpg",
-  ),
-  Ingredient(
-    title: "Lime",
-    quantity: "2 pieces x 2 person = 4 pieces",
-    imageUrl: "assets/images/ingredientdemo/lime.jpg",
-  ),
-  Ingredient(
-    title: "Bean Sprouts",
-    quantity: "1 cup x 2 person = 2 cups",
-    imageUrl: "assets/images/ingredientdemo/bean_sprouts.jpg",
-  ),
-  // Add more ingredients as needed
-];

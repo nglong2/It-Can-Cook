@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Add to cart"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "amount": MessageLookupByLibrary.simpleMessage("Amount: "),
         "appDescription":
             MessageLookupByLibrary.simpleMessage("A simple recipe app"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),

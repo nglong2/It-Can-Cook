@@ -7,7 +7,7 @@ import 'package:it_can_cook/src/screens/weekly_plane/weekly/part.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class WeeklyDetailPage extends StatefulWidget {
-  final List<RecipePlan>? recipePlans;
+  final List<RecipePlan> recipePlans;
   const WeeklyDetailPage({super.key, required this.recipePlans});
 
   @override
@@ -16,13 +16,12 @@ class WeeklyDetailPage extends StatefulWidget {
 
 class WeeklyDetailPageState extends State<WeeklyDetailPage> {
   //state //selected date
-  DateTime? _selectedValue = DateTime.now();
-  Recipe? recipe;
+  int _selectedValue = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("widget.title"),
+        title: Text(S.of(context).home),
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(12),
@@ -135,7 +134,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                     print(date.weekday);
                     // New date selected
                     setState(() {
-                      _selectedValue = date;
+                      _selectedValue = date.weekday - 1;
                     });
                   },
                 ),
@@ -146,7 +145,10 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
             height: MediaQuery.of(context).size.height - 360,
             child: SingleChildScrollView(
               child: Part(
-                recipe: recipe,
+                dayInWeek: _selectedValue,
+                recipes: widget.recipePlans
+                    .where((element) => element.dayInWeek == _selectedValue)
+                    .toList(),
               ),
             ),
           )

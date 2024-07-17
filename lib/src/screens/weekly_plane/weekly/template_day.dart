@@ -1,17 +1,22 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
+import 'package:it_can_cook/src/models/weekly/recipe.dart';
 
 class TemplateDay extends StatelessWidget {
-  final List<MenuItem> menuItems;
+  final List<Recipe> recipesParts;
 
-  const TemplateDay({super.key, required this.menuItems});
+  const TemplateDay({super.key, required this.recipesParts});
   @override
   Widget build(BuildContext context) {
+    var systemStateBloc = context.watch<SystemBloc>().state;
     return ListView.builder(
-      itemCount: menuItems.length,
+      itemCount: recipesParts.length,
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        MenuItem menuItem = menuItems[index];
+        Recipe menuItem = recipesParts[index];
         return GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, 'dish_detail', arguments: menuItem);
@@ -30,10 +35,10 @@ class TemplateDay extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.asset(
-                  'assets/images/dishesdemo/' + menuItem.imageUrl,
-                  width: 80,
-                  height: 80,
+                CachedNetworkImage(
+                  imageUrl: menuItem.img ?? "",
+                  width: 100,
+                  height: 100,
                   fit: BoxFit.cover,
                 ),
                 Expanded(
@@ -43,12 +48,12 @@ class TemplateDay extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "   ${menuItem.title}",
+                        "   ${menuItem.name}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 22),
                       ),
                       Text(
-                        "    ${menuItem.minutes} minutes",
+                        "    ${60} minutes",
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 16,
@@ -70,7 +75,7 @@ class TemplateDay extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          "${menuItem.persons} person",
+                          "${systemStateBloc.numberPersonInHouse} person",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),

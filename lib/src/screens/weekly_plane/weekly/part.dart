@@ -4,9 +4,10 @@ import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class Part extends StatefulWidget {
-  final Recipe? recipe;
+  final int dayInWeek;
+  final List<RecipePlan> recipes;
 
-  const Part({Key? key, required this.recipe});
+  const Part({Key? key, required this.recipes, required this.dayInWeek});
   @override
   _PartState createState() => _PartState();
 }
@@ -14,18 +15,30 @@ class Part extends StatefulWidget {
 class _PartState extends State<Part> {
   @override
   Widget build(BuildContext context) {
+    var beakfast =
+        widget.recipes.where((element) => element.mealInDay == 1).toList();
+    var lunch =
+        widget.recipes.where((element) => element.mealInDay == 2).toList();
+    var dinner =
+        widget.recipes.where((element) => element.mealInDay == 3).toList();
+
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [],
-    );
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          MenuPart(title: "Breakfast", recipesPart: beakfast),
+          MenuPart(title: "Lunch", recipesPart: lunch),
+          MenuPart(title: "Dinner", recipesPart: dinner),
+        ]);
   }
 }
 
 class MenuPart extends StatelessWidget {
   final String title;
-  const MenuPart({Key? key, required this.title}) : super(key: key);
+  final List<RecipePlan> recipesPart;
+  const MenuPart({Key? key, required this.title, required this.recipesPart})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +61,7 @@ class MenuPart extends StatelessWidget {
           Container(
               width: MediaQuery.of(context).size.width - 20,
               child: TemplateDay(
-                menuItems: [],
-              )),
+                  recipesParts: recipesPart.map((e) => e.recipe!).toList())),
           SizedBox(height: 4),
           Container(
               decoration: BoxDecoration(

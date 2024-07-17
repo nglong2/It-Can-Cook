@@ -67,5 +67,6 @@
   "search": "Search",
   "verification_code": "Verification code",
   "total": "Total: ",
-  "numberperoninhouse": "Number of people in house: "
+  "numberperoninhouse": "Number of people in house: ",
+  "amount": "Amount: "
 }

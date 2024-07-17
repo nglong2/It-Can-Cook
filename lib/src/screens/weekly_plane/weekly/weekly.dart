@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
@@ -89,11 +90,19 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      "assets/images/weekly-demo/${index + 1}.png",
+                    CachedNetworkImage(
+                      imageUrl: listPlan[index].urlImage ?? "",
                       width: MediaQuery.of(context).size.width,
                       height: 250,
                       fit: BoxFit.cover,
+                      placeholder: (context, url) => const SizedBox(
+                        height: 250,
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),

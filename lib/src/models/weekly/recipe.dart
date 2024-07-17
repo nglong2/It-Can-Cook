@@ -306,6 +306,8 @@ class RecipePlan {
   int? quantity;
   double? price;
   Recipe? recipe;
+  int? dayInWeek;
+  int? mealInDay;
 
   RecipePlan({
     this.id,
@@ -314,6 +316,8 @@ class RecipePlan {
     this.quantity,
     this.price,
     this.recipe,
+    this.dayInWeek,
+    this.mealInDay,
   });
 
   factory RecipePlan.fromJson(Map<String, dynamic> json) {
@@ -322,6 +326,8 @@ class RecipePlan {
       recipeId: json['recipeId'],
       standardWeeklyPlanId: json['standardWeeklyPlanId'],
       quantity: json['quantity'],
+      dayInWeek: json['dayInWeek'],
+      mealInDay: json['mealInDay'],
       price:
           json['price'] != null ? double.parse(json['price'].toString()) : null,
       recipe: json['recipe'] != null ? Recipe.fromJson(json['recipe']) : null,
@@ -336,6 +342,8 @@ class RecipePlan {
       'recipeId': recipeId,
       'standardWeeklyPlanId': standardWeeklyPlanId,
       'quantity': quantity,
+      'dayInWeek': dayInWeek,
+      'mealInDay': mealInDay,
       'price': price,
       'recipe': recipe?.toJson(),
     };

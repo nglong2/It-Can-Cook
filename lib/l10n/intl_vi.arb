@@ -67,5 +67,6 @@
   "search": "Tìm kiếm",
   "verification_code": "Mã xác thực",
   "total": "Tổng: ",
-  "numberperoninhouse": "Số người trong nhà"
+  "numberperoninhouse": "Số người trong nhà",
+  "amount": "Số lượng"
 }
