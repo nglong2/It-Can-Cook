@@ -10,11 +10,9 @@ part 'weekly_state.dart';
 class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
   WeeklyBloc() : super([]) {
     on<WeeklyEvent>((event, emit) {});
-    on<FetchWeeklyEvent>((event, emit) {
-      var data = WeeklyPlanController().getWeeklys();
-      data.then((value) {
-        emit(value);
-      });
+
+    on<FetchWeeklyEvent>((event, emit) async {
+      await WeeklyPlanController().getWeeklys().then((data) => emit(data));
     });
   }
 }

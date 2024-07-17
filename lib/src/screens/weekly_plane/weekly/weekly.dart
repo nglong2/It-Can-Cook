@@ -6,6 +6,7 @@ import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/controller/weekly.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
+import 'package:it_can_cook/src/models/weekly/weekly.dart';
 
 class WeeklyScreen extends StatefulWidget {
   @override
@@ -64,102 +65,83 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                 height: 20,
               ),
               renderSearch(),
-              renderCardDemo()
+              renderCardDemo(weeklystate)
             ]),
       ),
     ));
   }
 
-  Widget renderCardDemo() {
-    return FutureBuilder<List<Recipe>>(
-      future: recipe,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Column(
-            children: [
-              ListView.builder(
-                itemCount: snapshot.data!.length,
-                shrinkWrap:
-                    true, // Important to prevent inner ListView from expanding infinitely
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, 'weekly_detail',
-                            arguments: snapshot.data![index].name);
-                      },
+  Widget renderCardDemo(List<WeeklyPlan> listPlan) {
+    return Column(
+      children: [
+        ListView.builder(
+          itemCount: listPlan!.length,
+          shrinkWrap:
+              true, // Important to prevent inner ListView from expanding infinitely
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return Card(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, 'weekly_detail',
+                      arguments: listPlan![index].description);
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      "assets/images/weekly-demo/${index + 1}.png",
+                      width: MediaQuery.of(context).size.width,
+                      height: 250,
+                      fit: BoxFit.cover,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            "assets/images/weekly-demo/${index + 1}.png",
-                            width: MediaQuery.of(context).size.width,
-                            height: 250,
-                            fit: BoxFit.cover,
+                          Text(
+                            listPlan![index].description ?? "",
+                            style: const TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  snapshot.data![index].name ?? "",
-                                  style: const TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                // auto break line description
-                                SizedBox(
-                                  height: 40,
-                                  child: Text(
-                                    snapshot.data![index].description ?? "",
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                )
-                              ],
+                          // auto break line description
+                          SizedBox(
+                            height: 40,
+                            child: Text(
+                              listPlan![index].description ?? "",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           )
                         ],
                       ),
-                    ),
-                  );
-                },
-              ),
-              Card(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () => {
-                        Navigator.pushNamed(context, 'weekly_detail',
-                            arguments: "Custom Package")
-                      },
-                      icon: const Icon(Icons.add_rounded),
-                      iconSize: 50,
-                    ),
-                    Text(S.current.custom_package)
+                    )
                   ],
                 ),
-              )
+              ),
+            );
+          },
+        ),
+        Card(
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () => {
+                  Navigator.pushNamed(context, 'weekly_detail',
+                      arguments: "Custom Package")
+                },
+                icon: const Icon(Icons.add_rounded),
+                iconSize: 50,
+              ),
+              Text(S.current.custom_package)
             ],
-          );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
-        }
-
-        // By default, show a loading spinner.
-        return const CircularProgressIndicator();
-      },
+          ),
+        )
+      ],
     );
-
-    // add 1 box have icon add
-    // listCard.add();
-    // return Column(
-    //   children: listCard,
-    // );
   }
 
 //input search widget
