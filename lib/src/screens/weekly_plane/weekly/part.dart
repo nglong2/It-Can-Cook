@@ -43,7 +43,7 @@ class MenuPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -51,18 +51,17 @@ class MenuPart extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               //uppercase
             ),
           ),
-          SizedBox(height: 8),
-          Container(
+          const SizedBox(height: 8),
+          SizedBox(
               width: MediaQuery.of(context).size.width - 20,
-              child: TemplateDay(
-                  recipesParts: recipesPart.map((e) => e.recipe!).toList())),
-          SizedBox(height: 4),
+              child: TemplateDay(recipesPlanParts: recipesPart)),
+          const SizedBox(height: 4),
           Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey[400]!),
@@ -72,7 +71,7 @@ class MenuPart extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, 'dish_detail', arguments: []);
                 },
-                child: Row(
+                child: const Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

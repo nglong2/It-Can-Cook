@@ -81,4 +81,40 @@ class WeeklyPlan {
       'recipePLans': recipePlans.map((e) => e.toJson()).toList(),
     };
   }
+
+  //copy with
+
+  WeeklyPlan copyWith({
+    String? id,
+    DateTime? beginDate,
+    DateTime? endDate,
+    String? description,
+    String? title,
+    String? urlImage,
+    DateTime? createAt,
+    String? createdBy,
+    DateTime? approvedAt,
+    String? approvedBy,
+    DateTime? updatedAt,
+    String? updatedBy,
+    String? processStatus,
+    List<RecipePlan>? recipePlans,
+  }) {
+    return WeeklyPlan(
+      id: id ?? this.id,
+      beginDate: beginDate ?? this.beginDate,
+      endDate: endDate ?? this.endDate,
+      description: description ?? this.description,
+      title: title ?? this.title,
+      urlImage: urlImage ?? this.urlImage,
+      createAt: createAt ?? this.createAt,
+      createdBy: createdBy ?? this.createdBy,
+      approvedAt: approvedAt ?? this.approvedAt,
+      approvedBy: approvedBy ?? this.approvedBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      processStatus: processStatus ?? this.processStatus,
+      recipePlans: recipePlans ?? this.recipePlans,
+    );
+  }
 }

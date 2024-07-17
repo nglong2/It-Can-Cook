@@ -68,5 +68,6 @@
   "verification_code": "Mã xác thực",
   "total": "Tổng: ",
   "numberperoninhouse": "Số người trong nhà",
-  "amount": "Số lượng"
+  "amount": "Số lượng",
+  "person": "Người"
 }

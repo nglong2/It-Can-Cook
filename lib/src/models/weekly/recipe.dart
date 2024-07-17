@@ -1,3 +1,4 @@
+import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/models/weekly/ingredient.dart';
 
 class RecipeIngredient {
@@ -304,10 +305,12 @@ class RecipePlan {
   String? recipeId;
   String? standardWeeklyPlanId;
   int? quantity;
+  int? numberPerson;
   double? price;
   Recipe? recipe;
   int? dayInWeek;
   int? mealInDay;
+  String? weeklyPlanId;
 
   RecipePlan({
     this.id,
@@ -318,6 +321,8 @@ class RecipePlan {
     this.recipe,
     this.dayInWeek,
     this.mealInDay,
+    this.numberPerson,
+    this.weeklyPlanId,
   });
 
   factory RecipePlan.fromJson(Map<String, dynamic> json) {
@@ -328,6 +333,8 @@ class RecipePlan {
       quantity: json['quantity'],
       dayInWeek: json['dayInWeek'],
       mealInDay: json['mealInDay'],
+      numberPerson: json['numberPerson'],
+      weeklyPlanId: json['weeklyPlanId'],
       price:
           json['price'] != null ? double.parse(json['price'].toString()) : null,
       recipe: json['recipe'] != null ? Recipe.fromJson(json['recipe']) : null,
@@ -345,7 +352,36 @@ class RecipePlan {
       'dayInWeek': dayInWeek,
       'mealInDay': mealInDay,
       'price': price,
+      'numberPerson': numberPerson,
+      'weeklyPlanId': weeklyPlanId,
       'recipe': recipe?.toJson(),
     };
+  }
+  // copywith
+
+  RecipePlan copyWith({
+    String? id,
+    String? recipeId,
+    String? standardWeeklyPlanId,
+    int? quantity,
+    double? price,
+    Recipe? recipe,
+    int? dayInWeek,
+    int? mealInDay,
+    int? numberPerson,
+    String? weeklyPlanId,
+  }) {
+    return RecipePlan(
+      id: id ?? this.id,
+      recipeId: recipeId ?? this.recipeId,
+      standardWeeklyPlanId: standardWeeklyPlanId ?? this.standardWeeklyPlanId,
+      quantity: quantity ?? this.quantity,
+      price: price ?? this.price,
+      recipe: recipe ?? this.recipe,
+      dayInWeek: dayInWeek ?? this.dayInWeek,
+      mealInDay: mealInDay ?? this.mealInDay,
+      numberPerson: numberPerson ?? this.numberPerson,
+      weeklyPlanId: weeklyPlanId ?? this.weeklyPlanId,
+    );
   }
 }

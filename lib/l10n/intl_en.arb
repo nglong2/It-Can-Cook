@@ -68,5 +68,6 @@
   "verification_code": "Verification code",
   "total": "Total: ",
   "numberperoninhouse": "Number of people in house: ",
-  "amount": "Amount: "
+  "amount": "Amount: ",
+  "person": "Person"
 }

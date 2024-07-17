@@ -81,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_not_match":
             MessageLookupByLibrary.simpleMessage("Password does not match"),
+        "person": MessageLookupByLibrary.simpleMessage("Person"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Phone number"),
         "phone_number_must_contain_only_digits":
             MessageLookupByLibrary.simpleMessage(

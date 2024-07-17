@@ -13,7 +13,30 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
     on<WeeklyEvent>((event, emit) {});
 
     on<FetchWeeklyEvent>((event, emit) async {
-      await WeeklyPlanController().getWeeklys().then((data) => emit(data));
+      var listWeeklyPlan = await WeeklyPlanController().getWeeklys();
+      for (var weeklyPlan in listWeeklyPlan) {
+        for (var recipePlan in weeklyPlan.recipePlans) {
+          recipePlan.weeklyPlanId = weeklyPlan.id;
+        }
+      }
+      emit(listWeeklyPlan);
+    });
+
+    //ChangeUserInHouseEvent
+    on<ChangeUserInHouseEvent>((event, emit) async {
+      final recipePlan = event.recipePlan;
+      for (var weekly in state) {
+        if (weekly.id == recipePlan.weeklyPlanId) {
+          for (var recipe in weekly.recipePlans) {
+            if (recipe.id == recipePlan.id &&
+                recipe.dayInWeek == recipePlan.dayInWeek &&
+                recipe.mealInDay == recipePlan.mealInDay) {
+              recipe = recipePlan;
+            }
+          }
+        }
+      }
+      emit(state);
     });
   }
 

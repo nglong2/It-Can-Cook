@@ -37,7 +37,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                 )
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextButton(
                 style: ButtonStyle(
                   //borderadius
@@ -84,7 +84,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  """ ${S.of(context).week} ${getCurrentWeekInMonth(DateTime.now().add(Duration(days: 7)))}, ${DateFormat('MMMM').format(DateTime.now().add(Duration(days: 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
+                  """ ${S.of(context).week} ${getCurrentWeekInMonth(DateTime.now().add(const Duration(days: 7)))}, ${DateFormat('MMMM').format(DateTime.now().add(const Duration(days: 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
                   // get moth name
 
                   style: const TextStyle(
@@ -130,9 +130,6 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                           ? Colors.white
                           : Colors.black),
                   onDateChange: (date) {
-                    //get day in week
-                    print(date.weekday);
-                    // New date selected
                     setState(() {
                       _selectedValue = date.weekday - 1;
                     });

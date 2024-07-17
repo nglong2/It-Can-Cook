@@ -80,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "password_not_match":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
+        "person": MessageLookupByLibrary.simpleMessage("Người"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_number_must_contain_only_digits":
             MessageLookupByLibrary.simpleMessage("Số điện thoại chỉ chứa số"),

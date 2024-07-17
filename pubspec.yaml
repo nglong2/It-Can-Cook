@@ -32,6 +32,7 @@ dependencies:
   loader_overlay: ^4.0.0
   sprintf: ^7.0.0
   cached_network_image: ^3.3.1
+  numberpicker: ^2.1.2
 
 dev_dependencies:
   flutter_test:

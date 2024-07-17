@@ -5,7 +5,7 @@ import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_step.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class DishDetail extends StatefulWidget {
-  final Recipe recipe;
+  final RecipePlan recipe;
 
   const DishDetail({super.key, required this.recipe});
   @override
@@ -17,7 +17,7 @@ class _DishDetailState extends State<DishDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.recipe.name ?? ''),
+          title: Text(widget.recipe.recipe?.name ?? ''),
         ),
         body: DefaultTabController(
           length: 2,
@@ -35,12 +35,12 @@ class _DishDetailState extends State<DishDetail> {
                     // Ingredients tab content
                     Container(
                       child: IngredientTabWidget(
-                          ingredients: widget.recipe.recipeIngredients),
+                          ingredients: widget.recipe.recipe!.recipeIngredients),
                     ),
                     // Steps tab content
                     Container(
                       child: StepTabWidget(
-                        steps: widget.recipe.recipeSteps,
+                        steps: widget.recipe.recipe!.recipeSteps,
                       ),
                     ),
                   ],

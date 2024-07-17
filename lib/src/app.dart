@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
                       );
                     case "dish_detail":
                       return DishDetail(
-                        recipe: routeSettings.arguments as Recipe,
+                        recipe: routeSettings.arguments as RecipePlan,
                       );
 
                     case "delivery":
