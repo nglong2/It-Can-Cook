@@ -67,6 +67,6 @@ flutter {
     source '../..'
 }
 
- dependencies { implementation files('C:\\Users\\Long\\Desktop\\cooking\\IT-Can-Cook\\assets\\zpdk-release-v3.1.aar') }
-//dependencies { implementation files('C:\\Users\\Long\\Desktop\\New folder\\It-Can-Cook\\assets\\zpdk-release-v3.1.aar') }
+//dependencies { implementation files('C:\\Users\\Long\\Desktop\\cooking\\IT-Can-Cook\\assets\\zpdk-release-v3.1.aar') }
+dependencies { implementation files('C:\\Users\\Long\\Desktop\\New folder\\It-Can-Cook\\assets\\zpdk-release-v3.1.aar') }
 
