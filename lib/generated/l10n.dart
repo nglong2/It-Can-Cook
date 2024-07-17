@@ -699,6 +699,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Number of people in house: `
+  String get numberperoninhouse {
+    return Intl.message(
+      'Number of people in house: ',
+      name: 'numberperoninhouse',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

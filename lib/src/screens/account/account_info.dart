@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/controller/account.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -151,6 +152,8 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var systemState = context.watch<SystemBloc>().state;
+    var systemContext = context.watch<SystemBloc>();
     return BlocBuilder<AccountBloc, AccountModel?>(
       builder: (context, state) {
         return SingleChildScrollView(
@@ -165,6 +168,33 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
                 leading: const Icon(Icons.email),
                 title: Text(state?.email ?? ''),
               ),
+              const Divider(),
+
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: Row(
+                  children: [
+                    Text(S.current.numberperoninhouse),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    DropdownButton<int>(
+                      value: systemState.numberPersonInHouse,
+                      onChanged: (newValue) {
+                        systemContext
+                            .add(ChangeNumberPersonInHouseEvent(newValue ?? 1));
+                      },
+                      items: List.generate(10, (index) {
+                        return DropdownMenuItem<int>(
+                          value: index + 1,
+                          child: Text((index + 1).toString()),
+                        );
+                      }),
+                    ),
+                  ],
+                ),
+              ),
+
               const Divider(),
               ListTile(
                 leading: const Icon(Icons.phone),

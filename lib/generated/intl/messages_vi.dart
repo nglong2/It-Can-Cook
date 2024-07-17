@@ -60,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có chắc chắn muốn đăng xuất?"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
+        "numberperoninhouse":
+            MessageLookupByLibrary.simpleMessage("Số người trong nhà"),
         "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ bữa ăn tiêu chuẩn giúp bạn đủ chất mà vẫn \"khỏe túi tiền\" "),

@@ -130,8 +130,11 @@ class WeeklyScreenState extends State<WeeklyScreen> {
             children: [
               IconButton(
                 onPressed: () => {
-                  Navigator.pushNamed(context, 'weekly_detail',
-                      arguments: "Custom Package")
+                  Navigator.pushNamed(
+                    context,
+                    'weekly_detail',
+                    arguments: null,
+                  )
                 },
                 icon: const Icon(Icons.add_rounded),
                 iconSize: 50,

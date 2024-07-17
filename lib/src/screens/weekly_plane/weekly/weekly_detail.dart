@@ -7,7 +7,7 @@ import 'package:it_can_cook/src/screens/weekly_plane/weekly/part.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class WeeklyDetailPage extends StatefulWidget {
-  final List<RecipePlan> recipePlans;
+  final List<RecipePlan>? recipePlans;
   const WeeklyDetailPage({super.key, required this.recipePlans});
 
   @override
@@ -20,7 +20,6 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
   Recipe? recipe;
   @override
   Widget build(BuildContext context) {
-    recipe = widget.recipePlans.first.recipe;
     return Scaffold(
       appBar: AppBar(
         title: Text("widget.title"),
@@ -86,7 +85,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  """ ${S.of(context).week} ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).toUtc().weekday + 1}, ${DateFormat('MMMM').format(DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
+                  """ ${S.of(context).week} ${getCurrentWeekInMonth(DateTime.now().add(Duration(days: 7)))}, ${DateFormat('MMMM').format(DateTime.now().add(Duration(days: 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
                   // get moth name
 
                   style: const TextStyle(
@@ -155,4 +154,10 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
       ),
     );
   }
+}
+
+int getCurrentWeekInMonth(DateTime time) {
+  int firstDayOfMonth = DateTime(time.year, time.month, 1).weekday;
+  int weekOfMonth = ((time.day + firstDayOfMonth - 1) / 7).ceil();
+  return weekOfMonth;
 }

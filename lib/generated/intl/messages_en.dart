@@ -61,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to log out?"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "numberperoninhouse":
+            MessageLookupByLibrary.simpleMessage("Number of people in house: "),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ standard meals help you get enough nutrients while still \"saving money\""),

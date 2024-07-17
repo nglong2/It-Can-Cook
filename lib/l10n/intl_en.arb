@@ -66,5 +66,6 @@
   "custom_package": "Custom package",
   "search": "Search",
   "verification_code": "Verification code",
-  "total": "Total: "
+  "total": "Total: ",
+  "numberperoninhouse": "Number of people in house: "
 }

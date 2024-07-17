@@ -18,3 +18,10 @@ class ChangeLanguageEvent extends SystemEvent {
 
   ChangeLanguageEvent(this.language);
 }
+
+//change numberperoninhouse
+class ChangeNumberPersonInHouseEvent extends SystemEvent {
+  final int numberPersonInHouse;
+
+  ChangeNumberPersonInHouseEvent(this.numberPersonInHouse);
+}

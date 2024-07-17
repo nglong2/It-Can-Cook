@@ -11,12 +11,15 @@ class SystemBloc extends HydratedBloc<SystemEvent, SystemModel> {
             language: 'vi',
             country: 'US',
             timezone: 'UTC',
-            themeMode: 'light')) {
+            themeMode: 'light',
+            numberPersonInHouse: 1)) {
     on<SystemEvent>((event, emit) {
       if (event is ChangeThemeEvent) {
         changeTheme(event.themeMode, emit);
       } else if (event is ChangeLanguageEvent) {
         changeLanguage(event.language, emit);
+      } else if (event is ChangeNumberPersonInHouseEvent) {
+        changeNumberPersonInHouse(event.numberPersonInHouse, emit);
       }
     });
   }
@@ -28,6 +31,13 @@ class SystemBloc extends HydratedBloc<SystemEvent, SystemModel> {
 
   void changeLanguage(String language, Emitter<SystemModel> emit) {
     final updatedSystemModel = state.copyWith(language: language);
+    emit(updatedSystemModel);
+  }
+
+  void changeNumberPersonInHouse(
+      int numberPersonInHouse, Emitter<SystemModel> emit) {
+    final updatedSystemModel =
+        state.copyWith(numberPersonInHouse: numberPersonInHouse);
     emit(updatedSystemModel);
   }
 

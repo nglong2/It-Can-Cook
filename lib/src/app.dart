@@ -77,8 +77,9 @@ class MyApp extends StatelessWidget {
                       return const HomePage();
                     case "weekly_detail":
                       return WeeklyDetailPage(
-                        recipePlans:
-                            routeSettings.arguments as List<RecipePlan>,
+                        recipePlans: routeSettings.arguments == null
+                            ? []
+                            : routeSettings.arguments as List<RecipePlan>,
                       );
                     case "dish_detail":
                       return DishDetail(
