@@ -50,9 +50,6 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-lintOptions {
-    checkReleaseBuilds false
-}
     buildTypes {
         release {
             crunchPngs false
@@ -60,6 +57,9 @@ lintOptions {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+    }
+    lint {
+        checkReleaseBuilds false
     }
 }
 
