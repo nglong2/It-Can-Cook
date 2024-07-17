@@ -2,23 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/part.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class WeeklyDetailPage extends StatefulWidget {
-  final String title;
-  const WeeklyDetailPage({super.key, required this.title});
+  final List<RecipePlan> recipePlans;
+  const WeeklyDetailPage({super.key, required this.recipePlans});
 
   @override
   WeeklyDetailPageState createState() => WeeklyDetailPageState();
 }
 
 class WeeklyDetailPageState extends State<WeeklyDetailPage> {
+  //state //selected date
+  DateTime? _selectedValue = DateTime.now();
+  Recipe? recipe;
   @override
   Widget build(BuildContext context) {
+    recipe = widget.recipePlans.first.recipe;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("widget.title"),
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(12),
@@ -127,10 +132,12 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                           ? Colors.white
                           : Colors.black),
                   onDateChange: (date) {
+                    //get day in week
+                    print(date.weekday);
                     // New date selected
-                    // setState(() {
-                    //   _selectedValue = date;
-                    // });
+                    setState(() {
+                      _selectedValue = date;
+                    });
                   },
                 ),
               ],
@@ -139,7 +146,9 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
           SizedBox(
             height: MediaQuery.of(context).size.height - 360,
             child: SingleChildScrollView(
-              child: Part(),
+              child: Part(
+                recipe: recipe,
+              ),
             ),
           )
         ],

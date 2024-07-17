@@ -77,11 +77,12 @@ class MyApp extends StatelessWidget {
                       return const HomePage();
                     case "weekly_detail":
                       return WeeklyDetailPage(
-                        title: routeSettings.arguments.toString(),
+                        recipePlans:
+                            routeSettings.arguments as List<RecipePlan>,
                       );
                     case "dish_detail":
                       return DishDetail(
-                        menuItem: routeSettings.arguments as Recipe,
+                        recipe: routeSettings.arguments as Recipe,
                       );
 
                     case "delivery":

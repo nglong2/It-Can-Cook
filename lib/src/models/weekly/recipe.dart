@@ -28,6 +28,17 @@ class RecipeIngredient {
           : null,
     );
   }
+  // tojson
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'recipeId': recipeId,
+      'ingredientId': ingredientId,
+      'amount': amount,
+      'ingredient': ingredient?.toJson(),
+    };
+  }
 }
 
 class RecipeCategory {
@@ -110,6 +121,23 @@ class RecipeNutrient {
           : null,
     );
   }
+
+  // tojson
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'recipeID': recipeID,
+      'calories': calories,
+      'fat': fat,
+      'saturatedFat': saturatedFat,
+      'sugar': sugar,
+      'carbonhydrate': carbonhydrate,
+      'dietaryFiber': dietaryFiber,
+      'protein': protein,
+      'sodium': sodium,
+    };
+  }
 }
 
 class RecipeStep {
@@ -138,6 +166,19 @@ class RecipeStep {
       imageLink: json['imageLink'],
       description: json['description'],
     );
+  }
+
+  // tojson
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'recipeId': recipeId,
+      'index': index,
+      'mediaURL': mediaURL,
+      'imageLink': imageLink,
+      'description': description,
+    };
   }
 }
 
@@ -229,6 +270,33 @@ class Recipe {
               .toList(),
     );
   }
+
+  // tojson
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'servingSize': servingSize,
+      'difficulty': difficulty,
+      'description': description,
+      'notice': notice,
+      'img': img,
+      'price': price,
+      'popularity': popularity,
+      'processStatus': processStatus,
+      'createdAt': createdAt,
+      'createdBy': createdBy,
+      'approvedAt': approvedAt,
+      'approvedBy': approvedBy,
+      'updatedAt': updatedAt,
+      'updatedBy': updatedBy,
+      'recipeIngredients': recipeIngredients.map((e) => e.toJson()).toList(),
+      'recipeCategories': recipeCategories.map((e) => e.toJson()).toList(),
+      'recipeNutrient': recipeNutrient?.toJson(),
+      'recipeSteps': recipeSteps.map((e) => e.toJson()).toList(),
+    };
+  }
 }
 
 class RecipePlan {
@@ -258,5 +326,18 @@ class RecipePlan {
           json['price'] != null ? double.parse(json['price'].toString()) : null,
       recipe: json['recipe'] != null ? Recipe.fromJson(json['recipe']) : null,
     );
+  }
+
+  // tojson
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'recipeId': recipeId,
+      'standardWeeklyPlanId': standardWeeklyPlanId,
+      'quantity': quantity,
+      'price': price,
+      'recipe': recipe?.toJson(),
+    };
   }
 }

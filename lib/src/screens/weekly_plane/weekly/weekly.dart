@@ -84,7 +84,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, 'weekly_detail',
-                      arguments: listPlan![index].description);
+                      arguments: listPlan[index].recipePlans);
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +109,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                           SizedBox(
                             height: 40,
                             child: Text(
-                              listPlan![index].description ?? "",
+                              listPlan[index].description ?? "",
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),

@@ -54,4 +54,23 @@ class WeeklyPlan {
               .toList(),
     );
   }
+
+  //to json
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'beginDate': beginDate?.toIso8601String(),
+      'endDate': endDate?.toIso8601String(),
+      'description': description,
+      'createAt': createAt?.toIso8601String(),
+      'createdBy': createdBy,
+      'approvedAt': approvedAt?.toIso8601String(),
+      'approvedBy': approvedBy,
+      'updatedAt': updatedAt?.toIso8601String(),
+      'updatedBy': updatedBy,
+      'processStatus': processStatus,
+      'recipePLans': recipePlans.map((e) => e.toJson()).toList(),
+    };
+  }
 }
