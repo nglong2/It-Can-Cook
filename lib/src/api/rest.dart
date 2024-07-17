@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RestApi {
-  final String baseUrl = 'https://api.wemealkit.shop';
+  final String baseUrl = 'https://api.wemealkit.ddns.net';
 
   Future<http.Response> get(String path) async {
     final url = Uri.parse('$baseUrl/$path');

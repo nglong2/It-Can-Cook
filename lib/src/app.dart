@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
-import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
-import 'package:it_can_cook/src/bloc/system_bloc.dart';
-import 'package:it_can_cook/src/models/recipe.dart';
+import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
+import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
+import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
 import 'package:it_can_cook/src/screens/delivery/home.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
@@ -13,9 +14,9 @@ import 'package:it_can_cook/src/screens/login/register/register.dart';
 import 'package:it_can_cook/src/screens/login/welcome/welcome.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 import 'package:it_can_cook/src/screens/payment/payment.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/dish/dish_detail.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/template_day.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/weekly_detail.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_detail.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly_detail.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -32,6 +33,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<AccountBloc>(
           create: (BuildContext context) => AccountBloc(),
+        ),
+        BlocProvider<WeeklyBloc>(
+          create: (BuildContext context) =>
+              WeeklyBloc()..add(FetchWeeklyEvent()),
         ),
       ],
       child: Builder(
@@ -76,7 +81,7 @@ class MyApp extends StatelessWidget {
                       );
                     case "dish_detail":
                       return DishDetail(
-                        menuItem: routeSettings.arguments as RecipeModel,
+                        menuItem: routeSettings.arguments as Recipe,
                       );
 
                     case "delivery":

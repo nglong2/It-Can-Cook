@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
-import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
-import 'package:it_can_cook/src/controller/recipe.dart';
-import 'package:it_can_cook/src/models/account.dart';
-import 'package:it_can_cook/src/models/recipe.dart';
+import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
+import 'package:it_can_cook/src/controller/weekly.dart';
+import 'package:it_can_cook/src/models/account/account.dart';
+import 'package:it_can_cook/src/models/weekly/recipe.dart';
 
 class WeeklyScreen extends StatefulWidget {
   @override
@@ -12,11 +13,10 @@ class WeeklyScreen extends StatefulWidget {
 }
 
 class WeeklyScreenState extends State<WeeklyScreen> {
-  late Future<List<RecipeModel>> recipe;
+  late Future<List<Recipe>> recipe;
   @override
   void initState() {
     //get Recipe from API
-    recipe = RecipeController().getRecipes();
     super.initState();
   }
 
@@ -29,51 +29,49 @@ class WeeklyScreenState extends State<WeeklyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AccountBloc, AccountModel?>(
-      builder: (context, state) {
-        return Scaffold(
-            body: Container(
-          padding: const EdgeInsets.only(right: 20, left: 20),
-          child: SingleChildScrollView(
-            key: UniqueKey(),
-            scrollDirection: Axis.vertical,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${S.of(context).hello} ${state?.lastName} ${state?.firstName}!",
-                          style: const TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        ),
-                        const Text(
-                          "Have a nice day 👋",
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
+    final accountstate = context.watch<AccountBloc>().state;
+    final weeklystate = context.watch<WeeklyBloc>().state;
+    return Scaffold(
+        body: Container(
+      padding: const EdgeInsets.only(right: 20, left: 20),
+      child: SingleChildScrollView(
+        key: UniqueKey(),
+        scrollDirection: Axis.vertical,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${S.of(context).hello} ${accountstate?.lastName} ${accountstate?.firstName}!",
+                      style: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  renderSearch(),
-                  renderCardDemo()
-                ]),
-          ),
-        ));
-      },
-    );
+                    const Text(
+                      "Have a nice day 👋",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              renderSearch(),
+              renderCardDemo()
+            ]),
+      ),
+    ));
   }
 
   Widget renderCardDemo() {
-    return FutureBuilder<List<RecipeModel>>(
+    return FutureBuilder<List<Recipe>>(
       future: recipe,
       builder: (context, snapshot) {
         if (snapshot.hasData) {

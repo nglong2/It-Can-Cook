@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
-import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
-import 'package:it_can_cook/src/bloc/system_bloc.dart';
+import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/screens/account/account_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

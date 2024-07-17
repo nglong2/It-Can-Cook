@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/template_day.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class Part extends StatelessWidget {
   @override

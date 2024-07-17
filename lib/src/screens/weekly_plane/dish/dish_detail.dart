@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:it_can_cook/src/models/recipe.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/dish/tab_ingredient.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/dish/tab_step.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/template_day.dart';
+import 'package:it_can_cook/src/models/weekly/recipe.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_ingredient.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_step.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class DishDetail extends StatefulWidget {
-  final RecipeModel menuItem;
+  final Recipe menuItem;
 
   const DishDetail({super.key, required this.menuItem});
   @override

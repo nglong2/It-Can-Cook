@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
-import 'package:it_can_cook/src/bloc/bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/controller/account.dart';
-import 'package:it_can_cook/src/models/account.dart';
+import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class AccountInfoScreen extends StatefulWidget {

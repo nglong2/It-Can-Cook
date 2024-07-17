@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:it_can_cook/src/models/create_order_response.dart';
+import 'package:it_can_cook/src/models/zalopay/create_order_response.dart';
 import 'package:it_can_cook/src/utils/endpoints.dart';
 import 'package:it_can_cook/src/utils/util.dart';
 import 'dart:async';

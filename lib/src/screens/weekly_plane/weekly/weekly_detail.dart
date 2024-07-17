@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/part.dart';
-import 'package:it_can_cook/src/screens/weekly_plane.dart/weekly/template_day.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/weekly/part.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class WeeklyDetailPage extends StatefulWidget {
   final String title;
