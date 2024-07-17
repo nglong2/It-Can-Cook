@@ -12,15 +12,10 @@ class AppColor {
 }
 
 /// Text Theme for app
-TextTheme _textTheme = TextTheme(
-  bodyText2: TextStyle(color: AppColor.textPrimaryColor, fontSize: 18.0),
-  headline6: TextStyle(color: Colors.white),
-);
 
 /// Theme Data for App
 ThemeData myTheme = ThemeData(
   brightness: Brightness.light,
-  textTheme: _textTheme,
   fontFamily: 'Josefin Sans',
   primaryColor: AppColor.primaryColor,
   hintColor: AppColor.accentColor,
