@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
+import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -19,7 +20,7 @@ class TemplateDay extends StatefulWidget {
 class _TemplateDayState extends State<TemplateDay> {
   @override
   Widget build(BuildContext context) {
-    var systemStateBloc = BlocProvider.of<SystemBloc>(context).state;
+    var systemStateBloc = context.watch<SystemBloc>().state;
 
     return ListView.builder(
       itemCount: widget.recipesPlanParts.length,
@@ -68,6 +69,18 @@ class _TemplateDayState extends State<TemplateDay> {
                             fontSize: 14,
                             color: Colors.grey[600]),
                       ),
+                      //price
+                      Text(
+                        "    ${menuItem.recipe?.price?.toStringAsFixed(0).replaceAllMapped(
+                              RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                              (Match m) => '${m[1]},',
+                            )} vnđ /1 ${S.current.person}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -100,6 +113,9 @@ class _TemplateDayState extends State<TemplateDay> {
                               itemCount: 1,
                               itemWidth: 60,
                               haptics: true,
+                              step: 1,
+                              zeroPad: false,
+                              infiniteLoop: false,
                               maxValue: 10,
                               textStyle: const TextStyle(
                                 fontSize: 14,
@@ -108,9 +124,12 @@ class _TemplateDayState extends State<TemplateDay> {
                                 setState(() {
                                   menuItem.numberPerson = value;
                                 });
-                                BlocProvider.of<WeeklyBloc>(context).add(
-                                  ChangeUserInHouseEvent(menuItem),
-                                );
+                                context.read<WeeklyBloc>().add(
+                                      ChangeUserInHouseEvent(menuItem, value),
+                                    );
+                                context.read<TriggerBloc>().add(
+                                      ChangeUserInHouseTriggerEvent(1),
+                                    );
                               },
                             ),
                           ],

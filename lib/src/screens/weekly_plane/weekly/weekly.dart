@@ -85,7 +85,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, 'weekly_detail',
-                      arguments: listPlan[index].recipePlans);
+                      arguments: listPlan[index]);
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,26 +132,6 @@ class WeeklyScreenState extends State<WeeklyScreen> {
             );
           },
         ),
-        Card(
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                onPressed: () => {
-                  Navigator.pushNamed(
-                    context,
-                    'weekly_detail',
-                    arguments: null,
-                  )
-                },
-                icon: const Icon(Icons.add_rounded),
-                iconSize: 50,
-              ),
-              Text(S.current.custom_package)
-            ],
-          ),
-        )
       ],
     );
   }

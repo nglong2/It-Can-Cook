@@ -52,7 +52,7 @@
   "settings": "Cài đặt",
   "hello": "Xin chào",
   "logout": "Đăng xuất",
-  "add_to_cart": "Thêm vào giỏ hàng",
+  "add_to_cart": "Thanh toán",
   "logoutConfirmation": "Bạn có chắc chắn muốn đăng xuất?",
   "history": "Lịch sử",
   "week": "Tuần",
@@ -69,5 +69,11 @@
   "total": "Tổng: ",
   "numberperoninhouse": "Số người trong nhà",
   "amount": "Số lượng",
-  "person": "Người"
+  "person": "Người",
+  "ingredients": "Nguyên liệu",
+  "step": "Bước",
+  "breakfast": "Bữa sáng",
+  "lunch": "Bữa trưa",
+  "dinner": "Bữa tối",
+  "add_dish": "Thêm món ăn"
 }

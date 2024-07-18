@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
@@ -27,9 +28,9 @@ class _PartState extends State<Part> {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          MenuPart(title: "Breakfast", recipesPart: beakfast),
-          MenuPart(title: "Lunch", recipesPart: lunch),
-          MenuPart(title: "Dinner", recipesPart: dinner),
+          MenuPart(title: S.current.breakfast, recipesPart: beakfast),
+          MenuPart(title: S.current.lunch, recipesPart: lunch),
+          MenuPart(title: S.current.dinner, recipesPart: dinner),
         ]);
   }
 }
@@ -71,15 +72,15 @@ class MenuPart extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, 'dish_detail', arguments: []);
                 },
-                child: const Row(
+                child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.add_rounded,
                       size: 35,
                     ),
-                    Text("Add Dishes")
+                    Text(S.current.add_dish)
                   ],
                 ),
               ))

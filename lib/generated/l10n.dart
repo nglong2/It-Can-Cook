@@ -550,10 +550,10 @@ class S {
     );
   }
 
-  /// `Add to cart`
+  /// `Checkout`
   String get add_to_cart {
     return Intl.message(
-      'Add to cart',
+      'Checkout',
       name: 'add_to_cart',
       desc: '',
       args: [],
@@ -725,6 +725,66 @@ class S {
     return Intl.message(
       'Person',
       name: 'person',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ingredients`
+  String get ingredients {
+    return Intl.message(
+      'Ingredients',
+      name: 'ingredients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Steps`
+  String get step {
+    return Intl.message(
+      'Steps',
+      name: 'step',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Breakfast`
+  String get breakfast {
+    return Intl.message(
+      'Breakfast',
+      name: 'breakfast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lunch`
+  String get lunch {
+    return Intl.message(
+      'Lunch',
+      name: 'lunch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dinner`
+  String get dinner {
+    return Intl.message(
+      'Dinner',
+      name: 'dinner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add dish`
+  String get add_dish {
+    return Intl.message(
+      'Add dish',
+      name: 'add_dish',
       desc: '',
       args: [],
     );

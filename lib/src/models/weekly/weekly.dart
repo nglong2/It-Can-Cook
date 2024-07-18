@@ -13,6 +13,7 @@ class WeeklyPlan {
   String? approvedBy;
   DateTime? updatedAt;
   String? updatedBy;
+  double? totalPrice;
   String? processStatus;
   List<RecipePlan> recipePlans;
 
@@ -30,6 +31,7 @@ class WeeklyPlan {
     this.updatedAt,
     this.updatedBy,
     this.processStatus,
+    this.totalPrice,
     required this.recipePlans,
   });
 
@@ -42,6 +44,9 @@ class WeeklyPlan {
       description: json['description'],
       title: json['title'],
       urlImage: json['urlImage'],
+      totalPrice: json['totalPrice'] != null
+          ? double.parse(json['totalPrice'].toString())
+          : null,
       createAt:
           json['createAt'] != null ? DateTime.parse(json['createAt']) : null,
       createdBy: json['createdBy'],
@@ -71,6 +76,7 @@ class WeeklyPlan {
       'description': description,
       'title': title,
       'urlImage': urlImage,
+      'totalPrice': totalPrice,
       'createAt': createAt?.toIso8601String(),
       'createdBy': createdBy,
       'approvedAt': approvedAt?.toIso8601String(),
@@ -94,6 +100,7 @@ class WeeklyPlan {
     DateTime? createAt,
     String? createdBy,
     DateTime? approvedAt,
+    double? totalPrice,
     String? approvedBy,
     DateTime? updatedAt,
     String? updatedBy,
@@ -109,6 +116,7 @@ class WeeklyPlan {
       urlImage: urlImage ?? this.urlImage,
       createAt: createAt ?? this.createAt,
       createdBy: createdBy ?? this.createdBy,
+      totalPrice: totalPrice ?? this.totalPrice,
       approvedAt: approvedAt ?? this.approvedAt,
       approvedBy: approvedBy ?? this.approvedBy,
       updatedAt: updatedAt ?? this.updatedAt,

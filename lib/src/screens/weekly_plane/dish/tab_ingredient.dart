@@ -18,7 +18,7 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
   @override
   Widget build(BuildContext context) {
     var systemBloc = context.watch<SystemBloc>().state;
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width - 20,
       child: ListView.builder(
         itemCount: widget.ingredients.length,
@@ -26,16 +26,16 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
           final step = widget.ingredients[index];
           return ListTile(
             title: Text(step.ingredient?.name ?? "name",
-                style: TextStyle(fontWeight: FontWeight.bold)),
+                style: const TextStyle(fontWeight: FontWeight.bold)),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     Text("${S.current.amount} ${step.amount} "),
-                    Text("x"),
+                    const Text("x"),
                     Text(systemBloc.numberPersonInHouse.toString()),
-                    Text("= "),
+                    const Text("= "),
                     Text("${step.amount! * systemBloc.numberPersonInHouse} "),
                     Text("${step.ingredient?.unit}"),
                   ],

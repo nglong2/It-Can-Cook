@@ -22,14 +22,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "add_to_cart":
-            MessageLookupByLibrary.simpleMessage("Thêm vào giỏ hàng"),
+        "add_dish": MessageLookupByLibrary.simpleMessage("Thêm món ăn"),
+        "add_to_cart": MessageLookupByLibrary.simpleMessage("Thanh toán"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
         "amount": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "appDescription":
             MessageLookupByLibrary.simpleMessage("Ứng dụng nấu ăn"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
+        "breakfast": MessageLookupByLibrary.simpleMessage("Bữa sáng"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_success":
@@ -39,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
         "custom_package": MessageLookupByLibrary.simpleMessage("Gói tùy chỉnh"),
+        "dinner": MessageLookupByLibrary.simpleMessage("Bữa tối"),
         "done": MessageLookupByLibrary.simpleMessage("Bắt đầu nào!"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
@@ -51,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage("Xin chào"),
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử"),
         "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "ingredients": MessageLookupByLibrary.simpleMessage("Nguyên liệu"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "last_name": MessageLookupByLibrary.simpleMessage("Họ"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
@@ -59,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn đăng xuất?"),
+        "lunch": MessageLookupByLibrary.simpleMessage("Bữa trưa"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "numberperoninhouse":
@@ -116,6 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+        "step": MessageLookupByLibrary.simpleMessage("Bước"),
         "submit": MessageLookupByLibrary.simpleMessage("Gửi"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),

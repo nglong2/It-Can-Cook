@@ -4,9 +4,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
+import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
+import 'package:it_can_cook/src/models/weekly/weekly.dart';
+import 'package:it_can_cook/src/screens/checkout/checkout_screen.dart';
 import 'package:it_can_cook/src/screens/delivery/home.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
 import 'package:it_can_cook/src/screens/login/login/login.dart';
@@ -33,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<AccountBloc>(
           create: (BuildContext context) => AccountBloc(),
+        ),
+        BlocProvider<TriggerBloc>(
+          create: (BuildContext context) => TriggerBloc(),
         ),
         BlocProvider<WeeklyBloc>(
           create: (BuildContext context) =>
@@ -77,15 +83,18 @@ class MyApp extends StatelessWidget {
                       return const HomePage();
                     case "weekly_detail":
                       return WeeklyDetailPage(
-                        recipePlans: routeSettings.arguments == null
-                            ? []
-                            : routeSettings.arguments as List<RecipePlan>,
+                        weeklyPlan: routeSettings.arguments == null
+                            ? WeeklyPlan(recipePlans: [])
+                            : routeSettings.arguments as WeeklyPlan,
                       );
                     case "dish_detail":
                       return DishDetail(
                         recipe: routeSettings.arguments as RecipePlan,
                       );
-
+                    case "checkout":
+                      return CheckoutScreen(
+                        weeklyPlan: routeSettings.arguments as WeeklyPlan,
+                      );
                     case "delivery":
                       return DeliveryHome();
                     default:

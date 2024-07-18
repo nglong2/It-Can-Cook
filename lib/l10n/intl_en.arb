@@ -52,7 +52,7 @@
   "settings": "Settings",
   "hello": "Hello",
   "logout": "Log out",
-  "add_to_cart": "Add to cart",
+  "add_to_cart": "Checkout",
   "logoutConfirmation": "Are you sure you want to log out?",
   "history": "History",
   "week": "Week",
@@ -69,5 +69,11 @@
   "total": "Total: ",
   "numberperoninhouse": "Number of people in house: ",
   "amount": "Amount: ",
-  "person": "Person"
+  "person": "Person",
+  "ingredients": "Ingredients",
+  "step": "Steps",
+  "breakfast": "Breakfast",
+  "lunch": "Lunch",
+  "dinner": "Dinner",
+  "add_dish": "Add dish"
 }

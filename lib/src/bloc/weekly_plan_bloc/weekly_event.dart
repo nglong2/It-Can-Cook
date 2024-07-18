@@ -14,5 +14,13 @@ class AddRecipeEvent extends WeeklyEvent {
 
 class ChangeUserInHouseEvent extends WeeklyEvent {
   final RecipePlan recipePlan;
-  ChangeUserInHouseEvent(this.recipePlan);
+  final int numberPerson;
+  ChangeUserInHouseEvent(this.recipePlan, this.numberPerson);
+}
+
+//update total price of weekly plan
+class UpdateTotalPriceEvent extends WeeklyEvent {
+  final String weeklyPlanId;
+  final double totalPrice;
+  UpdateTotalPriceEvent(this.weeklyPlanId, this.totalPrice);
 }

@@ -19,34 +19,32 @@ class _StepTabWidgetState extends State<StepTabWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-        itemCount: widget.steps.length,
-        itemBuilder: (context, index) {
-          final step = widget.steps[index];
-          return ListTile(
-            title: Text("Step ${index + 1}: ", //+ step.name,
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: step.description == null
-                  ? []
-                  : step.description!
-                      .split(';')
-                      .map((e) => Text("- " + e))
-                      .toList(),
+    return ListView.builder(
+      itemCount: widget.steps.length,
+      itemBuilder: (context, index) {
+        final step = widget.steps[index];
+        return ListTile(
+          title: Text("Step ${index + 1}: ", //+ step.name,
+              style: const TextStyle(fontWeight: FontWeight.bold)),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: step.description == null
+                ? []
+                : step.description!
+                    .split(';')
+                    .map((e) => Text("- $e"))
+                    .toList(),
+          ),
+          leading: SizedBox(
+            width: 100,
+            height: 100,
+            child: CachedNetworkImage(
+              imageUrl: step.imageLink ?? "",
+              fit: BoxFit.cover,
             ),
-            leading: SizedBox(
-              width: 100,
-              height: 100,
-              child: CachedNetworkImage(
-                imageUrl: step.imageLink ?? "",
-                fit: BoxFit.cover,
-              ),
-            ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

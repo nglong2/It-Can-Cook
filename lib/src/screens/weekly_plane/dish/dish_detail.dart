@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_ingredient.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_step.dart';
@@ -25,23 +26,19 @@ class _DishDetailState extends State<DishDetail> {
             children: <Widget>[
               TabBar(
                 tabs: [
-                  Tab(text: 'Ingredients'),
-                  Tab(text: 'Steps'),
+                  Tab(text: S.current.ingredients),
+                  Tab(text: S.current.step),
                 ],
               ),
               Expanded(
                 child: TabBarView(
                   children: [
                     // Ingredients tab content
-                    Container(
-                      child: IngredientTabWidget(
-                          ingredients: widget.recipe.recipe!.recipeIngredients),
-                    ),
+                    IngredientTabWidget(
+                        ingredients: widget.recipe.recipe!.recipeIngredients),
                     // Steps tab content
-                    Container(
-                      child: StepTabWidget(
-                        steps: widget.recipe.recipe!.recipeSteps,
-                      ),
+                    StepTabWidget(
+                      steps: widget.recipe.recipe!.recipeSteps,
                     ),
                   ],
                 ),
