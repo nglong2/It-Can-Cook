@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +10,7 @@ import 'package:it_can_cook/src/controller/weekly.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
+import 'package:uuid/uuid.dart';
 
 class WeeklyScreen extends StatefulWidget {
   @override
@@ -90,19 +93,30 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CachedNetworkImage(
-                      imageUrl: listPlan[index].urlImage ?? "",
-                      width: MediaQuery.of(context).size.width,
-                      height: 250,
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => const SizedBox(
-                        height: 250,
-                        child: Center(
-                          child: CircularProgressIndicator(),
+                    Row(
+                      //center
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      children: [
+                        CachedNetworkImage(
+                          imageUrl: listPlan[index].urlImage ?? "",
+                          width: listPlan[index].id == Uuid.NAMESPACE_NIL
+                              ? 80
+                              : MediaQuery.of(context).size.width - 48,
+                          height: listPlan[index].id == Uuid.NAMESPACE_NIL
+                              ? 80
+                              : 250,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => const SizedBox(
+                            height: 250,
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
                         ),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),

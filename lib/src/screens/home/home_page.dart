@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 import 'package:it_can_cook/src/screens/setting/setting.dart';
@@ -31,10 +32,29 @@ class HomePageState extends State<HomePage> {
           title: const Text('WeMealKit',
               style: TextStyle(fontWeight: FontWeight.bold)),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.shopping_cart_outlined),
-              onPressed: () {},
-            ),
+            _currentIndex == 0
+                ? TextButton(
+                    onPressed: () =>
+                        {context.read<WeeklyBloc>().add(FetchWeeklyEvent())},
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10),
+                      width: 120,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Get newset menu",
+                            style: TextStyle(color: Colors.black),
+                          )
+                        ],
+                      ),
+                    ))
+                : Text("")
           ],
           leading: Padding(
             padding: const EdgeInsets.only(left: 6),

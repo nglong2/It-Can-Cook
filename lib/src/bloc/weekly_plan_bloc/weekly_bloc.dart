@@ -18,6 +18,8 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
       var emplyPlan = WeeklyPlan(
           id: Uuid.NAMESPACE_NIL,
           title: "Custom Plan",
+          urlImage:
+              'https://wemealkit.s3.amazonaws.com/369Plus_icon-icons.com_71848.png',
           description: "Custom Plan",
           recipePlans: []);
 
