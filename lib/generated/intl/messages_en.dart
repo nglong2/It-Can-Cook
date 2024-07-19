@@ -45,7 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "custom_plan_description": MessageLookupByLibrary.simpleMessage(
             "If you cant find any plan, you can create your own, we can provide you the recipe, its easy"),
         "custom_plan_title":
-            MessageLookupByLibrary.simpleMessage("Custom Plan +"),
+            MessageLookupByLibrary.simpleMessage("Custom Plan ➕"),
         "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
         "done": MessageLookupByLibrary.simpleMessage("Get started!"),
         "dont_have_account":

@@ -43,7 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "custom_plan_description": MessageLookupByLibrary.simpleMessage(
             "Nếu bạn không tìm thấy bất kỳ kế hoạch nào, bạn có thể tạo riêng của mình, chúng tôi có thể cung cấp cho bạn công thức, nó rất dễ dàng"),
         "custom_plan_title":
-            MessageLookupByLibrary.simpleMessage("Kế hoạch tùy chỉnh +"),
+            MessageLookupByLibrary.simpleMessage("Kế hoạch tùy chỉnh ➕"),
         "dinner": MessageLookupByLibrary.simpleMessage("Bữa tối"),
         "done": MessageLookupByLibrary.simpleMessage("Bắt đầu nào!"),
         "dont_have_account":

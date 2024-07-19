@@ -800,10 +800,10 @@ class S {
     );
   }
 
-  /// `Custom Plan +`
+  /// `Custom Plan ➕`
   String get custom_plan_title {
     return Intl.message(
-      'Custom Plan +',
+      'Custom Plan ➕',
       name: 'custom_plan_title',
       desc: '',
       args: [],
