@@ -24,6 +24,11 @@ class _DishDetailState extends State<DishDetail> {
           length: 2,
           child: Column(
             children: <Widget>[
+              Row(
+                children: widget.recipe.recipe!.recipeCategories
+                    .map((e) => Text(""))
+                    .toList(),
+              ),
               TabBar(
                 tabs: [
                   Tab(text: S.current.ingredients),

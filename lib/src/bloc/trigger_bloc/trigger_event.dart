@@ -4,6 +4,9 @@ part of 'trigger_bloc.dart';
 sealed class TriggerEvent {}
 
 class ChangeUserInHouseTriggerEvent extends TriggerEvent {
-  final int numberPerson;
-  ChangeUserInHouseTriggerEvent(this.numberPerson);
+  ChangeUserInHouseTriggerEvent();
+}
+
+class SeachTriggerEvent extends TriggerEvent {
+  SeachTriggerEvent();
 }

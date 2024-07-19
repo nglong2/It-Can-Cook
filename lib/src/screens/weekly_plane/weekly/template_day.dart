@@ -63,7 +63,7 @@ class _TemplateDayState extends State<TemplateDay> {
                             fontWeight: FontWeight.bold, fontSize: 18),
                       ),
                       Text(
-                        "    ${60} minutes",
+                        "    ${menuItem.recipe?.cookingTime ?? 60} minutes",
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 14,
@@ -128,7 +128,7 @@ class _TemplateDayState extends State<TemplateDay> {
                                       ChangeUserInHouseEvent(menuItem, value),
                                     );
                                 context.read<TriggerBloc>().add(
-                                      ChangeUserInHouseTriggerEvent(1),
+                                      ChangeUserInHouseTriggerEvent(),
                                     );
                               },
                             ),

@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
+import 'package:it_can_cook/src/models/system/trigger.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/part.dart';
 
@@ -19,7 +20,7 @@ class WeeklyDetailPage extends StatefulWidget {
 
 class WeeklyDetailPageState extends State<WeeklyDetailPage> {
   //state //selected date
-  int _selectedValue = 0;
+  int _selectedValue = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
       pice += recipe.price! * numberPerson;
     }
 
-    return BlocListener<TriggerBloc, int>(
+    return BlocListener<TriggerBloc, Trigger>(
       listener: (context, state) {
         setState(() {
           _selectedValue = _selectedValue;
@@ -162,7 +163,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                             : Colors.black),
                     onDateChange: (date) {
                       setState(() {
-                        _selectedValue = date.weekday - 1;
+                        _selectedValue = date.weekday;
                       });
                     },
                   ),
@@ -174,6 +175,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
               child: SingleChildScrollView(
                 child: Part(
                   dayInWeek: _selectedValue,
+                  weeklyPlanId: widget.weeklyPlan.id!,
                   recipes: widget.weeklyPlan.recipePlans
                       .where((element) => element.dayInWeek == _selectedValue)
                       .toList(),

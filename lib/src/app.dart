@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
+import 'package:it_can_cook/src/models/weekly/dish.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
@@ -17,6 +19,8 @@ import 'package:it_can_cook/src/screens/login/register/register.dart';
 import 'package:it_can_cook/src/screens/login/welcome/welcome.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 import 'package:it_can_cook/src/screens/payment/payment.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add_list.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_detail.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly_detail.dart';
@@ -43,6 +47,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<WeeklyBloc>(
           create: (BuildContext context) =>
               WeeklyBloc()..add(FetchWeeklyEvent()),
+        ),
+        BlocProvider<RecipePlanBloc>(
+          create: (BuildContext context) => RecipePlanBloc(),
         ),
       ],
       child: Builder(
@@ -91,6 +98,12 @@ class MyApp extends StatelessWidget {
                       return DishDetail(
                         recipe: routeSettings.arguments as RecipePlan,
                       );
+                    case "dish_add":
+                      return DishAdd(
+                        args: routeSettings.arguments as DishArguments,
+                      );
+                    case "dish_add_list":
+                      return DishAddList();
                     case "checkout":
                       return CheckoutScreen(
                         weeklyPlan: routeSettings.arguments as WeeklyPlan,

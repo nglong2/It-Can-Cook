@@ -99,7 +99,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
 
                       children: [
                         listPlan[index].id == Uuid.NAMESPACE_NIL
-                            ? Text("")
+                            ? const Text("")
                             : CachedNetworkImage(
                                 imageUrl: listPlan[index].urlImage ?? "",
                                 width: MediaQuery.of(context).size.width - 48,

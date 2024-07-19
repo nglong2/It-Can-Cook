@@ -46,11 +46,13 @@ class RecipeCategory {
   String? id;
   String? categoryId;
   String? recipeId;
+  Category? category;
 
   RecipeCategory({
     this.id,
     this.categoryId,
     this.recipeId,
+    this.category,
   });
 
   factory RecipeCategory.fromJson(Map<String, dynamic> json) {
@@ -187,6 +189,7 @@ class Recipe {
   String? id;
   String? name;
   int? servingSize;
+  int? cookingTime;
   int? difficulty;
   String? description;
   String? notice;
@@ -210,6 +213,7 @@ class Recipe {
     this.name,
     this.servingSize,
     this.difficulty,
+    this.cookingTime,
     this.description,
     this.notice,
     this.img,
@@ -234,6 +238,7 @@ class Recipe {
       name: json['name'],
       servingSize: json['servingSize'],
       difficulty: json['difficulty'],
+      cookingTime: json['cookingTime'],
       description: json['description'],
       notice: json['notice'],
       img: json['img'],
@@ -279,6 +284,7 @@ class Recipe {
       'id': id,
       'name': name,
       'servingSize': servingSize,
+      'cookingTime': cookingTime,
       'difficulty': difficulty,
       'description': description,
       'notice': notice,
@@ -385,3 +391,5 @@ class RecipePlan {
     );
   }
 }
+
+class Category {}
