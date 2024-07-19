@@ -37,18 +37,17 @@ class HomePageState extends State<HomePage> {
                     onPressed: () =>
                         {context.read<WeeklyBloc>().add(FetchWeeklyEvent())},
                     child: Container(
-                      margin: EdgeInsets.only(top: 10),
                       width: 120,
                       height: 50,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        color: Color.fromARGB(255, 123, 181, 210),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Get newset menu",
+                            S.of(context).get_newest_menu,
                             style: TextStyle(color: Colors.black),
                           )
                         ],

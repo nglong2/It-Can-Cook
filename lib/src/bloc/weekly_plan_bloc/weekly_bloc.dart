@@ -15,12 +15,14 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
 
     on<FetchWeeklyEvent>((event, emit) async {
       var listWeeklyPlan = await WeeklyPlanController().getWeeklys();
+      //check curent language
       var emplyPlan = WeeklyPlan(
           id: Uuid.NAMESPACE_NIL,
-          title: "Custom Plan",
+          title: "Custom Plan +",
           urlImage:
               'https://wemealkit.s3.amazonaws.com/369Plus_icon-icons.com_71848.png',
-          description: "Custom Plan",
+          description:
+              "If you cant find any plan, you can create your own, we can provide you the recipe, it's easy",
           recipePlans: []);
 
       listWeeklyPlan.add(emplyPlan);

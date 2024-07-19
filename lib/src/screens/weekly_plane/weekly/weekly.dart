@@ -98,24 +98,24 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
 
                       children: [
-                        CachedNetworkImage(
-                          imageUrl: listPlan[index].urlImage ?? "",
-                          width: listPlan[index].id == Uuid.NAMESPACE_NIL
-                              ? 80
-                              : MediaQuery.of(context).size.width - 48,
-                          height: listPlan[index].id == Uuid.NAMESPACE_NIL
-                              ? 80
-                              : 250,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => const SizedBox(
-                            height: 250,
-                            child: Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                          ),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                        ),
+                        listPlan[index].id == Uuid.NAMESPACE_NIL
+                            ? Text("")
+                            : CachedNetworkImage(
+                                imageUrl: listPlan[index].urlImage ?? "",
+                                width: MediaQuery.of(context).size.width - 48,
+                                height: listPlan[index].id == Uuid.NAMESPACE_NIL
+                                    ? 80
+                                    : 250,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => const SizedBox(
+                                  height: 250,
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
                       ],
                     ),
                     Padding(
@@ -124,7 +124,9 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            listPlan![index].description ?? "",
+                            listPlan[index].id == Uuid.NAMESPACE_NIL
+                                ? S.current.custom_plan_title
+                                : listPlan![index].title ?? "",
                             style: const TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
@@ -132,7 +134,9 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                           SizedBox(
                             height: 40,
                             child: Text(
-                              listPlan[index].description ?? "",
+                              listPlan[index].id == Uuid.NAMESPACE_NIL
+                                  ? S.current.custom_plan_description
+                                  : listPlan[index].description ?? "",
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),

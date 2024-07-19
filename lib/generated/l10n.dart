@@ -789,6 +789,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Get newest menu`
+  String get get_newest_menu {
+    return Intl.message(
+      'Get newest menu',
+      name: 'get_newest_menu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom Plan +`
+  String get custom_plan_title {
+    return Intl.message(
+      'Custom Plan +',
+      name: 'custom_plan_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you cant find any plan, you can create your own, we can provide you the recipe, its easy`
+  String get custom_plan_description {
+    return Intl.message(
+      'If you cant find any plan, you can create your own, we can provide you the recipe, its easy',
+      name: 'custom_plan_description',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

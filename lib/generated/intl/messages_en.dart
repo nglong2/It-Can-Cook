@@ -42,6 +42,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "custom_package":
             MessageLookupByLibrary.simpleMessage("Custom package"),
+        "custom_plan_description": MessageLookupByLibrary.simpleMessage(
+            "If you cant find any plan, you can create your own, we can provide you the recipe, its easy"),
+        "custom_plan_title":
+            MessageLookupByLibrary.simpleMessage("Custom Plan +"),
         "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
         "done": MessageLookupByLibrary.simpleMessage("Get started!"),
         "dont_have_account":
@@ -52,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "first_name": MessageLookupByLibrary.simpleMessage("First name"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "get_newest_menu":
+            MessageLookupByLibrary.simpleMessage("Get newest menu"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),

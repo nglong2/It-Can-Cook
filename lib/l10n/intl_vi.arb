@@ -75,5 +75,8 @@
   "breakfast": "Bữa sáng",
   "lunch": "Bữa trưa",
   "dinner": "Bữa tối",
-  "add_dish": "Thêm món ăn"
+  "add_dish": "Thêm món ăn",
+  "get_newest_menu": "Lấy menu mới nhất",
+  "custom_plan_title": "Kế hoạch tùy chỉnh +",
+  "custom_plan_description": "Nếu bạn không tìm thấy bất kỳ kế hoạch nào, bạn có thể tạo riêng của mình, chúng tôi có thể cung cấp cho bạn công thức, nó rất dễ dàng"
 }

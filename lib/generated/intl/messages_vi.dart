@@ -40,6 +40,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
         "custom_package": MessageLookupByLibrary.simpleMessage("Gói tùy chỉnh"),
+        "custom_plan_description": MessageLookupByLibrary.simpleMessage(
+            "Nếu bạn không tìm thấy bất kỳ kế hoạch nào, bạn có thể tạo riêng của mình, chúng tôi có thể cung cấp cho bạn công thức, nó rất dễ dàng"),
+        "custom_plan_title":
+            MessageLookupByLibrary.simpleMessage("Kế hoạch tùy chỉnh +"),
         "dinner": MessageLookupByLibrary.simpleMessage("Bữa tối"),
         "done": MessageLookupByLibrary.simpleMessage("Bắt đầu nào!"),
         "dont_have_account":
@@ -50,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "first_name": MessageLookupByLibrary.simpleMessage("Tên"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "get_newest_menu":
+            MessageLookupByLibrary.simpleMessage("Lấy menu mới nhất"),
         "hello": MessageLookupByLibrary.simpleMessage("Xin chào"),
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử"),
         "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),

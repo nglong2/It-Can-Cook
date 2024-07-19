@@ -28,7 +28,6 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
 
     for (var recipe in widget.weeklyPlan.recipePlans) {
       var numberPerson = recipe.numberPerson ?? systemBloc.numberPersonInHouse;
-
       pice += recipe.price! * numberPerson;
     }
 
@@ -40,7 +39,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(S.of(context).home),
+          title: Text(widget.weeklyPlan.title ?? ""),
         ),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(12),
