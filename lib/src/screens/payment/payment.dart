@@ -107,6 +107,13 @@ class _PaymentState extends State<Payment> {
                   print("payOrder Result: '$result'.");
                 } on PlatformException catch (e) {
                   print("Failed to Invoke: '${e.message}'.");
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Container(
+                      padding: const EdgeInsets.all(15),
+                      child: Text("Thanh toán thất bại"),
+                    ),
+                    duration: Duration(seconds: 2),
+                  ));
                 }
               }
             }

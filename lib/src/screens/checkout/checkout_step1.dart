@@ -214,8 +214,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                     if (Uuid.isValidUUID(
                         fromString: data,
                         validationMode: ValidationMode.nonStrict)) {
-                      //go to "checkout"
-                      Navigator.pushNamed(context, "payment",
+                      Navigator.pushReplacementNamed(context, "payment",
                           arguments: PaymentArguemnt(
                               orderID: data,
                               price: pice,

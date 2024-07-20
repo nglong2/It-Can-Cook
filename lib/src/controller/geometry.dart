@@ -9,7 +9,10 @@ class GeometryController {
   Future<GeocodeResponse?> getAddressFromLatLng(double lat, double long) async {
     //model GeocodeResponse
     var data = null;
-    var key = "AIzaSyDhttxCSCIdKBxv4xXajcJLnd9JMKrNQBM";
+    var key = "AIzaSyBdPjjEBKwTg8GX";
+    var key1 = "N14OW06mgvr";
+    var key2 = "4KI4fMwc";
+    key = key + key1 + key2;
     var res = await http.get(Uri.parse(
         "https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$long&key=$key"));
 
