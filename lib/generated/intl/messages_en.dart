@@ -46,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "If you cant find any plan, you can create your own, we can provide you the recipe, its easy"),
         "custom_plan_title":
             MessageLookupByLibrary.simpleMessage("Custom Plan ➕"),
+        "delete_dish": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this dish?"),
         "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
         "done": MessageLookupByLibrary.simpleMessage("Get started!"),
         "dont_have_account":
@@ -88,6 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "What do you need, We have it all!"),
         "onboardTitle3":
             MessageLookupByLibrary.simpleMessage("Connect with many experts"),
+        "pakaging_method":
+            MessageLookupByLibrary.simpleMessage("Pakaging method: "),
         "passed": MessageLookupByLibrary.simpleMessage("Passed"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_not_match":
@@ -128,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_enter_verification_code": MessageLookupByLibrary.simpleMessage(
             "Please enter verification code"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "step": MessageLookupByLibrary.simpleMessage("Steps"),

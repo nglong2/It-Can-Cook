@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
         "custom_package": MessageLookupByLibrary.simpleMessage("Gói tùy chỉnh"),
         "custom_plan_description": MessageLookupByLibrary.simpleMessage(
-            "Nếu bạn không tìm thấy bất kỳ kế hoạch nào, bạn có thể tạo riêng của mình, chúng tôi có thể cung cấp cho bạn công thức, nó rất dễ dàng"),
+            "Nếu bạn không tìm thấy bất kỳ kế hoạch nào, bạn có thể tạo riêng của mình, chúng tôi có thể cung cấp cho bạn danh sách món ăn, bạn có thể thêm vào"),
         "custom_plan_title":
             MessageLookupByLibrary.simpleMessage("Kế hoạch tùy chỉnh ➕"),
+        "delete_dish": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn xóa món ăn này?"),
         "dinner": MessageLookupByLibrary.simpleMessage("Bữa tối"),
         "done": MessageLookupByLibrary.simpleMessage("Bắt đầu nào!"),
         "dont_have_account":
@@ -86,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cần gì ư, Chúng tôi có đủ!"),
         "onboardTitle3": MessageLookupByLibrary.simpleMessage(
             "Kết nối với nhiều chuyên gia"),
+        "pakaging_method":
+            MessageLookupByLibrary.simpleMessage("Phương pháp đóng gói: "),
         "passed": MessageLookupByLibrary.simpleMessage("Bỏ qua"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "password_not_match":
@@ -124,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_enter_verification_code":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã xác thực"),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "remove": MessageLookupByLibrary.simpleMessage("Xóa"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "step": MessageLookupByLibrary.simpleMessage("Bước"),

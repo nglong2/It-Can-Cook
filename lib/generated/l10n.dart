@@ -819,6 +819,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Pakaging method: `
+  String get pakaging_method {
+    return Intl.message(
+      'Pakaging method: ',
+      name: 'pakaging_method',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this dish?`
+  String get delete_dish {
+    return Intl.message(
+      'Are you sure you want to delete this dish?',
+      name: 'delete_dish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove`
+  String get remove {
+    return Intl.message(
+      'Remove',
+      name: 'remove',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

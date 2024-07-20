@@ -5,6 +5,7 @@ import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart'; // Add this line to import the 'Uuid' class
+import 'package:diacritic/diacritic.dart';
 
 part 'weekly_event.dart';
 part 'weekly_state.dart';
@@ -16,16 +17,6 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
     on<FetchWeeklyEvent>((event, emit) async {
       var listWeeklyPlan = await WeeklyPlanController().getWeeklys();
       //check curent language
-      var emplyPlan = WeeklyPlan(
-          id: Uuid.NAMESPACE_NIL,
-          title: "Custom Plan +",
-          urlImage:
-              'https://wemealkit.s3.amazonaws.com/369Plus_icon-icons.com_71848.png',
-          description:
-              "If you cant find any plan, you can create your own, we can provide you the recipe, it's easy",
-          recipePlans: []);
-
-      listWeeklyPlan.add(emplyPlan);
 
       for (var weeklyPlan in listWeeklyPlan) {
         for (var recipePlan in weeklyPlan.recipePlans) {
@@ -60,6 +51,65 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
       for (var weekly in state) {
         if (weekly.id == weeklyPlanId) {
           weekly.totalPrice = totalPrice;
+        }
+      }
+      emit(state);
+    });
+
+    //SearchWeeklyPlanEvent
+    on<SearchWeeklyPlanEvent>((event, emit) async {
+      final text = event.text;
+
+      var listWeeklyPlan = await WeeklyPlanController().getWeeklys();
+      var listSearch = listWeeklyPlan.where((element) {
+        // Remove diacritics and convert to lowercase for comparison
+        String cleanedTitle = removeDiacritics(element.title!.toLowerCase());
+        String cleanedText = removeDiacritics(text.toLowerCase());
+        // Check if the cleaned title contains the cleaned search text
+        return element.id == Uuid.NAMESPACE_NIL ||
+            cleanedTitle.contains(cleanedText);
+      }).toList();
+      emit(listSearch);
+    });
+
+    //AddRecipePlanEvent
+    on<AddRecipePlanEvent>((event, emit) async {
+      final recipePlan = event.recipePlan;
+      final systemNumberPerson = event.systemNumberPerson;
+      for (var weekly in state) {
+        if (weekly.id == recipePlan.weeklyPlanId) {
+          //check if dayInWeek and mealInDay is exit then + 1 to person
+          bool isExist = false;
+          for (var recipe in weekly.recipePlans) {
+            if (recipe.id == recipePlan.id &&
+                recipe.dayInWeek == recipePlan.dayInWeek &&
+                recipe.mealInDay == recipePlan.mealInDay) {
+              var numberPerson = recipe.numberPerson ?? systemNumberPerson;
+              recipe.numberPerson = (numberPerson + 1);
+              if (recipe.numberPerson! > 10) {
+                recipe.numberPerson = 10;
+              }
+              emit(state);
+              isExist = true;
+            }
+          }
+          if (!isExist) {
+            weekly.recipePlans.add(recipePlan);
+          }
+        }
+      }
+      emit(state);
+    });
+
+    //DeleteRecipePlanEvent
+    on<DeleteRecipePlanEvent>((event, emit) async {
+      final recipePlan = event.recipePlan;
+      for (var weekly in state) {
+        if (weekly.id == recipePlan.weeklyPlanId) {
+          weekly.recipePlans.removeWhere((element) =>
+              element.id == recipePlan.id &&
+              element.dayInWeek == recipePlan.dayInWeek &&
+              element.mealInDay == recipePlan.mealInDay);
         }
       }
       emit(state);

@@ -60,6 +60,8 @@ class RecipeCategory {
       id: json['id'],
       categoryId: json['categoryId'],
       recipeId: json['recipeId'],
+      category:
+          json['category'] != null ? Category.fromJson(json['category']) : null,
     );
   }
 
@@ -68,6 +70,7 @@ class RecipeCategory {
       'id': id,
       'categoryId': categoryId,
       'recipeId': recipeId,
+      'category': category?.toJson(),
     };
   }
 }
@@ -392,4 +395,35 @@ class RecipePlan {
   }
 }
 
-class Category {}
+class Category {
+  //  "type": "Nation",
+  //                 "name": "VN",
+  //                 "description": "VN"
+  String? type;
+  String? name;
+  String? description;
+
+  Category({
+    this.type,
+    this.name,
+    this.description,
+  });
+
+  factory Category.fromJson(Map<String, dynamic> json) {
+    return Category(
+      type: json['type'],
+      name: json['name'],
+      description: json['description'],
+    );
+  }
+
+  // tojson
+
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+      'name': name,
+      'description': description,
+    };
+  }
+}

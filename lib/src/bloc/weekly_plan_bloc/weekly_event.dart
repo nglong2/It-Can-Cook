@@ -24,3 +24,22 @@ class UpdateTotalPriceEvent extends WeeklyEvent {
   final double totalPrice;
   UpdateTotalPriceEvent(this.weeklyPlanId, this.totalPrice);
 }
+
+// search weekly plan text
+class SearchWeeklyPlanEvent extends WeeklyEvent {
+  final String text;
+  SearchWeeklyPlanEvent(this.text);
+}
+
+//add recipe to weekly plan
+class AddRecipePlanEvent extends WeeklyEvent {
+  final RecipePlan recipePlan;
+  final int systemNumberPerson;
+  AddRecipePlanEvent(this.recipePlan, this.systemNumberPerson);
+}
+
+//delete recipe from weekly plan
+class DeleteRecipePlanEvent extends WeeklyEvent {
+  final RecipePlan recipePlan;
+  DeleteRecipePlanEvent(this.recipePlan);
+}

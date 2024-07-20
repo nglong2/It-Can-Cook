@@ -30,6 +30,8 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                    "${S.current.pakaging_method}: ${step.ingredient?.packagingMethod}"),
                 Row(
                   children: [
                     Text("${S.current.amount} ${step.amount} "),

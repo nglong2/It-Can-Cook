@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -10,6 +11,7 @@ import 'package:it_can_cook/src/controller/weekly.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly_list.dart';
 import 'package:uuid/uuid.dart';
 
 class WeeklyScreen extends StatefulWidget {
@@ -32,10 +34,18 @@ class WeeklyScreenState extends State<WeeklyScreen> {
     super.dispose();
   }
 
+  Timer? _debounce;
+  _onSearchChanged(String query, BuildContext context) {
+    if (_debounce?.isActive ?? false) _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      context.read<WeeklyBloc>().add(SearchWeeklyPlanEvent(query));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final accountstate = context.watch<AccountBloc>().state;
-    final weeklystate = context.watch<WeeklyBloc>().state;
+
     return Scaffold(
         body: Container(
       padding: const EdgeInsets.only(right: 20, left: 20),
@@ -69,104 +79,29 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                 height: 20,
               ),
               renderSearch(),
-              renderCardDemo(weeklystate)
+              WeeklyList()
             ]),
       ),
     ));
   }
 
-  Widget renderCardDemo(List<WeeklyPlan> listPlan) {
-    return Column(
-      children: [
-        ListView.builder(
-          itemCount: listPlan!.length,
-          shrinkWrap:
-              true, // Important to prevent inner ListView from expanding infinitely
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) {
-            return Card(
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, 'weekly_detail',
-                      arguments: listPlan[index]);
-                },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      //center
-                      mainAxisAlignment: MainAxisAlignment.center,
-
-                      children: [
-                        listPlan[index].id == Uuid.NAMESPACE_NIL
-                            ? const Text("")
-                            : CachedNetworkImage(
-                                imageUrl: listPlan[index].urlImage ?? "",
-                                width: MediaQuery.of(context).size.width - 48,
-                                height: listPlan[index].id == Uuid.NAMESPACE_NIL
-                                    ? 80
-                                    : 250,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => const SizedBox(
-                                  height: 250,
-                                  child: Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                ),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
-                              ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            listPlan[index].id == Uuid.NAMESPACE_NIL
-                                ? S.current.custom_plan_title
-                                : listPlan![index].title ?? "",
-                            style: const TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
-                          ),
-                          // auto break line description
-                          SizedBox(
-                            height: 40,
-                            child: Text(
-                              listPlan[index].id == Uuid.NAMESPACE_NIL
-                                  ? S.current.custom_plan_description
-                                  : listPlan[index].description ?? "",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            );
-          },
-        ),
-      ],
-    );
-  }
-
 //input search widget
+
   Widget renderSearch() {
+    //textfield seach input have iconseach and can debounce search
+
     return Container(
       padding: const EdgeInsets.only(right: 0, bottom: 10),
       child: TextField(
-        decoration: InputDecoration(
+          decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             hintText: S.current.search,
             prefixIcon: IconButton(
               onPressed: () => {},
               icon: const Icon(Icons.search),
-            )),
-      ),
+            ),
+          ),
+          onChanged: (query) => _onSearchChanged(query, context)),
     );
   }
 }

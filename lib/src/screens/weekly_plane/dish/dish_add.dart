@@ -26,8 +26,8 @@ _onSearchChanged(String query, BuildContext context, DishAdd widget) {
     context.read<RecipePlanBloc>().add(FetchRecipePlanEvent(
         query,
         false,
-        widget.args.dayInWeek,
         widget.args.mealInDay,
+        widget.args.dayInWeek,
         widget.args.weeklyPlanId));
     context.read<TriggerBloc>().add(SeachTriggerEvent());
   });
@@ -55,11 +55,12 @@ class _DishAddState extends State<DishAdd> {
               'Add Dish for weeekid ${widget.args.weeklyPlanId} ${widget.args.dayInWeek} part ${widget.args.mealInDay}'),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [renderSearch(), DishAddList()],
-          ),
-        ));
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [renderSearch(), DishAddList()],
+              ),
+            )));
   }
 
   Widget renderSearch() {

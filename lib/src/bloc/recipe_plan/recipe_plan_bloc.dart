@@ -22,10 +22,9 @@ class RecipePlanBloc extends Bloc<RecipePlanEvent, List<RecipePlan>> {
       RecipeController recipeController = RecipeController();
       var recipes = await recipeController.getRecipePlansByName(name, status);
       for (var item in recipes) {
-        item.copyWith(
-            mealInDay: mealInDay,
-            dayInWeek: dayInWeek,
-            weeklyPlanId: weeklyPlanId);
+        item.dayInWeek = dayInWeek;
+        item.mealInDay = mealInDay;
+        item.weeklyPlanId = weeklyPlanId;
       }
       emit(recipes);
     });

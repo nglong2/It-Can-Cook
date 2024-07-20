@@ -37,7 +37,7 @@ class HomePageState extends State<HomePage> {
                     onPressed: () =>
                         {context.read<WeeklyBloc>().add(FetchWeeklyEvent())},
                     child: Container(
-                      width: 120,
+                      width: 140,
                       height: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
