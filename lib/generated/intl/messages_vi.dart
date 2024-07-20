@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_dish_for":
             MessageLookupByLibrary.simpleMessage("Thêm món ăn cho "),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Thanh toán"),
+        "address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
         "amount": MessageLookupByLibrary.simpleMessage("Số lượng"),
@@ -75,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có chắc chắn muốn đăng xuất?"),
         "lunch": MessageLookupByLibrary.simpleMessage("Bữa trưa"),
         "monday": MessageLookupByLibrary.simpleMessage("Thứ 2"),
+        "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "numberperoninhouse":

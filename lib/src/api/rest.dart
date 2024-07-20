@@ -13,6 +13,7 @@ class RestApi {
   }
 
   Future<http.Response> post(String path, Map<String, dynamic> body) async {
+    body = encodeMap(body);
     final jsonBody = jsonEncode(body);
     final url = Uri.parse('$baseUrl/$path');
     final response = await http.post(url, body: jsonBody, headers: {
@@ -53,4 +54,16 @@ class RestApi {
   //     // Handle error response
   //   }
   // }
+}
+
+Map<String, dynamic> encodeMap(Map<String, dynamic> map) {
+  map.forEach((key, value) {
+    if (value is DateTime) {
+      map[key] = value.toString();
+    }
+    if (value is DateTime?) {
+      map[key] = value.toString();
+    }
+  });
+  return map;
 }

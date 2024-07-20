@@ -200,11 +200,11 @@ class Recipe {
   double? price;
   int? popularity;
   String? processStatus;
-  DateTime? createdAt;
+  String? createdAt;
   String? createdBy;
-  DateTime? approvedAt;
+  String? approvedAt;
   String? approvedBy;
-  DateTime? updatedAt;
+  String? updatedAt;
   String? updatedBy;
   List<RecipeIngredient> recipeIngredients = [];
   List<RecipeCategory> recipeCategories = [];
@@ -249,15 +249,11 @@ class Recipe {
           json['price'] != null ? double.parse(json['price'].toString()) : null,
       popularity: json['popularity'],
       processStatus: json['processStatus'],
-      createdAt:
-          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
+      createdAt: json['createdAt'],
       createdBy: json['createdBy'],
-      approvedAt: json['approvedAt'] != null
-          ? DateTime.parse(json['approvedAt'])
-          : null,
+      approvedAt: json['approvedAt'],
       approvedBy: json['approvedBy'],
-      updatedAt:
-          json['updatedAt'] != null ? DateTime.parse(json['updatedAt']) : null,
+      updatedAt: json['updatedAt'],
       updatedBy: json['updatedBy'],
       recipeIngredients: json['recipeIngredients'] == null
           ? []

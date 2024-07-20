@@ -90,5 +90,7 @@
   "friday": "Friday",
   "saturday": "Saturday",
   "sunday": "Sunday",
-  "on": "on"
+  "on": "on",
+  "name": "Name",
+  "address": "Address"
 }

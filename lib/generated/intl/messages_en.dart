@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_dish": MessageLookupByLibrary.simpleMessage("Add dish"),
         "add_dish_for": MessageLookupByLibrary.simpleMessage("Add dish for "),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount: "),
@@ -76,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to log out?"),
         "lunch": MessageLookupByLibrary.simpleMessage("Lunch"),
         "monday": MessageLookupByLibrary.simpleMessage("Monday"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "numberperoninhouse":

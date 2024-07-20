@@ -7,9 +7,9 @@ class Ingredient {
   String? unit;
   double? price;
   String? status;
-  DateTime? createdAt;
+  String? createdAt;
   String? createdBy;
-  DateTime? updatedAt;
+  String? updatedAt;
   String? updatedBy;
   IngredientNutrient? ingredientNutrient;
   IngredientCategory? ingredientCategory;
@@ -42,11 +42,9 @@ class Ingredient {
       price:
           json['price'] != null ? double.parse(json['price'].toString()) : null,
       status: json['status'],
-      createdAt:
-          json['createdAt'] == null ? null : DateTime.parse(json['createdAt']),
+      createdAt: json['createdAt'],
       createdBy: json['createdBy'],
-      updatedAt:
-          json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt']),
+      updatedAt: json['updatedAt'],
       updatedBy: json['updatedBy'],
       ingredientNutrient: json['ingredientNutrient'] == null
           ? null

@@ -90,5 +90,7 @@
   "friday": "Thứ 6",
   "saturday": "Thứ 7",
   "sunday": "Chủ nhật",
-  "on": "vào"
+  "on": "vào",
+  "name": "Tên",
+  "address": "Địa chỉ"
 }

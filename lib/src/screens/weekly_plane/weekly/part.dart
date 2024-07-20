@@ -102,10 +102,10 @@ class MenuPart extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: GestureDetector(
-                onTap: () {
+                onTap: () async {
                   context.read<RecipePlanBloc>().add(FetchRecipePlanEvent(
                       '', false, mealInDay, dayInWeek, weeklyPlanId));
-                  showModalBottomSheet(
+                  await showModalBottomSheet(
                     isScrollControlled: true,
                     scrollControlDisabledMaxHeightRatio: 0.5,
                     showDragHandle: true,

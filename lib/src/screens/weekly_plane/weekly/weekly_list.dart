@@ -15,6 +15,7 @@ class _WeeklyListState extends State<WeeklyList> {
   Widget build(BuildContext context) {
     final weeklystate = context.watch<WeeklyBloc>().state;
     var listPlan = weeklystate;
+
     return Column(
       children: [
         ListView.builder(

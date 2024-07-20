@@ -50,7 +50,7 @@ class _DishAddListState extends State<DishAddList> {
                                   (Match m) => '${m[1]}.',
                                 )} vnđ"),
                       ),
-                      onTap: () {
+                      onTap: () async {
                         context.read<WeeklyBloc>().add(AddRecipePlanEvent(
                             recipe, systemBloc.numberPersonInHouse));
                         context.read<TriggerBloc>().add(SeachTriggerEvent());

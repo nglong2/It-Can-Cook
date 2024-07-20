@@ -12,6 +12,7 @@ import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:it_can_cook/src/screens/checkout/checkout_screen.dart';
+import 'package:it_can_cook/src/screens/checkout/checkout_step1.dart';
 import 'package:it_can_cook/src/screens/delivery/home.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
 import 'package:it_can_cook/src/screens/login/login/login.dart';
@@ -106,6 +107,10 @@ class MyApp extends StatelessWidget {
                       return DishAddList();
                     case "checkout":
                       return CheckoutScreen(
+                        weeklyPlan: routeSettings.arguments as WeeklyPlan,
+                      );
+                    case "checkout1":
+                      return CheckoutStep1(
                         weeklyPlan: routeSettings.arguments as WeeklyPlan,
                       );
                     case "delivery":
