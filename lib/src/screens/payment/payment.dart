@@ -1,14 +1,18 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/repo/payment.dart';
 import 'package:it_can_cook/src/utils/theme_data.dart';
+import 'package:shelf_router/shelf_router.dart';
 
 class Payment extends StatefulWidget {
-  final String title;
+  final PaymentArguemnt arg;
 
-  Payment(this.title);
+  Payment(this.arg);
 
   @override
   _PaymentState createState() => _PaymentState();
@@ -24,7 +28,7 @@ class _PaymentState extends State<Payment> {
       color: AppColor.accentColor, fontSize: 18.0, fontWeight: FontWeight.w400);
   String zpTransToken = "";
   String payResult = "";
-  String payAmount = "10000";
+  String payAmount = "1000";
   bool showResult = false;
   @override
   void initState() {
@@ -75,7 +79,7 @@ class _PaymentState extends State<Payment> {
                       child: CircularProgressIndicator(),
                     );
                   });
-              var result = await createOrder(amount);
+              var result = await createOrder(widget.arg.price.toInt());
               if (result != null) {
                 Navigator.pop(context);
                 zpTransToken = result.zptranstoken;
@@ -83,6 +87,27 @@ class _PaymentState extends State<Payment> {
                   zpTransToken = result.zptranstoken;
                   showResult = true;
                 });
+                try {
+                  final String result = await platform
+                      .invokeMethod('payOrder', {"zptoken": zpTransToken});
+
+                  //scafod show snackbar success
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    backgroundColor: Color.fromARGB(255, 79, 181, 82),
+                    content: Container(
+                      padding: const EdgeInsets.all(15),
+                      child: Text("Thanh toán thành công"),
+                    ),
+                    duration: Duration(seconds: 2),
+                  ));
+
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, "home", (route) => false);
+
+                  print("payOrder Result: '$result'.");
+                } on PlatformException catch (e) {
+                  print("Failed to Invoke: '${e.message}'.");
+                }
               }
             }
           },
@@ -93,44 +118,12 @@ class _PaymentState extends State<Payment> {
                 color: AppColor.primaryColor,
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              child: Text("Create Order",
+              child: Text("Thanh toán",
                   style: TextStyle(color: Colors.white, fontSize: 20.0))),
         ),
       );
 
   /// Build Button Pay
-  Widget _btnPay(String zpToken) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-      child: Visibility(
-        visible: showResult,
-        child: GestureDetector(
-          onTap: () async {
-            String response = "";
-            try {
-              final String result =
-                  await platform.invokeMethod('payOrder', {"zptoken": zpToken});
-              response = result;
-              print("payOrder Result: '$result'.");
-            } on PlatformException catch (e) {
-              print("Failed to Invoke: '${e.message}'.");
-              response = "Thanh toán thất bại";
-            }
-            print(response);
-            setState(() {
-              payResult = response;
-            });
-          },
-          child: Container(
-              height: 50.0,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: AppColor.primaryColor,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text("Pay",
-                  style: TextStyle(color: Colors.white, fontSize: 20.0))),
-        ),
-      ));
 
   @override
   Widget build(BuildContext context) {
@@ -139,52 +132,48 @@ class _PaymentState extends State<Payment> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          _quickConfig,
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Amount',
-              icon: Icon(Icons.attach_money),
+          //selected 2 value
+          SizedBox(
+            height: 50,
+          ),
+
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 20),
+            child: Row(
+              children: [
+                CachedNetworkImage(
+                    imageUrl: "https://wemealkit.s3.amazonaws.com/zlp.png",
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover),
+                Text("Thanh Toán Bằng ZaloPay", style: textStyle),
+              ],
             ),
-            initialValue: payAmount,
-            onChanged: (value) {
-              setState(() {
-                payAmount = value;
-              });
-            },
-            keyboardType: TextInputType.number,
+          ),
+
+          Row(
+            //end
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(right: 20),
+                child: Text(
+                  "${S.current.total} ${widget.arg.price.toStringAsFixed(0).replaceAllMapped(
+                        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                        (Match m) => '${m[1]}.',
+                      )}đ",
+                  style: TextStyle(
+                      color: AppColor.accentColor,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w400),
+                ),
+              )
+            ],
           ),
           _btnCreateOrder(payAmount),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
-            child: Visibility(
-              child: Text(
-                "zptranstoken:",
-                style: textStyle,
-              ),
-              visible: showResult,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
-            child: Text(
-              zpTransToken,
-              style: valueStyle,
-            ),
-          ),
-          _btnPay(zpTransToken),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
-            child: Visibility(
-                child: Text("Transaction status:", style: textStyle),
-                visible: showResult),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
-            child: Text(
-              payResult,
-              style: valueStyle,
-            ),
-          ),
         ],
       ),
     );
@@ -192,23 +181,3 @@ class _PaymentState extends State<Payment> {
 }
 
 /// Build Info App
-Widget _quickConfig = Container(
-  margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-  child: Row(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: Text("AppID: 2554"),
-          ),
-        ],
-      ),
-      // _btnQuickEdit,
-    ],
-  ),
-);

@@ -5,6 +5,11 @@ class Order {
   final String standerdWeeklyPlanId;
   final String note;
   final String address;
+  // "longitude": 0,
+  //"latitude": 0,
+
+  double longitude;
+  double latitude;
   final double totalPrice;
   final List<RecipePlan> recipeList;
 
@@ -13,6 +18,8 @@ class Order {
       required this.standerdWeeklyPlanId,
       required this.note,
       required this.address,
+      required this.longitude,
+      required this.latitude,
       required this.totalPrice,
       required this.recipeList});
 
@@ -23,6 +30,8 @@ class Order {
       'standerdWeeklyPlanId': standerdWeeklyPlanId,
       'note': note,
       'address': address,
+      'longitude': longitude,
+      'latitude': latitude,
       'totalPrice': totalPrice,
       'recipeList': recipeList.map((e) => e.toJson()).toList(),
     };

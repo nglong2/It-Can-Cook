@@ -8,13 +8,15 @@ class OrderController {
   final RestApi api = RestApi();
 
   Future<String> CreateOrder(String userID, String note, String address,
-      double price, WeeklyPlan weeklyPlan) async {
+      double lat, double long, double price, WeeklyPlan weeklyPlan) async {
     var value = await api.post(
         "api/order/create",
         Order(
                 userId: userID,
                 standerdWeeklyPlanId: weeklyPlan.id ?? "",
                 note: note,
+                longitude: long,
+                latitude: lat,
                 address: address,
                 totalPrice: price,
                 recipeList: weeklyPlan.recipePlans.toList())

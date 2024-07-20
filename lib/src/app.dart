@@ -11,6 +11,7 @@ import 'package:it_can_cook/src/models/weekly/dish.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
+import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/screens/checkout/checkout_screen.dart';
 import 'package:it_can_cook/src/screens/checkout/checkout_step1.dart';
 import 'package:it_can_cook/src/screens/delivery/home.dart';
@@ -113,6 +114,9 @@ class MyApp extends StatelessWidget {
                       return CheckoutStep1(
                         weeklyPlan: routeSettings.arguments as WeeklyPlan,
                       );
+                    case "payment":
+                      return Payment(
+                          routeSettings.arguments as PaymentArguemnt);
                     case "delivery":
                       return DeliveryHome();
                     default:

@@ -91,7 +91,7 @@ class RegisterPageState extends State<RegisterPage> {
                     key: _formKeyVerification,
                     child: TextFormField(
                       controller: _verificationCodeController,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.text,
                       maxLength: 6,
                       decoration: InputDecoration(
                         labelText: S.current.verification_code,

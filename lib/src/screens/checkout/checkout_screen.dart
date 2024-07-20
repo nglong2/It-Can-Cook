@@ -108,7 +108,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                       fit: BoxFit.cover,
                                     ),
                                     Expanded(
-                                        flex: 5,
+                                        flex: 4,
                                         child: Container(
                                           padding:
                                               const EdgeInsets.only(left: 8),
