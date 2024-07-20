@@ -81,5 +81,14 @@
   "custom_plan_description": "Nếu bạn không tìm thấy bất kỳ kế hoạch nào, bạn có thể tạo riêng của mình, chúng tôi có thể cung cấp cho bạn danh sách món ăn, bạn có thể thêm vào",
   "pakaging_method": "Phương pháp đóng gói: ",
   "delete_dish": "Bạn có chắc chắn muốn xóa món ăn này?",
-  "remove": "Xóa"
+  "remove": "Xóa",
+  "add_dish_for": "Thêm món ăn cho ",
+  "monday": "Thứ 2",
+  "tuesday": "Thứ 3",
+  "wednesday": "Thứ 4",
+  "thursday": "Thứ 5",
+  "friday": "Thứ 6",
+  "saturday": "Thứ 7",
+  "sunday": "Chủ nhật",
+  "on": "vào"
 }

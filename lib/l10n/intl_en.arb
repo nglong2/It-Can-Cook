@@ -81,5 +81,14 @@
   "custom_plan_description": "If you cant find any plan, you can create your own, we can provide you the recipe, its easy",
   "pakaging_method": "Pakaging method: ",
   "delete_dish": "Are you sure you want to delete this dish?",
-  "remove": "Remove"
+  "remove": "Remove",
+  "add_dish_for": "Add dish for ",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+  "on": "on"
 }

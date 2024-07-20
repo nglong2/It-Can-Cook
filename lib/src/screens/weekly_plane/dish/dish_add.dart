@@ -52,7 +52,7 @@ class _DishAddState extends State<DishAdd> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-              'Add Dish for weeekid ${widget.args.weeklyPlanId} ${widget.args.dayInWeek} part ${widget.args.mealInDay}'),
+              "${S.current.add_dish_for}${getMealInDay(widget.args.mealInDay).toLowerCase()} ${getDayInWeek(widget.args.dayInWeek)}"),
         ),
         body: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -79,6 +79,42 @@ class _DishAddState extends State<DishAdd> {
           ),
           onChanged: (query) => _onSearchChanged(query, context, widget)),
     );
+  }
+
+  //get int mealInDay to S.crurrent
+  String getMealInDay(int mealInDay) {
+    switch (mealInDay) {
+      case 1:
+        return S.current.breakfast;
+      case 2:
+        return S.current.lunch;
+      case 3:
+        return S.current.dinner;
+      default:
+        return '';
+    }
+  }
+  //get int dayinweek to S.crurrent
+
+  String getDayInWeek(int dayInWeek) {
+    switch (dayInWeek) {
+      case 1:
+        return S.current.monday;
+      case 2:
+        return S.current.tuesday;
+      case 3:
+        return S.current.wednesday;
+      case 4:
+        return S.current.thursday;
+      case 5:
+        return S.current.friday;
+      case 6:
+        return S.current.saturday;
+      case 7:
+        return S.current.sunday;
+      default:
+        return '';
+    }
   }
 
   // var recipePlanState = context.watch<RecipePlanBloc>().state;

@@ -7,6 +7,7 @@ import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 import 'package:it_can_cook/src/screens/setting/setting.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,18 +28,27 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final accountState = context.watch<AccountBloc>()?.state;
-    return Scaffold(
+
+    return LoaderOverlay(
+        child: Scaffold(
       appBar: AppBar(
           title: const Text('WeMealKit',
               style: TextStyle(fontWeight: FontWeight.bold)),
           actions: [
             _currentIndex == 0
-                ? TextButton(
-                    onPressed: () =>
-                        {context.read<WeeklyBloc>().add(FetchWeeklyEvent())},
+                ? GestureDetector(
+                    onTap: () {
+                      context.loaderOverlay.show();
+                      context.read<WeeklyBloc>().add(FetchWeeklyEvent());
+                      //delay 1s to show loading
+                      Future.delayed(const Duration(seconds: 1), () {
+                        context.loaderOverlay.hide();
+                      });
+                    },
                     child: Container(
                       width: 140,
                       height: 50,
+                      margin: EdgeInsets.only(right: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: Color.fromARGB(255, 123, 181, 210),
@@ -91,6 +101,6 @@ class HomePageState extends State<HomePage> {
           ),
         ],
       ),
-    );
+    ));
   }
 }

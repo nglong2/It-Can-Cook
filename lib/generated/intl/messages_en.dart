@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_dish": MessageLookupByLibrary.simpleMessage("Add dish"),
+        "add_dish_for": MessageLookupByLibrary.simpleMessage("Add dish for "),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Checkout"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
@@ -58,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "first_name": MessageLookupByLibrary.simpleMessage("First name"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "friday": MessageLookupByLibrary.simpleMessage("Friday"),
         "get_newest_menu":
             MessageLookupByLibrary.simpleMessage("Get newest menu"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
@@ -73,11 +75,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to log out?"),
         "lunch": MessageLookupByLibrary.simpleMessage("Lunch"),
+        "monday": MessageLookupByLibrary.simpleMessage("Monday"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "numberperoninhouse":
             MessageLookupByLibrary.simpleMessage("Number of people in house: "),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
+        "on": MessageLookupByLibrary.simpleMessage("on"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ standard meals help you get enough nutrients while still \"saving money\""),
         "onboardDescription2": MessageLookupByLibrary.simpleMessage(
@@ -133,19 +137,24 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter verification code"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
+        "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "step": MessageLookupByLibrary.simpleMessage("Steps"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
         "total": MessageLookupByLibrary.simpleMessage("Total: "),
+        "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Verification code"),
         "verification_code_must_be_6_digits_long":
             MessageLookupByLibrary.simpleMessage(
                 "Verification code must be 6 digits"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+        "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
         "week": MessageLookupByLibrary.simpleMessage("Week"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };

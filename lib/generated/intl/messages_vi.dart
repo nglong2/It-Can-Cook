@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_dish": MessageLookupByLibrary.simpleMessage("Thêm món ăn"),
+        "add_dish_for":
+            MessageLookupByLibrary.simpleMessage("Thêm món ăn cho "),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Thanh toán"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
@@ -56,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "first_name": MessageLookupByLibrary.simpleMessage("Tên"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "friday": MessageLookupByLibrary.simpleMessage("Thứ 6"),
         "get_newest_menu":
             MessageLookupByLibrary.simpleMessage("Lấy menu mới nhất"),
         "hello": MessageLookupByLibrary.simpleMessage("Xin chào"),
@@ -71,11 +74,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn đăng xuất?"),
         "lunch": MessageLookupByLibrary.simpleMessage("Bữa trưa"),
+        "monday": MessageLookupByLibrary.simpleMessage("Thứ 2"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "numberperoninhouse":
             MessageLookupByLibrary.simpleMessage("Số người trong nhà"),
         "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
+        "on": MessageLookupByLibrary.simpleMessage("vào"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
             "1500+ bữa ăn tiêu chuẩn giúp bạn đủ chất mà vẫn \"khỏe túi tiền\" "),
         "onboardDescription2": MessageLookupByLibrary.simpleMessage(
@@ -129,18 +134,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã xác thực"),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "remove": MessageLookupByLibrary.simpleMessage("Xóa"),
+        "saturday": MessageLookupByLibrary.simpleMessage("Thứ 7"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "step": MessageLookupByLibrary.simpleMessage("Bước"),
         "submit": MessageLookupByLibrary.simpleMessage("Gửi"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
+        "sunday": MessageLookupByLibrary.simpleMessage("Chủ nhật"),
         "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
+        "thursday": MessageLookupByLibrary.simpleMessage("Thứ 5"),
         "total": MessageLookupByLibrary.simpleMessage("Tổng: "),
+        "tuesday": MessageLookupByLibrary.simpleMessage("Thứ 3"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
         "verification_code_must_be_6_digits_long":
             MessageLookupByLibrary.simpleMessage("Mã xác thực phải có 6 ký tự"),
         "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),
+        "wednesday": MessageLookupByLibrary.simpleMessage("Thứ 4"),
         "week": MessageLookupByLibrary.simpleMessage("Tuần"),
         "yes": MessageLookupByLibrary.simpleMessage("Đồng ý")
       };
