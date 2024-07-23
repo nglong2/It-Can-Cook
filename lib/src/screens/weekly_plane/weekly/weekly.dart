@@ -64,7 +64,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${S.of(context).hello} ${accountstate?.lastName} ${accountstate?.firstName}!",
+                        "${S.of(context).hello} ${accountstate?.lastName ?? ""} ${accountstate?.firstName ?? ""}!",
                         style: const TextStyle(
                             fontSize: 30, fontWeight: FontWeight.bold),
                       ),

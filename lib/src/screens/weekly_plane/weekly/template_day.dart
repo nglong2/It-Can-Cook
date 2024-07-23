@@ -104,39 +104,39 @@ class _TemplateDayState extends State<TemplateDay> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            NumberPicker(
-                              textMapper: (numberText) {
-                                return "$numberText ${S.current.person}";
-                              },
-                              value: menuItem.numberPerson ??
-                                  systemStateBloc.numberPersonInHouse,
-                              minValue: 1,
-                              itemHeight: 18,
-                              selectedTextStyle: const TextStyle(
-                                fontSize: 14,
-                              ),
-                              itemCount: 1,
-                              itemWidth: 62,
-                              haptics: true,
-                              step: 1,
-                              zeroPad: false,
-                              infiniteLoop: false,
-                              maxValue: 10,
-                              textStyle: const TextStyle(
-                                fontSize: 14,
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  menuItem.numberPerson = value;
-                                });
-                                context.read<WeeklyBloc>().add(
-                                      ChangeUserInHouseEvent(menuItem, value),
-                                    );
-                                context.read<TriggerBloc>().add(
-                                      ChangeUserInHouseTriggerEvent(),
-                                    );
-                              },
-                            ),
+                            // NumberPicker(
+                            //   textMapper: (numberText) {
+                            //     return "$numberText ${S.current.person}";
+                            //   },
+                            //   value: menuItem.numberPerson ??
+                            //       systemStateBloc.numberPersonInHouse,
+                            //   minValue: 1,
+                            //   itemHeight: 18,
+                            //   selectedTextStyle: const TextStyle(
+                            //     fontSize: 14,
+                            //   ),
+                            //   itemCount: 1,
+                            //   itemWidth: 62,
+                            //   haptics: true,
+                            //   step: 1,
+                            //   zeroPad: false,
+                            //   infiniteLoop: false,
+                            //   maxValue: 10,
+                            //   textStyle: const TextStyle(
+                            //     fontSize: 14,
+                            //   ),
+                            //   onChanged: (value) {
+                            //     setState(() {
+                            //       menuItem.numberPerson = value;
+                            //     });
+                            //     context.read<WeeklyBloc>().add(
+                            //           ChangeUserInHouseEvent(menuItem, value),
+                            //         );
+                            //     context.read<TriggerBloc>().add(
+                            //           ChangeUserInHouseTriggerEvent(),
+                            //         );
+                            //   },
+                            // ),
                           ],
                         ),
                       ),

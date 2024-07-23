@@ -129,7 +129,7 @@ class _SettingsViewState extends State<SettingsView> {
                               context.read<AccountBloc>().add(LogOutEvent());
                             }
                             await Navigator.of(context).pushNamedAndRemoveUntil(
-                                'login', (Route<dynamic> route) => false);
+                                'onboarding', (Route<dynamic> route) => false);
                           },
                           child: Text(S.of(context).logout),
                         ),

@@ -328,7 +328,7 @@ class _Onboarding extends State<Onboarding> {
           actions: [
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'welcome');
+                Navigator.pushNamed(context, 'home');
               },
               child: Container(
                 padding: const EdgeInsets.all(15),
