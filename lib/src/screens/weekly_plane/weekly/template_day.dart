@@ -140,43 +140,43 @@ class _TemplateDayState extends State<TemplateDay> {
                           ],
                         ),
                       ),
-                      IconButton(
-                          onPressed: () => {
-                                //show dialog confirm delete
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text(S.current.delete_dish),
-                                      content: Text(menuItem.recipe?.name ?? "",
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold)),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text(S.current.cancel),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            context.read<WeeklyBloc>().add(
-                                                DeleteRecipePlanEvent(
-                                                    menuItem));
-                                            //trigger reload
-                                            context.read<TriggerBloc>().add(
-                                                ChangeUserInHouseTriggerEvent());
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text(S.current.remove),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                )
-                              },
-                          icon: const Icon(Icons.delete))
+                      // IconButton(
+                      //     onPressed: () => {
+                      //           //show dialog confirm delete
+                      //           showDialog(
+                      //             context: context,
+                      //             builder: (BuildContext context) {
+                      //               return AlertDialog(
+                      //                 title: Text(S.current.delete_dish),
+                      //                 content: Text(menuItem.recipe?.name ?? "",
+                      //                     style: const TextStyle(
+                      //                         fontSize: 18,
+                      //                         fontWeight: FontWeight.bold)),
+                      //                 actions: [
+                      //                   TextButton(
+                      //                     onPressed: () {
+                      //                       Navigator.of(context).pop();
+                      //                     },
+                      //                     child: Text(S.current.cancel),
+                      //                   ),
+                      //                   TextButton(
+                      //                     onPressed: () {
+                      //                       context.read<WeeklyBloc>().add(
+                      //                           DeleteRecipePlanEvent(
+                      //                               menuItem));
+                      //                       //trigger reload
+                      //                       context.read<TriggerBloc>().add(
+                      //                           ChangeUserInHouseTriggerEvent());
+                      //                       Navigator.of(context).pop();
+                      //                     },
+                      //                     child: Text(S.current.remove),
+                      //                   ),
+                      //                 ],
+                      //               );
+                      //             },
+                      //           )
+                      //         },
+                      //     icon: const Icon(Icons.delete))
                     ],
                   ),
                 ),

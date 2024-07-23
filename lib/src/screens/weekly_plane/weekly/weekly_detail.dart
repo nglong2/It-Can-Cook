@@ -47,25 +47,25 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Visibility(
-                    visible: true,
-                    maintainSize: true,
-                    maintainAnimation: true,
-                    maintainState: true,
-                    child: Text(
-                      "${S.current.total} ${pice.toStringAsFixed(0).replaceAllMapped(
-                            RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                            (Match m) => '${m[1]}.',
-                          )} vnđ",
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.end,
+              //   children: [
+              //     Visibility(
+              //       visible: true,
+              //       maintainSize: true,
+              //       maintainAnimation: true,
+              //       maintainState: true,
+              //       child: Text(
+              //         "${S.current.total} ${pice.toStringAsFixed(0).replaceAllMapped(
+              //               RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+              //               (Match m) => '${m[1]}.',
+              //             )} vnđ",
+              //         style: const TextStyle(
+              //             fontSize: 18, fontWeight: FontWeight.bold),
+              //       ),
+              //     )
+              //   ],
+              // ),
               const SizedBox(height: 10),
               TextButton(
                   style: ButtonStyle(
@@ -79,9 +79,28 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                   ),
                   onPressed: () {
                     //go to "checkout"
-                    Navigator.pushNamed(context, "checkout",
-                        arguments: widget.weeklyPlan);
+                    // Navigator.pushNamed(context, "checkout",
+                    //     arguments: widget.weeklyPlan);
                     // Navigator.pop(context);
+                    //show scaffold
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //   SnackBar(
+                    //     content: Text("Add to quickly plan success"),
+                    //     //color of success
+                    //     backgroundColor: const Color(0xFF02335A),
+                    //     duration: const Duration(seconds: 2),
+                    //   ),
+                    // );
+
+                    // show snackbar fail
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Add to quickly plan fail"),
+                        //color of success
+                        backgroundColor: Colors.red,
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
                   },
                   child: SizedBox(
                     height: 34,
@@ -89,11 +108,11 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Icon(
-                          Icons.shopping_cart_checkout_sharp,
+                          Icons.add,
                           color: Colors.white,
                         ),
                         Text(
-                          S.of(context).add_to_cart,
+                          S.of(context).add_to_quickly_plan,
                           style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -102,6 +121,42 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                       ],
                     ),
                   ))
+
+              // TextButton(
+              //     style: ButtonStyle(
+              //       //borderadius
+              //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              //           RoundedRectangleBorder(
+              //               borderRadius: BorderRadius.circular(10.0),
+              //               side: const BorderSide(color: Color(0xFF02335A)))),
+              //       backgroundColor: MaterialStateProperty.all<Color>(
+              //           const Color(0xFF02335A)),
+              //     ),
+              //     onPressed: () {
+              //       //go to "checkout"
+              //       Navigator.pushNamed(context, "checkout",
+              //           arguments: widget.weeklyPlan);
+              //       // Navigator.pop(context);
+              //     },
+              //     child: SizedBox(
+              //       height: 34,
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           const Icon(
+              //             Icons.shopping_cart_checkout_sharp,
+              //             color: Colors.white,
+              //           ),
+              //           Text(
+              //             S.of(context).add_to_cart,
+              //             style: const TextStyle(
+              //                 fontSize: 18,
+              //                 fontWeight: FontWeight.bold,
+              //                 color: Colors.white),
+              //           ),
+              //         ],
+              //       ),
+              //     ))
             ],
           ),
         ),

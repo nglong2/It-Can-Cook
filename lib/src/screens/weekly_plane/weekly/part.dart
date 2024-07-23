@@ -96,44 +96,44 @@ class MenuPart extends StatelessWidget {
               width: MediaQuery.of(context).size.width - 20,
               child: TemplateDay(recipesPlanParts: recipesPart)),
           const SizedBox(height: 4),
-          Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey[400]!),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: GestureDetector(
-                onTap: () async {
-                  context.read<RecipePlanBloc>().add(FetchRecipePlanEvent(
-                      '', false, mealInDay, dayInWeek, weeklyPlanId));
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    scrollControlDisabledMaxHeightRatio: 0.5,
-                    showDragHandle: true,
-                    context: context,
-                    builder: (context) {
-                      return SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.8,
-                          child: DishAdd(
-                              args: DishArguments(
-                                  dayInWeek: dayInWeek,
-                                  mealInDay: mealInDay,
-                                  weeklyPlanId: weeklyPlanId)));
-                    },
-                  );
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.add_rounded,
-                      size: 35,
-                    ),
-                    Text(S.current.add_dish)
-                  ],
-                ),
-              ))
-          //devide line
+          // Container(
+          //     decoration: BoxDecoration(
+          //       border: Border.all(color: Colors.grey[400]!),
+          //       borderRadius: BorderRadius.circular(8),
+          //     ),
+          //     child: GestureDetector(
+          //       onTap: () async {
+          //         context.read<RecipePlanBloc>().add(FetchRecipePlanEvent(
+          //             '', false, mealInDay, dayInWeek, weeklyPlanId));
+          //         await showModalBottomSheet(
+          //           isScrollControlled: true,
+          //           scrollControlDisabledMaxHeightRatio: 0.5,
+          //           showDragHandle: true,
+          //           context: context,
+          //           builder: (context) {
+          //             return SizedBox(
+          //                 height: MediaQuery.of(context).size.height * 0.8,
+          //                 child: DishAdd(
+          //                     args: DishArguments(
+          //                         dayInWeek: dayInWeek,
+          //                         mealInDay: mealInDay,
+          //                         weeklyPlanId: weeklyPlanId)));
+          //           },
+          //         );
+          //       },
+          //       child: Row(
+          //         mainAxisSize: MainAxisSize.max,
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           const Icon(
+          //             Icons.add_rounded,
+          //             size: 35,
+          //           ),
+          //           Text(S.current.add_dish)
+          //         ],
+          //       ),
+          //     ))
+          // //devide line
         ],
       ),
     );

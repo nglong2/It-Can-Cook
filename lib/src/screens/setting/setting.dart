@@ -40,21 +40,24 @@ class _SettingsViewState extends State<SettingsView> {
           body: ListView(children: [
             ListTile(
               leading: const Icon(Icons.person),
-              title:
-                  Text('${accountState?.firstName} ${accountState?.lastName}'),
+              title: accountState != null
+                  ? Text('${accountState?.firstName} ${accountState?.lastName}')
+                  : Text(S.current.login),
               onTap: () {
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  scrollControlDisabledMaxHeightRatio: 0.5,
-                  showDragHandle: true,
-                  context: context,
-                  builder: (context) {
-                    return SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      child: const AccountInfoScreen(),
-                    );
-                  },
-                );
+                accountState != null
+                    ? showModalBottomSheet(
+                        isScrollControlled: true,
+                        scrollControlDisabledMaxHeightRatio: 0.5,
+                        showDragHandle: true,
+                        context: context,
+                        builder: (context) {
+                          return SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.5,
+                            child: const AccountInfoScreen(),
+                          );
+                        },
+                      )
+                    : Navigator.of(context).pushNamed('login');
               },
             ),
             const Divider(),
@@ -102,43 +105,49 @@ class _SettingsViewState extends State<SettingsView> {
             ),
             const Divider(),
             //logout button
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: Text(S.of(context).logout),
-              onTap: () async {
-                // Logout shared preferences
-                //show confirmation dialog
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text(S.of(context).logout),
-                      content: Text(S.of(context).logoutConfirmation),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(S.of(context).cancel),
-                        ),
-                        TextButton(
-                          onPressed: () async {
-                            var prefs = await SharedPreferences.getInstance();
-                            await prefs.remove('jwtToken');
-                            if (accountState?.email != null) {
-                              context.read<AccountBloc>().add(LogOutEvent());
-                            }
-                            await Navigator.of(context).pushNamedAndRemoveUntil(
-                                'onboarding', (Route<dynamic> route) => false);
-                          },
-                          child: Text(S.of(context).logout),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-            ),
+            accountState != null
+                ? ListTile(
+                    leading: const Icon(Icons.logout),
+                    title: Text(S.of(context).logout),
+                    onTap: () async {
+                      // Logout shared preferences
+                      //show confirmation dialog
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(S.of(context).logout),
+                            content: Text(S.of(context).logoutConfirmation),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(S.of(context).cancel),
+                              ),
+                              TextButton(
+                                onPressed: () async {
+                                  var prefs =
+                                      await SharedPreferences.getInstance();
+                                  await prefs.remove('jwtToken');
+                                  if (accountState?.email != null) {
+                                    context
+                                        .read<AccountBloc>()
+                                        .add(LogOutEvent());
+                                  }
+                                  await Navigator.of(context)
+                                      .pushNamedAndRemoveUntil('onboarding',
+                                          (Route<dynamic> route) => false);
+                                },
+                                child: Text(S.of(context).logout),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  )
+                : Container(),
           ]),
         );
       },

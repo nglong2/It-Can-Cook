@@ -92,5 +92,15 @@
   "sunday": "Sunday",
   "on": "on",
   "name": "Name",
-  "address": "Address"
+  "address": "Address",
+  "nutrion": "Nutrion",
+  "nutrition_facts": "Nutrition facts",
+  "serving_size": "Serving Size: ",
+  "total_fat": "Total Fat",
+  "sodium": "Sodium",
+  "total_carbohydrate": "Total Carbohydrate",
+  "dietary_fiber": "Dietary Fiber",
+  "sugars": "Sugars",
+  "add_to_quickly_plan": "Add to quickly plan",
+  "detail": "Detail"
 }

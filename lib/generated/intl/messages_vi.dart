@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_dish_for":
             MessageLookupByLibrary.simpleMessage("Thêm món ăn cho "),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Thanh toán"),
+        "add_to_quickly_plan":
+            MessageLookupByLibrary.simpleMessage("Thêm vào kế hoạch cá nhân"),
         "address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
@@ -49,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kế hoạch tùy chỉnh ➕"),
         "delete_dish": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xóa món ăn này?"),
+        "detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+        "dietary_fiber": MessageLookupByLibrary.simpleMessage("Chất xơ"),
         "dinner": MessageLookupByLibrary.simpleMessage("Bữa tối"),
         "done": MessageLookupByLibrary.simpleMessage("Bắt đầu nào!"),
         "dont_have_account":
@@ -81,6 +85,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "numberperoninhouse":
             MessageLookupByLibrary.simpleMessage("Số người trong nhà"),
+        "nutrion": MessageLookupByLibrary.simpleMessage("Dinh dưỡng"),
+        "nutrition_facts":
+            MessageLookupByLibrary.simpleMessage("Giá trị dinh dưỡng"),
         "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
         "on": MessageLookupByLibrary.simpleMessage("vào"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
@@ -138,14 +145,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove": MessageLookupByLibrary.simpleMessage("Xóa"),
         "saturday": MessageLookupByLibrary.simpleMessage("Thứ 7"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
+        "serving_size":
+            MessageLookupByLibrary.simpleMessage("Phần ăn dùng cho: "),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+        "sodium": MessageLookupByLibrary.simpleMessage("Muối"),
         "step": MessageLookupByLibrary.simpleMessage("Bước"),
         "submit": MessageLookupByLibrary.simpleMessage("Gửi"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
+        "sugars": MessageLookupByLibrary.simpleMessage("Đường"),
         "sunday": MessageLookupByLibrary.simpleMessage("Chủ nhật"),
         "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
         "thursday": MessageLookupByLibrary.simpleMessage("Thứ 5"),
         "total": MessageLookupByLibrary.simpleMessage("Tổng: "),
+        "total_carbohydrate":
+            MessageLookupByLibrary.simpleMessage("Tổng carbohydrate"),
+        "total_fat": MessageLookupByLibrary.simpleMessage("Tổng chất béo"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Thứ 3"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),

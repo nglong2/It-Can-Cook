@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_dish": MessageLookupByLibrary.simpleMessage("Add dish"),
         "add_dish_for": MessageLookupByLibrary.simpleMessage("Add dish for "),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "add_to_quickly_plan":
+            MessageLookupByLibrary.simpleMessage("Add to quickly plan"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "already_have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
@@ -50,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Custom Plan ➕"),
         "delete_dish": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this dish?"),
+        "detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "dietary_fiber": MessageLookupByLibrary.simpleMessage("Dietary Fiber"),
         "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
         "done": MessageLookupByLibrary.simpleMessage("Get started!"),
         "dont_have_account":
@@ -82,6 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "numberperoninhouse":
             MessageLookupByLibrary.simpleMessage("Number of people in house: "),
+        "nutrion": MessageLookupByLibrary.simpleMessage("Nutrion"),
+        "nutrition_facts":
+            MessageLookupByLibrary.simpleMessage("Nutrition facts"),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
         "on": MessageLookupByLibrary.simpleMessage("on"),
         "onboardDescription1": MessageLookupByLibrary.simpleMessage(
@@ -141,14 +148,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "serving_size": MessageLookupByLibrary.simpleMessage("Serving Size: "),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "sodium": MessageLookupByLibrary.simpleMessage("Sodium"),
         "step": MessageLookupByLibrary.simpleMessage("Steps"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "sugars": MessageLookupByLibrary.simpleMessage("Sugars"),
         "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
         "total": MessageLookupByLibrary.simpleMessage("Total: "),
+        "total_carbohydrate":
+            MessageLookupByLibrary.simpleMessage("Total Carbohydrate"),
+        "total_fat": MessageLookupByLibrary.simpleMessage("Total Fat"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Verification code"),

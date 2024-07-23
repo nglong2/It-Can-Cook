@@ -92,5 +92,15 @@
   "sunday": "Chủ nhật",
   "on": "vào",
   "name": "Tên",
-  "address": "Địa chỉ"
+  "address": "Địa chỉ",
+  "nutrion": "Dinh dưỡng",
+  "nutrition_facts": "Giá trị dinh dưỡng",
+  "serving_size": "Phần ăn dùng cho: ",
+  "total_fat": "Tổng chất béo",
+  "sodium": "Muối",
+  "total_carbohydrate": "Tổng carbohydrate",
+  "dietary_fiber": "Chất xơ",
+  "sugars": "Đường",
+  "add_to_quickly_plan": "Thêm vào kế hoạch cá nhân",
+  "detail": "Chi tiết"
 }

@@ -959,6 +959,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Nutrion`
+  String get nutrion {
+    return Intl.message(
+      'Nutrion',
+      name: 'nutrion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nutrition facts`
+  String get nutrition_facts {
+    return Intl.message(
+      'Nutrition facts',
+      name: 'nutrition_facts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Serving Size: `
+  String get serving_size {
+    return Intl.message(
+      'Serving Size: ',
+      name: 'serving_size',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Fat`
+  String get total_fat {
+    return Intl.message(
+      'Total Fat',
+      name: 'total_fat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sodium`
+  String get sodium {
+    return Intl.message(
+      'Sodium',
+      name: 'sodium',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Carbohydrate`
+  String get total_carbohydrate {
+    return Intl.message(
+      'Total Carbohydrate',
+      name: 'total_carbohydrate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dietary Fiber`
+  String get dietary_fiber {
+    return Intl.message(
+      'Dietary Fiber',
+      name: 'dietary_fiber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sugars`
+  String get sugars {
+    return Intl.message(
+      'Sugars',
+      name: 'sugars',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to quickly plan`
+  String get add_to_quickly_plan {
+    return Intl.message(
+      'Add to quickly plan',
+      name: 'add_to_quickly_plan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detail`
+  String get detail {
+    return Intl.message(
+      'Detail',
+      name: 'detail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

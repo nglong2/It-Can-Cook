@@ -35,23 +35,63 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
                 Row(
                   children: [
                     Text("${S.current.amount} ${step.amount} "),
-                    const Text("x"),
-                    Text(systemBloc.numberPersonInHouse.toString()),
-                    const Text("= "),
-                    Text("${step.amount! * systemBloc.numberPersonInHouse} "),
                     Text("${step.ingredient?.unit}"),
                   ],
-                )
+                ),
+                ExpansionTile(
+                  title: Text(S.current.nutrition_facts),
+                  backgroundColor: Colors.grey[200],
+                  collapsedBackgroundColor: Colors.grey[200],
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                            "Calo: ${step.ingredient?.ingredientNutrient?.calories ?? 0} kcal"),
+                        Text(
+                            "Protein: ${step.ingredient?.ingredientNutrient?.protein ?? 0} g"),
+                        Text(
+                            "${S.current.total_fat}: ${step.ingredient?.ingredientNutrient?.fat ?? 0} g"),
+                        //sugar
+                        Text(
+                            "${S.current.sugars}: ${step.ingredient?.ingredientNutrient?.sugar ?? 0} g"),
+                        Text(
+                            "${S.current.sodium}: ${step.ingredient?.ingredientNutrient?.sodium ?? 0} mg"),
+                        Text(
+                            "${S.current.total_carbohydrate}: ${step.ingredient?.ingredientNutrient?.carbonhydrate ?? 0} g"),
+                      ],
+                    )
+                  ],
+                ),
               ],
             ),
             leading: SizedBox(
-              width: 100,
-              height: 100,
+                child: GestureDetector(
               child: CachedNetworkImage(
                 imageUrl: step.ingredient?.img ?? "",
+                width: 100,
+                height: 100,
                 fit: BoxFit.cover,
               ),
-            ),
+              onTap: () => {
+                //show modal bottom sheet
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: 200,
+                      child: CachedNetworkImage(
+                        imageUrl: step.ingredient?.img ?? "",
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  },
+                )
+              },
+            )),
           );
         },
       ),

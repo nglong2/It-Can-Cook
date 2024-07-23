@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_ingredient.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_nutrion.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_step.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
@@ -21,7 +22,7 @@ class _DishDetailState extends State<DishDetail> {
           title: Text(widget.recipe.recipe?.name ?? ''),
         ),
         body: DefaultTabController(
-          length: 2,
+          length: 3,
           child: Column(
             children: <Widget>[
               Row(
@@ -31,6 +32,7 @@ class _DishDetailState extends State<DishDetail> {
               ),
               TabBar(
                 tabs: [
+                  Tab(text: S.current.detail),
                   Tab(text: S.current.ingredients),
                   Tab(text: S.current.step),
                 ],
@@ -39,6 +41,7 @@ class _DishDetailState extends State<DishDetail> {
                 child: TabBarView(
                   children: [
                     // Ingredients tab content
+                    NutrionTabWidget(recipe: widget.recipe.recipe!),
                     IngredientTabWidget(
                         ingredients: widget.recipe.recipe!.recipeIngredients),
                     // Steps tab content
