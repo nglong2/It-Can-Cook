@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/screens/account/account_info.dart';
+import 'package:it_can_cook/src/screens/customplan/custom_plan.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsView extends StatefulWidget {
@@ -36,6 +38,7 @@ class _SettingsViewState extends State<SettingsView> {
       builder: (context) {
         final systemState = context.watch<SystemBloc>().state;
         final accountState = context.watch<AccountBloc>()?.state;
+
         return Scaffold(
           body: ListView(children: [
             ListTile(
@@ -58,6 +61,18 @@ class _SettingsViewState extends State<SettingsView> {
                         },
                       )
                     : Navigator.of(context).pushNamed('login');
+              },
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.list),
+              title: Text(S.of(context).list_custom_personal_weekly_plan),
+              onTap: () {
+                context
+                    .read<CustomPlanBloc>()
+                    .add(FetchCustomPlanEvent(accountState?.id ?? ''));
+                //show list custom plan bottomsheets
+                Navigator.pushNamed(context, "custom_plan");
               },
             ),
             const Divider(),
@@ -131,9 +146,11 @@ class _SettingsViewState extends State<SettingsView> {
                                       await SharedPreferences.getInstance();
                                   await prefs.remove('jwtToken');
                                   if (accountState?.email != null) {
-                                    context
-                                        .read<AccountBloc>()
-                                        .add(LogOutEvent());
+                                    if (context.mounted) {
+                                      context
+                                          .read<AccountBloc>()
+                                          .add(LogOutEvent());
+                                    }
                                   }
                                   await Navigator.of(context)
                                       .pushNamedAndRemoveUntil('onboarding',

@@ -1059,6 +1059,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Only customer can login`
+  String get only_customer_can_login {
+    return Intl.message(
+      'Only customer can login',
+      name: 'only_customer_can_login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `List of custom personal weekly plan`
+  String get list_custom_personal_weekly_plan {
+    return Intl.message(
+      'List of custom personal weekly plan',
+      name: 'list_custom_personal_weekly_plan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to custom plan successfully`
+  String get add_to_custom_plan_success {
+    return Intl.message(
+      'Add to custom plan successfully',
+      name: 'add_to_custom_plan_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send me to custom plan`
+  String get send_me_to_custom_plan {
+    return Intl.message(
+      'Send me to custom plan',
+      name: 'send_me_to_custom_plan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update plan`
+  String get update_plan {
+    return Intl.message(
+      'Update plan',
+      name: 'update_plan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `List`
+  String get list {
+    return Intl.message(
+      'List',
+      name: 'list',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

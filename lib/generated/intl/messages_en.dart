@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_dish": MessageLookupByLibrary.simpleMessage("Add dish"),
         "add_dish_for": MessageLookupByLibrary.simpleMessage("Add dish for "),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "add_to_custom_plan_success": MessageLookupByLibrary.simpleMessage(
+            "Add to custom plan successfully"),
         "add_to_quickly_plan":
             MessageLookupByLibrary.simpleMessage("Add to quickly plan"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
@@ -34,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appDescription":
             MessageLookupByLibrary.simpleMessage("A simple recipe app"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
         "breakfast": MessageLookupByLibrary.simpleMessage("Breakfast"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "change_password":
@@ -73,6 +76,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "ingredients": MessageLookupByLibrary.simpleMessage("Ingredients"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "last_name": MessageLookupByLibrary.simpleMessage("Last name"),
+        "list": MessageLookupByLibrary.simpleMessage("List"),
+        "list_custom_personal_weekly_plan":
+            MessageLookupByLibrary.simpleMessage(
+                "List of custom personal weekly plan"),
         "login": MessageLookupByLibrary.simpleMessage("Log in"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Cooking is really easy with WeMealKit!"),
@@ -103,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "What do you need, We have it all!"),
         "onboardTitle3":
             MessageLookupByLibrary.simpleMessage("Connect with many experts"),
+        "only_customer_can_login":
+            MessageLookupByLibrary.simpleMessage("Only customer can login"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Pakaging method: "),
         "passed": MessageLookupByLibrary.simpleMessage("Passed"),
@@ -148,6 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "send_me_to_custom_plan":
+            MessageLookupByLibrary.simpleMessage("Send me to custom plan"),
         "serving_size": MessageLookupByLibrary.simpleMessage("Serving Size: "),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sodium": MessageLookupByLibrary.simpleMessage("Sodium"),
@@ -163,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total Carbohydrate"),
         "total_fat": MessageLookupByLibrary.simpleMessage("Total Fat"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
+        "update_plan": MessageLookupByLibrary.simpleMessage("Update plan"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Verification code"),
         "verification_code_must_be_6_digits_long":

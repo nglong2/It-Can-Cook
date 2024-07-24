@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
@@ -9,19 +10,19 @@ import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/system/trigger.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 
-class DishAddList extends StatefulWidget {
+class DishAddRecipeAllList extends StatefulWidget {
   final bool isShowAddButton;
 
-  const DishAddList({super.key, required this.isShowAddButton});
+  const DishAddRecipeAllList({super.key, required this.isShowAddButton});
   @override
-  _DishAddListState createState() => _DishAddListState();
+  _DishAddRecipeAllListState createState() => _DishAddRecipeAllListState();
 }
 
-class _DishAddListState extends State<DishAddList> {
+class _DishAddRecipeAllListState extends State<DishAddRecipeAllList> {
   @override
   Widget build(BuildContext context) {
     var systemBloc = context.watch<SystemBloc>().state;
-    return BlocBuilder<RecipePlanBloc, List<RecipePlan>>(
+    return BlocBuilder<RecipesAllBloc, List<RecipePlan>>(
       builder: (context, state) {
         return Container(
           child: Column(

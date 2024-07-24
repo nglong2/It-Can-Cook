@@ -83,6 +83,26 @@ class WeeklyPlan {
     };
   }
 
+//to Json Create
+  Map<String, dynamic> toJsonCreate() {
+    return {
+      'id': id,
+      'beginDate': beginDate,
+      'endDate': endDate,
+      'description': description,
+      'title': title,
+      'urlImage': urlImage,
+      'totalPrice': totalPrice,
+      'createAt': createAt,
+      'createdBy': createdBy,
+      'approvedAt': approvedAt,
+      'approvedBy': approvedBy,
+      'updatedAt': updatedAt,
+      'updatedBy': updatedBy,
+      'processStatus': 3,
+      'recipeIds': recipePlans.map((e) => e.toJson()).toList(),
+    };
+  }
   //copy with
 
   WeeklyPlan copyWith({

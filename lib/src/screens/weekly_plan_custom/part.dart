@@ -1,0 +1,143 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
+import 'package:it_can_cook/src/models/weekly/dish.dart';
+import 'package:it_can_cook/src/models/weekly/recipe.dart';
+import 'package:it_can_cook/src/screens/weekly_plan_custom/template_day.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add.dart';
+import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
+
+class PartCustom extends StatefulWidget {
+  final int dayInWeek;
+  final String weeklyPlanId;
+  final List<RecipePlan> recipes;
+
+  const PartCustom(
+      {Key? key,
+      required this.recipes,
+      required this.dayInWeek,
+      required this.weeklyPlanId});
+  @override
+  _PartCustomState createState() => _PartCustomState();
+}
+
+class _PartCustomState extends State<PartCustom> {
+  @override
+  Widget build(BuildContext context) {
+    var beakfast =
+        widget.recipes.where((element) => element.mealInDay == 1).toList();
+    var lunch =
+        widget.recipes.where((element) => element.mealInDay == 2).toList();
+    var dinner =
+        widget.recipes.where((element) => element.mealInDay == 3).toList();
+
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          MenuPart(
+              title: S.current.breakfast,
+              recipesPart: beakfast,
+              dayInWeek: widget.dayInWeek,
+              weeklyPlanId: widget.weeklyPlanId,
+              mealInDay: 1),
+          MenuPart(
+              title: S.current.lunch,
+              recipesPart: lunch,
+              weeklyPlanId: widget.weeklyPlanId,
+              dayInWeek: widget.dayInWeek,
+              mealInDay: 2),
+          MenuPart(
+              title: S.current.dinner,
+              weeklyPlanId: widget.weeklyPlanId,
+              recipesPart: dinner,
+              dayInWeek: widget.dayInWeek,
+              mealInDay: 3),
+        ]);
+  }
+}
+
+class MenuPart extends StatelessWidget {
+  final String title;
+  final List<RecipePlan> recipesPart;
+  final int dayInWeek;
+  final int mealInDay;
+  final String weeklyPlanId;
+  const MenuPart(
+      {Key? key,
+      required this.title,
+      required this.recipesPart,
+      required this.dayInWeek,
+      required this.mealInDay,
+      required this.weeklyPlanId})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              //uppercase
+            ),
+          ),
+          const SizedBox(height: 8),
+          SizedBox(
+              width: MediaQuery.of(context).size.width - 20,
+              child: TemplateCustomDay(recipesPlanParts: recipesPart)),
+          const SizedBox(height: 4),
+          Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey[400]!),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: GestureDetector(
+                onTap: () async {
+                  context.read<RecipePlanBloc>().add(FetchRecipePlanEvent(
+                      '', false, mealInDay, dayInWeek, weeklyPlanId));
+                  await showModalBottomSheet(
+                    isScrollControlled: true,
+                    scrollControlDisabledMaxHeightRatio: 0.5,
+                    showDragHandle: true,
+                    context: context,
+                    builder: (context) {
+                      return SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.8,
+                          child: DishAdd(
+                              args: DishArguments(
+                                  dayInWeek: dayInWeek,
+                                  mealInDay: mealInDay,
+                                  weeklyPlanId: weeklyPlanId)));
+                    },
+                  );
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.add_rounded,
+                      size: 35,
+                    ),
+                    Text(S.current.add_dish)
+                  ],
+                ),
+              ))
+          // //devide line
+        ],
+      ),
+    );
+  }
+}
+//convert 

@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_dish_for":
             MessageLookupByLibrary.simpleMessage("Thêm món ăn cho "),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Thanh toán"),
+        "add_to_custom_plan_success": MessageLookupByLibrary.simpleMessage(
+            "Thêm vào kế hoạch cá nhân thành công"),
         "add_to_quickly_plan":
             MessageLookupByLibrary.simpleMessage("Thêm vào kế hoạch cá nhân"),
         "address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
@@ -35,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appDescription":
             MessageLookupByLibrary.simpleMessage("Ứng dụng nấu ăn"),
         "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
+        "back": MessageLookupByLibrary.simpleMessage("Quay lại"),
         "breakfast": MessageLookupByLibrary.simpleMessage("Bữa sáng"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
@@ -72,6 +75,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "ingredients": MessageLookupByLibrary.simpleMessage("Nguyên liệu"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "last_name": MessageLookupByLibrary.simpleMessage("Họ"),
+        "list": MessageLookupByLibrary.simpleMessage("Danh sách món ăn"),
+        "list_custom_personal_weekly_plan":
+            MessageLookupByLibrary.simpleMessage(
+                "Danh sách kế hoạch cá nhân hàng tuần"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Làm bếp thật dễ dàng cùng WeMealKit!"),
@@ -102,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cần gì ư, Chúng tôi có đủ!"),
         "onboardTitle3": MessageLookupByLibrary.simpleMessage(
             "Kết nối với nhiều chuyên gia"),
+        "only_customer_can_login": MessageLookupByLibrary.simpleMessage(
+            "Chỉ khách hàng mới có thể đăng nhập"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Phương pháp đóng gói: "),
         "passed": MessageLookupByLibrary.simpleMessage("Bỏ qua"),
@@ -145,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove": MessageLookupByLibrary.simpleMessage("Xóa"),
         "saturday": MessageLookupByLibrary.simpleMessage("Thứ 7"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
+        "send_me_to_custom_plan": MessageLookupByLibrary.simpleMessage(
+            "Chuyển tôi đến kế hoạch cá nhân"),
         "serving_size":
             MessageLookupByLibrary.simpleMessage("Phần ăn dùng cho: "),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
@@ -161,6 +172,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tổng carbohydrate"),
         "total_fat": MessageLookupByLibrary.simpleMessage("Tổng chất béo"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Thứ 3"),
+        "update_plan":
+            MessageLookupByLibrary.simpleMessage("Cập nhật kế hoạch"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
         "verification_code_must_be_6_digits_long":

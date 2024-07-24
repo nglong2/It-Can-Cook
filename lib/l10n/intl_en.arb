@@ -102,5 +102,12 @@
   "dietary_fiber": "Dietary Fiber",
   "sugars": "Sugars",
   "add_to_quickly_plan": "Add to quickly plan",
-  "detail": "Detail"
+  "detail": "Detail",
+  "only_customer_can_login": "Only customer can login",
+  "list_custom_personal_weekly_plan": "List of custom personal weekly plan",
+  "add_to_custom_plan_success": "Add to custom plan successfully",
+  "send_me_to_custom_plan": "Send me to custom plan",
+  "back": "Back",
+  "update_plan": "Update plan",
+  "list": "List"
 }

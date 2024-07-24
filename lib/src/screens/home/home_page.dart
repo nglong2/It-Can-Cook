@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
+import 'package:it_can_cook/src/screens/recipes/recipe_list.dart';
 import 'package:it_can_cook/src/screens/setting/setting.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -21,13 +23,20 @@ class HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     WeeklyScreen(),
-    Onboarding(),
+    RecipeList(),
     const SettingsView(),
   ];
 
   @override
   Widget build(BuildContext context) {
     final accountState = context.watch<AccountBloc>()?.state;
+    if (accountState != null &&
+        accountState.id != null &&
+        accountState.id != "") {
+      context
+          .read<CustomPlanBloc>()
+          .add(FetchCustomPlanEvent(accountState.id!));
+    }
 
     return LoaderOverlay(
         child: Scaffold(
@@ -92,8 +101,8 @@ class HomePageState extends State<HomePage> {
             label: S.of(context).home,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.history_rounded),
-            label: S.of(context).history,
+            icon: const Icon(Icons.format_list_numbered_outlined),
+            label: S.of(context).list,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),

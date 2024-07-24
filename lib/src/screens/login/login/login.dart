@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
 import 'package:it_can_cook/src/controller/account.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -36,10 +37,30 @@ class LoginPageState extends State<LoginPage> {
       if (value != null) {
         context.loaderOverlay.hide();
         context.read<AccountBloc>().add(LoginEvent(value));
-        if (value.role?.toLowerCase() == 'shiper') {
+        if (value.role?.toLowerCase() == 'shipper') {
           Navigator.pushNamedAndRemoveUntil(
               context, 'delivery', (route) => false);
         } else {
+          //role!=customer
+          if (value.role?.toLowerCase() != 'customer') {
+            //show dialog
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(S.of(context).error),
+                    content: Text(S.of(context).only_customer_can_login),
+                    actions: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(S.of(context).yes))
+                    ],
+                  );
+                });
+          } else
+            context.read<CustomPlanBloc>().add(FetchCustomPlanEvent(value.id!));
           Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
         }
       }

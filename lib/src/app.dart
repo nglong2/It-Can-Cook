@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
+import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
@@ -14,6 +16,7 @@ import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/screens/checkout/checkout_screen.dart';
 import 'package:it_can_cook/src/screens/checkout/checkout_step1.dart';
+import 'package:it_can_cook/src/screens/customplan/custom_plan.dart';
 import 'package:it_can_cook/src/screens/delivery/home.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
 import 'package:it_can_cook/src/screens/login/login/login.dart';
@@ -21,6 +24,7 @@ import 'package:it_can_cook/src/screens/login/register/register.dart';
 import 'package:it_can_cook/src/screens/login/welcome/welcome.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 import 'package:it_can_cook/src/screens/payment/payment.dart';
+import 'package:it_can_cook/src/screens/weekly_plan_custom/weekly_detail.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add_list.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_detail.dart';
@@ -52,6 +56,14 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<RecipePlanBloc>(
           create: (BuildContext context) => RecipePlanBloc(),
+        ),
+        BlocProvider<CustomPlanBloc>(
+          create: (BuildContext context) => CustomPlanBloc(),
+        ),
+        BlocProvider<RecipesAllBloc>(
+          create: (BuildContext context) =>
+              RecipesAllBloc()..add(FetchRecipesAllEvent("")),
+          lazy: true,
         ),
       ],
       child: Builder(
@@ -105,7 +117,9 @@ class MyApp extends StatelessWidget {
                         args: routeSettings.arguments as DishArguments,
                       );
                     case "dish_add_list":
-                      return DishAddList();
+                      return DishAddList(
+                        isShowAddButton: routeSettings.arguments as bool,
+                      );
                     case "checkout":
                       return CheckoutScreen(
                         weeklyPlan: routeSettings.arguments as WeeklyPlan,
@@ -119,10 +133,17 @@ class MyApp extends StatelessWidget {
                           routeSettings.arguments as PaymentArguemnt);
                     case "delivery":
                       return DeliveryHome();
+                    case "onboarding":
+                      return Onboarding();
+                    case "custom_plan":
+                      return const CustomPlanScreen();
+                    case "weekly_custom_detail":
+                      return WeeklyCustomDetailPage(
+                          weeklyPlan: routeSettings.arguments as WeeklyPlan);
                     default:
                       // return Payment("hello");
                       return accountState != null
-                          ? accountState.role?.toLowerCase() == 'shiper'
+                          ? accountState.role?.toLowerCase() == 'shipper'
                               ? DeliveryHome()
                               : const HomePage()
                           : Onboarding();

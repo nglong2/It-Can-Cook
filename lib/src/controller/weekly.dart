@@ -20,4 +20,35 @@ class WeeklyPlanController {
     }
     throw Exception('Failed to get recipes');
   }
+
+  Future<String> createWeeklyForCustom(
+      String userId, WeeklyPlan weeklyPlan) async {
+    weeklyPlan.createdBy = userId;
+    var data = await api.post(
+        "api/weeklyplan/create-for-customer", weeklyPlan.toJsonCreate());
+    if (data.statusCode == 200) {
+      if (jsonDecode(data.body)["statusCode"] == 200) {
+        return jsonDecode(data.body)["message"];
+      } else {
+        return jsonDecode(data.body)["message"];
+      }
+    }
+    return "Failed to create weekly";
+  }
+
+  Future<List<WeeklyPlan>> getWeeklyByCustomerId(String customerId) async {
+    var value =
+        await api.get("api/weeklyplan/get-by-customer-id?id=$customerId");
+    if (value.statusCode == 200) {
+      if (jsonDecode(value.body)["statusCode"] == 200) {
+        List<WeeklyPlan> recipes = [];
+        for (var item in jsonDecode(value.body)["data"]) {
+          recipes.add(WeeklyPlan.fromJson(item));
+        }
+        return recipes;
+      }
+      throw Exception(jsonDecode(value.body)["message"]);
+    }
+    throw Exception('Failed to get recipes');
+  }
 }

@@ -102,5 +102,12 @@
   "dietary_fiber": "Chất xơ",
   "sugars": "Đường",
   "add_to_quickly_plan": "Thêm vào kế hoạch cá nhân",
-  "detail": "Chi tiết"
+  "detail": "Chi tiết",
+  "only_customer_can_login": "Chỉ khách hàng mới có thể đăng nhập",
+  "list_custom_personal_weekly_plan": "Danh sách kế hoạch cá nhân hàng tuần",
+  "add_to_custom_plan_success": "Thêm vào kế hoạch cá nhân thành công",
+  "send_me_to_custom_plan": "Chuyển tôi đến kế hoạch cá nhân",
+  "back": "Quay lại",
+  "update_plan": "Cập nhật kế hoạch",
+  "list": "Danh sách món ăn"
 }
