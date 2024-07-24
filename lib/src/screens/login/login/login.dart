@@ -60,10 +60,12 @@ class LoginPageState extends State<LoginPage> {
                     ],
                   );
                 });
-          } else
+          } else {
             context.read<CustomPlanBloc>().add(FetchCustomPlanEvent(value.id!));
-          context.read<WeeklyBloc>().add(FetchWeeklyEvent());
-          Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+            context.read<WeeklyBloc>().add(FetchWeeklyEvent());
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'home', (route) => false);
+          }
         }
       }
     }).onError((error, stackTrace) {
