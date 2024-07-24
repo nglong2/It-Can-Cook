@@ -204,8 +204,8 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                     accountBloc?.id ?? '',
                     note,
                     addressController.text,
-                    double.parse(lat),
-                    double.parse(long),
+                    lat == '' ? 0.0 : double.parse(lat),
+                    lat == "" ? 0.0 : double.parse(long),
                     pice,
                     widget.weeklyPlan,
                   );

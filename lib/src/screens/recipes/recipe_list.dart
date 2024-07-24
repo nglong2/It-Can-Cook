@@ -44,7 +44,6 @@ class _RecipeListState extends State<RecipeList> {
     //renderlist recipePlanState
     recipePlanState = context.watch<RecipesAllBloc>().state;
     return Scaffold(
-        appBar: AppBar(title: Text(S.current.list)),
         body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(

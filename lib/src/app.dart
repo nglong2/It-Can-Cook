@@ -70,6 +70,7 @@ class MyApp extends StatelessWidget {
         builder: (context) {
           final systemState = context.watch<SystemBloc>().state;
           final accountState = context.watch<AccountBloc>()?.state;
+
           return MaterialApp(
             restorationScopeId: 'app',
             localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
