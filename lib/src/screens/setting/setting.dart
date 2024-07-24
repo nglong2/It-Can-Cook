@@ -43,11 +43,11 @@ class _SettingsViewState extends State<SettingsView> {
           body: ListView(children: [
             ListTile(
               leading: const Icon(Icons.person),
-              title: accountState != null
+              title: accountState?.id != null
                   ? Text('${accountState?.firstName} ${accountState?.lastName}')
                   : Text(S.current.login),
               onTap: () {
-                accountState != null
+                accountState?.id != null
                     ? showModalBottomSheet(
                         isScrollControlled: true,
                         scrollControlDisabledMaxHeightRatio: 0.5,
@@ -63,18 +63,20 @@ class _SettingsViewState extends State<SettingsView> {
                     : Navigator.of(context).pushNamed('login');
               },
             ),
-            const Divider(),
-            ListTile(
-              leading: const Icon(Icons.list),
-              title: Text(S.of(context).list_custom_personal_weekly_plan),
-              onTap: () {
-                context
-                    .read<CustomPlanBloc>()
-                    .add(FetchCustomPlanEvent(accountState?.id ?? ''));
-                //show list custom plan bottomsheets
-                Navigator.pushNamed(context, "custom_plan");
-              },
-            ),
+            accountState?.id != null ? const Divider() : Container(),
+            accountState?.id != null
+                ? ListTile(
+                    leading: const Icon(Icons.list),
+                    title: Text(S.of(context).list_custom_personal_weekly_plan),
+                    onTap: () {
+                      context
+                          .read<CustomPlanBloc>()
+                          .add(FetchCustomPlanEvent(accountState?.id ?? ''));
+                      //show list custom plan bottomsheets
+                      Navigator.pushNamed(context, "custom_plan");
+                    },
+                  )
+                : Container(),
             const Divider(),
             ListTile(
               leading: const Icon(Icons.language),
@@ -120,7 +122,7 @@ class _SettingsViewState extends State<SettingsView> {
             ),
             const Divider(),
             //logout button
-            accountState != null
+            accountState?.id != null
                 ? ListTile(
                     leading: const Icon(Icons.logout),
                     title: Text(S.of(context).logout),
@@ -145,12 +147,10 @@ class _SettingsViewState extends State<SettingsView> {
                                   var prefs =
                                       await SharedPreferences.getInstance();
                                   await prefs.remove('jwtToken');
-                                  if (accountState?.email != null) {
-                                    if (context.mounted) {
-                                      context
-                                          .read<AccountBloc>()
-                                          .add(LogOutEvent());
-                                    }
+                                  if (context.mounted) {
+                                    context
+                                        .read<AccountBloc>()
+                                        .add(LogOutEvent());
                                   }
                                   await Navigator.of(context)
                                       .pushNamedAndRemoveUntil('onboarding',

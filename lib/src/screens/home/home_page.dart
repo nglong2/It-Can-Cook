@@ -43,50 +43,28 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
           title: const Text('WeMealKit',
               style: TextStyle(fontWeight: FontWeight.bold)),
-          actions: [
-            _currentIndex == 0
-                ? GestureDetector(
-                    onTap: () {
-                      context.loaderOverlay.show();
-                      context.read<WeeklyBloc>().add(FetchWeeklyEvent());
-                      //delay 1s to show loading
-                      Future.delayed(const Duration(seconds: 1), () {
-                        context.loaderOverlay.hide();
-                      });
-                    },
-                    child: Container(
-                      width: 140,
-                      height: 50,
-                      margin: EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Color.fromARGB(255, 123, 181, 210),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            S.of(context).get_newest_menu,
-                            style: TextStyle(color: Colors.black),
-                          )
-                        ],
-                      ),
-                    ))
-                : Text("")
-          ],
           leading: Padding(
-            padding: const EdgeInsets.only(left: 6),
-            child: Container(
-              padding: const EdgeInsets.all(5.0),
-              decoration:
-                  //color #02335a
-                  const BoxDecoration(
-                      shape: BoxShape.circle, color: Color(0xFF02335A)),
-              child: Image.asset(
-                'assets/images/logo.png',
-              ),
-            ),
-          )),
+              padding: const EdgeInsets.only(left: 6),
+              child: GestureDetector(
+                child: Container(
+                  padding: const EdgeInsets.all(5.0),
+                  decoration:
+                      //color #02335a
+                      const BoxDecoration(
+                          shape: BoxShape.circle, color: Color(0xFF02335A)),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                  ),
+                ),
+                onTap: () => () {
+                  context.loaderOverlay.show();
+                  context.read<WeeklyBloc>().add(FetchWeeklyEvent());
+                  //delay 1s to show loading
+                  Future.delayed(const Duration(seconds: 1), () {
+                    context.loaderOverlay.hide();
+                  });
+                },
+              ))),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

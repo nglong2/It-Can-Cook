@@ -73,145 +73,146 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                   //   ],
                   // ),
                   const SizedBox(height: 10),
-                  TextButton(
-                      style: ButtonStyle(
-                        //borderadius
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                  accountBloc?.id != null
+                      ? TextButton(
+                          style: ButtonStyle(
+                            //borderadius
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                     side: const BorderSide(
                                         color: Color(0xFF02335A)))),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color(0xFF02335A)),
-                      ),
-                      onPressed: () async {
-                        try {
-                          context.loaderOverlay.show();
-                          // var mess = await WeeklyPlanController()
-                          //     .getWeeklyByCustomerId(accountBloc!.id!);
-                          var mess = await WeeklyPlanController()
-                              .createWeeklyForCustom(
-                                  accountBloc!.id!, widget.weeklyPlan);
-                          context.loaderOverlay.hide();
-                          //mess!=empty show popup
-                          if (mess.isNotEmpty) {
-                            if (mess == "OK") {
-                              context
-                                  .read<CustomPlanBloc>()
-                                  .add(FetchCustomPlanEvent(accountBloc.id!));
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text(S.current.success),
-                                    content: Text(
-                                        S.current.add_to_custom_plan_success),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text(S.current.back),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                          Navigator.of(context)
-                                              .pushNamed("custom_plan");
-                                        },
-                                        child: Text(
-                                            S.current.send_me_to_custom_plan),
-                                      ),
-                                    ],
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color(0xFF02335A)),
+                          ),
+                          onPressed: () async {
+                            try {
+                              context.loaderOverlay.show();
+                              // var mess = await WeeklyPlanController()
+                              //     .getWeeklyByCustomerId(accountBloc!.id!);
+                              var mess = await WeeklyPlanController()
+                                  .createWeeklyForCustom(
+                                      accountBloc!.id!, widget.weeklyPlan);
+                              context.loaderOverlay.hide();
+                              //mess!=empty show popup
+                              if (mess.isNotEmpty) {
+                                if (mess == "OK") {
+                                  context.read<CustomPlanBloc>().add(
+                                      FetchCustomPlanEvent(accountBloc.id!));
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text(S.current.success),
+                                        content: Text(S.current
+                                            .add_to_custom_plan_success),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text(S.current.back),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                              Navigator.of(context)
+                                                  .pushNamed("custom_plan");
+                                            },
+                                            child: Text(S.current
+                                                .send_me_to_custom_plan),
+                                          ),
+                                        ],
+                                      );
+                                    },
                                   );
-                                },
-                              );
-                            } else {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text('Error'),
-                                    content: Text(mess),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text('OK'),
-                                      ),
-                                    ],
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Error'),
+                                        content: Text(mess),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('OK'),
+                                          ),
+                                        ],
+                                      );
+                                    },
                                   );
-                                },
+                                }
+                              }
+                              context.loaderOverlay.hide();
+                            } catch (e) {
+                              //show popup error
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(e.toString()),
+                                ),
                               );
                             }
-                          }
-                          context.loaderOverlay.hide();
-                        } catch (e) {
-                          //show popup error
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(e.toString()),
+                          },
+                          child: SizedBox(
+                            height: 34,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  S.of(context).add_to_quickly_plan,
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ],
                             ),
-                          );
-                        }
-                      },
-                      child: SizedBox(
-                        height: 34,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.add,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              S.of(context).add_to_quickly_plan,
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ))
+                          ))
 
-                  // TextButton(
-                  //     style: ButtonStyle(
-                  //       //borderadius
-                  //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  //           RoundedRectangleBorder(
-                  //               borderRadius: BorderRadius.circular(10.0),
-                  //               side: const BorderSide(color: Color(0xFF02335A)))),
-                  //       backgroundColor: MaterialStateProperty.all<Color>(
-                  //           const Color(0xFF02335A)),
-                  //     ),
-                  //     onPressed: () {
-                  //       //go to "checkout"
-                  //       Navigator.pushNamed(context, "checkout",
-                  //           arguments: widget.weeklyPlan);
-                  //       // Navigator.pop(context);
-                  //     },
-                  //     child: SizedBox(
-                  //       height: 34,
-                  //       child: Row(
-                  //         mainAxisAlignment: MainAxisAlignment.center,
-                  //         children: [
-                  //           const Icon(
-                  //             Icons.shopping_cart_checkout_sharp,
-                  //             color: Colors.white,
-                  //           ),
-                  //           Text(
-                  //             S.of(context).add_to_cart,
-                  //             style: const TextStyle(
-                  //                 fontSize: 18,
-                  //                 fontWeight: FontWeight.bold,
-                  //                 color: Colors.white),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ))
+                      // TextButton(
+                      //     style: ButtonStyle(
+                      //       //borderadius
+                      //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      //           RoundedRectangleBorder(
+                      //               borderRadius: BorderRadius.circular(10.0),
+                      //               side: const BorderSide(color: Color(0xFF02335A)))),
+                      //       backgroundColor: MaterialStateProperty.all<Color>(
+                      //           const Color(0xFF02335A)),
+                      //     ),
+                      //     onPressed: () {
+                      //       //go to "checkout"
+                      //       Navigator.pushNamed(context, "checkout",
+                      //           arguments: widget.weeklyPlan);
+                      //       // Navigator.pop(context);
+                      //     },
+                      //     child: SizedBox(
+                      //       height: 34,
+                      //       child: Row(
+                      //         mainAxisAlignment: MainAxisAlignment.center,
+                      //         children: [
+                      //           const Icon(
+                      //             Icons.shopping_cart_checkout_sharp,
+                      //             color: Colors.white,
+                      //           ),
+                      //           Text(
+                      //             S.of(context).add_to_cart,
+                      //             style: const TextStyle(
+                      //                 fontSize: 18,
+                      //                 fontWeight: FontWeight.bold,
+                      //                 color: Colors.white),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ))
+                      : Container()
                 ],
               ),
             ),

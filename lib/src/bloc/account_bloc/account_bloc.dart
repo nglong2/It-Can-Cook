@@ -14,7 +14,7 @@ class AccountBloc extends HydratedBloc<AccountEvent, AccountModel?> {
       login(event.accountModel, emit);
     });
     on<LogOutEvent>((event, emit) {
-      emit(AccountModel());
+      emit(null);
     });
     on<FetchAccountEvent>((event, emit) {
       emit(state);
@@ -32,6 +32,6 @@ class AccountBloc extends HydratedBloc<AccountEvent, AccountModel?> {
 
   @override
   Map<String, dynamic>? toJson(AccountModel? state) {
-    return state == null ? AccountModel().toJson() : state.toJson();
+    return state == null ? <String, dynamic>{} : state.toJson();
   }
 }

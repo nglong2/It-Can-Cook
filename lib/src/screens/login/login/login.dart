@@ -4,6 +4,7 @@ import 'package:it_can_cook/generated/l10n.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
+import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/controller/account.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -61,6 +62,7 @@ class LoginPageState extends State<LoginPage> {
                 });
           } else
             context.read<CustomPlanBloc>().add(FetchCustomPlanEvent(value.id!));
+          context.read<WeeklyBloc>().add(FetchWeeklyEvent());
           Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
         }
       }
