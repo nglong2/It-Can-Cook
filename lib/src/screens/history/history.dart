@@ -31,8 +31,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     children: [
                       Row(
                         children: [
-                          Text(DateTime.parse(state[index].shipDate.toString())
-                              .toIso8601String()),
+                          Text("Ngay Dat:" +
+                              DateTime.parse(state[index].orderDate.toString())
+                                  .toIso8601String()),
+                          SizedBox(
+                            width: 22,
+                          ),
+                          Text("Ngay Giao:" +
+                              DateTime.parse(state[index].shipDate.toString())
+                                  .toIso8601String()),
                           SizedBox(
                             width: 22,
                           ),
