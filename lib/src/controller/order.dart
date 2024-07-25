@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:it_can_cook/src/api/rest.dart';
+import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/order/order.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
 
@@ -30,5 +31,24 @@ class OrderController {
       }
     }
     return jsonDecode(value.body)["message"];
+  }
+
+  Future<List<OrderHistory>> GetOrderHistory(String userID) async {
+    // var value = await api.get("api/order/get/$userID");
+    // https://api.wemealkit.ddns.net/api/order/get-by-userid?userId=b1ddfd01-4093-4f83-5cb3-08dc7eefb10b
+    var value = await api.get(
+        "api/order/get-by-userid?userId=b1ddfd01-4093-4f83-5cb3-08dc7eefb10b");
+    if (value.statusCode == 200) {
+      if (jsonDecode(value.body)["statusCode"] == 200) {
+        List<OrderHistory> orders = [];
+        for (var item in jsonDecode(value.body)["data"]) {
+          orders.add(OrderHistory.fromJson(item));
+        }
+        return orders;
+      } else {
+        return [];
+      }
+    }
+    return [];
   }
 }

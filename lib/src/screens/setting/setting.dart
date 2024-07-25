@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
+import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/screens/account/account_info.dart';
 import 'package:it_can_cook/src/screens/customplan/custom_plan.dart';
@@ -77,6 +78,22 @@ class _SettingsViewState extends State<SettingsView> {
                     },
                   )
                 : Container(),
+
+            accountState?.id != null ? const Divider() : Container(),
+            accountState?.id != null
+                ? ListTile(
+                    leading: const Icon(Icons.history),
+                    title: Text(S.of(context).history),
+                    onTap: () {
+                      context
+                          .read<OrderBloc>()
+                          .add(GetHistoryOrderEvent(accountState?.id ?? ''));
+                      //show list custom plan bottomsheets
+                      Navigator.pushNamed(context, "history");
+                    },
+                  )
+                : Container(),
+
             const Divider(),
             ListTile(
               leading: const Icon(Icons.language),

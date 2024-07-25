@@ -175,3 +175,82 @@ class IngredientNutrient {
     };
   }
 }
+
+// "recipeIngredientOrderDetails": [
+//             {
+//               "id": "1d170a90-02a4-429b-76a4-08dcabe9c0b1",
+//               "orderDetailId": "e92be3a4-478c-4f3d-fe11-08dcabe9bee9",
+//               "recipeId": "14bcddde-fd02-4edc-30e9-08dca869b2da",
+//               "ingredientId": "420cfe59-5fc6-40e8-994a-08dca7ec0554",
+//               "amount": 0.02,
+//               "ingredientPrice": 800,
+//               "ingredient": {
+//                 "id": "420cfe59-5fc6-40e8-994a-08dca7ec0554",
+//                 "ingredientCategoryId": "4b019598-dbc7-46ae-b620-08dc9781cfc6",
+//                 "name": "Hành Lá",
+//                 "img": "https://wemealkit.s3.amazonaws.com/51hành lá raw.jpg",
+//                 "unit": "kg",
+//                 "price": 20000,
+//                 "packagingMethod": "Túi nhựa theo từng bó",
+//                 "preservationMethod": "Bọc trong giấy báo hoặc khăn giấy ẩm, sau đó cho vào túi zip và để trong ngăn mát tủ lạnh.; Lưu ý: Tránh để hành lá bị ẩm quá nhiều vì dễ bị thối.",
+//                 "status": "Available",
+//                 "createdAt": "2024-07-19T12:14:33.9320473",
+//                 "createdBy": "BA21D44E-75FF-4039-8ADA-C494C0A90FC9",
+//                 "updatedAt": "2024-07-19T12:14:33.9320476",
+//                 "updatedBy": "BA21D44E-75FF-4039-8ADA-C494C0A90FC9",
+//                 "ingredientNutrient": null,
+//                 "ingredientCategory": null
+//               }
+//             }
+//           ]
+//         },
+
+class RecipeIngredientOrderDetails {
+  String? id;
+  String? orderDetailId;
+  String? recipeId;
+  String? ingredientId;
+  double? amount;
+  double? ingredientPrice;
+  Ingredient? ingredient;
+
+  RecipeIngredientOrderDetails({
+    this.id,
+    this.orderDetailId,
+    this.recipeId,
+    this.ingredientId,
+    this.amount,
+    this.ingredientPrice,
+    this.ingredient,
+  });
+
+  factory RecipeIngredientOrderDetails.fromJson(Map<String, dynamic> json) {
+    return RecipeIngredientOrderDetails(
+      id: json['id'],
+      orderDetailId: json['orderDetailId'],
+      recipeId: json['recipeId'],
+      ingredientId: json['ingredientId'],
+      amount: json['amount'] != null
+          ? double.parse(json['amount'].toString())
+          : null,
+      ingredientPrice: json['ingredientPrice'] != null
+          ? double.parse(json['ingredientPrice'].toString())
+          : null,
+      ingredient: json['ingredient'] == null
+          ? null
+          : Ingredient.fromJson(json['ingredient']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'orderDetailId': orderDetailId,
+      'recipeId': recipeId,
+      'ingredientId': ingredientId,
+      'amount': amount,
+      'ingredientPrice': ingredientPrice,
+      'ingredient': ingredient?.toJson(),
+    };
+  }
+}

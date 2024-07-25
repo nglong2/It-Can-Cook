@@ -16,7 +16,6 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
 
     on<FetchWeeklyEvent>((event, emit) async {
       var listWeeklyPlan = await WeeklyPlanController().getWeeklys();
-      //check curent language
 
       for (var weeklyPlan in listWeeklyPlan) {
         for (var recipePlan in weeklyPlan.recipePlans) {

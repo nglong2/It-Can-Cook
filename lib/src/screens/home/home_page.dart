@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
+import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
@@ -30,13 +31,6 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final accountState = context.watch<AccountBloc>()?.state;
-    if (accountState != null &&
-        accountState.id != null &&
-        accountState.id != "") {
-      context
-          .read<CustomPlanBloc>()
-          .add(FetchCustomPlanEvent(accountState.id!));
-    }
 
     return LoaderOverlay(
         child: Scaffold(
