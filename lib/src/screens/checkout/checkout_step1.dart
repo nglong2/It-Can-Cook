@@ -82,6 +82,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                           ),
                           onPressed: () async {
                             try {
+                              context.loaderOverlay.show();
                               LocationPermission permission;
                               permission = await Geolocator.checkPermission();
                               if (permission == LocationPermission.denied) {
@@ -101,15 +102,16 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                               var data = await getLocation();
 
                               if (data.latitude != 0 && data.longitude != 0) {
-                                context.loaderOverlay.show();
                                 var resdata = await GeometryController()
                                     .getAddressFromLatLng(
                                         data.latitude, data.longitude);
                                 context.loaderOverlay.hide();
-                                if (resdata?.results.firstOrNull != null) {
+                                if (resdata
+                                        ?.features.first.properties.formatted !=
+                                    null) {
                                   setState(() {
-                                    addressController.text = resdata?.results
-                                            .firstOrNull?.formattedAddress ??
+                                    addressController.text = resdata?.features
+                                            .first.properties.formatted ??
                                         '';
                                   });
                                 }
@@ -119,6 +121,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                                 long = data.longitude.toString();
                               });
                             } catch (e) {
+                              context.loaderOverlay.hide();
                               //show popup
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(SnackBar(
@@ -253,7 +256,8 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                                 //show popup success and back to home
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text('Order success'),
+                                    backgroundColor: Colors.green,
+                                    content: Text(S.current.order_success),
                                   ),
                                 );
                                 Navigator.pushReplacementNamed(context, "home");

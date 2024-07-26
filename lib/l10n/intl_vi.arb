@@ -110,5 +110,6 @@
   "back": "Quay lại",
   "update_plan": "Cập nhật kế hoạch",
   "list": "Danh sách món ăn",
-  "get_current_location": "Lấy vị trí hiện tại"
+  "get_current_location": "Lấy vị trí hiện tại",
+  "order_success": "Đặt hàng thành công"
 }

@@ -1,210 +1,361 @@
 class GeocodeResponse {
-  PlusCode plusCode;
-  List<Result> results;
-  String status;
-
-  GeocodeResponse(
-      {required this.plusCode, required this.results, required this.status});
-
-  factory GeocodeResponse.fromJson(Map<String, dynamic> json) {
-    return GeocodeResponse(
-      plusCode: PlusCode.fromJson(json['plus_code']),
-      results:
-          (json['results'] as List).map((i) => Result.fromJson(i)).toList(),
-      status: json['status'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'plus_code': plusCode.toJson(),
-      'results': results.map((i) => i.toJson()).toList(),
-      'status': status,
-    };
-  }
-}
-
-class PlusCode {
-  String compoundCode;
-  String globalCode;
-
-  PlusCode({required this.compoundCode, required this.globalCode});
-
-  factory PlusCode.fromJson(Map<String, dynamic> json) {
-    return PlusCode(
-      compoundCode: json['compound_code'],
-      globalCode: json['global_code'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'compound_code': compoundCode,
-      'global_code': globalCode,
-    };
-  }
-}
-
-class Result {
-  List<AddressComponent> addressComponents;
-  String formattedAddress;
-  Geometry geometry;
-  String placeId;
-  PlusCode? plusCode;
-  List<String> types;
-
-  Result({
-    required this.addressComponents,
-    required this.formattedAddress,
-    required this.geometry,
-    required this.placeId,
-    this.plusCode,
-    required this.types,
+  GeocodeResponse({
+    required this.type,
+    required this.features,
+    required this.query,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) {
-    return Result(
-      addressComponents: (json['address_components'] as List)
-          .map((i) => AddressComponent.fromJson(i))
-          .toList(),
-      formattedAddress: json['formatted_address'],
-      geometry: Geometry.fromJson(json['geometry']),
-      placeId: json['place_id'],
-      plusCode: json['plus_code'] != null
-          ? PlusCode.fromJson(json['plus_code'])
-          : null,
-      types: (json['types'] as List).map((i) => i as String).toList(),
-    );
-  }
+  final String type;
+  final List<Feature> features;
+  final Query query;
 
-  Map<String, dynamic> toJson() {
-    return {
-      'address_components': addressComponents.map((i) => i.toJson()).toList(),
-      'formatted_address': formattedAddress,
-      'geometry': geometry.toJson(),
-      'place_id': placeId,
-      'plus_code': plusCode?.toJson(),
-      'types': types,
-    };
+  factory GeocodeResponse.fromJson(Map<String, dynamic> json) =>
+      GeocodeResponse(
+        type: json["type"] ?? '',
+        features: json["features"] != null
+            ? List<Feature>.from(
+                json["features"].map((x) => Feature.fromJson(x)))
+            : [],
+        query: json["query"] != null
+            ? Query.fromJson(json["query"])
+            : Query(lat: 0.0, lon: 0.0, plusCode: ''),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "type": type,
+        "features": List<dynamic>.from(features.map((x) => x.toJson())),
+        "query": query.toJson(),
+      };
+}
+
+class Feature {
+  Feature({
+    required this.type,
+    required this.properties,
+    required this.geometry,
+    required this.bbox,
+  });
+
+  final String type;
+  final Properties properties;
+  final Geometry geometry;
+  final List<double> bbox;
+
+  factory Feature.fromJson(Map<String, dynamic> json) => Feature(
+        type: json["type"] ?? '',
+        properties: json["properties"] != null
+            ? Properties.fromJson(json["properties"])
+            : Properties.defaultProperties(),
+        geometry: json["geometry"] != null
+            ? Geometry.fromJson(json["geometry"])
+            : Geometry(type: '', coordinates: []),
+        bbox: json["bbox"] != null
+            ? List<double>.from(json["bbox"].map((x) => x.toDouble()))
+            : [],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "type": type,
+        "properties": properties.toJson(),
+        "geometry": geometry.toJson(),
+        "bbox": List<dynamic>.from(bbox.map((x) => x)),
+      };
+}
+
+class Properties {
+  Properties({
+    required this.datasource,
+    required this.name,
+    required this.country,
+    required this.countryCode,
+    required this.state,
+    required this.city,
+    required this.postcode,
+    required this.district,
+    required this.suburb,
+    required this.street,
+    required this.housenumber,
+    required this.lon,
+    required this.lat,
+    required this.stateCode,
+    required this.distance,
+    required this.resultType,
+    required this.formatted,
+    required this.addressLine1,
+    required this.addressLine2,
+    required this.category,
+    required this.timezone,
+    required this.plusCode,
+    required this.rank,
+    required this.placeId,
+  });
+
+  final Datasource datasource;
+  final String name;
+  final String country;
+  final String countryCode;
+  final String state;
+  final String city;
+  final String postcode;
+  final String district;
+  final String suburb;
+  final String street;
+  final String housenumber;
+  final double lon;
+  final double lat;
+  final String stateCode;
+  final int distance;
+  final String resultType;
+  final String formatted;
+  final String addressLine1;
+  final String addressLine2;
+  final String category;
+  final Timezone timezone;
+  final String plusCode;
+  final Rank rank;
+  final String placeId;
+
+  factory Properties.fromJson(Map<String, dynamic> json) => Properties(
+        datasource: json["datasource"] != null
+            ? Datasource.fromJson(json["datasource"])
+            : Datasource.defaultDatasource(),
+        name: json["name"] ?? '',
+        country: json["country"] ?? '',
+        countryCode: json["country_code"] ?? '',
+        state: json["state"] ?? '',
+        city: json["city"] ?? '',
+        postcode: json["postcode"] ?? '',
+        district: json["district"] ?? '',
+        suburb: json["suburb"] ?? '',
+        street: json["street"] ?? '',
+        housenumber: json["housenumber"] ?? '',
+        lon: json["lon"]?.toDouble() ?? 0.0,
+        lat: json["lat"]?.toDouble() ?? 0.0,
+        stateCode: json["state_code"] ?? '',
+        distance: json["distance"] ?? 0,
+        resultType: json["result_type"] ?? '',
+        formatted: json["formatted"] ?? '',
+        addressLine1: json["address_line1"] ?? '',
+        addressLine2: json["address_line2"] ?? '',
+        category: json["category"] ?? '',
+        timezone: json["timezone"] != null
+            ? Timezone.fromJson(json["timezone"])
+            : Timezone.defaultTimezone(),
+        plusCode: json["plus_code"] ?? '',
+        rank: json["rank"] != null
+            ? Rank.fromJson(json["rank"])
+            : Rank(importance: 0.0, popularity: 0.0),
+        placeId: json["place_id"] ?? '',
+      );
+
+  Map<String, dynamic> toJson() => {
+        "datasource": datasource.toJson(),
+        "name": name,
+        "country": country,
+        "country_code": countryCode,
+        "state": state,
+        "city": city,
+        "postcode": postcode,
+        "district": district,
+        "suburb": suburb,
+        "street": street,
+        "housenumber": housenumber,
+        "lon": lon,
+        "lat": lat,
+        "state_code": stateCode,
+        "distance": distance,
+        "result_type": resultType,
+        "formatted": formatted,
+        "address_line1": addressLine1,
+        "address_line2": addressLine2,
+        "category": category,
+        "timezone": timezone.toJson(),
+        "plus_code": plusCode,
+        "rank": rank.toJson(),
+        "place_id": placeId,
+      };
+
+  static Properties defaultProperties() {
+    return Properties(
+      datasource: Datasource.defaultDatasource(),
+      name: '',
+      country: '',
+      countryCode: '',
+      state: '',
+      city: '',
+      postcode: '',
+      district: '',
+      suburb: '',
+      street: '',
+      housenumber: '',
+      lon: 0.0,
+      lat: 0.0,
+      stateCode: '',
+      distance: 0,
+      resultType: '',
+      formatted: '',
+      addressLine1: '',
+      addressLine2: '',
+      category: '',
+      timezone: Timezone.defaultTimezone(),
+      plusCode: '',
+      rank: Rank(importance: 0.0, popularity: 0.0),
+      placeId: '',
+    );
   }
 }
 
-class AddressComponent {
-  String longName;
-  String shortName;
-  List<String> types;
+class Datasource {
+  Datasource({
+    required this.sourcename,
+    required this.attribution,
+    required this.license,
+    required this.url,
+  });
 
-  AddressComponent(
-      {required this.longName, required this.shortName, required this.types});
+  final String sourcename;
+  final String attribution;
+  final String license;
+  final String url;
 
-  factory AddressComponent.fromJson(Map<String, dynamic> json) {
-    return AddressComponent(
-      longName: json['long_name'],
-      shortName: json['short_name'],
-      types: (json['types'] as List).map((i) => i as String).toList(),
+  factory Datasource.fromJson(Map<String, dynamic> json) => Datasource(
+        sourcename: json["sourcename"] ?? '',
+        attribution: json["attribution"] ?? '',
+        license: json["license"] ?? '',
+        url: json["url"] ?? '',
+      );
+
+  Map<String, dynamic> toJson() => {
+        "sourcename": sourcename,
+        "attribution": attribution,
+        "license": license,
+        "url": url,
+      };
+
+  static Datasource defaultDatasource() {
+    return Datasource(
+      sourcename: '',
+      attribution: '',
+      license: '',
+      url: '',
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'long_name': longName,
-      'short_name': shortName,
-      'types': types,
-    };
   }
 }
 
 class Geometry {
-  Location location;
-  String locationType;
-  Viewport viewport;
-  Bounds? bounds;
-
   Geometry({
-    required this.location,
-    required this.locationType,
-    required this.viewport,
-    this.bounds,
+    required this.type,
+    required this.coordinates,
   });
 
-  factory Geometry.fromJson(Map<String, dynamic> json) {
-    return Geometry(
-      location: Location.fromJson(json['location']),
-      locationType: json['location_type'],
-      viewport: Viewport.fromJson(json['viewport']),
-      bounds: json['bounds'] != null ? Bounds.fromJson(json['bounds']) : null,
-    );
-  }
+  final String type;
+  final List<double> coordinates;
 
-  Map<String, dynamic> toJson() {
-    return {
-      'location': location.toJson(),
-      'location_type': locationType,
-      'viewport': viewport.toJson(),
-      'bounds': bounds?.toJson(),
-    };
+  factory Geometry.fromJson(Map<String, dynamic> json) => Geometry(
+        type: json["type"] ?? '',
+        coordinates: json["coordinates"] != null
+            ? List<double>.from(json["coordinates"].map((x) => x.toDouble()))
+            : [],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "type": type,
+        "coordinates": List<dynamic>.from(coordinates.map((x) => x)),
+      };
+}
+
+class Rank {
+  Rank({
+    required this.importance,
+    required this.popularity,
+  });
+
+  final double importance;
+  final double popularity;
+
+  factory Rank.fromJson(Map<String, dynamic> json) => Rank(
+        importance: json["importance"]?.toDouble() ?? 0.0,
+        popularity: json["popularity"]?.toDouble() ?? 0.0,
+      );
+
+  Map<String, dynamic> toJson() => {
+        "importance": importance,
+        "popularity": popularity,
+      };
+}
+
+class Timezone {
+  Timezone({
+    required this.name,
+    required this.offsetStd,
+    required this.offsetStdSeconds,
+    required this.offsetDst,
+    required this.offsetDstSeconds,
+    required this.abbreviationStd,
+    required this.abbreviationDst,
+  });
+
+  final String name;
+  final String offsetStd;
+  final int offsetStdSeconds;
+  final String offsetDst;
+  final int offsetDstSeconds;
+  final String abbreviationStd;
+  final String abbreviationDst;
+
+  factory Timezone.fromJson(Map<String, dynamic> json) => Timezone(
+        name: json["name"] ?? '',
+        offsetStd: json["offset_STD"] ?? '',
+        offsetStdSeconds: json["offset_STD_seconds"] ?? 0,
+        offsetDst: json["offset_DST"] ?? '',
+        offsetDstSeconds: json["offset_DST_seconds"] ?? 0,
+        abbreviationStd: json["abbreviation_STD"] ?? '',
+        abbreviationDst: json["abbreviation_DST"] ?? '',
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "offset_STD": offsetStd,
+        "offset_STD_seconds": offsetStdSeconds,
+        "offset_DST": offsetDst,
+        "offset_DST_seconds": offsetDstSeconds,
+        "abbreviation_STD": abbreviationStd,
+        "abbreviation_DST": abbreviationDst,
+      };
+
+  static Timezone defaultTimezone() {
+    return Timezone(
+      name: '',
+      offsetStd: '',
+      offsetStdSeconds: 0,
+      offsetDst: '',
+      offsetDstSeconds: 0,
+      abbreviationStd: '',
+      abbreviationDst: '',
+    );
   }
 }
 
-class Location {
-  double lat;
-  double lng;
+class Query {
+  Query({
+    required this.lat,
+    required this.lon,
+    required this.plusCode,
+  });
 
-  Location({required this.lat, required this.lng});
+  final double lat;
+  final double lon;
+  final String plusCode;
 
-  factory Location.fromJson(Map<String, dynamic> json) {
-    return Location(
-      lat: json['lat'],
-      lng: json['lng'],
-    );
-  }
+  factory Query.fromJson(Map<String, dynamic> json) => Query(
+        lat: json["lat"]?.toDouble() ?? 0.0,
+        lon: json["lon"]?.toDouble() ?? 0.0,
+        plusCode: json["plus_code"] ?? '',
+      );
 
-  Map<String, dynamic> toJson() {
-    return {
-      'lat': lat,
-      'lng': lng,
-    };
-  }
-}
-
-class Viewport {
-  Location northeast;
-  Location southwest;
-
-  Viewport({required this.northeast, required this.southwest});
-
-  factory Viewport.fromJson(Map<String, dynamic> json) {
-    return Viewport(
-      northeast: Location.fromJson(json['northeast']),
-      southwest: Location.fromJson(json['southwest']),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'northeast': northeast.toJson(),
-      'southwest': southwest.toJson(),
-    };
-  }
-}
-
-class Bounds {
-  Location northeast;
-  Location southwest;
-
-  Bounds({required this.northeast, required this.southwest});
-
-  factory Bounds.fromJson(Map<String, dynamic> json) {
-    return Bounds(
-      northeast: Location.fromJson(json['northeast']),
-      southwest: Location.fromJson(json['southwest']),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'northeast': northeast.toJson(),
-      'southwest': southwest.toJson(),
-    };
-  }
+  Map<String, dynamic> toJson() => {
+        "lat": lat,
+        "lon": lon,
+        "plus_code": plusCode,
+      };
 }

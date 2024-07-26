@@ -126,32 +126,44 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                 softWrap: true,
                                                 overflow: TextOverflow.visible,
                                               ),
-
-                                              //price
-                                              Text(
-                                                "${item.recipe?.price?.toStringAsFixed(0).replaceAllMapped(
-                                                      RegExp(
-                                                          r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                                                      (Match m) => '${m[1]},',
-                                                    )} vnđ /1 ${S.current.person} x ${item.numberPerson ?? currentNumberPerson}",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.normal,
-                                                  fontSize: 14,
-                                                  color: Colors.grey[600],
-                                                ),
+                                              ExpansionTile(
+                                                title:
+                                                    Text(S.current.ingredients),
+                                                children: item
+                                                    .recipe!.recipeIngredients
+                                                    .map((e) => Text(
+                                                        "${e.ingredient?.name} x ${e.amount} ${e.ingredient?.unit}"))
+                                                    .toList(),
                                               )
+                                              //price
+                                              // Text(
+                                              //   "${item.recipe?.price?.toStringAsFixed(0).replaceAllMapped(
+                                              //         RegExp(
+                                              //             r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                              //         (Match m) => '${m[1]},',
+                                              //       )} vnđ /1 ${S.current.person} x ${item.numberPerson ?? currentNumberPerson}",
+                                              //   style: TextStyle(
+                                              //     fontWeight: FontWeight.normal,
+                                              //     fontSize: 14,
+                                              //     color: Colors.grey[600],
+                                              //   ),
+                                              // )
                                             ],
                                           ),
                                         )),
                                     Expanded(
-                                      child: Text(
-                                        " ${(item.recipe!.price! * (item.numberPerson ?? currentNumberPerson)).toStringAsFixed(0).replaceAllMapped(
-                                              RegExp(
-                                                  r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                                              (Match m) => '${m[1]}.',
-                                            )}đ",
+                                        child: Text(
+                                      "${item.recipe?.price?.toStringAsFixed(0).replaceAllMapped(
+                                            RegExp(
+                                                r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                            (Match m) => '${m[1]},',
+                                          )} vnđ x ${item.numberPerson ?? currentNumberPerson} ${S.current.person} ",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 14,
+                                        color: Colors.grey[600],
                                       ),
-                                    )
+                                    ))
                                   ],
                                 ),
                               ),
@@ -179,6 +191,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           alignment: Alignment.bottomCenter,
           height: 50,
           child: ElevatedButton(
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0))),
+              backgroundColor: MaterialStateProperty.all(
+                  const Color.fromARGB(255, 166, 213, 252)),
+            ),
             onPressed: () {
               //go to "checkout"
               Navigator.pushNamed(context, "checkout1",

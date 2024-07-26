@@ -110,5 +110,6 @@
   "back": "Back",
   "update_plan": "Update plan",
   "list": "List",
-  "get_current_location": "Get current location"
+  "get_current_location": "Get current location",
+  "order_success": "Order successfully"
 }

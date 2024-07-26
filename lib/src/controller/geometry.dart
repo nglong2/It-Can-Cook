@@ -9,12 +9,14 @@ class GeometryController {
   Future<GeocodeResponse?> getAddressFromLatLng(double lat, double long) async {
     //model GeocodeResponse
     var data = null;
-    var key = "AIzaSyBdPjjEBKwTg8GX";
-    var key1 = "N14OW06mgvr";
-    var key2 = "4KI4fMwc";
+
+    var key = "20be8f418ad";
+    var key1 = "046d9be5b82";
+    var key2 = "203ad37663";
     key = key + key1 + key2;
+
     var res = await http.get(Uri.parse(
-        "https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$long&key=$key"));
+        "https://api.geoapify.com/v1/geocode/reverse?lat=$lat&lon=$long&apiKey=$key"));
 
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);

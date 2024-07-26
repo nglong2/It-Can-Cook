@@ -113,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Kết nối với nhiều chuyên gia"),
         "only_customer_can_login": MessageLookupByLibrary.simpleMessage(
             "Chỉ khách hàng mới có thể đăng nhập"),
+        "order_success":
+            MessageLookupByLibrary.simpleMessage("Đặt hàng thành công"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Phương pháp đóng gói: "),
         "passed": MessageLookupByLibrary.simpleMessage("Bỏ qua"),
