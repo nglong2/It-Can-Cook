@@ -2,9 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
-import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -130,7 +130,7 @@ class _TemplateCustomDayState extends State<TemplateCustomDay> {
                                 setState(() {
                                   menuItem.numberPerson = value;
                                 });
-                                context.read<WeeklyBloc>().add(
+                                context.read<CustomPlanBloc>().add(
                                       ChangeUserInHouseEvent(menuItem, value),
                                     );
                                 context.read<TriggerBloc>().add(
@@ -162,7 +162,7 @@ class _TemplateCustomDayState extends State<TemplateCustomDay> {
                                         ),
                                         TextButton(
                                           onPressed: () {
-                                            context.read<WeeklyBloc>().add(
+                                            context.read<CustomPlanBloc>().add(
                                                 DeleteRecipePlanEvent(
                                                     menuItem));
                                             //trigger reload

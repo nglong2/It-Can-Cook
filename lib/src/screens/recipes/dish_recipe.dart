@@ -38,8 +38,8 @@ class _DishAddRecipeAllListState extends State<DishAddRecipeAllList> {
                       child: ListTile(
                           leading: CachedNetworkImage(
                             imageUrl: recipe.recipe?.img ?? '',
-                            width: 50,
-                            height: 50,
+                            width: 60,
+                            height: 60,
                             fit: BoxFit.cover,
                             placeholder: (context, url) =>
                                 const CircularProgressIndicator(),

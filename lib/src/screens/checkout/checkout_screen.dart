@@ -166,6 +166,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ),
         floatingActionButton: Container(
           margin: EdgeInsets.only(bottom: 30),
+          color: Colors.white,
           child: Text(
             "Total price: ${pice.toStringAsFixed(0).replaceAllMapped(
                   RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),

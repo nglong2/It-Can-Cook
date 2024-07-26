@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "friday": MessageLookupByLibrary.simpleMessage("Thứ 6"),
+        "get_current_location":
+            MessageLookupByLibrary.simpleMessage("Lấy vị trí hiện tại"),
         "get_newest_menu":
             MessageLookupByLibrary.simpleMessage("Lấy menu mới nhất"),
         "hello": MessageLookupByLibrary.simpleMessage("Xin chào"),

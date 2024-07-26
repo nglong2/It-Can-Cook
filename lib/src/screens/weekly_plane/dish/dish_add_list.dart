@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
-import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/system/trigger.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 
@@ -86,9 +86,16 @@ class _DishAddListState extends State<DishAddList> {
                                         size: 33,
                                       ),
                                       onPressed: () async {
-                                        // context.read<WeeklyBloc>().add(AddRecipePlanEvent(
-                                        //     recipe.recipe!, systemBloc.numberPersonInHouse));
-                                        // context.read<TriggerBloc>().add(SeachTriggerEvent());
+                                        context.read<CustomPlanBloc>().add(
+                                            AddRecipePlanEvent(
+                                                recipe,
+                                                systemBloc
+                                                    .numberPersonInHouse));
+                                        context
+                                            .read<TriggerBloc>()
+                                            .add(SeachTriggerEvent());
+
+                                        Navigator.pop(context);
                                       },
                                     )
                                   : Container(),
@@ -98,10 +105,8 @@ class _DishAddListState extends State<DishAddList> {
 
                           ),
                       onTap: () async {
-                        context.read<WeeklyBloc>().add(AddRecipePlanEvent(
-                            recipe, systemBloc.numberPersonInHouse));
-                        context.read<TriggerBloc>().add(SeachTriggerEvent());
-                        Navigator.pop(context);
+                        // context.read<WeeklyBloc>().add(AddRecipePlanEvent(
+                        //     recipe, systemBloc.numberPersonInHouse));
                       },
                     ))
             ],

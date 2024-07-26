@@ -109,5 +109,6 @@
   "send_me_to_custom_plan": "Send me to custom plan",
   "back": "Back",
   "update_plan": "Update plan",
-  "list": "List"
+  "list": "List",
+  "get_current_location": "Get current location"
 }

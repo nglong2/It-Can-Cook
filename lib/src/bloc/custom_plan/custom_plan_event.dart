@@ -10,3 +10,22 @@ class FetchCustomPlanEvent extends CustomPlanEvent {
 
   FetchCustomPlanEvent(this.userId);
 }
+
+//add recipe to weekly plan
+class AddRecipePlanEvent extends CustomPlanEvent {
+  final RecipePlan recipePlan;
+  final int systemNumberPerson;
+  AddRecipePlanEvent(this.recipePlan, this.systemNumberPerson);
+}
+
+//delete recipe from weekly plan
+class DeleteRecipePlanEvent extends CustomPlanEvent {
+  final RecipePlan recipePlan;
+  DeleteRecipePlanEvent(this.recipePlan);
+}
+
+class ChangeUserInHouseEvent extends CustomPlanEvent {
+  final RecipePlan recipePlan;
+  final int numberPerson;
+  ChangeUserInHouseEvent(this.recipePlan, this.numberPerson);
+}

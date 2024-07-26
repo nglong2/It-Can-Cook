@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "friday": MessageLookupByLibrary.simpleMessage("Friday"),
+        "get_current_location":
+            MessageLookupByLibrary.simpleMessage("Get current location"),
         "get_newest_menu":
             MessageLookupByLibrary.simpleMessage("Get newest menu"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),

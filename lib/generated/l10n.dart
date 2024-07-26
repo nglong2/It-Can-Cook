@@ -1129,6 +1129,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Get current location`
+  String get get_current_location {
+    return Intl.message(
+      'Get current location',
+      name: 'get_current_location',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

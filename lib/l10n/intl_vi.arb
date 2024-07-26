@@ -109,5 +109,6 @@
   "send_me_to_custom_plan": "Chuyển tôi đến kế hoạch cá nhân",
   "back": "Quay lại",
   "update_plan": "Cập nhật kế hoạch",
-  "list": "Danh sách món ăn"
+  "list": "Danh sách món ăn",
+  "get_current_location": "Lấy vị trí hiện tại"
 }

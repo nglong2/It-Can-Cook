@@ -81,40 +81,55 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                                         color: Color(0xFF02335A)))),
                           ),
                           onPressed: () async {
-                            LocationPermission permission;
-                            permission = await Geolocator.checkPermission();
-                            if (permission == LocationPermission.denied) {
-                              permission = await Geolocator.requestPermission();
+                            try {
+                              LocationPermission permission;
+                              permission = await Geolocator.checkPermission();
                               if (permission == LocationPermission.denied) {
-                                return Future.error(
-                                    'Location permissions are denied');
+                                permission =
+                                    await Geolocator.requestPermission();
+                                if (permission == LocationPermission.denied) {
+                                  //show popup
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          'Location permissions are denied'),
+                                    ),
+                                  );
+                                }
                               }
-                            }
 
-                            var data = await getLocation();
+                              var data = await getLocation();
 
-                            if (data.latitude != 0 && data.longitude != 0) {
-                              context.loaderOverlay.show();
-                              var resdata = await GeometryController()
-                                  .getAddressFromLatLng(
-                                      data.latitude, data.longitude);
-                              context.loaderOverlay.hide();
-                              if (resdata?.results.firstOrNull != null) {
-                                setState(() {
-                                  addressController.text = resdata?.results
-                                          .firstOrNull?.formattedAddress ??
-                                      '';
-                                });
+                              if (data.latitude != 0 && data.longitude != 0) {
+                                context.loaderOverlay.show();
+                                var resdata = await GeometryController()
+                                    .getAddressFromLatLng(
+                                        data.latitude, data.longitude);
+                                context.loaderOverlay.hide();
+                                if (resdata?.results.firstOrNull != null) {
+                                  setState(() {
+                                    addressController.text = resdata?.results
+                                            .firstOrNull?.formattedAddress ??
+                                        '';
+                                  });
+                                }
                               }
+                              setState(() {
+                                lat = data.latitude.toString();
+                                long = data.longitude.toString();
+                              });
+                            } catch (e) {
+                              //show popup
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content:
+                                    Text("Cant not get location from map api"),
+                              ));
                             }
-                            setState(() {
-                              lat = data.latitude.toString();
-                              long = data.longitude.toString();
-                            });
                             // Call the getLocation method
                           },
                           child: Text(
-                            "Get current location",
+                            S.current.get_current_location,
                           ))
                     ],
                   ),
@@ -131,6 +146,14 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                   TextFormField(
                     controller: addressController,
                     decoration: InputDecoration(labelText: S.current.address),
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Please enter address';
+                      }
+                      if (value.isEmpty) {
+                        return 'Please enter address';
+                      }
+                    },
                     onChanged: (value) {
                       setState(() {
                         address = value;
@@ -185,56 +208,130 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          bottomSheet: Container(
-            alignment: Alignment.bottomCenter,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  for (var reipe in widget.weeklyPlan.recipePlans) {
-                    reipe.quantity =
-                        reipe.numberPerson ?? systemBloc.numberPersonInHouse;
-
-                    reipe.standardWeeklyPlanId = widget.weeklyPlan.id;
-                    reipe.recipeId = reipe.recipe?.id ?? '';
-                  }
-                  widget.weeklyPlan.totalPrice = pice;
-                  context.loaderOverlay.show();
-                  var data = await OrderController().CreateOrder(
-                    accountBloc?.id ?? '',
-                    note,
-                    addressController.text,
-                    lat == '' ? 0.0 : double.parse(lat),
-                    lat == "" ? 0.0 : double.parse(long),
-                    pice,
-                    widget.weeklyPlan,
-                  );
-                  context.loaderOverlay.hide();
-                  if (data != "") {
-                    if (Uuid.isValidUUID(
-                        fromString: data,
-                        validationMode: ValidationMode.nonStrict)) {
-                      Navigator.pushReplacementNamed(context, "payment",
-                          arguments: PaymentArguemnt(
-                              orderID: data,
-                              price: pice,
-                              name: widget.weeklyPlan.title ?? 'custom'));
-                    } else {
-                      //scafod data
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(data),
+          bottomSheet: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Column(
+                    //center
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        child: const Text(
+                          "Thanh Toán Bằng Tiền Mặt",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
+                        onTap: () async {
+                          if (_formKey.currentState!.validate()) {
+                            for (var reipe in widget.weeklyPlan.recipePlans) {
+                              reipe.quantity = reipe.numberPerson ??
+                                  systemBloc.numberPersonInHouse;
+
+                              reipe.standardWeeklyPlanId = widget.weeklyPlan.id;
+                              reipe.recipeId = reipe.recipe?.id ?? '';
+                            }
+                            widget.weeklyPlan.totalPrice = pice;
+                            context.loaderOverlay.show();
+                            var data = await OrderController().CreateOrder(
+                              accountBloc?.id ?? '',
+                              note,
+                              addressController.text,
+                              lat == '' ? 0.0 : double.parse(lat),
+                              lat == "" ? 0.0 : double.parse(long),
+                              pice,
+                              widget.weeklyPlan,
+                            );
+                            context.loaderOverlay.hide();
+                            if (data != "") {
+                              if (Uuid.isValidUUID(
+                                  fromString: data,
+                                  validationMode: ValidationMode.nonStrict)) {
+                                //show popup success and back to home
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Order success'),
+                                  ),
+                                );
+                                Navigator.pushReplacementNamed(context, "home");
+                              } else {
+                                //scafod data
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(data),
+                                  ),
+                                );
+                              }
+                            }
+                          }
+                        },
+                      ),
+                    ],
+                  )),
+              Container(
+                alignment: Alignment.bottomCenter,
+                height: 50,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Color.fromARGB(255, 115, 177, 228))),
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      for (var reipe in widget.weeklyPlan.recipePlans) {
+                        reipe.quantity = reipe.numberPerson ??
+                            systemBloc.numberPersonInHouse;
+
+                        reipe.standardWeeklyPlanId = widget.weeklyPlan.id;
+                        reipe.recipeId = reipe.recipe?.id ?? '';
+                      }
+                      widget.weeklyPlan.totalPrice = pice;
+                      context.loaderOverlay.show();
+                      var data = await OrderController().CreateOrder(
+                        accountBloc?.id ?? '',
+                        note,
+                        addressController.text,
+                        lat == '' ? 0.0 : double.parse(lat),
+                        lat == "" ? 0.0 : double.parse(long),
+                        pice,
+                        widget.weeklyPlan,
                       );
+                      context.loaderOverlay.hide();
+                      if (data != "") {
+                        if (Uuid.isValidUUID(
+                            fromString: data,
+                            validationMode: ValidationMode.nonStrict)) {
+                          Navigator.pushReplacementNamed(context, "payment",
+                              arguments: PaymentArguemnt(
+                                  orderID: data,
+                                  price: pice,
+                                  name: widget.weeklyPlan.title ?? 'custom'));
+                        } else {
+                          //scafod data
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(data),
+                            ),
+                          );
+                        }
+                      }
                     }
-                  }
-                }
-                // If the form is valid, display a Snackbar}
-              },
-              child: const Center(
-                child: Text("Continue"),
-              ),
-            ),
+                    // If the form is valid, display a Snackbar}
+                  },
+                  child: const Center(
+                    child: Text("Thanh Toán Bằng ZaloPay"),
+                  ),
+                ),
+              )
+            ],
           )),
     );
   }

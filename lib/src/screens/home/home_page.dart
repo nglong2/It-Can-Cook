@@ -31,6 +31,15 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final accountState = context.watch<AccountBloc>()?.state;
+    if (accountState != null &&
+        accountState.id != null &&
+        accountState.id != "") {
+      context
+          .read<CustomPlanBloc>()
+          .add(FetchCustomPlanEvent(accountState.id!));
+
+      context.read<OrderBloc>().add(GetHistoryOrderEvent(accountState.id!));
+    }
 
     return LoaderOverlay(
         child: Scaffold(
