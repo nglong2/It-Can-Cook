@@ -47,8 +47,8 @@ class WeeklyPlanController {
         }
         return recipes;
       }
-      throw Exception(jsonDecode(value.body)["message"]);
+      return [];
     }
-    throw Exception('Failed to get recipes');
+    return [];
   }
 }

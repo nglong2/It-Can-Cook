@@ -79,8 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "last_name": MessageLookupByLibrary.simpleMessage("Họ"),
         "list": MessageLookupByLibrary.simpleMessage("Danh sách món ăn"),
         "list_custom_personal_weekly_plan":
-            MessageLookupByLibrary.simpleMessage(
-                "Danh sách kế hoạch cá nhân hàng tuần"),
+            MessageLookupByLibrary.simpleMessage("Danh sách kế hoạch cá nhân"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_welcome": MessageLookupByLibrary.simpleMessage(
             "Làm bếp thật dễ dàng cùng WeMealKit!"),
@@ -187,6 +186,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "wednesday": MessageLookupByLibrary.simpleMessage("Thứ 4"),
         "week": MessageLookupByLibrary.simpleMessage("Tuần"),
         "yes": MessageLookupByLibrary.simpleMessage("Đồng ý"),
-        "yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua")
+        "yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua"),
+        "you_dont_have_any_order":
+            MessageLookupByLibrary.simpleMessage("Bạn chưa có đơn hàng nào!"),
+        "you_dont_have_any_plan":
+            MessageLookupByLibrary.simpleMessage("Bạn chưa có kế hoạch nào!")
       };
 }

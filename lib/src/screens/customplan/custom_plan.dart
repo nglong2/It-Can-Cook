@@ -26,61 +26,67 @@ class _CustomPlanScreenState extends State<CustomPlanScreen> {
                 if (state is CustomPlanLoading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is CustomPlanLoaded) {
-                  return LoaderOverlay(
-                      child: ListView.builder(
-                    itemCount: state.weeklyPlans.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                          title: Row(
-                            children: [
-                              Text(state.weeklyPlans[index].title ?? ''),
-                              IconButton(
-                                icon: //rename icon to delete
-                                    const Icon(
-                                  Icons.border_color,
-                                  size: 18,
+                  return state.weeklyPlans.isEmpty
+                      ? Center(
+                          child: Text(S.current.you_dont_have_any_plan),
+                        )
+                      : LoaderOverlay(
+                          child: ListView.builder(
+                          itemCount: state.weeklyPlans.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                                title: Row(
+                                  children: [
+                                    Text(state.weeklyPlans[index].title ?? ''),
+                                    IconButton(
+                                      icon: //rename icon to delete
+                                          const Icon(
+                                        Icons.border_color,
+                                        size: 18,
+                                      ),
+                                      onPressed: () {
+                                        //show poup for rename state[index].title
+                                      },
+                                    ),
+                                  ],
                                 ),
-                                onPressed: () {
-                                  //show poup for rename state[index].title
-                                },
-                              ),
-                            ],
-                          ),
-                          leading: CachedNetworkImage(
-                            imageUrl: state.weeklyPlans[index].urlImage ?? '',
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.fill,
-                          ),
-                          subtitle: Row(
-                            children: [
-                              Text(state.weeklyPlans[index].description ?? ''),
-                            ],
-                          ),
-                          onTap: () => {
-                                //navigate to detail
-                                Navigator.pushNamed(
-                                    context, 'weekly_custom_detail',
-                                    arguments: state.weeklyPlans[index])
-                              },
-                          trailing: Container(
-                            margin: const EdgeInsets.only(bottom: 22),
-                            child: IconButton(
-                              icon: //rename icon to delete
-                                  const Icon(
-                                Icons.delete,
-                                size: 18,
-                              ),
-                              onPressed: () {
-                                //show poup for rename state[index].title
-                              },
-                            ),
-                          )
-                          //iwamt add button delete at last
+                                leading: CachedNetworkImage(
+                                  imageUrl:
+                                      state.weeklyPlans[index].urlImage ?? '',
+                                  height: 100,
+                                  width: 100,
+                                  fit: BoxFit.fill,
+                                ),
+                                subtitle: Row(
+                                  children: [
+                                    Text(state.weeklyPlans[index].description ??
+                                        ''),
+                                  ],
+                                ),
+                                onTap: () => {
+                                      //navigate to detail
+                                      Navigator.pushNamed(
+                                          context, 'weekly_custom_detail',
+                                          arguments: state.weeklyPlans[index])
+                                    },
+                                trailing: Container(
+                                  margin: const EdgeInsets.only(bottom: 22),
+                                  child: IconButton(
+                                    icon: //rename icon to delete
+                                        const Icon(
+                                      Icons.delete,
+                                      size: 18,
+                                    ),
+                                    onPressed: () {
+                                      //show poup for rename state[index].title
+                                    },
+                                  ),
+                                )
+                                //iwamt add button delete at last
 
-                          );
-                    },
-                  ));
+                                );
+                          },
+                        ));
                 }
                 return const SizedBox();
               },

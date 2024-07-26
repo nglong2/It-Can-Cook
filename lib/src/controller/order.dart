@@ -36,8 +36,7 @@ class OrderController {
   Future<List<OrderHistory>> GetOrderHistory(String userID) async {
     // var value = await api.get("api/order/get/$userID");
     // https://api.wemealkit.ddns.net/api/order/get-by-userid?userId=b1ddfd01-4093-4f83-5cb3-08dc7eefb10b
-    var value = await api.get(
-        "api/order/get-by-userid?userId=b1ddfd01-4093-4f83-5cb3-08dc7eefb10b");
+    var value = await api.get("api/order/get-by-userid?userId=$userID");
     if (value.statusCode == 200) {
       if (jsonDecode(value.body)["statusCode"] == 200) {
         List<OrderHistory> orders = [];

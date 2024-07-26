@@ -113,5 +113,7 @@
   "get_current_location": "Get current location",
   "order_success": "Order successfully",
   "today": "Today",
-  "yesterday": "Yesterday"
+  "yesterday": "Yesterday",
+  "you_dont_have_any_plan": "You dont have any plan!",
+  "you_dont_have_any_order": "You dont have any order!"
 }

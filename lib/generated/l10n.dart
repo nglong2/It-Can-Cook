@@ -1169,6 +1169,26 @@ class S {
       args: [],
     );
   }
+
+  /// `You dont have any plan!`
+  String get you_dont_have_any_plan {
+    return Intl.message(
+      'You dont have any plan!',
+      name: 'you_dont_have_any_plan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You dont have any order!`
+  String get you_dont_have_any_order {
+    return Intl.message(
+      'You dont have any order!',
+      name: 'you_dont_have_any_order',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
