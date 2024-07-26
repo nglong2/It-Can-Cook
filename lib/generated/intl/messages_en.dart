@@ -173,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
+        "today": MessageLookupByLibrary.simpleMessage("Today"),
         "total": MessageLookupByLibrary.simpleMessage("Total: "),
         "total_carbohydrate":
             MessageLookupByLibrary.simpleMessage("Total Carbohydrate"),
@@ -187,6 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
         "week": MessageLookupByLibrary.simpleMessage("Week"),
-        "yes": MessageLookupByLibrary.simpleMessage("Yes")
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday")
       };
 }

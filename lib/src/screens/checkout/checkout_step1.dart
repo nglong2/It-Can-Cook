@@ -106,13 +106,10 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                                     .getAddressFromLatLng(
                                         data.latitude, data.longitude);
                                 context.loaderOverlay.hide();
-                                if (resdata
-                                        ?.features.first.properties.formatted !=
-                                    null) {
+                                if (resdata?.results.first.formatted != null) {
                                   setState(() {
-                                    addressController.text = resdata?.features
-                                            .first.properties.formatted ??
-                                        '';
+                                    addressController.text =
+                                        resdata?.results.first.formatted ?? '';
                                   });
                                 }
                               }

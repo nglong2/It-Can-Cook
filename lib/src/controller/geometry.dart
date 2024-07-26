@@ -14,9 +14,12 @@ class GeometryController {
     var key1 = "046d9be5b82";
     var key2 = "203ad37663";
     key = key + key1 + key2;
+// https://api.geoapify.com/v1/geocode/reverse?lat=10.816406981743569&lon=106.67745985550903&lang=vi&format=json&apiKey=YOUR_API_KEY
 
+    // var res = await http.get(Uri.parse(
+    //     "https://api.geoapify.com/v1/geocode/reverse?lat=$lat&lon=$long&apiKey=$key"));
     var res = await http.get(Uri.parse(
-        "https://api.geoapify.com/v1/geocode/reverse?lat=$lat&lon=$long&apiKey=$key"));
+        "https://api.geoapify.com/v1/geocode/reverse?lat=$lat&lon=$long&lang=vi&format=json&apiKey=$key"));
 
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);

@@ -171,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sunday": MessageLookupByLibrary.simpleMessage("Chủ nhật"),
         "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
         "thursday": MessageLookupByLibrary.simpleMessage("Thứ 5"),
+        "today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
         "total": MessageLookupByLibrary.simpleMessage("Tổng: "),
         "total_carbohydrate":
             MessageLookupByLibrary.simpleMessage("Tổng carbohydrate"),
@@ -185,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "verify": MessageLookupByLibrary.simpleMessage("Xác thực"),
         "wednesday": MessageLookupByLibrary.simpleMessage("Thứ 4"),
         "week": MessageLookupByLibrary.simpleMessage("Tuần"),
-        "yes": MessageLookupByLibrary.simpleMessage("Đồng ý")
+        "yes": MessageLookupByLibrary.simpleMessage("Đồng ý"),
+        "yesterday": MessageLookupByLibrary.simpleMessage("Hôm qua")
       };
 }
