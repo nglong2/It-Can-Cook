@@ -26,50 +26,47 @@ class _HistoryScreenState extends State<HistoryScreen> {
             appBar: AppBar(
               title: Text(S.current.history),
             ),
-            body: ListView.builder(
-              itemCount: state.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
+            body: state.length == 0
+                ? Center(
+                    child: Text(S.current.you_dont_have_any_order),
+                  )
+                : ListView.builder(
+                    itemCount: state.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Ngày đặt: " +
+                                    getDay(DateTime.parse(
+                                        state[index].orderDate.toString()))),
+                                SizedBox(
+                                  width: 22,
+                                ),
+                                Text("Ngày Giao Dự Kiến: " +
+                                    getDay(DateTime.parse(
+                                        state[index].shipDate.toString()))),
+                                SizedBox(
+                                  width: 22,
+                                ),
+                                Text(state[index].totalPrice.toString() +
+                                    " VND"),
+                                SizedBox(
+                                  width: 22,
+                                ),
+                                Text(state[index].status.toString()),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          CachedNetworkImage(
-                              width: 100,
-                              height: 100,
-                              imageUrl:
-                                  state[index].orderDetails[0].recipe?.img ??
-                                      ""),
-                          Text(state[index].orderDetails[0].recipe?.name ?? ""),
-                          // Text("Ngày đặt: " +
-                          //     DateFormat("yyyy-MM-dd").format(DateTime.parse(
-                          //         state[index].orderDate.toString()))),
-                          // SizedBox(
-                          //   width: 22,
-                          // ),
-                          // Text("Ngày Giao Dự Kiến: " +
-                          //     DateFormat("yyyy-MM-dd").format(getNextMonday(
-                          //         DateTime.parse(
-                          //             state[index].orderDate.toString())))),
-                          // SizedBox(
-                          //   width: 22,
-                          // ),
-                          // Text(state[index].totalPrice.toString() + " VND"),
-                          // SizedBox(
-                          //   width: 22,
-                          // ),
-                          // Text(state[index].status.toString()),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
           );
         },
       ),

@@ -195,6 +195,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
         "week": MessageLookupByLibrary.simpleMessage("Week"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
-        "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday")
+        "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
+        "you_dont_have_any_order":
+            MessageLookupByLibrary.simpleMessage("You dont have any order!"),
+        "you_dont_have_any_plan":
+            MessageLookupByLibrary.simpleMessage("You dont have any plan!")
       };
 }

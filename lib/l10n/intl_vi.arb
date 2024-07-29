@@ -104,7 +104,7 @@
   "add_to_quickly_plan": "Thêm vào kế hoạch cá nhân",
   "detail": "Chi tiết",
   "only_customer_can_login": "Chỉ khách hàng mới có thể đăng nhập",
-  "list_custom_personal_weekly_plan": "Danh sách kế hoạch cá nhân hàng tuần",
+  "list_custom_personal_weekly_plan": "Danh sách kế hoạch cá nhân",
   "add_to_custom_plan_success": "Thêm vào kế hoạch cá nhân thành công",
   "send_me_to_custom_plan": "Chuyển tôi đến kế hoạch cá nhân",
   "back": "Quay lại",
@@ -117,4 +117,7 @@
   "update_plan_confirmation": "Bạn có chắc chắn muốn cập nhật kế hoạch này?",
   "delete_plan_confirmation": "Bạn có chắc chắn muốn xóa kế hoạch này?",
   "preservationMethod": "Phương pháp bảo quản: "
+  "yesterday": "Hôm qua",
+  "you_dont_have_any_plan": "Bạn chưa có kế hoạch nào!",
+  "you_dont_have_any_order": "Bạn chưa có đơn hàng nào!"
 }

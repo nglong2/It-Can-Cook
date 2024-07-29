@@ -192,11 +192,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           height: 50,
           child: ElevatedButton(
             style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(Colors.white),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0))),
-              backgroundColor: MaterialStateProperty.all(
-                  const Color.fromARGB(255, 166, 213, 252)),
+              backgroundColor:
+                  MaterialStateProperty.all(Color.fromARGB(255, 6, 73, 127)),
             ),
             onPressed: () {
               //go to "checkout"

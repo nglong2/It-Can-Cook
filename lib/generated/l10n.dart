@@ -1170,31 +1170,21 @@ class S {
     );
   }
 
-  /// `Are you sure you want to update this plan?`
-  String get update_plan_confirmation {
+  /// `You dont have any plan!`
+  String get you_dont_have_any_plan {
     return Intl.message(
-      'Are you sure you want to update this plan?',
-      name: 'update_plan_confirmation',
+      'You dont have any plan!',
+      name: 'you_dont_have_any_plan',
       desc: '',
       args: [],
     );
   }
 
-  /// `Are you sure you want to delete this plan?`
-  String get delete_plan_confirmation {
+  /// `You dont have any order!`
+  String get you_dont_have_any_order {
     return Intl.message(
-      'Are you sure you want to delete this plan?',
-      name: 'delete_plan_confirmation',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Preservation method: `
-  String get preservationMethod {
-    return Intl.message(
-      'Preservation method: ',
-      name: 'preservationMethod',
+      'You dont have any order!',
+      name: 'you_dont_have_any_order',
       desc: '',
       args: [],
     );
