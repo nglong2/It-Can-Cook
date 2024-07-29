@@ -27,89 +27,103 @@ class _CustomPlanScreenState extends State<CustomPlanScreen> {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is CustomPlanLoaded) {
                   return LoaderOverlay(
-                      child: ListView.builder(
-                    itemCount: state.weeklyPlans.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                          title: Row(
-                            children: [
-                              Text(state.weeklyPlans[index].title ?? ''),
-                              // IconButton(
-                              //   icon: //rename icon to delete
-                              //       const Icon(
-                              //     Icons.border_color,
-                              //     size: 18,
-                              //   ),
-                              //   onPressed: () {
-                              //     //show poup for rename state[index].title
-                              //   },
-                              // ),
-                            ],
-                          ),
-                          leading: CachedNetworkImage(
-                            imageUrl: state.weeklyPlans[index].urlImage ?? '',
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.fill,
-                          ),
-                          subtitle: Row(
-                            children: [
-                              Text(state.weeklyPlans[index].description ?? ''),
-                            ],
-                          ),
-                          onTap: () => {
-                                //navigate to detail
-                                Navigator.pushNamed(
-                                    context, 'weekly_custom_detail',
-                                    arguments: state.weeklyPlans[index])
-                              },
-                          trailing: Container(
-                            margin: const EdgeInsets.only(bottom: 22),
-                            child: IconButton(
-                              icon: //rename icon to delete
-                                  const Icon(
-                                Icons.delete,
-                                size: 18,
-                              ),
-                              onPressed: () {
-                                //show diaglog config delete
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          S.current.delete_plan_confirmation),
-                                      content: Text(
-                                          state.weeklyPlans[index].title ?? ''),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text(S.current.cancel),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            // context
-                                            //     // .read<CustomPlanBloc>()
-                                            //     // .add(DeleteCustomPlanEvent(
-                                            //     //     state.weeklyPlans[index].id));
-                                            // Navigator.of(context).pop();
-                                          },
-                                          child: Text(S.current.yes),
-                                        ),
+                      child: state.weeklyPlans.isEmpty
+                          ? Center(
+                              child: Text(S.current.you_dont_have_any_plan),
+                            )
+                          : ListView.builder(
+                              itemCount: state.weeklyPlans.length,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                    title: Row(
+                                      children: [
+                                        Text(state.weeklyPlans[index].title ??
+                                            ''),
+                                        // IconButton(
+                                        //   icon: //rename icon to delete
+                                        //       const Icon(
+                                        //     Icons.border_color,
+                                        //     size: 18,
+                                        //   ),
+                                        //   onPressed: () {
+                                        //     //show poup for rename state[index].title
+                                        //   },
+                                        // ),
                                       ],
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          )
-                          //iwamt add button delete at last
+                                    ),
+                                    leading: CachedNetworkImage(
+                                      imageUrl:
+                                          state.weeklyPlans[index].urlImage ??
+                                              '',
+                                      height: 100,
+                                      width: 100,
+                                      fit: BoxFit.fill,
+                                    ),
+                                    subtitle: Row(
+                                      children: [
+                                        Text(state.weeklyPlans[index]
+                                                .description ??
+                                            ''),
+                                      ],
+                                    ),
+                                    onTap: () => {
+                                          //navigate to detail
+                                          Navigator.pushNamed(
+                                              context, 'weekly_custom_detail',
+                                              arguments:
+                                                  state.weeklyPlans[index])
+                                        },
+                                    trailing: Container(
+                                      margin: const EdgeInsets.only(bottom: 22),
+                                      child: IconButton(
+                                        icon: //rename icon to delete
+                                            const Icon(
+                                          Icons.delete,
+                                          size: 18,
+                                        ),
+                                        onPressed: () {
+                                          //show diaglog config delete
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                title: Text(S.current
+                                                    .delete_plan_confirmation),
+                                                content: Text(state
+                                                        .weeklyPlans[index]
+                                                        .title ??
+                                                    ''),
+                                                actions: <Widget>[
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child:
+                                                        Text(S.current.cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      // context
+                                                      //     // .read<CustomPlanBloc>()
+                                                      //     // .add(DeleteCustomPlanEvent(
+                                                      //     //     state.weeklyPlans[index].id));
+                                                      // Navigator.of(context).pop();
+                                                    },
+                                                    child: Text(S.current.yes),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    )
+                                    //iwamt add button delete at last
 
-                                );
-                          },
-                        ));
+                                    );
+                              },
+                            ));
                 }
                 return const SizedBox();
               },
