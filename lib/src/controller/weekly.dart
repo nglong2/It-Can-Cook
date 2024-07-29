@@ -51,4 +51,18 @@ class WeeklyPlanController {
     }
     throw Exception('Failed to get recipes');
   }
+
+  //update weekly plan
+  Future<String> updateWeeklyPlan(WeeklyPlan weeklyPlan) async {
+    var data = await api.put(
+        "api/weeklyplan/update-full-info", weeklyPlan.toJsonCreate());
+    if (data.statusCode == 200) {
+      if (jsonDecode(data.body)["statusCode"] == 200) {
+        return jsonDecode(data.body)["message"];
+      } else {
+        return jsonDecode(data.body)["message"];
+      }
+    }
+    return "Failed to update weekly";
+  }
 }

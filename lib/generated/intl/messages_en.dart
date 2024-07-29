@@ -55,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Custom Plan ➕"),
         "delete_dish": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this dish?"),
+        "delete_plan_confirmation": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this plan?"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
         "dietary_fiber": MessageLookupByLibrary.simpleMessage("Dietary Fiber"),
         "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
@@ -157,6 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Phone number must be 10 digits long"),
         "please_enter_verification_code": MessageLookupByLibrary.simpleMessage(
             "Please enter verification code"),
+        "preservationMethod":
+            MessageLookupByLibrary.simpleMessage("Preservation method: "),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
@@ -180,6 +184,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_fat": MessageLookupByLibrary.simpleMessage("Total Fat"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
         "update_plan": MessageLookupByLibrary.simpleMessage("Update plan"),
+        "update_plan_confirmation": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to update this plan?"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Verification code"),
         "verification_code_must_be_6_digits_long":

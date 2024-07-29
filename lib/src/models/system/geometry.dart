@@ -32,7 +32,7 @@ class Result {
   final String? street;
   final double? lon;
   final double? lat;
-  final int? distance;
+  final double? distance;
   final String? resultType;
   final String? formatted;
   final String? addressLine1;

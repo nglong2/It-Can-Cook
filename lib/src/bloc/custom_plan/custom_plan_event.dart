@@ -29,3 +29,9 @@ class ChangeUserInHouseEvent extends CustomPlanEvent {
   final int numberPerson;
   ChangeUserInHouseEvent(this.recipePlan, this.numberPerson);
 }
+
+//UpdateRecipePlanEvent
+class UpdateWeeklyPlanEvent extends CustomPlanEvent {
+  final WeeklyPlan weeklyPlan;
+  UpdateWeeklyPlanEvent(this.weeklyPlan);
+}

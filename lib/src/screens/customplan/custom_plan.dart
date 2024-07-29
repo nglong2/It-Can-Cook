@@ -34,16 +34,16 @@ class _CustomPlanScreenState extends State<CustomPlanScreen> {
                           title: Row(
                             children: [
                               Text(state.weeklyPlans[index].title ?? ''),
-                              IconButton(
-                                icon: //rename icon to delete
-                                    const Icon(
-                                  Icons.border_color,
-                                  size: 18,
-                                ),
-                                onPressed: () {
-                                  //show poup for rename state[index].title
-                                },
-                              ),
+                              // IconButton(
+                              //   icon: //rename icon to delete
+                              //       const Icon(
+                              //     Icons.border_color,
+                              //     size: 18,
+                              //   ),
+                              //   onPressed: () {
+                              //     //show poup for rename state[index].title
+                              //   },
+                              // ),
                             ],
                           ),
                           leading: CachedNetworkImage(
@@ -72,7 +72,36 @@ class _CustomPlanScreenState extends State<CustomPlanScreen> {
                                 size: 18,
                               ),
                               onPressed: () {
-                                //show poup for rename state[index].title
+                                //show diaglog config delete
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          S.current.delete_plan_confirmation),
+                                      content: Text(
+                                          state.weeklyPlans[index].title ?? ''),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text(S.current.cancel),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            // context
+                                            //     // .read<CustomPlanBloc>()
+                                            //     // .add(DeleteCustomPlanEvent(
+                                            //     //     state.weeklyPlans[index].id));
+                                            // Navigator.of(context).pop();
+                                          },
+                                          child: Text(S.current.yes),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
                               },
                             ),
                           )

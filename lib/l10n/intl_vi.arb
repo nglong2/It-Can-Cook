@@ -113,5 +113,8 @@
   "get_current_location": "Lấy vị trí hiện tại",
   "order_success": "Đặt hàng thành công",
   "today": "Hôm nay",
-  "yesterday": "Hôm qua"
+  "yesterday": "Hôm qua",
+  "update_plan_confirmation": "Bạn có chắc chắn muốn cập nhật kế hoạch này?",
+  "delete_plan_confirmation": "Bạn có chắc chắn muốn xóa kế hoạch này?",
+  "preservationMethod": "Phương pháp bảo quản: "
 }

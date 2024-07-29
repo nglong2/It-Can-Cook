@@ -30,8 +30,35 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                    "${S.current.pakaging_method}: ${step.ingredient?.packagingMethod}"),
+                Row(
+                  children: [
+                    Text(
+                      "${S.current.pakaging_method}",
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    Text("${step.ingredient?.packagingMethod}")
+                  ],
+                ),
+                SizedBox(
+                  width: 12,
+                  height: 12,
+                ),
+                //preservationMethod
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${S.current.preservationMethod}",
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    Flexible(
+                        child: Text("${step.ingredient?.preservationMethod}"))
+                  ],
+                ),
+                SizedBox(
+                  width: 10,
+                  height: 10,
+                ),
                 Row(
                   children: [
                     Text("${S.current.amount} ${step.amount} "),

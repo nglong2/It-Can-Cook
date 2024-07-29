@@ -118,5 +118,16 @@ class CustomPlanBloc extends Bloc<CustomPlanEvent, CustomPlanState> {
         }
       }
     });
+
+    //updateweeklyplanevent
+
+    on<UpdateWeeklyPlanEvent>((event, emit) async {
+      if (state is CustomPlanLoaded) {
+        final currentState = state as CustomPlanLoaded;
+        final weeklyPlan = event.weeklyPlan;
+        await WeeklyPlanController().updateWeeklyPlan(weeklyPlan);
+        emit(CustomPlanLoaded(currentState.weeklyPlans));
+      }
+    });
   }
 }

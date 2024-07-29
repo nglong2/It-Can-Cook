@@ -3,6 +3,7 @@ class Ingredient {
   String? ingredientCategoryId;
   String? name;
   String? packagingMethod;
+  String? preservationMethod;
   String? img;
   String? unit;
   double? price;
@@ -22,6 +23,7 @@ class Ingredient {
     this.unit,
     this.price,
     this.packagingMethod,
+    this.preservationMethod,
     this.status,
     this.createdAt,
     this.createdBy,
@@ -37,6 +39,7 @@ class Ingredient {
       ingredientCategoryId: json['ingredientCategoryId'],
       name: json['name'],
       packagingMethod: json['packagingMethod'],
+      preservationMethod: json['preservationMethod'],
       img: json['img'],
       unit: json['unit'],
       price:
@@ -63,6 +66,7 @@ class Ingredient {
       'img': img,
       'unit': unit,
       'packagingMethod': packagingMethod,
+      'preservationMethod': preservationMethod,
       'price': price,
       'status': status,
       'createdAt': createdAt,

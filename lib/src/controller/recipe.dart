@@ -19,9 +19,10 @@ class RecipeController {
 
         var recipePlans = <RecipePlan>[];
         for (var recipe in recipes) {
-          recipePlans.add(
-              RecipePlan(id: recipe.id, price: recipe.price, recipe: recipe));
+          recipePlans.add(RecipePlan(
+              recipeId: recipe.id, price: recipe.price, recipe: recipe));
         }
+
         return recipePlans;
       }
       throw Exception(jsonDecode(value.body)["message"]);

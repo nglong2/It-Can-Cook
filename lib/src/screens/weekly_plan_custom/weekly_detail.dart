@@ -71,9 +71,54 @@ class WeeklyCustomDetailPageState extends State<WeeklyCustomDetailPage> {
                                       borderRadius: BorderRadius.circular(6.0),
                                       side: const BorderSide())),
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  Color.fromARGB(255, 182, 208, 230)),
+                                  const Color.fromARGB(255, 182, 208, 230)),
                             ),
-                            onPressed: () => {},
+                            onPressed: () => {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text(S.current.update_plan),
+                                        content: Text(
+                                            S.current.update_plan_confirmation),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(S.current.cancel)),
+                                          TextButton(
+                                              onPressed: () async {
+                                                context.loaderOverlay.show();
+                                                for (var recipePlan
+                                                    in weeklyPlan.recipePlans) {
+                                                  var numberPerson = recipePlan
+                                                          .numberPerson ??
+                                                      systemBloc
+                                                          .numberPersonInHouse;
+                                                  recipePlan.numberPerson =
+                                                      numberPerson;
+                                                  recipePlan.quantity = 1;
+                                                }
+                                                var data =
+                                                    await WeeklyPlanController()
+                                                        .updateWeeklyPlan(
+                                                            weeklyPlan);
+                                                if (context.mounted) {
+                                                  context.loaderOverlay.hide();
+                                                  Navigator.pop(context);
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(SnackBar(
+                                                          content: Text(data)));
+                                                }
+                                              },
+                                              child:
+                                                  Text(S.current.update_plan))
+                                        ],
+                                      );
+                                    },
+                                  )
+                                },
                             child: Text(S.current.update_plan))
                       ],
                     ),

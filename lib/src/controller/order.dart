@@ -10,27 +10,32 @@ class OrderController {
 
   Future<String> CreateOrder(String userID, String note, String address,
       double lat, double long, double price, WeeklyPlan weeklyPlan) async {
-    var value = await api.post(
-        "api/order/create",
-        Order(
-                userId: userID,
-                standerdWeeklyPlanId: weeklyPlan.id ?? "",
-                note: note,
-                longitude: long,
-                latitude: lat,
-                address: address,
-                totalPrice: price,
-                recipeList: weeklyPlan.recipePlans.toList())
-            .toJson());
+    try {
+      var value = await api.post(
+          "api/order/create",
+          Order(
+                  userId: userID,
+                  standerdWeeklyPlanId: weeklyPlan.id ?? "",
+                  note: note,
+                  longitude: long,
+                  img: weeklyPlan.urlImage ?? "test",
+                  latitude: lat,
+                  address: address,
+                  totalPrice: price,
+                  recipeList: weeklyPlan.recipePlans.toList())
+              .toJson());
 
-    if (value.statusCode == 200) {
-      if (jsonDecode(value.body)["statusCode"] == 200) {
-        return jsonDecode(value.body)["data"];
-      } else {
-        return jsonDecode(value.body)["message"];
+      if (value.statusCode == 200) {
+        if (jsonDecode(value.body)["statusCode"] == 200) {
+          return jsonDecode(value.body)["data"];
+        } else {
+          return jsonDecode(value.body)["message"];
+        }
       }
+      return jsonDecode(value.body)["message"];
+    } catch (e) {
+      return e.toString();
     }
-    return jsonDecode(value.body)["message"];
   }
 
   Future<List<OrderHistory>> GetOrderHistory(String userID) async {

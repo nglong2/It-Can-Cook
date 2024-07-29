@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kế hoạch tùy chỉnh ➕"),
         "delete_dish": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xóa món ăn này?"),
+        "delete_plan_confirmation": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn xóa kế hoạch này?"),
         "detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
         "dietary_fiber": MessageLookupByLibrary.simpleMessage("Chất xơ"),
         "dinner": MessageLookupByLibrary.simpleMessage("Bữa tối"),
@@ -154,6 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Số điện thoại phải có 10 số"),
         "please_enter_verification_code":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã xác thực"),
+        "preservationMethod":
+            MessageLookupByLibrary.simpleMessage("Phương pháp bảo quản: "),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "remove": MessageLookupByLibrary.simpleMessage("Xóa"),
         "saturday": MessageLookupByLibrary.simpleMessage("Thứ 7"),
@@ -179,6 +183,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tuesday": MessageLookupByLibrary.simpleMessage("Thứ 3"),
         "update_plan":
             MessageLookupByLibrary.simpleMessage("Cập nhật kế hoạch"),
+        "update_plan_confirmation": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn cập nhật kế hoạch này?"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Mã xác thực"),
         "verification_code_must_be_6_digits_long":
