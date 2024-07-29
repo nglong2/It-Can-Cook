@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có chắc chắn muốn xóa món ăn này?"),
         "delete_plan_confirmation": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xóa kế hoạch này?"),
+        "delivery_to": MessageLookupByLibrary.simpleMessage("Giao hàng đến"),
         "detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
         "dietary_fiber": MessageLookupByLibrary.simpleMessage("Chất xơ"),
         "dinner": MessageLookupByLibrary.simpleMessage("Bữa tối"),
@@ -114,6 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Kết nối với nhiều chuyên gia"),
         "only_customer_can_login": MessageLookupByLibrary.simpleMessage(
             "Chỉ khách hàng mới có thể đăng nhập"),
+        "order_information":
+            MessageLookupByLibrary.simpleMessage("Thông tin đơn hàng"),
         "order_success":
             MessageLookupByLibrary.simpleMessage("Đặt hàng thành công"),
         "pakaging_method":

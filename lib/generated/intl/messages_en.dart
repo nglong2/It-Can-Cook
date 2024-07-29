@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete this dish?"),
         "delete_plan_confirmation": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this plan?"),
+        "delivery_to": MessageLookupByLibrary.simpleMessage("Delivery to"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
         "dietary_fiber": MessageLookupByLibrary.simpleMessage("Dietary Fiber"),
         "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
@@ -116,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Connect with many experts"),
         "only_customer_can_login":
             MessageLookupByLibrary.simpleMessage("Only customer can login"),
+        "order_information":
+            MessageLookupByLibrary.simpleMessage("Order information"),
         "order_success":
             MessageLookupByLibrary.simpleMessage("Order successfully"),
         "pakaging_method":

@@ -1,5 +1,6 @@
 import 'package:it_can_cook/src/models/weekly/ingredient.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
+import 'package:it_can_cook/src/models/weekly/weekly.dart';
 
 class OrderHistory {
   String? id;
@@ -10,6 +11,7 @@ class OrderHistory {
   String? orderDate;
   double? totalPrice;
   String? status;
+  WeeklyPlan? weeklyPlan;
   List<OrderDetails> orderDetails = [];
 
   OrderHistory({
@@ -21,6 +23,7 @@ class OrderHistory {
     this.orderDate,
     this.totalPrice,
     this.status,
+    this.weeklyPlan,
     this.orderDetails = const [],
   });
 
@@ -36,6 +39,9 @@ class OrderHistory {
           ? double.parse(json['totalPrice'].toString())
           : null,
       status: json['status'],
+      weeklyPlan: json['weeklyPlan'] != null
+          ? WeeklyPlan.fromJson(json['weeklyPlan'])
+          : null,
       orderDetails: json['orderDetails'] != null
           ? List<OrderDetails>.from(
               json['orderDetails'].map((x) => OrderDetails.fromJson(x)))

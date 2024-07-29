@@ -10,6 +10,7 @@ import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
+import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/weekly/dish.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/system/system.dart';
@@ -20,6 +21,7 @@ import 'package:it_can_cook/src/screens/checkout/checkout_step1.dart';
 import 'package:it_can_cook/src/screens/customplan/custom_plan.dart';
 import 'package:it_can_cook/src/screens/delivery/home.dart';
 import 'package:it_can_cook/src/screens/history/history.dart';
+import 'package:it_can_cook/src/screens/history/history_detail.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
 import 'package:it_can_cook/src/screens/login/login/login.dart';
 import 'package:it_can_cook/src/screens/login/register/register.dart';
@@ -154,6 +156,10 @@ class MyApp extends StatelessWidget {
                       return Onboarding();
                     case "custom_plan":
                       return const CustomPlanScreen();
+                    case "history_detail":
+                      return HistoryDetail(
+                        orderHistory: routeSettings.arguments as OrderHistory,
+                      );
                     case "history":
                       return HistoryScreen();
                     case "weekly_custom_detail":

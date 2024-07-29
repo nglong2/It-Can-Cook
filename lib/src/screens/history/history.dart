@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
@@ -26,6 +27,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             appBar: AppBar(
               title: Text(S.current.history),
             ),
+            backgroundColor: Colors.grey[200],
             body: state.length == 0
                 ? Center(
                     child: Text(S.current.you_dont_have_any_order),
@@ -34,37 +36,108 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     itemCount: state.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        height: 200,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Ngày đặt: " +
-                                    getDay(DateTime.parse(
-                                        state[index].orderDate.toString()))),
-                                SizedBox(
-                                  width: 22,
-                                ),
-                                Text("Ngày Giao Dự Kiến: " +
-                                    getDay(DateTime.parse(
-                                        state[index].shipDate.toString()))),
-                                SizedBox(
-                                  width: 22,
-                                ),
-                                Text(state[index].totalPrice.toString() +
-                                    " VND"),
-                                SizedBox(
-                                  width: 22,
-                                ),
-                                Text(state[index].status.toString()),
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: GestureDetector(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          CachedNetworkImage(
+                                            imageUrl: state[index]
+                                                    .weeklyPlan
+                                                    ?.urlImage ??
+                                                "",
+                                            width: 80,
+                                            fit: BoxFit.cover,
+                                            height: 80,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    state[index]
+                                                            .weeklyPlan
+                                                            ?.title
+                                                            .toString() ??
+                                                        "",
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20),
+                                                  ),
+                                                  Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        "${state[index].orderDetails.length} items",
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: Colors.grey),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.only(
+                                                left: 10, right: 10),
+                                            child: Text(
+                                              getDay(DateTime.parse(
+                                                  state[index].orderDate ??
+                                                      "")),
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.grey),
+                                            ),
+                                          ),
+                                          Text(
+                                              getTime(DateTime.parse(
+                                                  state[index].orderDate ??
+                                                      "")),
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              onTap: () => Navigator.pushNamed(
+                                    context,
+                                    "history_detail",
+                                    arguments: state[index],
+                                  )));
                     },
                   ),
           );
@@ -91,5 +164,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   DateTime getNextMonday(DateTime date) {
     return date.add(Duration(days: 1 - date.weekday + 7));
+  }
+
+  //get time from date
+  String getTime(DateTime date) {
+    return DateFormat("HH:mm").format(date.toUtc());
   }
 }

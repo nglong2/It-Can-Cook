@@ -118,5 +118,7 @@
   "delete_plan_confirmation": "Bạn có chắc chắn muốn xóa kế hoạch này?",
   "preservationMethod": "Phương pháp bảo quản: ",
   "you_dont_have_any_plan": "Bạn chưa có kế hoạch nào!",
-  "you_dont_have_any_order": "Bạn chưa có đơn hàng nào!"
+  "you_dont_have_any_order": "Bạn chưa có đơn hàng nào!",
+  "order_information": "Thông tin đơn hàng",
+  "delivery_to": "Giao hàng đến"
 }
