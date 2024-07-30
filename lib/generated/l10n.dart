@@ -1239,6 +1239,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Status`
+  String get status {
+    return Intl.message(
+      'Status',
+      name: 'status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Estimated delivery time`
+  String get estimated_delivery_time {
+    return Intl.message(
+      'Estimated delivery time',
+      name: 'estimated_delivery_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order date`
+  String get orderdate {
+    return Intl.message(
+      'Order date',
+      name: 'orderdate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note`
+  String get note {
+    return Intl.message(
+      'Note',
+      name: 'note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel order`
+  String get cancle_order {
+    return Intl.message(
+      'Cancel order',
+      name: 'cancle_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment status`
+  String get payment_status {
+    return Intl.message(
+      'Payment status',
+      name: 'payment_status',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

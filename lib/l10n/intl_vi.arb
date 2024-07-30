@@ -120,5 +120,11 @@
   "you_dont_have_any_plan": "Bạn chưa có kế hoạch nào!",
   "you_dont_have_any_order": "Bạn chưa có đơn hàng nào!",
   "order_information": "Thông tin đơn hàng",
-  "delivery_to": "Giao hàng đến"
+  "delivery_to": "Giao hàng đến",
+  "status": "Trạng thái",
+  "estimated_delivery_time": "Thời gian giao hàng dự kiến",
+  "orderdate": "Ngày đặt hàng",
+  "note": "Ghi chú",
+  "cancle_order": "Hủy đơn hàng",
+  "payment_status": "Trạng thái thanh toán"
 }

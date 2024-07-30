@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Quay lại"),
         "breakfast": MessageLookupByLibrary.simpleMessage("Bữa sáng"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
+        "cancle_order": MessageLookupByLibrary.simpleMessage("Hủy đơn hàng"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_success":
             MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thành công"),
@@ -66,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_verification_code":
             MessageLookupByLibrary.simpleMessage("Nhập mã xác thực"),
         "error": MessageLookupByLibrary.simpleMessage("Lỗi"),
+        "estimated_delivery_time":
+            MessageLookupByLibrary.simpleMessage("Thời gian giao hàng dự kiến"),
         "first_name": MessageLookupByLibrary.simpleMessage("Tên"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
@@ -94,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
+        "note": MessageLookupByLibrary.simpleMessage("Ghi chú"),
         "numberperoninhouse":
             MessageLookupByLibrary.simpleMessage("Số người trong nhà"),
         "nutrion": MessageLookupByLibrary.simpleMessage("Dinh dưỡng"),
@@ -119,12 +123,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thông tin đơn hàng"),
         "order_success":
             MessageLookupByLibrary.simpleMessage("Đặt hàng thành công"),
+        "orderdate": MessageLookupByLibrary.simpleMessage("Ngày đặt hàng"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Phương pháp đóng gói: "),
         "passed": MessageLookupByLibrary.simpleMessage("Bỏ qua"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "password_not_match":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
+        "payment_status":
+            MessageLookupByLibrary.simpleMessage("Trạng thái thanh toán"),
         "person": MessageLookupByLibrary.simpleMessage("Người"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_number_must_contain_only_digits":
@@ -170,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Phần ăn dùng cho: "),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "sodium": MessageLookupByLibrary.simpleMessage("Muối"),
+        "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),
         "step": MessageLookupByLibrary.simpleMessage("Bước"),
         "submit": MessageLookupByLibrary.simpleMessage("Gửi"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),

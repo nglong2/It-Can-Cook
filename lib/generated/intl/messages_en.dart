@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "breakfast": MessageLookupByLibrary.simpleMessage("Breakfast"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cancle_order": MessageLookupByLibrary.simpleMessage("Cancel order"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change password"),
         "change_password_success": MessageLookupByLibrary.simpleMessage(
@@ -67,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_verification_code":
             MessageLookupByLibrary.simpleMessage("Enter verification code"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
+        "estimated_delivery_time":
+            MessageLookupByLibrary.simpleMessage("Estimated delivery time"),
         "first_name": MessageLookupByLibrary.simpleMessage("First name"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
@@ -96,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "note": MessageLookupByLibrary.simpleMessage("Note"),
         "numberperoninhouse":
             MessageLookupByLibrary.simpleMessage("Number of people in house: "),
         "nutrion": MessageLookupByLibrary.simpleMessage("Nutrion"),
@@ -121,12 +125,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Order information"),
         "order_success":
             MessageLookupByLibrary.simpleMessage("Order successfully"),
+        "orderdate": MessageLookupByLibrary.simpleMessage("Order date"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Pakaging method: "),
         "passed": MessageLookupByLibrary.simpleMessage("Passed"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_not_match":
             MessageLookupByLibrary.simpleMessage("Password does not match"),
+        "payment_status":
+            MessageLookupByLibrary.simpleMessage("Payment status"),
         "person": MessageLookupByLibrary.simpleMessage("Person"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Phone number"),
         "phone_number_must_contain_only_digits":
@@ -173,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "serving_size": MessageLookupByLibrary.simpleMessage("Serving Size: "),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sodium": MessageLookupByLibrary.simpleMessage("Sodium"),
+        "status": MessageLookupByLibrary.simpleMessage("Status"),
         "step": MessageLookupByLibrary.simpleMessage("Steps"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),

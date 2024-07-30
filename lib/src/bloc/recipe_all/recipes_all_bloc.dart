@@ -11,7 +11,7 @@ class RecipesAllBloc extends Bloc<RecipesAllEvent, List<RecipePlan>> {
     on<FetchRecipesAllEvent>((event, emit) async {
       //getRecipePlansByName
       var name = event.name;
-      var status = false;
+      var status = true;
       var listRecipePlan =
           await RecipeController().getRecipePlansByName(name, status);
       emit(listRecipePlan);
@@ -20,7 +20,7 @@ class RecipesAllBloc extends Bloc<RecipesAllEvent, List<RecipePlan>> {
     on<SearchRecipesAllEvent>((event, emit) async {
       //getRecipePlansByName
       var name = event.name;
-      var status = false;
+      var status = true;
       var listRecipePlan =
           await RecipeController().getRecipePlansByName(name, status);
       emit(listRecipePlan);

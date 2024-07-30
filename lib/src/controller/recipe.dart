@@ -13,7 +13,7 @@ class RecipeController {
     if (value.statusCode == 200) {
       if (jsonDecode(value.body)["statusCode"] == 200) {
         List<Recipe> recipes = [];
-        for (var item in jsonDecode(value.body)["list"]) {
+        for (var item in jsonDecode(value.body)["data"]) {
           recipes.add(Recipe.fromJson(item));
         }
 

@@ -84,7 +84,9 @@ class Result {
       street: json['street'],
       lon: json['lon'],
       lat: json['lat'],
-      distance: json['distance'],
+      distance: json['distance'] != null
+          ? double.parse(json['distance'].toString())
+          : null,
       resultType: json['result_type'],
       formatted: json['formatted'],
       addressLine1: json['address_line1'],
@@ -157,9 +159,9 @@ class DataSource {
 class Timezone {
   final String? name;
   final String? offsetSTD;
-  final int? offsetSTDSeconds;
+  final double? offsetSTDSeconds;
   final String? offsetDST;
-  final int? offsetDSTSeconds;
+  final double? offsetDSTSeconds;
 
   Timezone({
     this.name,
@@ -173,9 +175,13 @@ class Timezone {
     return Timezone(
       name: json['name'],
       offsetSTD: json['offset_STD'],
-      offsetSTDSeconds: json['offset_STD_seconds'],
+      offsetSTDSeconds: json['offset_STD_seconds'] != null
+          ? double.parse(json['offset_STD_seconds'].toString())
+          : null,
       offsetDST: json['offset_DST'],
-      offsetDSTSeconds: json['offset_DST_seconds'],
+      offsetDSTSeconds: json['offset_DST_seconds'] != null
+          ? double.parse(json['offset_DST_seconds'].toString())
+          : null,
     );
   }
 

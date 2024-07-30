@@ -108,6 +108,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                             MainAxisAlignment.start,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
+                                          Text(state[index].status ?? "",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  color: getColorByStatus(
+                                                      state[index].status ??
+                                                          ""))),
                                           Container(
                                             padding: const EdgeInsets.only(
                                                 left: 10, right: 10),
@@ -168,6 +174,27 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   //get time from date
   String getTime(DateTime date) {
-    return DateFormat("HH:mm").format(date.toUtc());
+    return DateFormat("HH:mm").format(date.add(Duration(hours: 7)).toLocal());
+  }
+}
+
+Color getColorByStatus(String status) {
+  switch (status) {
+    case "Processing":
+      return Colors.blue;
+    case "Shipping":
+      return Colors.orange;
+    case "Shipped":
+      return Colors.green;
+    case "Delivered":
+      return Colors.green;
+    case "UnShipped":
+      return Colors.red;
+    case "Refund":
+      return Colors.red;
+    case "Canceled":
+      return Colors.red;
+    default:
+      return Colors.black;
   }
 }
