@@ -200,6 +200,9 @@ class _HistoryDetailState extends State<HistoryDetail> {
                   )
                 ],
               )),
+              SizedBox(
+                height: 10,
+              ),
               Container(
                 padding: const EdgeInsets.only(left: 20),
                 child: Row(
@@ -219,7 +222,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                         ),
                       ],
                     ),
-                    Row(
+                    Column(
                       children: [
                         Text(
                           "${S.current.payment_status}: ",

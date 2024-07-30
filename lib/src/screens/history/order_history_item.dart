@@ -58,7 +58,12 @@ class _OrderHistoryItemState extends State<OrderHistoryItem> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              widget.orderDetails[index].recipe?.name ?? "",
+                              (widget.orderDetails[index].recipe?.name ?? "")
+                                          .length >
+                                      25
+                                  ? "${(widget.orderDetails[index].recipe?.name ?? "").substring(0, 25)}..."
+                                  : widget.orderDetails[index].recipe?.name ??
+                                      "",
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -68,8 +73,8 @@ class _OrderHistoryItemState extends State<OrderHistoryItem> {
                               (widget.orderDetails[index].recipe?.description ??
                                               "")
                                           .length >
-                                      40
-                                  ? "${(widget.orderDetails[index].recipe?.description ?? "").substring(0, 40)}..."
+                                      25
+                                  ? "${(widget.orderDetails[index].recipe?.description ?? "").substring(0, 25)}..."
                                   : widget.orderDetails[index].recipe
                                           ?.description ??
                                       "",
@@ -77,8 +82,8 @@ class _OrderHistoryItemState extends State<OrderHistoryItem> {
                                 fontSize: 14,
                               ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.5,
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.4,
                               child: ExpansionTile(
                                   title: Text(S.current.ingredients),
                                   controlAffinity:
@@ -98,7 +103,7 @@ class _OrderHistoryItemState extends State<OrderHistoryItem> {
                     children: [
                       Text(
                         "x${widget.orderDetails[index].quantity}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
@@ -108,7 +113,7 @@ class _OrderHistoryItemState extends State<OrderHistoryItem> {
                               RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                               (Match m) => '${m[1]},',
                             )}đ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),

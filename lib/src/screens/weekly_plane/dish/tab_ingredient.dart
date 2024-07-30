@@ -31,12 +31,13 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "${S.current.pakaging_method}",
                       style: TextStyle(fontWeight: FontWeight.w500),
                     ),
-                    Text("${step.ingredient?.packagingMethod}")
+                    Flexible(child: Text("${step.ingredient?.packagingMethod}"))
                   ],
                 ),
                 SizedBox(
