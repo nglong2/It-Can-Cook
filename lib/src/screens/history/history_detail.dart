@@ -11,6 +11,7 @@ import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/weekly/ingredient.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/history/order_history_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HistoryDetail extends StatefulWidget {
   final OrderHistory orderHistory;
@@ -90,15 +91,22 @@ class _HistoryDetailState extends State<HistoryDetail> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Row(
-                              children: [
-                                Icon(Icons.location_on),
-                                Flexible(
-                                    child: Text(
-                                  widget.orderHistory.address ?? "No address",
-                                  style: TextStyle(fontWeight: FontWeight.w500),
-                                ))
-                              ],
+                            GestureDetector(
+                              child: Row(
+                                children: [
+                                  Icon(Icons.location_on),
+                                  Flexible(
+                                      child: Text(
+                                    widget.orderHistory.address ?? "No address",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w500),
+                                  ))
+                                ],
+                              ),
+                              onTap: () {
+                                MapUtils.openMap(double.parse("10.819139"),
+                                    double.parse("106.6973554"));
+                              },
                             ),
                             Row(
                               children: [
@@ -372,4 +380,18 @@ String getHour(DateTime date) {
   //14:01
   return DateFormat("HH:mm")
       .format(date.add(const Duration(hours: 7)).toLocal());
+}
+
+class MapUtils {
+  MapUtils._();
+
+  static Future<void> openMap(double latitude, double longitude) async {
+    String googleUrl =
+        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+    if (await canLaunchUrl(Uri.parse(googleUrl))) {
+      await launchUrl(Uri.parse(googleUrl));
+    } else {
+      throw 'Could not open the map.';
+    }
+  }
 }

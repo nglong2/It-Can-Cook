@@ -97,7 +97,7 @@ class _OrderHistoryItemState extends State<OrderHistoryItem> {
                   Column(
                     children: [
                       Text(
-                        "x ${widget.orderDetails[index].quantity}",
+                        "x${widget.orderDetails[index].quantity}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
