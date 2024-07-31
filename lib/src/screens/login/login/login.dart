@@ -176,6 +176,50 @@ class LoginPageState extends State<LoginPage> {
         });
   }
 
+//hadle forgot password
+  Future<void> hadleForgotPassword(String email) async {
+    context.loaderOverlay.show();
+    AccountController().forgotPassword(email).then((value) {
+      context.loaderOverlay.hide();
+      if (value) {
+        //show dialog
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text(S.of(context).success),
+                content: Text(S.of(context).please_check_your_email),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(S.of(context).yes))
+                ],
+              );
+            });
+      }
+    }).onError((error, stackTrace) {
+      context.loaderOverlay.hide();
+      //show dialog
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(S.of(context).error),
+              content: Text(error.toString()),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(S.of(context).yes))
+              ],
+            );
+          });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AccountBloc, AccountModel?>(
@@ -353,6 +397,50 @@ class LoginPageState extends State<LoginPage> {
                                       },
                                       child: Text(
                                         S.of(context).register,
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                )),
+                            const SizedBox(height: 20),
+                            FadeInUp(
+                                duration: const Duration(milliseconds: 1500),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () {
+                                        if (_emailController.text.isEmpty) {
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  title:
+                                                      Text(S.of(context).error),
+                                                  content: Text(S
+                                                      .of(context)
+                                                      .please_enter_email),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Text(
+                                                            S.of(context).yes))
+                                                  ],
+                                                );
+                                              });
+                                          return;
+                                        }
+                                        hadleForgotPassword(
+                                            _emailController.text);
+                                      },
+                                      child: Text(
+                                        S.of(context).forgot_password,
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,

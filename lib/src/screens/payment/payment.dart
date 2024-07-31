@@ -23,8 +23,8 @@ class _PaymentState extends State<Payment> {
       EventChannel('flutter.native/eventPayOrder');
   static const MethodChannel platform =
       MethodChannel('flutter.native/channelPayOrder');
-  final textStyle = TextStyle(color: Colors.black54);
-  final valueStyle = TextStyle(
+  final textStyle = const TextStyle(color: Colors.black54);
+  final valueStyle = const TextStyle(
       color: AppColor.accentColor, fontSize: 18.0, fontWeight: FontWeight.w400);
   String zpTransToken = "";
   String payResult = "";
@@ -75,7 +75,7 @@ class _PaymentState extends State<Payment> {
               showDialog(
                   context: context,
                   builder: (BuildContext context) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   });
@@ -110,9 +110,9 @@ class _PaymentState extends State<Payment> {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Container(
                       padding: const EdgeInsets.all(15),
-                      child: Text("Thanh toán thất bại"),
+                      child: const Text("Thanh toán thất bại"),
                     ),
-                    duration: Duration(seconds: 2),
+                    duration: const Duration(seconds: 2),
                   ));
                 }
               }
@@ -140,11 +140,11 @@ class _PaymentState extends State<Payment> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           //selected 2 value
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
 
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
@@ -172,7 +172,7 @@ class _PaymentState extends State<Payment> {
                         RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                         (Match m) => '${m[1]}.',
                       )}đ",
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: AppColor.accentColor,
                       fontSize: 18.0,
                       fontWeight: FontWeight.w400),

@@ -36,7 +36,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     itemCount: state.length,
                     itemBuilder: (context, index) {
                       return Container(
-                          margin: EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               color: Colors.white70,
                               borderRadius: BorderRadius.circular(10)),

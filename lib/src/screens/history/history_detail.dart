@@ -1,8 +1,4 @@
-import 'dart:ffi';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
@@ -11,8 +7,6 @@ import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/controller/order.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
-import 'package:it_can_cook/src/models/weekly/ingredient.dart';
-import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/history/order_history_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -43,7 +37,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                         color: Color.fromARGB(255, 247, 175, 42),
                         fontWeight: FontWeight.bold),
                   ),
-                  Text("#" + widget.orderHistorys.orderCode.toString(),
+                  Text("#${widget.orderHistorys.orderCode}",
                       style: const TextStyle(
                           color: Color.fromARGB(255, 51, 50, 49),
                           fontWeight: FontWeight.bold))

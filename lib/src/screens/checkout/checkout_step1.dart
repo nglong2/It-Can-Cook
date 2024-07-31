@@ -59,7 +59,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
     return LoaderOverlay(
       child: Scaffold(
           appBar: AppBar(
-            title: Text('Checkout Step 1'),
+            title: const Text('Checkout Step 1'),
           ),
           body: Container(
             padding: const EdgeInsets.all(18),
@@ -91,7 +91,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                                 if (permission == LocationPermission.denied) {
                                   //show popup
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
+                                    const SnackBar(
                                       content: Text(
                                           'Location permissions are denied'),
                                     ),
@@ -121,7 +121,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                               context.loaderOverlay.hide();
                               //show popup
                               ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
+                                  .showSnackBar(const SnackBar(
                                 content:
                                     Text("Cant not get location from map api"),
                               ));
@@ -191,7 +191,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                 ],
@@ -199,13 +199,13 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
             ),
           ),
           floatingActionButton: Container(
-            margin: EdgeInsets.only(bottom: 30),
+            margin: const EdgeInsets.only(bottom: 30),
             child: Text(
               "Total price: ${pice.toStringAsFixed(0).replaceAllMapped(
                     RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                     (Match m) => '${m[1]}.',
                   )} vnđ",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           bottomSheet: Column(

@@ -1,4 +1,3 @@
-import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/models/weekly/ingredient.dart';
 
 class RecipeIngredient {

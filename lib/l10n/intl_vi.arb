@@ -127,5 +127,9 @@
   "note": "Ghi chú",
   "cancle_order": "Hủy đơn hàng",
   "payment_status": "Trạng thái thanh toán",
-  "order_code": "Mã đơn hàng: "
+  "order_code": "Mã đơn hàng: ",
+  "please_check_your_email": "Vui lòng kiểm tra email của bạn",
+  "forgot_password": "Quên mật khẩu",
+  "forgot_password_description": "Nhập email của bạn để nhận mã xác thực",
+  "checkout_1": "Thanh toán bước 1"
 }

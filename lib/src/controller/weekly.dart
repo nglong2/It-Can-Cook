@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:it_can_cook/src/api/rest.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
-import 'package:uuid/uuid.dart';
 
 class WeeklyPlanController {
   final RestApi api = RestApi();

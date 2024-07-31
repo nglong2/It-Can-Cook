@@ -410,10 +410,10 @@ class S {
     );
   }
 
-  /// `Forgot password?`
+  /// `Forgot password`
   String get forgot_password {
     return Intl.message(
-      'Forgot password?',
+      'Forgot password',
       name: 'forgot_password',
       desc: '',
       args: [],
@@ -1305,6 +1305,36 @@ class S {
     return Intl.message(
       'Order code: ',
       name: 'order_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your email`
+  String get please_check_your_email {
+    return Intl.message(
+      'Please check your email',
+      name: 'please_check_your_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email to receive the verification code`
+  String get forgot_password_description {
+    return Intl.message(
+      'Enter your email to receive the verification code',
+      name: 'forgot_password_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Checkout Step 1`
+  String get checkout_1 {
+    return Intl.message(
+      'Checkout Step 1',
+      name: 'checkout_1',
       desc: '',
       args: [],
     );

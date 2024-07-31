@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change password"),
         "change_password_success": MessageLookupByLibrary.simpleMessage(
             "Change password successfully"),
+        "checkout_1": MessageLookupByLibrary.simpleMessage("Checkout Step 1"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_password":
@@ -72,7 +73,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Estimated delivery time"),
         "first_name": MessageLookupByLibrary.simpleMessage("First name"),
         "forgot_password":
-            MessageLookupByLibrary.simpleMessage("Forgot password?"),
+            MessageLookupByLibrary.simpleMessage("Forgot password"),
+        "forgot_password_description": MessageLookupByLibrary.simpleMessage(
+            "Enter your email to receive the verification code"),
         "friday": MessageLookupByLibrary.simpleMessage("Friday"),
         "get_current_location":
             MessageLookupByLibrary.simpleMessage("Get current location"),
@@ -140,6 +143,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number_must_contain_only_digits":
             MessageLookupByLibrary.simpleMessage(
                 "Phone number must contain only digits"),
+        "please_check_your_email":
+            MessageLookupByLibrary.simpleMessage("Please check your email"),
         "please_enter_confirm_password": MessageLookupByLibrary.simpleMessage(
             "Please enter confirm password"),
         "please_enter_email":

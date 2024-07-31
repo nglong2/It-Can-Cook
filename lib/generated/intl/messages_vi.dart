@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_success":
             MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thành công"),
+        "checkout_1": MessageLookupByLibrary.simpleMessage("Thanh toán bước 1"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_password":
@@ -71,7 +72,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thời gian giao hàng dự kiến"),
         "first_name": MessageLookupByLibrary.simpleMessage("Tên"),
         "forgot_password":
-            MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+            MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
+        "forgot_password_description": MessageLookupByLibrary.simpleMessage(
+            "Nhập email của bạn để nhận mã xác thực"),
         "friday": MessageLookupByLibrary.simpleMessage("Thứ 6"),
         "get_current_location":
             MessageLookupByLibrary.simpleMessage("Lấy vị trí hiện tại"),
@@ -137,6 +140,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_number_must_contain_only_digits":
             MessageLookupByLibrary.simpleMessage("Số điện thoại chỉ chứa số"),
+        "please_check_your_email": MessageLookupByLibrary.simpleMessage(
+            "Vui lòng kiểm tra email của bạn"),
         "please_enter_confirm_password":
             MessageLookupByLibrary.simpleMessage("Vui lòng xác nhận mật khẩu"),
         "please_enter_email":

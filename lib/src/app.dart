@@ -13,7 +13,6 @@ import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/weekly/dish.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
-import 'package:it_can_cook/src/models/system/system.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/screens/checkout/checkout_screen.dart';
@@ -32,7 +31,6 @@ import 'package:it_can_cook/src/screens/weekly_plan_custom/weekly_detail.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add_list.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_detail.dart';
-import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly_detail.dart';
 
 /// The Widget that configures your application.
