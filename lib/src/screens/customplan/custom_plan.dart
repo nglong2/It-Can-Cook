@@ -104,11 +104,17 @@ class _CustomPlanScreenState extends State<CustomPlanScreen> {
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
-                                                      // context
-                                                      //     // .read<CustomPlanBloc>()
-                                                      //     // .add(DeleteCustomPlanEvent(
-                                                      //     //     state.weeklyPlans[index].id));
-                                                      // Navigator.of(context).pop();
+                                                      context
+                                                          .read<
+                                                              CustomPlanBloc>()
+                                                          .add(DeleteWeeklyPlanEvent(
+                                                              state
+                                                                      .weeklyPlans[
+                                                                          index]
+                                                                      .id ??
+                                                                  ''));
+                                                      Navigator.of(context)
+                                                          .pop();
                                                     },
                                                     child: Text(S.current.yes),
                                                   ),

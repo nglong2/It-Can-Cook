@@ -63,4 +63,20 @@ class WeeklyPlanController {
     }
     return "Failed to update weekly";
   }
+
+// curl -X 'DELETE' \
+//   'https://api.wemealkit.ddns.net/api/weeklyplan/delete/85cc8c8a-8c6e-4624-f40c-08dcb1334769' \
+//   -H 'accept: */*'
+
+  Future<String> deleteWeeklyPlan(String id) async {
+    var data = await api.delete("api/weeklyplan/delete/$id");
+    if (data.statusCode == 200) {
+      if (jsonDecode(data.body)["statusCode"] == 200) {
+        return jsonDecode(data.body)["message"];
+      } else {
+        return jsonDecode(data.body)["message"];
+      }
+    }
+    return "Failed to delete weekly";
+  }
 }

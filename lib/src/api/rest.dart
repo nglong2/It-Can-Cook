@@ -36,6 +36,16 @@ class RestApi {
     return response;
   }
 
+  //httpdelete
+  Future<http.Response> delete(String path) async {
+    final url = Uri.parse('$baseUrl/$path');
+    final response = await http.delete(url, headers: {
+      'Authorization':
+          await getJwtToken(), // Add Authorization header with JWT token
+    });
+    return response;
+  }
+
   Future<String> getJwtToken() async {
     final prefs = await SharedPreferences.getInstance();
     //get jwtToken from shared preferences

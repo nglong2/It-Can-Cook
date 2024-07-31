@@ -35,3 +35,8 @@ class UpdateWeeklyPlanEvent extends CustomPlanEvent {
   final WeeklyPlan weeklyPlan;
   UpdateWeeklyPlanEvent(this.weeklyPlan);
 }
+
+class DeleteWeeklyPlanEvent extends CustomPlanEvent {
+  final String weeklyPlanId;
+  DeleteWeeklyPlanEvent(this.weeklyPlanId);
+}

@@ -129,5 +129,17 @@ class CustomPlanBloc extends Bloc<CustomPlanEvent, CustomPlanState> {
         emit(CustomPlanLoaded(currentState.weeklyPlans));
       }
     });
+
+    on<DeleteWeeklyPlanEvent>((event, emit) async {
+      if (state is CustomPlanLoaded) {
+        final currentState = state as CustomPlanLoaded;
+        final weeklyPlanId = event.weeklyPlanId;
+        var data = await WeeklyPlanController().deleteWeeklyPlan(weeklyPlanId);
+
+        currentState.weeklyPlans
+            .removeWhere((element) => element.id == weeklyPlanId);
+        emit(CustomPlanLoaded(currentState.weeklyPlans));
+      }
+    });
   }
 }
