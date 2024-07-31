@@ -19,6 +19,7 @@ class AccountController {
         var token = jsonDecode(value.body)["message"];
         var prefs = await SharedPreferences.getInstance();
         await prefs.setString('jwtToken', token);
+
         return await getUserToken(token);
       }
       throw Exception(jsonDecode(value.body)["message"]);
@@ -81,7 +82,7 @@ class AccountController {
   }
 
   Future<AccountModel?> getUserToken(String jwt) async {
-    var valueUser = await api.get("api/user/get-user-token?token=$jwt");
+    var valueUser = await api.get("api/user/get-user-token/$jwt");
     if (valueUser.statusCode == 200) {
       if (jsonDecode(valueUser.body)["statusCode"] == 200) {
         return AccountModel.fromJson(jsonDecode(valueUser.body)["data"]);

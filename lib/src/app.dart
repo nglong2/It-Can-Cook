@@ -158,7 +158,7 @@ class MyApp extends StatelessWidget {
                       return const CustomPlanScreen();
                     case "history_detail":
                       return HistoryDetail(
-                        orderHistory: routeSettings.arguments as OrderHistory,
+                        orderHistorys: routeSettings.arguments as OrderHistory,
                       );
                     case "history":
                       return HistoryScreen();

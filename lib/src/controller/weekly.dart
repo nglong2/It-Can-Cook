@@ -37,8 +37,7 @@ class WeeklyPlanController {
   }
 
   Future<List<WeeklyPlan>> getWeeklyByCustomerId(String customerId) async {
-    var value =
-        await api.get("api/weeklyplan/get-by-customer-id?id=$customerId");
+    var value = await api.get("api/weeklyplan/get-by-customer-id/$customerId");
     if (value.statusCode == 200) {
       if (jsonDecode(value.body)["statusCode"] == 200) {
         List<WeeklyPlan> recipes = [];
@@ -54,8 +53,8 @@ class WeeklyPlanController {
 
   //update weekly plan
   Future<String> updateWeeklyPlan(WeeklyPlan weeklyPlan) async {
-    var data = await api.put(
-        "api/weeklyplan/update-full-info", weeklyPlan.toJsonCreate());
+    var data = await api.put("api/weeklyplan/update-full-info/${weeklyPlan.id}",
+        weeklyPlan.toJsonCreate());
     if (data.statusCode == 200) {
       if (jsonDecode(data.body)["statusCode"] == 200) {
         return jsonDecode(data.body)["message"];

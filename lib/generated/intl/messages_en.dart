@@ -121,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Connect with many experts"),
         "only_customer_can_login":
             MessageLookupByLibrary.simpleMessage("Only customer can login"),
+        "order_code": MessageLookupByLibrary.simpleMessage("Order code: "),
         "order_information":
             MessageLookupByLibrary.simpleMessage("Order information"),
         "order_success":

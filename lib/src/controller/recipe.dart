@@ -8,8 +8,10 @@ class RecipeController {
 
   Future<List<RecipePlan>> getRecipePlansByName(
       String name, bool status) async {
-    var value =
-        await api.get("api/recipes/get-by-name?name=$name&status=$status");
+    if (name.isEmpty) {
+      name = " ";
+    }
+    var value = await api.get("api/recipes/get-by-name/$name/$status");
     if (value.statusCode == 200) {
       if (jsonDecode(value.body)["statusCode"] == 200) {
         List<Recipe> recipes = [];

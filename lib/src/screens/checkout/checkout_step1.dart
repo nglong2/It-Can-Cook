@@ -238,6 +238,9 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                             context.loaderOverlay.show();
                             var data = await OrderController().CreateOrder(
                               accountBloc?.id ?? '',
+                              name,
+                              phone,
+                              0,
                               note,
                               addressController.text,
                               lat == '' ? 0.0 : double.parse(lat),
@@ -298,6 +301,9 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                       context.loaderOverlay.show();
                       var data = await OrderController().CreateOrder(
                         accountBloc?.id ?? '',
+                        name,
+                        phone,
+                        2,
                         note,
                         addressController.text,
                         lat == '' ? 0.0 : double.parse(lat),

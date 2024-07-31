@@ -126,5 +126,6 @@
   "orderdate": "Ngày đặt hàng",
   "note": "Ghi chú",
   "cancle_order": "Hủy đơn hàng",
-  "payment_status": "Trạng thái thanh toán"
+  "payment_status": "Trạng thái thanh toán",
+  "order_code": "Mã đơn hàng: "
 }

@@ -126,5 +126,6 @@
   "orderdate": "Order date",
   "note": "Note",
   "cancle_order": "Cancel order",
-  "payment_status": "Payment status"
+  "payment_status": "Payment status",
+  "order_code": "Order code: "
 }

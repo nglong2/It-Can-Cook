@@ -7,6 +7,9 @@ import 'package:it_can_cook/src/models/weekly/weekly.dart';
 class OrderHistory {
   String? id;
   String? userId;
+  int? orderCode;
+  String? receiveName;
+  String? receivePhone;
   String? note;
   String? address;
   String? shipDate;
@@ -20,6 +23,9 @@ class OrderHistory {
   OrderHistory({
     this.id,
     this.userId,
+    this.receiveName,
+    this.receivePhone,
+    this.orderCode,
     this.note,
     this.address,
     this.shipDate,
@@ -35,6 +41,9 @@ class OrderHistory {
     return OrderHistory(
       id: json['id'],
       userId: json['userId'],
+      orderCode: json['orderCode'],
+      receiveName: json['receiveName'],
+      receivePhone: json['receivePhone'],
       note: json['note'],
       address: json['address'],
       shipDate: json['shipDate'],
