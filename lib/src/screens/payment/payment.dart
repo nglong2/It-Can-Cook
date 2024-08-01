@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:it_can_cook/generated/l10n.dart';
+import 'package:it_can_cook/src/controller/transaction.dart';
+import 'package:it_can_cook/src/models/transactions/transaction.dart';
 import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/repo/payment.dart';
 import 'package:it_can_cook/src/utils/theme_data.dart';
@@ -46,10 +48,36 @@ class _PaymentState extends State<Payment> {
     setState(() {
       if (res["errorCode"] == 1) {
         payResult = "Thanh toán thành công";
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Color.fromARGB(255, 79, 181, 82),
+          content: Container(
+            padding: const EdgeInsets.all(5),
+            child: Text("Thanh toán thành công"),
+          ),
+          duration: Duration(seconds: 2),
+        ));
+        Navigator.pushNamedAndRemoveUntil(context, "home", (route) => false);
       } else if (res["errorCode"] == 4) {
         payResult = "User hủy thanh toán";
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Color.fromARGB(255, 235, 74, 25),
+          content: Container(
+            padding: const EdgeInsets.all(5),
+            child: Text("User hủy thanh toán"),
+          ),
+          duration: Duration(seconds: 2),
+        ));
       } else {
         payResult = "Giao dịch thất bại";
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Color.fromARGB(255, 206, 71, 66),
+          content: Container(
+            padding: const EdgeInsets.all(5),
+            child: Text("Giao dịch thất bại"),
+          ),
+          duration: Duration(seconds: 2),
+        ));
       }
     });
   }
@@ -95,15 +123,22 @@ class _PaymentState extends State<Payment> {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     backgroundColor: Color.fromARGB(255, 79, 181, 82),
                     content: Container(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(5),
                       child: Text("Thanh toán thành công"),
                     ),
                     duration: Duration(seconds: 2),
                   ));
-
                   Navigator.pushNamedAndRemoveUntil(
                       context, "home", (route) => false);
-
+                  TransactionController().createTransaction(Transaction(
+                      orderId: widget.arg.orderID,
+                      transactionType: 2,
+                      amount: widget.arg.price.toInt(),
+                      transactionDate: DateTime.now().toString(),
+                      notice: "Thanh toán",
+                      extraData: "Thanh toán",
+                      signature: "Thanh toán",
+                      status: 0));
                   print("payOrder Result: '$result'.");
                 } on PlatformException catch (e) {
                   print("Failed to Invoke: '${e.message}'.");
@@ -114,6 +149,15 @@ class _PaymentState extends State<Payment> {
                     ),
                     duration: const Duration(seconds: 2),
                   ));
+                  TransactionController().createTransaction(Transaction(
+                      orderId: widget.arg.orderID,
+                      transactionType: 2,
+                      amount: widget.arg.price.toInt(),
+                      transactionDate: DateTime.now().toString(),
+                      notice: "Thanh toán",
+                      extraData: "Thanh toán",
+                      signature: "Thanh toán",
+                      status: 4));
                 }
               }
             }

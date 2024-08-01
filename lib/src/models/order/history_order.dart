@@ -43,6 +43,7 @@ class OrderHistory {
       userId: json['userId'],
       orderCode: json['orderCode'],
       receiveName: json['receiveName'],
+      receivePhone: json['receivePhone'],
       note: json['note'],
       address: json['address'],
       shipDate: json['shipDate'],

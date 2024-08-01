@@ -50,7 +50,10 @@ class _HistoryDetailState extends State<HistoryDetail> {
           builder: (context, state) {
             var select = state
                 .firstWhere((element) => element.id == widget.orderHistorys.id);
-
+            select.transactions.sort(
+              (b, a) => (DateTime.tryParse(a.toString()) ?? DateTime(0))
+                  .compareTo(DateTime.tryParse(b.toString()) ?? DateTime(0)),
+            );
             return SingleChildScrollView(
               child: Column(
                 children: [
@@ -222,7 +225,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                               style: TextStyle(fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              select?.transactions.lastOrNull?.type ??
+                              select?.transactions.firstOrNull?.type ??
                                   "No type",
                               style: const TextStyle(
                                   color: Color.fromARGB(255, 25, 94, 141),
@@ -238,7 +241,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                   const TextStyle(fontWeight: FontWeight.w700),
                             ),
                             Text(
-                                select.transactions.lastOrNull?.status ??
+                                select.transactions.firstOrNull?.status ??
                                     "No status",
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w500))
