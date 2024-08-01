@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
@@ -67,11 +68,18 @@ class _DishAddRecipeAllListState extends State<DishAddRecipeAllList> {
                                 color: const Color.fromARGB(255, 190, 216, 191),
                                 borderRadius: BorderRadius.circular(5),
                               ),
-                              child: Text(
-                                  "${recipe.recipe?.price!.toStringAsFixed(0).replaceAllMapped(
-                                        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                                        (Match m) => '${m[1]}.',
-                                      )}đ"),
+                              child: recipe.recipe?.baseStatus == 1
+                                  ? Text(S.current.out_of_stock,
+                                      style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 160, 12, 2),
+                                          fontSize: 12))
+                                  : Text(
+                                      "${recipe.recipe?.price!.toStringAsFixed(0).replaceAllMapped(
+                                            RegExp(
+                                                r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                            (Match m) => '${m[1]}.',
+                                          )}đ"),
                             ),
                             widget.isShowAddButton
                                 ? IconButton(

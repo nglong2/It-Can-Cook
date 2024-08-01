@@ -130,6 +130,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_success":
             MessageLookupByLibrary.simpleMessage("Order successfully"),
         "orderdate": MessageLookupByLibrary.simpleMessage("Order date"),
+        "out_of_stock": MessageLookupByLibrary.simpleMessage("Out of stock"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Pakaging method: "),
         "passed": MessageLookupByLibrary.simpleMessage("Passed"),

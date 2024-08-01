@@ -169,7 +169,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                           style: const TextStyle(fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          " ${getNextSunday(DateTime.parse(select.orderDate ?? ""))}",
+                          " ${getNextSunday(DateTime.parse(select.shipDate ?? ""))}",
                           style: TextStyle(
                               color: Colors.grey[500],
                               fontWeight: FontWeight.w500),

@@ -192,13 +192,14 @@ class Recipe {
   String? name;
   int? servingSize;
   int? cookingTime;
-  int? difficulty;
+  String? difficulty;
   String? description;
   String? notice;
   String? img;
   double? price;
   int? popularity;
   String? processStatus;
+  int? baseStatus;
   String? createdAt;
   String? createdBy;
   String? approvedAt;
@@ -217,6 +218,7 @@ class Recipe {
     this.difficulty,
     this.cookingTime,
     this.description,
+    this.baseStatus,
     this.notice,
     this.img,
     this.price,
@@ -241,6 +243,7 @@ class Recipe {
       servingSize: json['servingSize'],
       difficulty: json['difficulty'],
       cookingTime: json['cookingTime'],
+      baseStatus: json['baseStatus'],
       description: json['description'],
       notice: json['notice'],
       img: json['img'],
@@ -285,6 +288,7 @@ class Recipe {
       'cookingTime': cookingTime,
       'difficulty': difficulty,
       'description': description,
+      'baseStatus': baseStatus,
       'notice': notice,
       'img': img,
       'price': price,

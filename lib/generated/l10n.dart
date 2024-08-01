@@ -1339,6 +1339,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Out of stock`
+  String get out_of_stock {
+    return Intl.message(
+      'Out of stock',
+      name: 'out_of_stock',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

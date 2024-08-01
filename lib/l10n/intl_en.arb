@@ -131,5 +131,6 @@
   "please_check_your_email": "Please check your email",
   "forgot_password": "Forgot password",
   "forgot_password_description": "Enter your email to receive the verification code",
-  "checkout_1": "Checkout Step 1"
+  "checkout_1": "Checkout Step 1",
+  "out_of_stock": "Out of stock"
 }

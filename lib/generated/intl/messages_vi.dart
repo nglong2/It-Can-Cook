@@ -128,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_success":
             MessageLookupByLibrary.simpleMessage("Đặt hàng thành công"),
         "orderdate": MessageLookupByLibrary.simpleMessage("Ngày đặt hàng"),
+        "out_of_stock": MessageLookupByLibrary.simpleMessage("Tạm hết hàng"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Phương pháp đóng gói: "),
         "passed": MessageLookupByLibrary.simpleMessage("Bỏ qua"),

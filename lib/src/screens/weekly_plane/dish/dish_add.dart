@@ -23,7 +23,7 @@ _onSearchChanged(String query, BuildContext context, DishAdd widget) {
   _debounce = Timer(const Duration(milliseconds: 500), () {
     context.read<RecipePlanBloc>().add(FetchRecipePlanEvent(
         query,
-        false,
+        true,
         widget.args.mealInDay,
         widget.args.dayInWeek,
         widget.args.weeklyPlanId));

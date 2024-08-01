@@ -63,8 +63,10 @@ class _SettingsViewState extends State<SettingsView> {
                     : Navigator.of(context).pushNamed('login');
               },
             ),
-            accountState?.id != null ? const Divider() : Container(),
-            accountState?.id != null
+            (accountState?.id != null && accountState?.role != 'Shipper')
+                ? const Divider()
+                : Container(),
+            (accountState?.id != null && accountState?.role != 'Shipper')
                 ? ListTile(
                     leading: const Icon(Icons.list),
                     title: Text(S.of(context).list_custom_personal_weekly_plan),
@@ -78,8 +80,10 @@ class _SettingsViewState extends State<SettingsView> {
                   )
                 : Container(),
 
-            accountState?.id != null ? const Divider() : Container(),
-            accountState?.id != null
+            (accountState?.id != null && accountState?.role != 'Shipper')
+                ? const Divider()
+                : Container(),
+            (accountState?.id != null && accountState?.role != 'Shipper')
                 ? ListTile(
                     leading: const Icon(Icons.history),
                     title: Text(S.of(context).history),
