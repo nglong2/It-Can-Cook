@@ -101,7 +101,7 @@ class _TemplateDayState extends State<TemplateDay> {
                           border: Border.all(color: Colors.grey[400]!),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             // NumberPicker(

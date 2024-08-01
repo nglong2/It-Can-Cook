@@ -9,7 +9,6 @@ import 'package:it_can_cook/src/models/transactions/transaction.dart';
 import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/repo/payment.dart';
 import 'package:it_can_cook/src/utils/theme_data.dart';
-import 'package:shelf_router/shelf_router.dart';
 
 class Payment extends StatefulWidget {
   final PaymentArguemnt arg;
@@ -50,33 +49,33 @@ class _PaymentState extends State<Payment> {
         payResult = "Thanh toán thành công";
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Color.fromARGB(255, 79, 181, 82),
+          backgroundColor: const Color.fromARGB(255, 79, 181, 82),
           content: Container(
             padding: const EdgeInsets.all(5),
-            child: Text("Thanh toán thành công"),
+            child: const Text("Thanh toán thành công"),
           ),
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
         ));
         Navigator.pushNamedAndRemoveUntil(context, "home", (route) => false);
       } else if (res["errorCode"] == 4) {
         payResult = "User hủy thanh toán";
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Color.fromARGB(255, 235, 74, 25),
+          backgroundColor: const Color.fromARGB(255, 235, 74, 25),
           content: Container(
             padding: const EdgeInsets.all(5),
-            child: Text("User hủy thanh toán"),
+            child: const Text("User hủy thanh toán"),
           ),
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
         ));
       } else {
         payResult = "Giao dịch thất bại";
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Color.fromARGB(255, 206, 71, 66),
+          backgroundColor: const Color.fromARGB(255, 206, 71, 66),
           content: Container(
             padding: const EdgeInsets.all(5),
-            child: Text("Giao dịch thất bại"),
+            child: const Text("Giao dịch thất bại"),
           ),
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
         ));
       }
     });
@@ -121,12 +120,12 @@ class _PaymentState extends State<Payment> {
 
                   //scafod show snackbar success
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    backgroundColor: Color.fromARGB(255, 79, 181, 82),
+                    backgroundColor: const Color.fromARGB(255, 79, 181, 82),
                     content: Container(
                       padding: const EdgeInsets.all(5),
-                      child: Text("Thanh toán thành công"),
+                      child: const Text("Thanh toán thành công"),
                     ),
-                    duration: Duration(seconds: 2),
+                    duration: const Duration(seconds: 2),
                   ));
                   Navigator.pushNamedAndRemoveUntil(
                       context, "home", (route) => false);
@@ -169,7 +168,7 @@ class _PaymentState extends State<Payment> {
                 color: AppColor.primaryColor,
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              child: Text("Thanh toán",
+              child: const Text("Thanh toán",
                   style: TextStyle(color: Colors.white, fontSize: 20.0))),
         ),
       );

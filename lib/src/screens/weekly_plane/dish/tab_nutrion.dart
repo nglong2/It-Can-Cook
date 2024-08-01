@@ -91,7 +91,7 @@ class _NutrionTabWidgetState extends State<NutrionTabWidget> {
                       children: [
                         Text(
                           S.current.serving_size,
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontWeight: FontWeight.w500),
                         ),
                         Text(
                           "${widget.recipe.servingSize}" +

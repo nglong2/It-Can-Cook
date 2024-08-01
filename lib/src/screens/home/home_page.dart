@@ -5,8 +5,6 @@ import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
-import 'package:it_can_cook/src/models/account/account.dart';
-import 'package:it_can_cook/src/screens/onboarding/onboarding.dart';
 import 'package:it_can_cook/src/screens/recipes/recipe_list.dart';
 import 'package:it_can_cook/src/screens/setting/setting.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly.dart';
@@ -24,7 +22,7 @@ class HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     WeeklyScreen(),
-    RecipeList(),
+    const RecipeList(),
     const SettingsView(),
   ];
 

@@ -1,10 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:it_can_cook/src/api/rest.dart';
 import 'package:it_can_cook/src/controller/account.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 

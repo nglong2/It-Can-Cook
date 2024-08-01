@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
-import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class CustomPlanScreen extends StatefulWidget {

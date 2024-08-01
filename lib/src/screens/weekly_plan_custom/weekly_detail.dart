@@ -7,12 +7,10 @@ import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
-import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/controller/weekly.dart';
 import 'package:it_can_cook/src/models/system/trigger.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:it_can_cook/src/screens/weekly_plan_custom/part.dart';
-import 'package:it_can_cook/src/screens/weekly_plane/weekly/part.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class WeeklyCustomDetailPage extends StatefulWidget {

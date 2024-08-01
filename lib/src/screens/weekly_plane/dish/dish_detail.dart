@@ -4,7 +4,6 @@ import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_ingredient.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_nutrion.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/tab_step.dart';
-import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class DishDetail extends StatefulWidget {
   final RecipePlan recipe;
@@ -27,7 +26,7 @@ class _DishDetailState extends State<DishDetail> {
             children: <Widget>[
               Row(
                 children: widget.recipe.recipe!.recipeCategories
-                    .map((e) => Text(""))
+                    .map((e) => const Text(""))
                     .toList(),
               ),
               TabBar(

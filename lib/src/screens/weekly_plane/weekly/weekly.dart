@@ -1,19 +1,13 @@
 import 'dart:async';
-import 'dart:typed_data';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
-import 'package:it_can_cook/src/controller/weekly.dart';
-import 'package:it_can_cook/src/models/account/account.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
-import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly_list.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:uuid/uuid.dart';
 
 class WeeklyScreen extends StatefulWidget {
   @override

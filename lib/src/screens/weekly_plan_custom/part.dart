@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
@@ -7,7 +6,6 @@ import 'package:it_can_cook/src/models/weekly/dish.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plan_custom/template_day.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add.dart';
-import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class PartCustom extends StatefulWidget {
   final int dayInWeek;

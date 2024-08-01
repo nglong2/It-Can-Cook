@@ -1,17 +1,11 @@
 import 'dart:async';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
-import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
-import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
-import 'package:it_can_cook/src/models/system/trigger.dart';
-import 'package:it_can_cook/src/models/weekly/dish.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/recipes/dish_recipe.dart';
-import 'package:it_can_cook/src/screens/weekly_plane/dish/dish_add_list.dart';
 
 class RecipeList extends StatefulWidget {
   const RecipeList({super.key});

@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
@@ -36,7 +34,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Scaffold(
         appBar: AppBar(
           title: widget.weeklyPlan.id == UuidV5.NAMESPACE_NIL
-              ? Text("Custom Plan + ")
+              ? const Text("Custom Plan + ")
               : Text(
                   'Checkout ${widget.weeklyPlan.description ?? "Custom Plan"}'),
         ),
@@ -177,14 +175,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           )),
         ),
         floatingActionButton: Container(
-          margin: EdgeInsets.only(bottom: 30),
+          margin: const EdgeInsets.only(bottom: 30),
           color: Colors.white,
           child: Text(
             "Total price: ${pice.toStringAsFixed(0).replaceAllMapped(
                   RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                   (Match m) => '${m[1]}.',
                 )} vnđ",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
         bottomSheet: Container(
@@ -196,8 +194,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0))),
-              backgroundColor:
-                  MaterialStateProperty.all(Color.fromARGB(255, 6, 73, 127)),
+              backgroundColor: MaterialStateProperty.all(
+                  const Color.fromARGB(255, 6, 73, 127)),
             ),
             onPressed: () {
               //go to "checkout"

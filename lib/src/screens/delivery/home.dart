@@ -9,19 +9,19 @@ class DeliveryHome extends StatefulWidget {
 class _DeliveryHomeState extends State<DeliveryHome> {
   int _currentIndex = 0;
 
-  List<Widget> _pages = [
+  final List<Widget> _pages = [
     OrderStatusPage(status: 'Pending'),
     OrderStatusPage(status: 'In Progress'),
     OrderStatusPage(status: 'Delivered'),
     OrderStatusPage(status: 'Cancelled'),
-    SettingsView()
+    const SettingsView()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Delivery Page'),
+        title: const Text('Delivery Page'),
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -32,7 +32,7 @@ class _DeliveryHomeState extends State<DeliveryHome> {
             _currentIndex = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.pending),
             label: 'Pending',
@@ -69,7 +69,7 @@ class OrderStatusPage extends StatelessWidget {
     return Center(
       child: Text(
         'Order Status: $status',
-        style: TextStyle(fontSize: 24),
+        style: const TextStyle(fontSize: 24),
       ),
     );
   }
