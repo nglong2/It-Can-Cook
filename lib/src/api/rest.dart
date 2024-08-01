@@ -7,41 +7,46 @@ class RestApi {
   final String baseUrl = 'https://api.wemealkit.ddns.net';
 
   Future<http.Response> get(String path) async {
+    var token = await getJwtToken();
     final url = Uri.parse('$baseUrl/$path');
-    final response = await http.get(url);
+    final response = await http.get(url, headers: {
+      'Authorization':
+          "Bearer $token", // Add Authorization header with JWT token
+    });
     return response;
   }
 
   Future<http.Response> post(String path, Map<String, dynamic> body) async {
+    var token = await getJwtToken();
     body = encodeMap(body);
     final jsonBody = jsonEncode(body);
     final url = Uri.parse('$baseUrl/$path');
     final response = await http.post(url, body: jsonBody, headers: {
       'Content-Type': 'application/json',
       'Authorization':
-          await getJwtToken(), // Add Authorization header with JWT token
+          "Bearer $token", // Add Authorization header with JWT token
     });
     return response;
   }
 
   //httpput
   Future<http.Response> put(String path, Map<String, dynamic> body) async {
+    var token = await getJwtToken();
     final jsonBody = jsonEncode(body);
     final url = Uri.parse('$baseUrl/$path');
     final response = await http.put(url, body: jsonBody, headers: {
       'Content-Type': 'application/json',
-      'Authorization':
-          await getJwtToken(), // Add Authorization header with JWT token
+      'Authorization': "Bearer $token",
     });
     return response;
   }
 
   //httpdelete
   Future<http.Response> delete(String path) async {
+    var token = await getJwtToken();
     final url = Uri.parse('$baseUrl/$path');
     final response = await http.delete(url, headers: {
-      'Authorization':
-          await getJwtToken(), // Add Authorization header with JWT token
+      'Authorization': "Bearer $token",
     });
     return response;
   }
