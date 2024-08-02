@@ -132,5 +132,11 @@
   "forgot_password": "Forgot password",
   "forgot_password_description": "Enter your email to receive the verification code",
   "checkout_1": "Checkout Step 1",
-  "out_of_stock": "Out of stock"
+  "out_of_stock": "Out of stock",
+  "re_payment": "Repayment",
+  "paid": "Paid",
+  "pending_momo": "Pending Momo payment",
+  "pending_zalopay": "Pending ZaloPay payment",
+  "unpaid": "Unpaid",
+  "pending": "Pending"
 }

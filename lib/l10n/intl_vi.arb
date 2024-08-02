@@ -129,8 +129,13 @@
   "payment_status": "Trạng thái thanh toán",
   "order_code": "Mã đơn hàng: ",
   "please_check_your_email": "Vui lòng kiểm tra email của bạn",
-  "forgot_password": "Quên mật khẩu",
   "forgot_password_description": "Nhập email của bạn để nhận mã xác thực",
   "checkout_1": "Thanh toán bước 1",
-  "out_of_stock": "Tạm hết hàng"
+  "out_of_stock": "Tạm hết hàng",
+  "re_payment": "Thanh toán lại",
+  "paid": "Đã thanh toán",
+  "pending_momo": "Chờ thanh toán Momo",
+  "pending_zalopay": "Chờ thanh toán ZaloPay",
+  "unpaid": "Chưa thanh toán",
+  "pending": "Chờ xác nhận"
 }

@@ -43,7 +43,7 @@ class WeeklyPlanController {
         for (var item in jsonDecode(value.body)["data"]) {
           recipes.add(WeeklyPlan.fromJson(item));
         }
-        return recipes;
+        return recipes.reversed.toList();
       }
       return [];
     }

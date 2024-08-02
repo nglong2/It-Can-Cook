@@ -79,7 +79,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                                     style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 20),
+                                                        fontSize: 18),
                                                   ),
                                                   Row(
                                                     crossAxisAlignment:

@@ -131,6 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Order successfully"),
         "orderdate": MessageLookupByLibrary.simpleMessage("Order date"),
         "out_of_stock": MessageLookupByLibrary.simpleMessage("Out of stock"),
+        "paid": MessageLookupByLibrary.simpleMessage("Paid"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Pakaging method: "),
         "passed": MessageLookupByLibrary.simpleMessage("Passed"),
@@ -139,6 +140,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password does not match"),
         "payment_status":
             MessageLookupByLibrary.simpleMessage("Payment status"),
+        "pending": MessageLookupByLibrary.simpleMessage("Pending"),
+        "pending_momo":
+            MessageLookupByLibrary.simpleMessage("Pending Momo payment"),
+        "pending_zalopay":
+            MessageLookupByLibrary.simpleMessage("Pending ZaloPay payment"),
         "person": MessageLookupByLibrary.simpleMessage("Person"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Phone number"),
         "phone_number_must_contain_only_digits":
@@ -178,6 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter verification code"),
         "preservationMethod":
             MessageLookupByLibrary.simpleMessage("Preservation method: "),
+        "re_payment": MessageLookupByLibrary.simpleMessage("Repayment"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
@@ -201,6 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total Carbohydrate"),
         "total_fat": MessageLookupByLibrary.simpleMessage("Total Fat"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
+        "unpaid": MessageLookupByLibrary.simpleMessage("Unpaid"),
         "update_plan": MessageLookupByLibrary.simpleMessage("Update plan"),
         "update_plan_confirmation": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to update this plan?"),

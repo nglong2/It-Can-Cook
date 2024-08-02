@@ -72,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thời gian giao hàng dự kiến"),
         "first_name": MessageLookupByLibrary.simpleMessage("Tên"),
         "forgot_password":
-            MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
+            MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "forgot_password_description": MessageLookupByLibrary.simpleMessage(
             "Nhập email của bạn để nhận mã xác thực"),
         "friday": MessageLookupByLibrary.simpleMessage("Thứ 6"),
@@ -129,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đặt hàng thành công"),
         "orderdate": MessageLookupByLibrary.simpleMessage("Ngày đặt hàng"),
         "out_of_stock": MessageLookupByLibrary.simpleMessage("Tạm hết hàng"),
+        "paid": MessageLookupByLibrary.simpleMessage("Đã thanh toán"),
         "pakaging_method":
             MessageLookupByLibrary.simpleMessage("Phương pháp đóng gói: "),
         "passed": MessageLookupByLibrary.simpleMessage("Bỏ qua"),
@@ -137,6 +138,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
         "payment_status":
             MessageLookupByLibrary.simpleMessage("Trạng thái thanh toán"),
+        "pending": MessageLookupByLibrary.simpleMessage("Chờ xác nhận"),
+        "pending_momo":
+            MessageLookupByLibrary.simpleMessage("Chờ thanh toán Momo"),
+        "pending_zalopay":
+            MessageLookupByLibrary.simpleMessage("Chờ thanh toán ZaloPay"),
         "person": MessageLookupByLibrary.simpleMessage("Người"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_number_must_contain_only_digits":
@@ -174,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã xác thực"),
         "preservationMethod":
             MessageLookupByLibrary.simpleMessage("Phương pháp bảo quản: "),
+        "re_payment": MessageLookupByLibrary.simpleMessage("Thanh toán lại"),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "remove": MessageLookupByLibrary.simpleMessage("Xóa"),
         "saturday": MessageLookupByLibrary.simpleMessage("Thứ 7"),
@@ -198,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tổng carbohydrate"),
         "total_fat": MessageLookupByLibrary.simpleMessage("Tổng chất béo"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Thứ 3"),
+        "unpaid": MessageLookupByLibrary.simpleMessage("Chưa thanh toán"),
         "update_plan":
             MessageLookupByLibrary.simpleMessage("Cập nhật kế hoạch"),
         "update_plan_confirmation": MessageLookupByLibrary.simpleMessage(

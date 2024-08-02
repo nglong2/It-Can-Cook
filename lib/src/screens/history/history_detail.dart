@@ -7,6 +7,7 @@ import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/controller/order.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
+import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/screens/history/order_history_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -241,10 +242,38 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                   const TextStyle(fontWeight: FontWeight.w700),
                             ),
                             Text(
-                                select.transactions.firstOrNull?.status ??
-                                    "No status",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w500))
+                              getNamePayment(
+                                  select.transactions.firstOrNull?.status),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: getColorByPayment(
+                                      select.transactions.firstOrNull?.status)),
+                            ),
+                            (select.transactions.firstOrNull?.type ==
+                                        "ZaloPay" &&
+                                    select.transactions.firstOrNull?.status ==
+                                        "Pending" &&
+                                    select.status == "Processing")
+                                ? TextButton(
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                Colors.blue),
+                                        foregroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                Colors.white)),
+                                    onPressed: () => {
+                                      Navigator.pushReplacementNamed(
+                                          context, "payment",
+                                          arguments: PaymentArguemnt(
+                                            orderID: select.id ?? "",
+                                            price: select.totalPrice ?? 0,
+                                            name: 'repayment',
+                                          ))
+                                    },
+                                    child: Text(S.current.re_payment),
+                                  )
+                                : Container()
                           ],
                         )
                       ],
@@ -406,6 +435,54 @@ Color getColorByStatus(String status) {
       return Colors.red;
     default:
       return Colors.black;
+  }
+}
+
+//get color payment case (String name)
+// PAID = 0,
+// PendingMomo = 1,
+// PendingZaloPay = 2,
+// UNPAID = 3,
+// Cancel = 4,
+// Pending = 5
+
+Color getColorByPayment(String? name) {
+  switch (name) {
+    case "PAID":
+      return Colors.green;
+    case "PendingMomo":
+      return Colors.orange;
+    case "PendingZaloPay":
+      return Colors.orange;
+    case "UNPAID":
+      return Colors.red;
+    case "Cancel":
+      return Colors.red;
+    case "Pending":
+      return Colors.orange;
+    default:
+      return Colors.black;
+  }
+}
+
+//get S.cureent name payment case (String name)
+
+String getNamePayment(String? name) {
+  switch (name) {
+    case "PAID":
+      return S.current.paid;
+    case "PendingMomo":
+      return S.current.pending_momo;
+    case "PendingZaloPay":
+      return S.current.pending_zalopay;
+    case "UNPAID":
+      return S.current.unpaid;
+    case "Cancel":
+      return S.current.cancel;
+    case "Pending":
+      return S.current.pending;
+    default:
+      return "";
   }
 }
 

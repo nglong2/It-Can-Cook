@@ -1349,6 +1349,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Repayment`
+  String get re_payment {
+    return Intl.message(
+      'Repayment',
+      name: 're_payment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paid`
+  String get paid {
+    return Intl.message(
+      'Paid',
+      name: 'paid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending Momo payment`
+  String get pending_momo {
+    return Intl.message(
+      'Pending Momo payment',
+      name: 'pending_momo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending ZaloPay payment`
+  String get pending_zalopay {
+    return Intl.message(
+      'Pending ZaloPay payment',
+      name: 'pending_zalopay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unpaid`
+  String get unpaid {
+    return Intl.message(
+      'Unpaid',
+      name: 'unpaid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message(
+      'Pending',
+      name: 'pending',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
