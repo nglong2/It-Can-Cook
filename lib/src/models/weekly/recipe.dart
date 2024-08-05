@@ -199,7 +199,7 @@ class Recipe {
   double? price;
   int? popularity;
   String? processStatus;
-  int? baseStatus;
+  String? baseStatus;
   String? createdAt;
   String? createdBy;
   String? approvedAt;
