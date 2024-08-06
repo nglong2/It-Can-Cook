@@ -72,6 +72,17 @@ class _CancleScreenState extends State<CancleScreen> {
                                         Text('${e.orderCode}')
                                       ],
                                     ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.person),
+                                        Text(
+                                          ' ${S.current.name}:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        Text(' ${e.receiveName}')
+                                      ],
+                                    ),
                                     GestureDetector(
                                       child: Row(
                                         children: [
@@ -111,7 +122,8 @@ class _CancleScreenState extends State<CancleScreen> {
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
-                                        Text(' ${e.note}')
+                                        Text(
+                                            '  ${e.note == null ? '' : (e.note!.length > 20 ? e.note!.substring(0, 20) + "..." : "${e.note}")}')
                                       ],
                                     ),
                                   ],

@@ -71,6 +71,17 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                         Text('${e.orderCode}')
                                       ],
                                     ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.person),
+                                        Text(
+                                          ' ${S.current.name}:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        Text(' ${e.receiveName}')
+                                      ],
+                                    ),
                                     GestureDetector(
                                       child: Row(
                                         children: [
@@ -110,7 +121,8 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
-                                        Text(' ${e.note}')
+                                        Text(
+                                            '  ${e.note == null ? '' : (e.note!.length > 16 ? e.note!.substring(0, 16) + "..." : "${e.note}")}')
                                       ],
                                     ),
                                   ],
@@ -140,6 +152,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
                               Row(
                                 children: [
                                   Column(
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       TextButton(
                                           onPressed: () {
@@ -248,54 +261,60 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                   );
                                                 });
                                           },
-                                          child: Text(S
-                                              .current.customer_not_take_order))
+                                          child: Text(S.current
+                                              .customer_not_take_order)),
+                                      TextButton(
+                                          onPressed: () {
+                                            showDialog(
+                                                context: context,
+                                                builder: (context) {
+                                                  return AlertDialog(
+                                                    title:
+                                                        Text(S.current.pending),
+                                                    content:
+                                                        Text(S.current.pending),
+                                                    actions: [
+                                                      TextButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: Text(S
+                                                              .current.cancel)),
+                                                      TextButton(
+                                                          onPressed: () async {
+                                                            await OrderController()
+                                                                .ChangeOrderStatus(
+                                                                    e.id ?? '',
+                                                                    0);
+                                                            var account = context
+                                                                .read<
+                                                                    AccountBloc>()
+                                                                .state;
+                                                            context
+                                                                .read<
+                                                                    OrderGroupBloc>()
+                                                                .add(GetOrderGroup(
+                                                                    account?.id ??
+                                                                        ''));
+                                                            context
+                                                                .read<
+                                                                    TriggerBloc>()
+                                                                .add(
+                                                                    TriggerShipEvent(
+                                                                        0));
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: Text(
+                                                              S.current.yes))
+                                                    ],
+                                                  );
+                                                });
+                                          },
+                                          child: Text(S.current.cancel))
                                     ],
                                   ),
-                                  TextButton(
-                                      onPressed: () {
-                                        showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                title: Text(S.current.pending),
-                                                content:
-                                                    Text(S.current.pending),
-                                                actions: [
-                                                  TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text(
-                                                          S.current.cancel)),
-                                                  TextButton(
-                                                      onPressed: () async {
-                                                        await OrderController()
-                                                            .ChangeOrderStatus(
-                                                                e.id ?? '', 0);
-                                                        var account = context
-                                                            .read<AccountBloc>()
-                                                            .state;
-                                                        context
-                                                            .read<
-                                                                OrderGroupBloc>()
-                                                            .add(GetOrderGroup(
-                                                                account?.id ??
-                                                                    ''));
-                                                        context
-                                                            .read<TriggerBloc>()
-                                                            .add(
-                                                                TriggerShipEvent(
-                                                                    0));
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child:
-                                                          Text(S.current.yes))
-                                                ],
-                                              );
-                                            });
-                                      },
-                                      child: Text(S.current.cancel))
                                 ],
                               )
                             ],
