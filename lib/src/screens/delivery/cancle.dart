@@ -1,3 +1,4 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
@@ -7,16 +8,17 @@ import 'package:it_can_cook/src/bloc/order_group/order_group_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
 import 'package:it_can_cook/src/controller/order.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
+import 'package:it_can_cook/src/models/order/order.dart';
 import 'package:it_can_cook/src/models/shipper/ordergroup.dart';
 import 'package:it_can_cook/src/screens/history/history_shipper.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
-class PendingScreen extends StatefulWidget {
+class CancleScreen extends StatefulWidget {
   @override
-  _PendingScreenState createState() => _PendingScreenState();
+  _CancleScreenState createState() => _CancleScreenState();
 }
 
-class _PendingScreenState extends State<PendingScreen> {
+class _CancleScreenState extends State<CancleScreen> {
   @override
   void initState() {
     super.initState();
@@ -33,7 +35,8 @@ class _PendingScreenState extends State<PendingScreen> {
           listorder.addAll(item.orders);
         }
         listorder = listorder
-            .where((element) => element.status == "Processing")
+            .where((element) =>
+                element.status == "UnShipped" || element.status == "Canceled")
             .toList();
         return LoaderOverlay(
             child: Scaffold(
@@ -134,48 +137,12 @@ class _PendingScreenState extends State<PendingScreen> {
                                   );
                                 },
                               ),
-                              TextButton(
-                                  onPressed: () async {
-                                    //show dialog
-
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            title: Text(S.current.ship),
-                                            content:
-                                                Text(S.current.ship_confirm),
-                                            actions: [
-                                              TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child:
-                                                      Text(S.current.cancel)),
-                                              TextButton(
-                                                  onPressed: () async {
-                                                    await OrderController()
-                                                        .ChangeOrderStatus(
-                                                            e.id ?? '', 1);
-                                                    var account = context
-                                                        .read<AccountBloc>()
-                                                        .state;
-                                                    context
-                                                        .read<OrderGroupBloc>()
-                                                        .add(GetOrderGroup(
-                                                            account?.id ?? ''));
-                                                    context
-                                                        .read<TriggerBloc>()
-                                                        .add(TriggerShipEvent(
-                                                            1));
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Text(S.current.ship))
-                                            ],
-                                          );
-                                        });
-                                  },
-                                  child: Text(S.current.ship))
+                              Text(
+                                e.status == "UnShipped"
+                                    ? S.current.customer_not_take_order
+                                    : S.current.cancel,
+                                style: TextStyle(color: Colors.red),
+                              )
                             ],
                           )),
                     ))

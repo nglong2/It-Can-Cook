@@ -9,3 +9,10 @@ class GetHistoryOrderEvent extends OrderEvent {
 
   GetHistoryOrderEvent(this.userId);
 }
+
+//get history order by order id
+class GetHistoryOrderByOrderIdEvent extends OrderEvent {
+  final String orderId;
+
+  GetHistoryOrderByOrderIdEvent(this.orderId);
+}

@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "breakfast": MessageLookupByLibrary.simpleMessage("Breakfast"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "canceled": MessageLookupByLibrary.simpleMessage("Canceled"),
         "cancle_order": MessageLookupByLibrary.simpleMessage("Cancel order"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change password"),
@@ -55,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "If you cant find any plan, you can create your own, we can provide you the recipe, its easy"),
         "custom_plan_title":
             MessageLookupByLibrary.simpleMessage("Custom Plan ➕"),
+        "customer_not_take_order":
+            MessageLookupByLibrary.simpleMessage("Customer not take order"),
         "delete_dish": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this dish?"),
         "delete_plan_confirmation": MessageLookupByLibrary.simpleMessage(

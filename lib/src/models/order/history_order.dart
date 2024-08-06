@@ -12,6 +12,8 @@ class OrderHistory {
   String? receivePhone;
   String? note;
   String? address;
+  double? longitude;
+  double? latitude;
   String? shipDate;
   String? orderDate;
   double? totalPrice;
@@ -28,6 +30,8 @@ class OrderHistory {
     this.orderCode,
     this.note,
     this.address,
+    this.longitude,
+    this.latitude,
     this.shipDate,
     this.orderDate,
     this.totalPrice,
@@ -48,6 +52,12 @@ class OrderHistory {
       address: json['address'],
       shipDate: json['shipDate'],
       orderDate: json['orderDate'],
+      longitude: json['longitude'] != null
+          ? double.parse(json['longitude'].toString())
+          : null,
+      latitude: json['latitude'] != null
+          ? double.parse(json['latitude'].toString())
+          : null,
       totalPrice: json['totalPrice'] != null
           ? double.parse(json['totalPrice'].toString())
           : null,

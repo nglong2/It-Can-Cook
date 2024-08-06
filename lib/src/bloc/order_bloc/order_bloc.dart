@@ -17,5 +17,13 @@ class OrderBloc extends Bloc<OrderEvent, List<OrderHistory>> {
 
       emit(listWeeklyPlan);
     });
+
+    on<GetHistoryOrderByOrderIdEvent>((event, emit) async {
+      var orderId = event.orderId;
+
+      var listWeeklyPlan = await OrderController().GetOrder(orderId);
+
+      emit([listWeeklyPlan]);
+    });
   }
 }

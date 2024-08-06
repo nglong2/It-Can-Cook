@@ -83,4 +83,20 @@ class OrderController {
     }
     return "Failed to change status";
   }
+
+  // curl -X 'GET' \
+  // 'https://api.wemealkit.ddns.net/api/order/get-order/e352e7d9-464d-4f97-f467-08dcb08d72f9' \
+  // -H 'accept: */*' \
+
+  Future<OrderHistory> GetOrder(String orderID) async {
+    var value = await api.get("api/order/get-order/$orderID");
+    if (value.statusCode == 200) {
+      if (jsonDecode(value.body)["statusCode"] == 200) {
+        return OrderHistory.fromJson(jsonDecode(value.body)["data"]);
+      } else {
+        return OrderHistory();
+      }
+    }
+    return OrderHistory();
+  }
 }

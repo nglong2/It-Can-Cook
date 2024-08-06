@@ -1459,6 +1459,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Customer not take order`
+  String get customer_not_take_order {
+    return Intl.message(
+      'Customer not take order',
+      name: 'customer_not_take_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled`
+  String get canceled {
+    return Intl.message(
+      'Canceled',
+      name: 'canceled',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

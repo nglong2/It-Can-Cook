@@ -22,6 +22,7 @@ import 'package:it_can_cook/src/screens/customplan/custom_plan.dart';
 import 'package:it_can_cook/src/screens/delivery/home.dart';
 import 'package:it_can_cook/src/screens/history/history.dart';
 import 'package:it_can_cook/src/screens/history/history_detail.dart';
+import 'package:it_can_cook/src/screens/history/history_shipper.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
 import 'package:it_can_cook/src/screens/login/login/login.dart';
 import 'package:it_can_cook/src/screens/login/register/register.dart';
@@ -160,6 +161,10 @@ class MyApp extends StatelessWidget {
                       return const CustomPlanScreen();
                     case "history_detail":
                       return HistoryDetail(
+                        orderHistorys: routeSettings.arguments as OrderHistory,
+                      );
+                    case "history_shipper_detail":
+                      return HistoryShipperDetail(
                         orderHistorys: routeSettings.arguments as OrderHistory,
                       );
                     case "history":

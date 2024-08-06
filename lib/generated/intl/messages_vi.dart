@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Quay lại"),
         "breakfast": MessageLookupByLibrary.simpleMessage("Bữa sáng"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
+        "canceled": MessageLookupByLibrary.simpleMessage("Đã hủy"),
         "cancle_order": MessageLookupByLibrary.simpleMessage("Hủy đơn hàng"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_success":
@@ -54,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nếu bạn không tìm thấy bất kỳ kế hoạch nào, bạn có thể tạo riêng của mình, chúng tôi có thể cung cấp cho bạn danh sách món ăn, bạn có thể thêm vào"),
         "custom_plan_title":
             MessageLookupByLibrary.simpleMessage("Kế hoạch tùy chỉnh ➕"),
+        "customer_not_take_order":
+            MessageLookupByLibrary.simpleMessage("Khách không lấy hàng"),
         "delete_dish": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn xóa món ăn này?"),
         "delete_plan_confirmation": MessageLookupByLibrary.simpleMessage(

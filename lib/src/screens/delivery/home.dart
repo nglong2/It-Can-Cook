@@ -7,7 +7,9 @@ import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/shipper/ordergroup.dart';
 import 'package:it_can_cook/src/models/system/trigger.dart';
+import 'package:it_can_cook/src/screens/delivery/cancle.dart';
 import 'package:it_can_cook/src/screens/delivery/pending.dart';
+import 'package:it_can_cook/src/screens/delivery/shipped.dart';
 import 'package:it_can_cook/src/screens/delivery/shipping.dart';
 import 'package:it_can_cook/src/screens/setting/setting.dart';
 
@@ -22,8 +24,8 @@ class _DeliveryHomeState extends State<DeliveryHome> {
   final List<Widget> _pages = [
     PendingScreen(),
     ShippingScreen(),
-    OrderStatusPage(status: 'Delivered'),
-    OrderStatusPage(status: 'Cancelled'),
+    ShippedScreen(),
+    CancleScreen(),
     const SettingsView()
   ];
 

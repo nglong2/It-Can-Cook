@@ -143,5 +143,7 @@
   "shipping": "Shipping",
   "shipped": "Shipped",
   "ship_confirm": "Confirm pick up",
-  "shiped_confirm": "Shipped confirm"
+  "shiped_confirm": "Shipped confirm",
+  "customer_not_take_order": "Customer not take order",
+  "canceled": "Canceled"
 }

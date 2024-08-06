@@ -142,5 +142,7 @@
   "shipping": "Đang giao hàng",
   "shipped": "Đã giao hàng",
   "ship_confirm": "Xác nhận lấy hàng",
-  "shiped_confirm": "Đã xác nhận giao hàng"
+  "shiped_confirm": "Đã xác nhận giao hàng",
+  "customer_not_take_order": "Khách không lấy hàng",
+  "canceled": "Đã hủy"
 }
