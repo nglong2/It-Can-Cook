@@ -190,6 +190,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "serving_size":
             MessageLookupByLibrary.simpleMessage("Phần ăn dùng cho: "),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+        "ship": MessageLookupByLibrary.simpleMessage("Lấy hàng"),
+        "ship_confirm":
+            MessageLookupByLibrary.simpleMessage("Xác nhận lấy hàng"),
+        "shiped_confirm":
+            MessageLookupByLibrary.simpleMessage("Đã xác nhận giao hàng"),
+        "shipped": MessageLookupByLibrary.simpleMessage("Đã giao hàng"),
+        "shipping": MessageLookupByLibrary.simpleMessage("Đang giao hàng"),
         "sodium": MessageLookupByLibrary.simpleMessage("Muối"),
         "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),
         "step": MessageLookupByLibrary.simpleMessage("Bước"),

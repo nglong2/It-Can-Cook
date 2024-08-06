@@ -137,5 +137,10 @@
   "pending_momo": "Chờ thanh toán Momo",
   "pending_zalopay": "Chờ thanh toán ZaloPay",
   "unpaid": "Chưa thanh toán",
-  "pending": "Chờ xác nhận"
+  "pending": "Chờ xác nhận",
+  "ship": "Lấy hàng",
+  "shipping": "Đang giao hàng",
+  "shipped": "Đã giao hàng",
+  "ship_confirm": "Xác nhận lấy hàng",
+  "shiped_confirm": "Đã xác nhận giao hàng"
 }

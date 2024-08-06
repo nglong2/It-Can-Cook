@@ -51,4 +51,25 @@ class Order {
       'recipeList': recipeList.map((e) => e.toJson()).toList(),
     };
   }
+
+  // fromJson method
+  factory Order.fromJson(Map<String, dynamic> json) {
+    return Order(
+      userId: json['userId'],
+      standerdWeeklyPlanId: json['standerdWeeklyPlanId'],
+      note: json['note'],
+      address: json['address'],
+      longitude: json['longitude'],
+      latitude: json['latitude'],
+      receiveName: json['receiveName'],
+      receivePhone: json['receivePhone'],
+      transactionType: json['transactionType'],
+      totalPrice: json['totalPrice'],
+      img: json['img'],
+      recipeList: json['recipeList'] != null
+          ? List<RecipePlan>.from(
+              json['recipeList'].map((x) => RecipePlan.fromJson(x)))
+          : [],
+    );
+  }
 }

@@ -138,5 +138,10 @@
   "pending_momo": "Pending Momo payment",
   "pending_zalopay": "Pending ZaloPay payment",
   "unpaid": "Unpaid",
-  "pending": "Pending"
+  "pending": "Pending",
+  "ship": "Pick up",
+  "shipping": "Shipping",
+  "shipped": "Shipped",
+  "ship_confirm": "Confirm pick up",
+  "shiped_confirm": "Shipped confirm"
 }

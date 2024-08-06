@@ -10,3 +10,10 @@ class ChangeUserInHouseTriggerEvent extends TriggerEvent {
 class SeachTriggerEvent extends TriggerEvent {
   SeachTriggerEvent();
 }
+
+//tringger even with number
+class TriggerShipEvent extends TriggerEvent {
+  final int number;
+
+  TriggerShipEvent(this.number);
+}

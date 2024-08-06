@@ -193,6 +193,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Send me to custom plan"),
         "serving_size": MessageLookupByLibrary.simpleMessage("Serving Size: "),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "ship": MessageLookupByLibrary.simpleMessage("Pick up"),
+        "ship_confirm": MessageLookupByLibrary.simpleMessage("Confirm pick up"),
+        "shiped_confirm":
+            MessageLookupByLibrary.simpleMessage("Shipped confirm"),
+        "shipped": MessageLookupByLibrary.simpleMessage("Shipped"),
+        "shipping": MessageLookupByLibrary.simpleMessage("Shipping"),
         "sodium": MessageLookupByLibrary.simpleMessage("Sodium"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "step": MessageLookupByLibrary.simpleMessage("Steps"),

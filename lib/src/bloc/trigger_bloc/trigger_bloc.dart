@@ -6,7 +6,8 @@ part 'trigger_event.dart';
 part 'trigger_state.dart';
 
 class TriggerBloc extends Bloc<TriggerEvent, Trigger> {
-  TriggerBloc() : super(Trigger(changeUserInHouseNum: 0, seachNum: 0)) {
+  TriggerBloc()
+      : super(Trigger(changeUserInHouseNum: 0, seachNum: 0, shipNum: 0)) {
     on<TriggerEvent>((event, emit) {});
     on<ChangeUserInHouseTriggerEvent>((event, emit) {
       emit(
@@ -15,6 +16,10 @@ class TriggerBloc extends Bloc<TriggerEvent, Trigger> {
 
     on<SeachTriggerEvent>((event, emit) {
       emit(state.copyWith(seachNum: state.seachNum + 1));
+    });
+
+    on<TriggerShipEvent>((event, emit) {
+      emit(state.copyWith(shipNum: event.number));
     });
   }
 }

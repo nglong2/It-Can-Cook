@@ -5,6 +5,7 @@ import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
+import 'package:it_can_cook/src/bloc/order_group/order_group_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_plan/recipe_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
@@ -61,6 +62,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<CustomPlanBloc>(
           create: (BuildContext context) => CustomPlanBloc(),
+        ),
+        BlocProvider<OrderGroupBloc>(
+          create: (BuildContext context) => OrderGroupBloc(),
         ),
         BlocProvider<RecipesAllBloc>(
           create: (BuildContext context) =>

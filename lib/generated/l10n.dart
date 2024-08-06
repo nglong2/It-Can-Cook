@@ -1409,6 +1409,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Pick up`
+  String get ship {
+    return Intl.message(
+      'Pick up',
+      name: 'ship',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping`
+  String get shipping {
+    return Intl.message(
+      'Shipping',
+      name: 'shipping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipped`
+  String get shipped {
+    return Intl.message(
+      'Shipped',
+      name: 'shipped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm pick up`
+  String get ship_confirm {
+    return Intl.message(
+      'Confirm pick up',
+      name: 'ship_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipped confirm`
+  String get shiped_confirm {
+    return Intl.message(
+      'Shipped confirm',
+      name: 'shiped_confirm',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
