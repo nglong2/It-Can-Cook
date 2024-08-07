@@ -8,7 +8,9 @@ import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/controller/order.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
+import 'package:it_can_cook/src/models/zalopay/refund_response.dart';
 import 'package:it_can_cook/src/screens/history/order_history_item.dart';
+import 'package:it_can_cook/src/utils/util.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HistoryDetail extends StatefulWidget {
@@ -355,6 +357,58 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                             .ChangeOrderStatus(
                                                                 select.id ?? "",
                                                                 6);
+
+                                                    if (select
+                                                                .transactions
+                                                                .firstOrNull
+                                                                ?.type ==
+                                                            "ZaloPay" &&
+                                                        select
+                                                                .transactions
+                                                                .firstOrNull
+                                                                ?.status ==
+                                                            "PAID") {
+                                                      //call api
+
+                                                      var yymmdd = DateFormat(
+                                                              "yyMMdd")
+                                                          .format(
+                                                              DateTime.now());
+                                                      var mRefundId =
+                                                          "${yymmdd}_2554_${DateTime.now().millisecondsSinceEpoch.toString().substring(2, 12)}";
+                                                      var zpTransId = select
+                                                              .transactions
+                                                              .firstOrNull
+                                                              ?.signature!
+                                                              .split('_')[1] ??
+                                                          "";
+                                                      var amount = select
+                                                          .totalPrice!
+                                                          .toInt();
+                                                      var refundFeeAmount = 0;
+                                                      var timestamp = DateTime
+                                                              .now()
+                                                          .millisecondsSinceEpoch;
+                                                      var description =
+                                                          "Refund";
+                                                      var mac = getMacCreateOrder(
+                                                          "2554|$zpTransId|$amount|$description|$timestamp");
+                                                      Refund re = Refund(
+                                                          appId: 2554,
+                                                          zpTransId: zpTransId,
+                                                          mRefundId: mRefundId,
+                                                          amount: amount,
+                                                          description:
+                                                              description,
+                                                          timestamp: timestamp,
+                                                          mac: mac);
+                                                      var mess =
+                                                          await OrderController()
+                                                              .RefundOrder(re);
+                                                      print("datarefund :" +
+                                                          mess);
+                                                      //show snackbar
+                                                    }
                                                     //show snackbar
                                                     Navigator.pop(context);
                                                     //show snackbar

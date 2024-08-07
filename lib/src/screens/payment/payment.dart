@@ -28,6 +28,7 @@ class _PaymentState extends State<Payment> {
   final valueStyle = const TextStyle(
       color: AppColor.accentColor, fontSize: 18.0, fontWeight: FontWeight.w400);
   String zpTransToken = "";
+  String transid = "";
   String payResult = "";
   String payAmount = "1000";
   bool showResult = false;
@@ -112,6 +113,7 @@ class _PaymentState extends State<Payment> {
                 zpTransToken = result.zptranstoken;
                 setState(() {
                   zpTransToken = result.zptranstoken;
+                  transid = result.transid;
                   showResult = true;
                 });
                 try {
@@ -127,17 +129,18 @@ class _PaymentState extends State<Payment> {
                     ),
                     duration: const Duration(seconds: 2),
                   ));
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, "home", (route) => false);
-                  TransactionController().createTransaction(Transaction(
+                  await TransactionController().createTransaction(Transaction(
                       orderId: widget.arg.orderID,
                       transactionType: 2,
                       amount: widget.arg.price.toInt(),
                       transactionDate: DateTime.now().toString(),
                       notice: "Thanh toán",
                       extraData: "Thanh toán",
-                      signature: "Thanh toán",
+                      signature: transid,
                       status: 0));
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, "home", (route) => false);
+
                   print("payOrder Result: '$result'.");
                 } on PlatformException catch (e) {
                   print("Failed to Invoke: '${e.message}'.");

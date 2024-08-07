@@ -17,6 +17,7 @@ class ZaloPayConfig {
 
 Future<CreateOrderResponse?> createOrder(int price) async {
   var header = new Map<String, String>();
+  var transid = getAppTransId();
   header["Content-Type"] = "application/x-www-form-urlencoded";
 
   var body = new Map<String, String>();
@@ -24,7 +25,7 @@ Future<CreateOrderResponse?> createOrder(int price) async {
   body["app_user"] = ZaloPayConfig.appUser;
   body["app_time"] = DateTime.now().millisecondsSinceEpoch.toString();
   body["amount"] = price.toStringAsFixed(0);
-  body["app_trans_id"] = getAppTransId();
+  body["app_trans_id"] = transid;
   body["embed_data"] = "{}";
   body["item"] = "[]";
   body["bank_code"] = getBankCode();
@@ -54,6 +55,9 @@ Future<CreateOrderResponse?> createOrder(int price) async {
   }
 
   var data = jsonDecode(response.body);
+  data["transid"] = transid;
+  //add transid to data
+
   print("data_response: $data}");
 
   return CreateOrderResponse.fromJson(data);

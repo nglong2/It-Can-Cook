@@ -4,9 +4,11 @@ import 'package:it_can_cook/src/api/rest.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/order/order.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
+import 'package:it_can_cook/src/models/zalopay/refund_response.dart';
 
 class OrderController {
   final RestApi api = RestApi();
+  final OutApi outApi = OutApi();
 
   Future<String> CreateOrder(
       String userID,
@@ -98,5 +100,20 @@ class OrderController {
       }
     }
     return OrderHistory();
+  }
+
+  //refund zalopay  https://sb-openapi.Zalopay.vn/v2/refund
+
+  Future<String> RefundOrder(Refund refund) async {
+    var value = await outApi.post(
+        "https://sb-openapi.Zalopay.vn/v2/refund", refund.toJson());
+    if (value.statusCode == 200) {
+      if (jsonDecode(value.body)["return_code"] == 1) {
+        return "Refund success";
+      } else {
+        return jsonDecode(value.body)["return_message"];
+      }
+    }
+    return "Failed to refund";
   }
 }
