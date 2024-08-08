@@ -6,7 +6,9 @@ import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/controller/order.dart';
+import 'package:it_can_cook/src/controller/transaction.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
+import 'package:it_can_cook/src/models/transactions/transaction.dart';
 import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/models/zalopay/refund_response.dart';
 import 'package:it_can_cook/src/screens/history/order_history_item.dart';
@@ -369,6 +371,25 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                                 ?.status ==
                                                             "PAID") {
                                                       //call api
+                                                      TransactionController()
+                                                          .createTransaction(Transaction(
+                                                              orderId:
+                                                                  select.id ??
+                                                                      "",
+                                                              transactionType:
+                                                                  2,
+                                                              amount: select
+                                                                  .totalPrice!
+                                                                  .toInt(),
+                                                              transactionDate:
+                                                                  DateTime.now()
+                                                                      .toIso8601String(),
+                                                              notice: "Refund",
+                                                              extraData:
+                                                                  "Refund",
+                                                              signature:
+                                                                  "Refund",
+                                                              status: 7));
 
                                                       var yymmdd = DateFormat(
                                                               "yyMMdd")
@@ -392,7 +413,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                       var description =
                                                           "Refund";
                                                       var mac = getMacCreateOrder(
-                                                          "2554|$zpTransId|$amount|$description|$timestamp");
+                                                          "2554|$zpTransId|$amount|0|$description|$timestamp");
                                                       Refund re = Refund(
                                                           appId: 2554,
                                                           zpTransId: zpTransId,
@@ -536,7 +557,7 @@ String getNamePayment(String? name) {
     case "Pending":
       return S.current.pending;
     default:
-      return "";
+      return name ?? "";
   }
 }
 

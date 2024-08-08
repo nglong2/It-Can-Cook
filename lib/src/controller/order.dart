@@ -106,7 +106,7 @@ class OrderController {
 
   Future<String> RefundOrder(Refund refund) async {
     var value = await outApi.post(
-        "https://sb-openapi.Zalopay.vn/v2/refund", refund.toJson());
+        "https://sb-openapi.zalopay.vn/v2/refund", refund.toJson());
     if (value.statusCode == 200) {
       if (jsonDecode(value.body)["return_code"] == 1) {
         return "Refund success";

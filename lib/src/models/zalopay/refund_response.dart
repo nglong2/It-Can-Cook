@@ -40,7 +40,7 @@ class Refund {
       'm_refund_id': mRefundId,
       'zp_trans_id': zpTransId,
       'amount': amount,
-      'refund_fee_amount': refundFeeAmount,
+      'refund_fee_amount': 0,
       'timestamp': timestamp,
       'description': description,
       'mac': mac,
