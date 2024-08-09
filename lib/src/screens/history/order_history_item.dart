@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
-import 'package:it_can_cook/src/models/weekly/recipe.dart';
 
 class OrderHistoryItem extends StatefulWidget {
   final List<OrderDetails> orderDetails;

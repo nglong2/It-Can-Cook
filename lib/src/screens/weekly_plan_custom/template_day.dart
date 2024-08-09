@@ -11,8 +11,7 @@ import 'package:numberpicker/numberpicker.dart';
 class TemplateCustomDay extends StatefulWidget {
   final List<RecipePlan> recipesPlanParts;
 
-  TemplateCustomDay({Key? key, required this.recipesPlanParts})
-      : super(key: key);
+  const TemplateCustomDay({super.key, required this.recipesPlanParts});
 
   @override
   _TemplateCustomDayState createState() => _TemplateCustomDayState();

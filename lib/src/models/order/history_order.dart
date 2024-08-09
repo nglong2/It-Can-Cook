@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:it_can_cook/src/models/weekly/ingredient.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';

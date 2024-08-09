@@ -85,7 +85,7 @@ Map<String, dynamic> encodeMap(Map<String, dynamic> map) {
 
 class OutApi {
   Future<http.Response> get(String path) async {
-    final url = Uri.parse('$path');
+    final url = Uri.parse(path);
     final response = await http.get(url);
     return response;
   }
@@ -93,7 +93,7 @@ class OutApi {
   Future<http.Response> post(String path, Map<String, dynamic> body) async {
     body = encodeMap(body);
     final jsonBody = jsonEncode(body);
-    final url = Uri.parse('$path');
+    final url = Uri.parse(path);
     final response = await http.post(url, body: jsonBody, headers: {
       'Content-Type': 'application/json',
     });
@@ -103,7 +103,7 @@ class OutApi {
   //httpput
   Future<http.Response> put(String path, Map<String, dynamic> body) async {
     final jsonBody = jsonEncode(body);
-    final url = Uri.parse('$path');
+    final url = Uri.parse(path);
     final response = await http.put(url, body: jsonBody, headers: {
       'Content-Type': 'application/json',
     });
@@ -112,7 +112,7 @@ class OutApi {
 
   //httpdelete
   Future<http.Response> delete(String path) async {
-    final url = Uri.parse('$path');
+    final url = Uri.parse(path);
     final response = await http.delete(url);
     return response;
   }

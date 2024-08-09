@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
@@ -8,6 +7,8 @@ import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
 
 class HistoryScreen extends StatefulWidget {
+  const HistoryScreen({super.key});
+
   @override
   _HistoryScreenState createState() => _HistoryScreenState();
 }
@@ -28,7 +29,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               title: Text(S.current.history),
             ),
             backgroundColor: Colors.grey[200],
-            body: state.length == 0
+            body: state.isEmpty
                 ? Center(
                     child: Text(S.current.you_dont_have_any_order),
                   )
@@ -174,7 +175,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   //get time from date
   String getTime(DateTime date) {
-    return DateFormat("HH:mm").format(date.add(Duration(hours: 7)).toLocal());
+    return DateFormat("HH:mm").format(date.add(const Duration(hours: 7)).toLocal());
   }
 }
 

@@ -21,7 +21,7 @@ class HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    WeeklyScreen(),
+    const WeeklyScreen(),
     const RecipeList(),
     const SettingsView(),
   ];
@@ -33,7 +33,7 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final accountState = context.watch<AccountBloc>()?.state;
+    final accountState = context.watch<AccountBloc>().state;
     if (accountState != null &&
         accountState.id != null &&
         accountState.id != "") {

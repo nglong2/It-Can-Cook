@@ -13,7 +13,7 @@ import 'package:it_can_cook/src/utils/theme_data.dart';
 class Payment extends StatefulWidget {
   final PaymentArguemnt arg;
 
-  Payment(this.arg);
+  const Payment(this.arg, {super.key});
 
   @override
   _PaymentState createState() => _PaymentState();

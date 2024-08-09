@@ -7,9 +7,10 @@ import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/home/home_page.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/part.dart';
-import 'package:it_can_cook/src/screens/weekly_plane/weekly/template_day.dart';
 
 class CalendarScreen extends StatefulWidget {
+  const CalendarScreen({super.key});
+
   @override
   _CalendarScreenState createState() => _CalendarScreenState();
 }
@@ -30,12 +31,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
       builder: (context, state) {
         var list =
             state.where((element) => element.status == "Processing").toList();
-        var listAllRecipe = context.watch<RecipesAllBloc>()?.state == null
-            ? []
-            : context.watch<RecipesAllBloc>().state;
+        var listAllRecipe = context.watch<RecipesAllBloc>().state ?? [];
         var listToday = list.where((element) {
           return checkDayInCurrentWeek(
-              DateTime.parse(element.shipDate!).add(Duration(days: 5)));
+              DateTime.parse(element.shipDate!).add(const Duration(days: 5)));
         }).toList();
         if (selectedValue.id == null && listToday.isNotEmpty) {
           selectedValue = listToday[0];
@@ -43,7 +42,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         return listToday.isEmpty
             ? const HomePage()
             : Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
                     Row(
@@ -74,7 +73,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       children: [
                         Text(
                           S.current.menu_today,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 25),
                         ),
                         //selected
@@ -94,7 +93,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     (selectedValue.orderDetails.isNotEmpty)

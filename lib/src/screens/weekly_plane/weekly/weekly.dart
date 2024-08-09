@@ -10,6 +10,8 @@ import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly_list.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class WeeklyScreen extends StatefulWidget {
+  const WeeklyScreen({super.key});
+
   @override
   WeeklyScreenState createState() => WeeklyScreenState();
 }
@@ -75,7 +77,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                   height: 20,
                 ),
                 renderSearch(),
-                WeeklyList()
+                const WeeklyList()
               ]),
         ),
       ),

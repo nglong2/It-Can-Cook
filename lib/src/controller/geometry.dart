@@ -8,7 +8,7 @@ class GeometryController {
 
   Future<GeocodeResponse?> getAddressFromLatLng(double lat, double long) async {
     //model GeocodeResponse
-    var data = null;
+    GeocodeResponse? data = null;
 
     var key = "20be8f418ad";
     var key1 = "046d9be5b82";

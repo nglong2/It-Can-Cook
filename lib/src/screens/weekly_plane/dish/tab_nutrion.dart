@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 
@@ -39,7 +38,7 @@ class _NutrionTabWidgetState extends State<NutrionTabWidget> {
               fit: BoxFit.fill,
             ),
             Row(
-              children: widget.recipe.recipeCategories!
+              children: widget.recipe.recipeCategories
                   .map((e) => Container(
                         padding: const EdgeInsets.all(5),
                         margin: const EdgeInsets.only(right: 5, top: 5),
@@ -94,9 +93,7 @@ class _NutrionTabWidgetState extends State<NutrionTabWidget> {
                           style: const TextStyle(fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "${widget.recipe.servingSize}" +
-                              " " +
-                              S.current.person,
+                          "${widget.recipe.servingSize} ${S.current.person}",
                           style: const TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -108,8 +105,7 @@ class _NutrionTabWidgetState extends State<NutrionTabWidget> {
                           style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                         Text(
-                            "${widget.recipe.recipeNutrient?.calories?.floorToDouble().toString()}" +
-                                " kcal"),
+                            "${widget.recipe.recipeNutrient?.calories?.floorToDouble().toString()}" " kcal"),
                       ],
                     ),
                     Row(
@@ -119,8 +115,7 @@ class _NutrionTabWidgetState extends State<NutrionTabWidget> {
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
-                            "${widget.recipe.recipeNutrient?.fat?.floorToDouble()}" +
-                                " g"),
+                            "${widget.recipe.recipeNutrient?.fat?.floorToDouble()}" " g"),
                       ],
                     ),
                     Row(

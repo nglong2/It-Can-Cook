@@ -6,6 +6,8 @@ import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 class WeeklyList extends StatefulWidget {
+  const WeeklyList({super.key});
+
   @override
   _WeeklyListState createState() => _WeeklyListState();
 }
@@ -19,7 +21,7 @@ class _WeeklyListState extends State<WeeklyList> {
     return Column(
       children: [
         ListView.builder(
-          itemCount: listPlan!.length,
+          itemCount: listPlan.length,
           shrinkWrap:
               true, // Important to prevent inner ListView from expanding infinitely
           physics: const NeverScrollableScrollPhysics(),
@@ -66,7 +68,7 @@ class _WeeklyListState extends State<WeeklyList> {
                           Text(
                             listPlan[index].id == Uuid.NAMESPACE_NIL
                                 ? S.current.custom_plan_title
-                                : listPlan![index].title ?? "",
+                                : listPlan[index].title ?? "",
                             style: const TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),

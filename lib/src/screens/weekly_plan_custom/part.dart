@@ -13,7 +13,7 @@ class PartCustom extends StatefulWidget {
   final List<RecipePlan> recipes;
 
   const PartCustom(
-      {Key? key,
+      {super.key,
       required this.recipes,
       required this.dayInWeek,
       required this.weeklyPlanId});
@@ -65,13 +65,12 @@ class MenuPart extends StatelessWidget {
   final int mealInDay;
   final String weeklyPlanId;
   const MenuPart(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.recipesPart,
       required this.dayInWeek,
       required this.mealInDay,
-      required this.weeklyPlanId})
-      : super(key: key);
+      required this.weeklyPlanId});
 
   @override
   Widget build(BuildContext context) {

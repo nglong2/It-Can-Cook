@@ -4,8 +4,6 @@ import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_group/order_group_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
-import 'package:it_can_cook/src/models/order/history_order.dart';
-import 'package:it_can_cook/src/models/shipper/ordergroup.dart';
 import 'package:it_can_cook/src/models/system/trigger.dart';
 import 'package:it_can_cook/src/screens/delivery/cancle.dart';
 import 'package:it_can_cook/src/screens/delivery/pending.dart';
@@ -14,6 +12,8 @@ import 'package:it_can_cook/src/screens/delivery/shipping.dart';
 import 'package:it_can_cook/src/screens/setting/setting.dart';
 
 class DeliveryHome extends StatefulWidget {
+  const DeliveryHome({super.key});
+
   @override
   _DeliveryHomeState createState() => _DeliveryHomeState();
 }
@@ -22,10 +22,10 @@ class _DeliveryHomeState extends State<DeliveryHome> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    PendingScreen(),
-    ShippingScreen(),
-    ShippedScreen(),
-    CancleScreen(),
+    const PendingScreen(),
+    const ShippingScreen(),
+    const ShippedScreen(),
+    const CancleScreen(),
     const SettingsView()
   ];
 
@@ -54,23 +54,23 @@ class _DeliveryHomeState extends State<DeliveryHome> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.pending),
+              icon: const Icon(Icons.pending),
               label: S.current.pending,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.timer),
+              icon: const Icon(Icons.timer),
               label: S.current.shipping,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.check_circle),
+              icon: const Icon(Icons.check_circle),
               label: S.current.shipped,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.cancel),
+              icon: const Icon(Icons.cancel),
               label: S.current.cancel,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
+              icon: const Icon(Icons.settings),
               label: S.current.settings,
             ),
           ],
@@ -83,7 +83,7 @@ class _DeliveryHomeState extends State<DeliveryHome> {
 class OrderStatusPage extends StatelessWidget {
   final String status;
 
-  OrderStatusPage({required this.status});
+  const OrderStatusPage({super.key, required this.status});
 
   @override
   Widget build(BuildContext context) {

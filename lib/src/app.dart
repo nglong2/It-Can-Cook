@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
       child: Builder(
         builder: (context) {
           final systemState = context.watch<SystemBloc>().state;
-          final accountState = context.watch<AccountBloc>()?.state;
+          final accountState = context.watch<AccountBloc>().state;
           if (accountState != null &&
               accountState.id != null &&
               accountState.id != "") {
@@ -159,9 +159,9 @@ class MyApp extends StatelessWidget {
                       return Payment(
                           routeSettings.arguments as PaymentArguemnt);
                     case "delivery":
-                      return DeliveryHome();
+                      return const DeliveryHome();
                     case "onboarding":
-                      return Onboarding();
+                      return const Onboarding();
                     case "custom_plan":
                       return const CustomPlanScreen();
                     case "history_detail":
@@ -173,9 +173,9 @@ class MyApp extends StatelessWidget {
                         orderHistorys: routeSettings.arguments as OrderHistory,
                       );
                     case "history":
-                      return HistoryScreen();
+                      return const HistoryScreen();
                     case "calender":
-                      return CalendarScreen();
+                      return const CalendarScreen();
                     case "weekly_custom_detail":
                       return WeeklyCustomDetailPage(
                           weeklyPlan: routeSettings.arguments as WeeklyPlan);
@@ -183,9 +183,9 @@ class MyApp extends StatelessWidget {
                       // return Payment("hello");
                       return accountState != null
                           ? accountState.role?.toLowerCase() == 'shipper'
-                              ? DeliveryHome()
-                              : CalendarScreen()
-                          : Onboarding();
+                              ? const DeliveryHome()
+                              : const CalendarScreen()
+                          : const Onboarding();
                   }
                 },
               );

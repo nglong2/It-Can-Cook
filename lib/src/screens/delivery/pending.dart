@@ -12,6 +12,8 @@ import 'package:it_can_cook/src/screens/history/history_shipper.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class PendingScreen extends StatefulWidget {
+  const PendingScreen({super.key});
+
   @override
   _PendingScreenState createState() => _PendingScreenState();
 }
@@ -60,10 +62,10 @@ class _PendingScreenState extends State<PendingScreen> {
                                   children: [
                                     Row(
                                       children: [
-                                        Icon(Icons.code),
+                                        const Icon(Icons.code),
                                         Text(
                                           ' ${S.current.order_code}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text('${e.orderCode}')
@@ -71,10 +73,10 @@ class _PendingScreenState extends State<PendingScreen> {
                                     ),
                                     Row(
                                       children: [
-                                        Icon(Icons.person),
+                                        const Icon(Icons.person),
                                         Text(
                                           ' ${S.current.name}:',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(' ${e.receiveName}')
@@ -83,10 +85,10 @@ class _PendingScreenState extends State<PendingScreen> {
                                     GestureDetector(
                                       child: Row(
                                         children: [
-                                          Icon(Icons.gps_fixed),
+                                          const Icon(Icons.gps_fixed),
                                           Text(
                                             ' ${S.current.address}:',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           Text(' ${e.address}')
@@ -102,10 +104,10 @@ class _PendingScreenState extends State<PendingScreen> {
                                     ),
                                     Row(
                                       children: [
-                                        Icon(Icons.phone),
+                                        const Icon(Icons.phone),
                                         Text(
                                           ' ${S.current.phone_number}:',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(' ${e.receivePhone}')
@@ -113,14 +115,14 @@ class _PendingScreenState extends State<PendingScreen> {
                                     ),
                                     Row(
                                       children: [
-                                        Icon(Icons.note),
+                                        const Icon(Icons.note),
                                         Text(
                                           ' ${S.current.note}:',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(
-                                            '  ${e.note == null ? '' : (e.note!.length > 20 ? e.note!.substring(0, 20) + "..." : "${e.note}")}')
+                                            '  ${e.note == null ? '' : (e.note!.length > 20 ? "${e.note!.substring(0, 20)}..." : "${e.note}")}')
                                       ],
                                     ),
                                   ],
@@ -132,7 +134,7 @@ class _PendingScreenState extends State<PendingScreen> {
                                           e.id ?? ''));
 
                                   //delay 2s
-                                  await Future.delayed(Duration(seconds: 2));
+                                  await Future.delayed(const Duration(seconds: 2));
                                   context.loaderOverlay.hide();
                                   Navigator.push(
                                     context,

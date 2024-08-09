@@ -76,13 +76,13 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                       ? TextButton(
                           style: ButtonStyle(
                             //borderadius
-                            shape: MaterialStateProperty.all<
+                            shape: WidgetStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                     side: const BorderSide(
                                         color: Color(0xFF02335A)))),
-                            backgroundColor: MaterialStateProperty.all<Color>(
+                            backgroundColor: WidgetStateProperty.all<Color>(
                                 const Color(0xFF02335A)),
                           ),
                           onPressed: () async {
@@ -131,14 +131,14 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return AlertDialog(
-                                        title: Text('Error'),
+                                        title: const Text('Error'),
                                         content: Text(mess),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
-                                            child: Text('OK'),
+                                            child: const Text('OK'),
                                           ),
                                         ],
                                       );

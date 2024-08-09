@@ -73,7 +73,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                       TextButton(
                           style: ButtonStyle(
                             //borderadius
-                            shape: MaterialStateProperty.all<
+                            shape: WidgetStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
@@ -153,6 +153,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                       if (value.isEmpty) {
                         return 'Please enter address';
                       }
+                      return null;
                     },
                     onChanged: (value) {
                       setState(() {
@@ -169,13 +170,14 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                         return 'Please enter phone';
                       }
                       //validate phone
-                      if (value!.isEmpty) {
+                      if (value.isEmpty) {
                         return 'Please enter phone';
                       }
                       //math regex phone
                       if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) {
                         return 'Please enter valid phone';
                       }
+                      return null;
                     },
                     onChanged: (value) {
                       setState(() {
@@ -184,7 +186,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Note'),
+                    decoration: const InputDecoration(labelText: 'Note'),
                     onChanged: (value) {
                       setState(() {
                         note = value;
@@ -280,14 +282,14 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                 height: 50,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       )),
                       foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 115, 177, 228))),
+                          WidgetStateProperty.all<Color>(Colors.white),
+                      backgroundColor: WidgetStateProperty.all<Color>(
+                          const Color.fromARGB(255, 115, 177, 228))),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       for (var reipe in widget.weeklyPlan.recipePlans) {

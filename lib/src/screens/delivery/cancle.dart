@@ -1,19 +1,16 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
-import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_group/order_group_bloc.dart';
-import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
-import 'package:it_can_cook/src/controller/order.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
-import 'package:it_can_cook/src/models/order/order.dart';
 import 'package:it_can_cook/src/models/shipper/ordergroup.dart';
 import 'package:it_can_cook/src/screens/history/history_shipper.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class CancleScreen extends StatefulWidget {
+  const CancleScreen({super.key});
+
   @override
   _CancleScreenState createState() => _CancleScreenState();
 }
@@ -63,10 +60,10 @@ class _CancleScreenState extends State<CancleScreen> {
                                   children: [
                                     Row(
                                       children: [
-                                        Icon(Icons.code),
+                                        const Icon(Icons.code),
                                         Text(
                                           ' ${S.current.order_code}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text('${e.orderCode}')
@@ -74,10 +71,10 @@ class _CancleScreenState extends State<CancleScreen> {
                                     ),
                                     Row(
                                       children: [
-                                        Icon(Icons.person),
+                                        const Icon(Icons.person),
                                         Text(
                                           ' ${S.current.name}:',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(' ${e.receiveName}')
@@ -86,10 +83,10 @@ class _CancleScreenState extends State<CancleScreen> {
                                     GestureDetector(
                                       child: Row(
                                         children: [
-                                          Icon(Icons.gps_fixed),
+                                          const Icon(Icons.gps_fixed),
                                           Text(
                                             ' ${S.current.address}:',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           Text(' ${e.address}')
@@ -105,10 +102,10 @@ class _CancleScreenState extends State<CancleScreen> {
                                     ),
                                     Row(
                                       children: [
-                                        Icon(Icons.phone),
+                                        const Icon(Icons.phone),
                                         Text(
                                           ' ${S.current.phone_number}:',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(' ${e.receivePhone}')
@@ -116,14 +113,14 @@ class _CancleScreenState extends State<CancleScreen> {
                                     ),
                                     Row(
                                       children: [
-                                        Icon(Icons.note),
+                                        const Icon(Icons.note),
                                         Text(
                                           ' ${S.current.note}:',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(
-                                            '  ${e.note == null ? '' : (e.note!.length > 20 ? e.note!.substring(0, 20) + "..." : "${e.note}")}')
+                                            '  ${e.note == null ? '' : (e.note!.length > 20 ? "${e.note!.substring(0, 20)}..." : "${e.note}")}')
                                       ],
                                     ),
                                   ],
@@ -135,7 +132,7 @@ class _CancleScreenState extends State<CancleScreen> {
                                           e.id ?? ''));
 
                                   //delay 2s
-                                  await Future.delayed(Duration(seconds: 2));
+                                  await Future.delayed(const Duration(seconds: 2));
                                   context.loaderOverlay.hide();
                                   Navigator.push(
                                     context,
@@ -153,7 +150,7 @@ class _CancleScreenState extends State<CancleScreen> {
                                 e.status == "UnShipped"
                                     ? S.current.customer_not_take_order
                                     : S.current.cancel,
-                                style: TextStyle(color: Colors.red),
+                                style: const TextStyle(color: Colors.red),
                               )
                             ],
                           )),

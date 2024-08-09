@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/system_bloc/system_bloc.dart';
-import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
-import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
-import 'package:numberpicker/numberpicker.dart';
 
 class TemplateDay extends StatefulWidget {
   final List<RecipePlan> recipesPlanParts;
 
-  TemplateDay({Key? key, required this.recipesPlanParts}) : super(key: key);
+  const TemplateDay({super.key, required this.recipesPlanParts});
 
   @override
   _TemplateDayState createState() => _TemplateDayState();

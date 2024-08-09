@@ -34,13 +34,13 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${S.current.pakaging_method}",
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      S.current.pakaging_method,
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                     Flexible(child: Text("${step.ingredient?.packagingMethod}"))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                   height: 12,
                 ),
@@ -49,14 +49,14 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${S.current.preservationMethod}",
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      S.current.preservationMethod,
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                     Flexible(
                         child: Text("${step.ingredient?.preservationMethod}"))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                   height: 10,
                 ),
@@ -107,7 +107,7 @@ class _IngredientTabWidgetState extends State<IngredientTabWidget> {
                 showModalBottomSheet(
                   context: context,
                   builder: (BuildContext context) {
-                    return Container(
+                    return SizedBox(
                       height: 200,
                       child: CachedNetworkImage(
                         imageUrl: step.ingredient?.img ?? "",

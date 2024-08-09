@@ -37,7 +37,7 @@ class _SettingsViewState extends State<SettingsView> {
     return Builder(
       builder: (context) {
         final systemState = context.watch<SystemBloc>().state;
-        final accountState = context.watch<AccountBloc>()?.state;
+        final accountState = context.watch<AccountBloc>().state;
 
         return Scaffold(
           body: ListView(children: [

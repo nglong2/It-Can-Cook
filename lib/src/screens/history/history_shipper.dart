@@ -5,7 +5,6 @@ import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/recipe_all/recipes_all_bloc.dart';
-import 'package:it_can_cook/src/controller/order.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
 import 'package:it_can_cook/src/screens/history/order_history_item.dart';
@@ -226,7 +225,7 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
                               style: TextStyle(fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              select?.transactions.firstOrNull?.type ??
+                              select.transactions.firstOrNull?.type ??
                                   "No type",
                               style: const TextStyle(
                                   color: Color.fromARGB(255, 25, 94, 141),
@@ -257,10 +256,10 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
                                 ? TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
-                                            MaterialStateProperty.all<Color>(
+                                            WidgetStateProperty.all<Color>(
                                                 Colors.blue),
                                         foregroundColor:
-                                            MaterialStateProperty.all<Color>(
+                                            WidgetStateProperty.all<Color>(
                                                 Colors.white)),
                                     onPressed: () => {
                                       Navigator.pushReplacementNamed(

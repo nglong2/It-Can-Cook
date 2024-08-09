@@ -230,7 +230,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                               style: TextStyle(fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              select?.transactions.firstOrNull?.type ??
+                              select.transactions.firstOrNull?.type ??
                                   "No type",
                               style: const TextStyle(
                                   color: Color.fromARGB(255, 25, 94, 141),
@@ -261,10 +261,10 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                 ? TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
-                                            MaterialStateProperty.all<Color>(
+                                            WidgetStateProperty.all<Color>(
                                                 Colors.blue),
                                         foregroundColor:
-                                            MaterialStateProperty.all<Color>(
+                                            WidgetStateProperty.all<Color>(
                                                 Colors.white)),
                                     onPressed: () => {
                                       Navigator.pushReplacementNamed(
@@ -327,11 +327,11 @@ class _HistoryDetailState extends State<HistoryDetail> {
                               ? ElevatedButton(
                                   style: ButtonStyle(
                                       backgroundColor:
-                                          MaterialStateProperty.all<Color>(
+                                          WidgetStateProperty.all<Color>(
                                               const Color.fromARGB(
                                                   255, 255, 153, 146)),
                                       foregroundColor:
-                                          MaterialStateProperty.all<Color>(
+                                          WidgetStateProperty.all<Color>(
                                               Colors.white)),
                                   onPressed: () {
                                     //show dialog confirm
@@ -426,8 +426,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                       var mess =
                                                           await OrderController()
                                                               .RefundOrder(re);
-                                                      print("datarefund :" +
-                                                          mess);
+                                                      print("datarefund :$mess");
                                                       //show snackbar
                                                     }
                                                     //show snackbar

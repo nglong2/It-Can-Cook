@@ -1,5 +1,4 @@
 import 'package:it_can_cook/src/models/order/history_order.dart';
-import 'package:it_can_cook/src/models/order/order.dart';
 
 class OrderGroup {
   String? id;
