@@ -1479,6 +1479,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Menu today`
+  String get menu_today {
+    return Intl.message(
+      'Menu today',
+      name: 'menu_today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your current weekly plan`
+  String get your_plan {
+    return Intl.message(
+      'Your current weekly plan',
+      name: 'your_plan',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

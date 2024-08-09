@@ -27,6 +27,11 @@ class HomePageState extends State<HomePage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final accountState = context.watch<AccountBloc>()?.state;
     if (accountState != null &&

@@ -99,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn đăng xuất?"),
         "lunch": MessageLookupByLibrary.simpleMessage("Bữa trưa"),
+        "menu_today": MessageLookupByLibrary.simpleMessage("Thực đơn hôm nay"),
         "monday": MessageLookupByLibrary.simpleMessage("Thứ 2"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
@@ -232,6 +233,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "you_dont_have_any_order":
             MessageLookupByLibrary.simpleMessage("Bạn chưa có đơn hàng nào!"),
         "you_dont_have_any_plan":
-            MessageLookupByLibrary.simpleMessage("Bạn chưa có kế hoạch nào!")
+            MessageLookupByLibrary.simpleMessage("Bạn chưa có kế hoạch nào!"),
+        "your_plan":
+            MessageLookupByLibrary.simpleMessage("Kế hoạch tuần này của bạn")
       };
 }

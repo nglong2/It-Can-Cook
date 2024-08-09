@@ -144,5 +144,7 @@
   "ship_confirm": "Xác nhận lấy hàng",
   "shiped_confirm": "Đã xác nhận giao hàng",
   "customer_not_take_order": "Khách không lấy hàng",
-  "canceled": "Đã hủy"
+  "canceled": "Đã hủy",
+  "menu_today": "Thực đơn hôm nay",
+  "your_plan": "Kế hoạch tuần này của bạn"
 }

@@ -16,6 +16,7 @@ import 'package:it_can_cook/src/models/weekly/dish.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/models/weekly/weekly.dart';
 import 'package:it_can_cook/src/models/zalopay/payment_argument.dart';
+import 'package:it_can_cook/src/screens/calender/calender.dart';
 import 'package:it_can_cook/src/screens/checkout/checkout_screen.dart';
 import 'package:it_can_cook/src/screens/checkout/checkout_step1.dart';
 import 'package:it_can_cook/src/screens/customplan/custom_plan.dart';
@@ -90,6 +91,10 @@ class MyApp extends StatelessWidget {
             context
                 .read<OrderBloc>()
                 .add(GetHistoryOrderEvent(accountState.id!));
+
+            context.read<RecipesAllBloc>().add(
+                  FetchRecipesAllEvent(""),
+                );
           }
 
           return MaterialApp(
@@ -169,6 +174,8 @@ class MyApp extends StatelessWidget {
                       );
                     case "history":
                       return HistoryScreen();
+                    case "calender":
+                      return CalendarScreen();
                     case "weekly_custom_detail":
                       return WeeklyCustomDetailPage(
                           weeklyPlan: routeSettings.arguments as WeeklyPlan);
@@ -177,7 +184,7 @@ class MyApp extends StatelessWidget {
                       return accountState != null
                           ? accountState.role?.toLowerCase() == 'shipper'
                               ? DeliveryHome()
-                              : const HomePage()
+                              : CalendarScreen()
                           : Onboarding();
                   }
                 },

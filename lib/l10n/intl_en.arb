@@ -145,5 +145,7 @@
   "ship_confirm": "Confirm pick up",
   "shiped_confirm": "Shipped confirm",
   "customer_not_take_order": "Customer not take order",
-  "canceled": "Canceled"
+  "canceled": "Canceled",
+  "menu_today": "Menu today",
+  "your_plan": "Your current weekly plan"
 }

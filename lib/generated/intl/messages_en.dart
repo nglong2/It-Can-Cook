@@ -101,6 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutConfirmation": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to log out?"),
         "lunch": MessageLookupByLibrary.simpleMessage("Lunch"),
+        "menu_today": MessageLookupByLibrary.simpleMessage("Menu today"),
         "monday": MessageLookupByLibrary.simpleMessage("Monday"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
@@ -234,6 +235,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "you_dont_have_any_order":
             MessageLookupByLibrary.simpleMessage("You dont have any order!"),
         "you_dont_have_any_plan":
-            MessageLookupByLibrary.simpleMessage("You dont have any plan!")
+            MessageLookupByLibrary.simpleMessage("You dont have any plan!"),
+        "your_plan":
+            MessageLookupByLibrary.simpleMessage("Your current weekly plan")
       };
 }
