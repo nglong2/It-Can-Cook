@@ -45,6 +45,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: 30,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
