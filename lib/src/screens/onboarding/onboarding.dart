@@ -1,5 +1,6 @@
 // carosel slider 3 image with 3 poin bellow images and button next and button bypass , to login
 
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class Onboarding extends StatefulWidget {
 
 class _Onboarding extends State<Onboarding> {
   int currentIndex = 0;
-  CarouselController controller = CarouselController();
+  CarouselSliderController controller = CarouselSliderController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
