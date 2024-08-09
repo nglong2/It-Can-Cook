@@ -30,7 +30,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
       builder: (context, state) {
         var list =
             state.where((element) => element.status == "Processing").toList();
-        var listAllRecipe = context.watch<RecipesAllBloc>().state;
+        var listAllRecipe = context.watch<RecipesAllBloc>()?.state == null
+            ? []
+            : context.watch<RecipesAllBloc>().state;
         var listToday = list.where((element) {
           return checkDayInCurrentWeek(
               DateTime.parse(element.shipDate!).add(Duration(days: 5)));
