@@ -88,7 +88,8 @@ class _ShippedScreenState extends State<ShippedScreen> {
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text(' ${e.address}')
+                                          Text(
+                                              '  ${e.address == null ? '' : (e.address!.length > 20 ? "${e.address!.substring(0, 20)}..." : "${e.address}")}')
                                         ],
                                       ),
                                       onTap: () {
@@ -131,7 +132,8 @@ class _ShippedScreenState extends State<ShippedScreen> {
                                           e.id ?? ''));
 
                                   //delay 2s
-                                  await Future.delayed(const Duration(seconds: 2));
+                                  await Future.delayed(
+                                      const Duration(seconds: 2));
                                   context.loaderOverlay.hide();
                                   Navigator.push(
                                     context,
