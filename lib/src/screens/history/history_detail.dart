@@ -261,10 +261,10 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                 ? TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
-                                            WidgetStateProperty.all<Color>(
+                                            MaterialStateProperty.all<Color>(
                                                 Colors.blue),
                                         foregroundColor:
-                                            WidgetStateProperty.all<Color>(
+                                            MaterialStateProperty.all<Color>(
                                                 Colors.white)),
                                     onPressed: () => {
                                       Navigator.pushReplacementNamed(
@@ -327,11 +327,11 @@ class _HistoryDetailState extends State<HistoryDetail> {
                               ? ElevatedButton(
                                   style: ButtonStyle(
                                       backgroundColor:
-                                          WidgetStateProperty.all<Color>(
+                                          MaterialStateProperty.all<Color>(
                                               const Color.fromARGB(
                                                   255, 255, 153, 146)),
                                       foregroundColor:
-                                          WidgetStateProperty.all<Color>(
+                                          MaterialStateProperty.all<Color>(
                                               Colors.white)),
                                   onPressed: () {
                                     //show dialog confirm
@@ -426,7 +426,8 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                       var mess =
                                                           await OrderController()
                                                               .RefundOrder(re);
-                                                      print("datarefund :$mess");
+                                                      print(
+                                                          "datarefund :$mess");
                                                       //show snackbar
                                                     }
                                                     //show snackbar

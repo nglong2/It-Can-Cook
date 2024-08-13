@@ -63,12 +63,12 @@ class WeeklyCustomDetailPageState extends State<WeeklyCustomDetailPage> {
                         TextButton(
                             style: ButtonStyle(
                               //borderadius
-                              shape: WidgetStateProperty.all<
+                              shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(6.0),
                                       side: const BorderSide())),
-                              backgroundColor: WidgetStateProperty.all<Color>(
+                              backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color.fromARGB(255, 182, 208, 230)),
                             ),
                             onPressed: () => {
@@ -144,12 +144,12 @@ class WeeklyCustomDetailPageState extends State<WeeklyCustomDetailPage> {
                         style: ButtonStyle(
                           //borderadius
                           shape:
-                              WidgetStateProperty.all<RoundedRectangleBorder>(
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                       side: const BorderSide(
                                           color: Color(0xFF02335A)))),
-                          backgroundColor: WidgetStateProperty.all<Color>(
+                          backgroundColor: MaterialStateProperty.all<Color>(
                               const Color(0xFF02335A)),
                         ),
                         onPressed: () {

@@ -256,10 +256,10 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
                                 ? TextButton(
                                     style: ButtonStyle(
                                         backgroundColor:
-                                            WidgetStateProperty.all<Color>(
+                                            MaterialStateProperty.all<Color>(
                                                 Colors.blue),
                                         foregroundColor:
-                                            WidgetStateProperty.all<Color>(
+                                            MaterialStateProperty.all<Color>(
                                                 Colors.white)),
                                     onPressed: () => {
                                       Navigator.pushReplacementNamed(
