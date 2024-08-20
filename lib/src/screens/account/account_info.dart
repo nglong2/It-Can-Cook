@@ -94,7 +94,7 @@ class AccountInfoScreenState extends State<AccountInfoScreen> {
                 ),
                 ElevatedButton(
                   style: ButtonStyle(
-                    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),

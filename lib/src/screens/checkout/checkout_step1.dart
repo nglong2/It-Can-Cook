@@ -73,7 +73,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                       TextButton(
                           style: ButtonStyle(
                             //borderadius
-                            shape: WidgetStateProperty.all<
+                            shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
@@ -282,13 +282,13 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                 height: 50,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       )),
                       foregroundColor:
-                          WidgetStateProperty.all<Color>(Colors.white),
-                      backgroundColor: WidgetStateProperty.all<Color>(
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(
                           const Color.fromARGB(255, 115, 177, 228))),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
