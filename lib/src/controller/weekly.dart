@@ -22,7 +22,7 @@ class WeeklyPlanController {
 
   Future<String> createWeeklyForCustom(
       String userId, WeeklyPlan weeklyPlan) async {
-    weeklyPlan.createdBy = userId;
+    weeklyPlan.createdBy = userId; 
     var data = await api.post(
         "api/weeklyplan/create-for-customer", weeklyPlan.toJsonCreate());
     if (data.statusCode == 200) {
