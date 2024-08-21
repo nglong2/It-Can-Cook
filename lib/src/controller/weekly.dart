@@ -32,7 +32,7 @@ class WeeklyPlanController {
         return jsonDecode(data.body)["message"];
       }
     }
-    return "Failed to create weekly";
+    return jsonDecode(data.body)["message"];
   }
 
   Future<List<WeeklyPlan>> getWeeklyByCustomerId(String customerId) async {
