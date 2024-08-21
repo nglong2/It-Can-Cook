@@ -17,12 +17,12 @@ class WeeklyPlanController {
       }
       throw Exception(jsonDecode(value.body)["message"]);
     }
-    throw Exception('Failed to get recipes');
+    throw Exception(jsonDecode(value.body)["message"]);
   }
 
   Future<String> createWeeklyForCustom(
       String userId, WeeklyPlan weeklyPlan) async {
-    weeklyPlan.createdBy = userId; 
+    weeklyPlan.createdBy = userId;
     var data = await api.post(
         "api/weeklyplan/create-for-customer", weeklyPlan.toJsonCreate());
     if (data.statusCode == 200) {
@@ -61,7 +61,7 @@ class WeeklyPlanController {
         return jsonDecode(data.body)["message"];
       }
     }
-    return "Failed to update weekly";
+    return jsonDecode(data.body)["message"];
   }
 
 // curl -X 'DELETE' \
@@ -77,6 +77,6 @@ class WeeklyPlanController {
         return jsonDecode(data.body)["message"];
       }
     }
-    return "Failed to delete weekly";
+    return jsonDecode(data.body)["message"];
   }
 }

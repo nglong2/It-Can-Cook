@@ -25,9 +25,9 @@ class AccountController {
       throw Exception(jsonDecode(value.body)["message"]);
     }
     if (value.statusCode == 405) {
-      throw Exception("emailnotconfirm");
+      throw Exception(jsonDecode(value.body)["message"]);
     } else {
-      throw Exception('Failed to login');
+      throw Exception(jsonDecode(value.body)["message"]);
     }
   }
 
@@ -50,7 +50,7 @@ class AccountController {
     }
 
     if (value.statusCode != 200) {
-      throw Exception('Failed to register');
+      throw Exception(jsonDecode(value.body)["message"]);
     }
     return false;
   }
@@ -65,7 +65,7 @@ class AccountController {
     }
 
     if (value.statusCode != 200) {
-      throw Exception('Failed to send email');
+      throw Exception(jsonDecode(value.body)["message"]);
     }
     return false;
   }
@@ -138,7 +138,7 @@ class AccountController {
     }
 
     if (value.statusCode != 200) {
-      throw Exception('Failed to forgot password');
+      throw Exception(jsonDecode(value.body)["message"]);
     }
     return false;
   }
@@ -160,7 +160,7 @@ class AccountController {
     }
 
     if (value.statusCode != 200) {
-      throw Exception('Failed to reset password');
+      throw Exception(jsonDecode(value.body)["message"]);
     }
     return false;
   }

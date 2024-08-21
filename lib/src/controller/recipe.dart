@@ -29,6 +29,6 @@ class RecipeController {
       }
       throw Exception(jsonDecode(value.body)["message"]);
     }
-    throw Exception('Failed to get recipes');
+    throw Exception(jsonDecode(value.body)["message"]);
   }
 }
