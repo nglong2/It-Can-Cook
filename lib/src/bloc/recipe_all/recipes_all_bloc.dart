@@ -9,7 +9,7 @@ part 'recipes_all_state.dart';
 class RecipesAllBloc extends Bloc<RecipesAllEvent, List<RecipePlan>> {
   RecipesAllBloc() : super([]) {
     on<FetchRecipesAllEvent>((event, emit) async {
-      //getRecipePlansByName
+      //getRecipePlansByNam e
       var name = event.name;
       var status = false;
       var listRecipePlan =
