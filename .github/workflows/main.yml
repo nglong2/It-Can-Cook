@@ -81,5 +81,5 @@ jobs:
 
             You can download it from the link below:
             https://github.com/${{ github.repository }}/releases/download/${{ steps.read_version.outputs.VERSION }}/app-${{ steps.read_version.outputs.VERSION }}.apk
-          to: longlop68@gmail.com
+          to: kietdtse151418@fpt.edu.vn, danhltse161278@fpt.edu.vn, longnvhse140908@fpt.edu.vn
           from: long
