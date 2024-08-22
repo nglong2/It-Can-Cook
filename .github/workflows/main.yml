@@ -76,7 +76,10 @@ jobs:
           username: ngn21408@gmail.com
           password: bufp pqnu qnzd gwvh
           subject: "New Release - Version ${{ steps.read_version.outputs.VERSION }}"
-          body: "Please find the attached APK for the latest release."
+          body: |
+            The new APK release is available.
+
+            You can download it from the link below:
+            https://github.com/${{ github.repository }}/releases/download/${{ steps.read_version.outputs.VERSION }}/app-${{ steps.read_version.outputs.VERSION }}.apk
           to: longlop68@gmail.com
           from: long
-          attachments: build/app/outputs/flutter-apk/app-release.apk
