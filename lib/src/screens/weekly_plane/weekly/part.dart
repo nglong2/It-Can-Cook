@@ -28,30 +28,32 @@ class _PartState extends State<Part> {
     var dinner =
         widget.recipes.where((element) => element.mealInDay == 3).toList();
 
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          MenuPart(
-              title: S.current.breakfast,
-              recipesPart: beakfast,
-              dayInWeek: widget.dayInWeek,
-              weeklyPlanId: widget.weeklyPlanId,
-              mealInDay: 1),
-          MenuPart(
-              title: S.current.lunch,
-              recipesPart: lunch,
-              weeklyPlanId: widget.weeklyPlanId,
-              dayInWeek: widget.dayInWeek,
-              mealInDay: 2),
-          MenuPart(
-              title: S.current.dinner,
-              weeklyPlanId: widget.weeklyPlanId,
-              recipesPart: dinner,
-              dayInWeek: widget.dayInWeek,
-              mealInDay: 3),
-        ]);
+    return SingleChildScrollView(
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            MenuPart(
+                title: S.current.breakfast,
+                recipesPart: beakfast,
+                dayInWeek: widget.dayInWeek,
+                weeklyPlanId: widget.weeklyPlanId,
+                mealInDay: 1),
+            MenuPart(
+                title: S.current.lunch,
+                recipesPart: lunch,
+                weeklyPlanId: widget.weeklyPlanId,
+                dayInWeek: widget.dayInWeek,
+                mealInDay: 2),
+            MenuPart(
+                title: S.current.dinner,
+                weeklyPlanId: widget.weeklyPlanId,
+                recipesPart: dinner,
+                dayInWeek: widget.dayInWeek,
+                mealInDay: 3),
+          ]),
+    );
   }
 }
 
