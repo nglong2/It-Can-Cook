@@ -50,10 +50,7 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
           builder: (context, state) {
             var select = state
                 .firstWhere((element) => element.id == widget.orderHistorys.id);
-            select.transactions.sort(
-              (b, a) => (DateTime.tryParse(a.toString()) ?? DateTime(0))
-                  .compareTo(DateTime.tryParse(b.toString()) ?? DateTime(0)),
-            );
+
             return SingleChildScrollView(
               child: Column(
                 children: [
@@ -225,8 +222,7 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
                               style: TextStyle(fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              select.transactions.firstOrNull?.type ??
-                                  "No type",
+                              select.transaction?.type ?? "No type",
                               style: const TextStyle(
                                   color: Color.fromARGB(255, 25, 94, 141),
                                   fontWeight: FontWeight.w700),
@@ -241,17 +237,14 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
                                   const TextStyle(fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              getNamePayment(
-                                  select.transactions.firstOrNull?.status),
+                              getNamePayment(select.transaction?.status),
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   color: getColorByPayment(
-                                      select.transactions.firstOrNull?.status)),
+                                      select.transaction?.status)),
                             ),
-                            (select.transactions.firstOrNull?.type ==
-                                        "ZaloPay" &&
-                                    select.transactions.firstOrNull?.status ==
-                                        "Pending" &&
+                            (select.transaction?.type == "ZaloPay" &&
+                                    select.transaction?.status == "Pending" &&
                                     select.status == "Processing")
                                 ? TextButton(
                                     style: ButtonStyle(

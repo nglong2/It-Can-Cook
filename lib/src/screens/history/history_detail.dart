@@ -55,10 +55,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
           builder: (context, state) {
             var select = state
                 .firstWhere((element) => element.id == widget.orderHistorys.id);
-            select.transactions.sort(
-              (b, a) => (DateTime.tryParse(a.toString()) ?? DateTime(0))
-                  .compareTo(DateTime.tryParse(b.toString()) ?? DateTime(0)),
-            );
+
             return SingleChildScrollView(
               child: Column(
                 children: [
@@ -230,8 +227,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                               style: TextStyle(fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              select.transactions.firstOrNull?.type ??
-                                  "No type",
+                              select.transaction?.type ?? "No type",
                               style: const TextStyle(
                                   color: Color.fromARGB(255, 25, 94, 141),
                                   fontWeight: FontWeight.w700),
@@ -246,17 +242,14 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                   const TextStyle(fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              getNamePayment(
-                                  select.transactions.firstOrNull?.status),
+                              getNamePayment(select.transaction?.status),
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   color: getColorByPayment(
-                                      select.transactions.firstOrNull?.status)),
+                                      select.transaction?.status)),
                             ),
-                            (select.transactions.firstOrNull?.type ==
-                                        "ZaloPay" &&
-                                    select.transactions.firstOrNull?.status ==
-                                        "Pending" &&
+                            (select.transaction?.type == "ZaloPay" &&
+                                    select.transaction?.status == "Pending" &&
                                     select.status == "Processing")
                                 ? TextButton(
                                     style: ButtonStyle(
@@ -358,16 +351,12 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                         await OrderController()
                                                             .ChangeOrderStatus(
                                                                 select.id ?? "",
-                                                                6);
+                                                                7);
 
-                                                    if (select
-                                                                .transactions
-                                                                .firstOrNull
+                                                    if (select.transaction
                                                                 ?.type ==
                                                             "ZaloPay" &&
-                                                        select
-                                                                .transactions
-                                                                .firstOrNull
+                                                        select.transaction
                                                                 ?.status ==
                                                             "PAID") {
                                                       //call api
@@ -389,7 +378,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                                   "Refund",
                                                               signature:
                                                                   "Refund",
-                                                              status: 7));
+                                                              status: 2));
 
                                                       var yymmdd = DateFormat(
                                                               "yyMMdd")
@@ -398,8 +387,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                       var mRefundId =
                                                           "${yymmdd}_2554_${DateTime.now().millisecondsSinceEpoch.toString().substring(2, 12)}";
                                                       var zpTransId = select
-                                                              .transactions
-                                                              .firstOrNull
+                                                              .transaction
                                                               ?.signature!
                                                               .split('_')[1] ??
                                                           "";

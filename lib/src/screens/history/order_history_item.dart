@@ -24,7 +24,12 @@ class _OrderHistoryItemState extends State<OrderHistoryItem> {
           margin: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Colors.white70,
-            borderRadius: BorderRadius.circular(10),
+            border: // bottom
+                Border(
+              bottom: BorderSide(
+                color: Colors.grey[400]!,
+              ),
+            ),
           ),
           child: Column(
             children: [
