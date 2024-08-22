@@ -67,3 +67,16 @@ jobs:
           asset_path: build/app/outputs/flutter-apk/app-release.apk
           asset_name: app-${{ steps.read_version.outputs.VERSION }}.apk
           asset_content_type: application/vnd.android.package-archive
+
+      - name: Send APK via Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ngn21408@gmail.com
+          password: 00000000@
+          subject: "New Release - Version ${{ steps.read_version.outputs.VERSION }}"
+          body: "Please find the attached APK for the latest release."
+          to: longlop68@gmail.com
+          from: long
+          attachments: build/app/outputs/flutter-apk/app-release.apk
