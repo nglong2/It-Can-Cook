@@ -74,7 +74,7 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           username: ngn21408@gmail.com
-          password: 00000000@
+          password: bufp pqnu qnzd gwvh
           subject: "New Release - Version ${{ steps.read_version.outputs.VERSION }}"
           body: "Please find the attached APK for the latest release."
           to: longlop68@gmail.com
