@@ -557,8 +557,7 @@ String getDate(DateTime date) {
 String getHour(DateTime date) {
   //"HH:MM"
   //14:01
-  return DateFormat("HH:mm")
-      .format(date.add(const Duration(hours: 7)).toLocal());
+  return DateFormat("HH:mm").format(date);
 }
 
 //get next sunday, if today is sunday, still retunt next sunday fotmay dd/mm/yyyy

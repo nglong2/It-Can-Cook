@@ -175,7 +175,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   //get time from date
   String getTime(DateTime date) {
-    return DateFormat("HH:mm").format(date.add(const Duration(hours: 7)).toLocal());
+    return DateFormat("HH:mm").format(date);
   }
 }
 

@@ -44,7 +44,7 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage>
 
     for (var recipe in widget.weeklyPlan.recipePlans) {
       var numberPerson = recipe.numberPerson ?? systemBloc.numberPersonInHouse;
-      pice += recipe.price! * numberPerson;
+      pice += recipe.recipe!.price! * numberPerson;
     }
 
     return BlocListener<TriggerBloc, Trigger>(

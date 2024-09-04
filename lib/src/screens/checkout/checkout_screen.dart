@@ -28,7 +28,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
     for (var recipe in widget.weeklyPlan.recipePlans) {
       var numberPerson = recipe.numberPerson ?? systemBloc.numberPersonInHouse;
-      pice += recipe.price! * numberPerson;
+      pice += recipe.recipe!.price! * numberPerson;
     }
 
     return Scaffold(

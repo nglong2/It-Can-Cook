@@ -49,7 +49,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
 
     for (var recipe in widget.weeklyPlan.recipePlans) {
       var numberPerson = recipe.numberPerson ?? systemBloc.numberPersonInHouse;
-      pice += recipe.price! * numberPerson;
+      pice += recipe.recipe!.price! * numberPerson;
     }
     setState(() {
       name = accountBloc?.userName ?? accountBloc?.lastName ?? '';

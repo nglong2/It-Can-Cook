@@ -33,7 +33,7 @@ class WeeklyCustomDetailPageState extends State<WeeklyCustomDetailPage> {
 
     for (var recipe in widget.weeklyPlan.recipePlans) {
       var numberPerson = recipe.numberPerson ?? systemBloc.numberPersonInHouse;
-      pice += recipe.price! * numberPerson;
+      pice += recipe.recipe!.price! * numberPerson;
     }
 
     return BlocListener<TriggerBloc, Trigger>(listener: (context, state) {
@@ -120,9 +120,14 @@ class WeeklyCustomDetailPageState extends State<WeeklyCustomDetailPage> {
                             child: Text(S.current.update_plan))
                       ],
                     ),
-                    Row(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [Text("123")],
+                        ),
                         Visibility(
                           visible: true,
                           maintainSize: true,
