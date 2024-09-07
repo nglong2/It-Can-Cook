@@ -171,7 +171,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                           style: const TextStyle(fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          " ${getNextSunday(DateTime.parse(select.shipDate ?? ""))}",
+                          " ${getDate(DateTime.parse(select.shipDate ?? ""))}",
                           style: TextStyle(
                               color: Colors.grey[500],
                               fontWeight: FontWeight.w500),
@@ -417,6 +417,26 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                       print(
                                                           "datarefund :$mess");
                                                       //show snackbar
+                                                    } else {
+                                                      TransactionController()
+                                                          .createTransaction(Transaction(
+                                                              orderId:
+                                                                  select.id ??
+                                                                      "",
+                                                              transactionType:
+                                                                  0,
+                                                              amount: select
+                                                                  .totalPrice!
+                                                                  .toInt(),
+                                                              transactionDate:
+                                                                  DateTime.now()
+                                                                      .toIso8601String(),
+                                                              notice: "Refund",
+                                                              extraData:
+                                                                  "Refund",
+                                                              signature:
+                                                                  "Refund",
+                                                              status: 4));
                                                     }
                                                     //show snackbar
                                                     Navigator.pop(context);

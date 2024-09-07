@@ -227,6 +227,8 @@ class WeeklyDetailPageState extends State<WeeklyDetailPage>
               children: [
                 TabBar(
                   controller: tabController,
+                  isScrollable: true,
+                  automaticIndicatorColorAdjustment: true,
                   tabs: [
                     Tab(text: S.current.monday),
                     Tab(text: S.current.tuesday),

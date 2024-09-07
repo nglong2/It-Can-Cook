@@ -124,9 +124,9 @@ class WeeklyCustomDetailPageState extends State<WeeklyCustomDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [Text("123")],
+                          children: [],
                         ),
                         Visibility(
                           visible: true,

@@ -30,7 +30,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return Scaffold(body: BlocBuilder<OrderBloc, List<OrderHistory>>(
       builder: (context, state) {
         var list =
-            state.where((element) => element.status == "Processing").toList();
+            state.where((element) => element.status == "Shipped").toList();
         var listAllRecipe = context.watch<RecipesAllBloc>().state ?? [];
         var listToday = list.where((element) {
           return checkDayInCurrentWeek(
