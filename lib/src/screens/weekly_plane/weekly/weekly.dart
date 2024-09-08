@@ -1,13 +1,17 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/categry/category_bloc.dart';
 import 'package:it_can_cook/src/bloc/weekly_plan_bloc/weekly_bloc.dart';
 import 'package:it_can_cook/src/models/weekly/recipe.dart';
 import 'package:it_can_cook/src/screens/weekly_plane/weekly/weekly_list.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:multi_select_flutter/chip_field/multi_select_chip_field.dart';
+import 'package:multi_select_flutter/util/multi_select_item.dart';
 
 class WeeklyScreen extends StatefulWidget {
   const WeeklyScreen({super.key});
@@ -39,9 +43,20 @@ class WeeklyScreenState extends State<WeeklyScreen> {
     });
   }
 
+  var _selectedCates = <Cates?>[];
+
   @override
   Widget build(BuildContext context) {
     final accountstate = context.watch<AccountBloc>().state;
+    var category = context.watch<CategoryBloc>().state;
+
+    List<Cates> cates = category!
+        .map((e) => Cates(id: Random().nextInt(2222), name: e.name ?? "tét"))
+        .toList();
+
+    final _items = cates
+        .map((animal) => MultiSelectItem<Cates?>(animal, "#${animal.name}"))
+        .toList();
 
     return Scaffold(
         body: LoaderOverlay(
@@ -76,7 +91,7 @@ class WeeklyScreenState extends State<WeeklyScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                renderSearch(),
+                renderSearch(_items),
                 const WeeklyList()
               ]),
         ),
@@ -86,25 +101,39 @@ class WeeklyScreenState extends State<WeeklyScreen> {
 
 //input search widget
 
-  Widget renderSearch() {
+  Widget renderSearch(List<MultiSelectItem<Cates?>> _items) {
     //textfield seach input have iconseach and can debounce search
-
-    return Container(
-      padding: const EdgeInsets.only(right: 0, bottom: 10),
-      child: TextField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            hintText: S.current.search,
-            prefixIcon: IconButton(
-              onPressed: () => {},
-              icon: const Icon(Icons.search),
-            ),
-          ),
-          onChanged: (query) => _onSearchChanged(query, context)),
+    return MultiSelectChipField<Cates?>(
+      items: _items,
+      scroll: true,
+      icon: const Icon(Icons.check),
+      title: Text(S.current.category,
+          style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white70)),
+      headerColor: Colors.black38,
+      onTap: (values) {
+        _selectedCates = values;
+        var listSearch = [];
+        for (var item in _selectedCates) {
+          listSearch.add(item!.name.replaceAll("#", ""));
+        }
+        _onSearchChanged(listSearch.join(","), context);
+      },
     );
   }
 }
 
+class Cates {
+  final int id;
+  final String name;
+
+  Cates({
+    required this.id,
+    required this.name,
+  });
+}
 //function render Card demo for  5 items have image save at assets\images\weekly-demo\1.png ...
 // return List Card() widget
 

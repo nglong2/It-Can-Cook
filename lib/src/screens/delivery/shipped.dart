@@ -36,7 +36,8 @@ class _ShippedScreenState extends State<ShippedScreen> {
             listorder.where((element) => element.status == "Shipped").toList();
         return LoaderOverlay(
             child: Scaffold(
-          body: Column(
+                body: SingleChildScrollView(
+          child: Column(
             children: listorder
                 .map((e) => Container(
                       margin: const EdgeInsets.all(10),
@@ -156,7 +157,7 @@ class _ShippedScreenState extends State<ShippedScreen> {
                     ))
                 .toList(),
           ),
-        ));
+        )));
       },
     );
   }

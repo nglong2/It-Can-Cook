@@ -39,7 +39,8 @@ class _ShippingScreenState extends State<ShippingScreen> {
             listorder.where((element) => element.status == "Shipping").toList();
         return LoaderOverlay(
             child: Scaffold(
-          body: Column(
+          body: SingleChildScrollView(
+              child: Column(
             children: listorder
                 .map((e) => Container(
                       margin: const EdgeInsets.all(10),
@@ -181,7 +182,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
-                                                                    2);
+                                                                    3);
                                                             var account = context
                                                                 .read<
                                                                     AccountBloc>()
@@ -323,7 +324,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
                           )),
                     ))
                 .toList(),
-          ),
+          )),
         ));
       },
     );

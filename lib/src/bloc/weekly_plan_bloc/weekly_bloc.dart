@@ -15,7 +15,7 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
     on<WeeklyEvent>((event, emit) {});
 
     on<FetchWeeklyEvent>((event, emit) async {
-      var listWeeklyPlan = await WeeklyPlanController().getWeeklys();
+      var listWeeklyPlan = await WeeklyPlanController().getWeeklys("");
 
       for (var weeklyPlan in listWeeklyPlan) {
         for (var recipePlan in weeklyPlan.recipePlans) {
@@ -58,17 +58,8 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
     //SearchWeeklyPlanEvent
     on<SearchWeeklyPlanEvent>((event, emit) async {
       final text = event.text;
-
-      var listWeeklyPlan = await WeeklyPlanController().getWeeklys();
-      var listSearch = listWeeklyPlan.where((element) {
-        // Remove diacritics and convert to lowercase for comparison
-        String cleanedTitle = removeDiacritics(element.title!.toLowerCase());
-        String cleanedText = removeDiacritics(text.toLowerCase());
-        // Check if the cleaned title contains the cleaned search text
-        return element.id == Uuid.NAMESPACE_NIL ||
-            cleanedTitle.contains(cleanedText);
-      }).toList();
-      emit(listSearch);
+      var listWeeklyPlan = await WeeklyPlanController().getWeeklys(text);
+      emit(listWeeklyPlan);
     });
 
     //AddRecipePlanEvent
@@ -112,6 +103,11 @@ class WeeklyBloc extends Bloc<WeeklyEvent, List<WeeklyPlan>> {
         }
       }
       emit(state);
+    });
+
+    //UpdateListWeeklyPlanEvent
+    on<UpdateListWeeklyPlanEvent>((event, emit) async {
+      emit(event.weeklyPlans);
     });
   }
 

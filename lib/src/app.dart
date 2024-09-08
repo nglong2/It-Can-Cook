@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
+import 'package:it_can_cook/src/bloc/categry/category_bloc.dart';
 import 'package:it_can_cook/src/bloc/custom_plan/custom_plan_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_group/order_group_bloc.dart';
@@ -75,6 +76,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<OrderBloc>(
           create: (BuildContext context) => OrderBloc(),
+        ),
+        BlocProvider<CategoryBloc>(
+          create: (BuildContext context) =>
+              CategoryBloc()..add(FetchCategoryEvent()),
         ),
       ],
       child: Builder(

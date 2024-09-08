@@ -5,8 +5,8 @@ import 'package:it_can_cook/src/models/weekly/weekly.dart';
 class WeeklyPlanController {
   final RestApi api = RestApi();
 
-  Future<List<WeeklyPlan>> getWeeklys() async {
-    var value = await api.get("api/weeklyplan/get-all");
+  Future<List<WeeklyPlan>> getWeeklys(String name) async {
+    var value = await api.get("api/weeklyplan/get-all/?name=$name");
     if (value.statusCode == 200) {
       if (jsonDecode(value.body)["statusCode"] == 200) {
         List<WeeklyPlan> recipes = [];

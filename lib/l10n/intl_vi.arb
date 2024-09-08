@@ -146,5 +146,6 @@
   "customer_not_take_order": "Khách không lấy hàng",
   "canceled": "Đã hủy",
   "menu_today": "Thực đơn hôm nay",
-  "your_plan": "Kế hoạch tuần này của bạn"
+  "your_plan": "Kế hoạch tuần này của bạn",
+  "category": "Danh mục"
 }

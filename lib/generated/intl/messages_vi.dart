@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "canceled": MessageLookupByLibrary.simpleMessage("Đã hủy"),
         "cancle_order": MessageLookupByLibrary.simpleMessage("Hủy đơn hàng"),
+        "category": MessageLookupByLibrary.simpleMessage("Danh mục"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_success":
             MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thành công"),

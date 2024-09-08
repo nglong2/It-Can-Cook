@@ -43,3 +43,9 @@ class DeleteRecipePlanEvent extends WeeklyEvent {
   final RecipePlan recipePlan;
   DeleteRecipePlanEvent(this.recipePlan);
 }
+
+//update list weekly plan
+class UpdateListWeeklyPlanEvent extends WeeklyEvent {
+  final List<WeeklyPlan> weeklyPlans;
+  UpdateListWeeklyPlanEvent(this.weeklyPlans);
+}
