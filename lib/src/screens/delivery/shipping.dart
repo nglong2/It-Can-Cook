@@ -1,5 +1,8 @@
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
@@ -10,6 +13,9 @@ import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/shipper/ordergroup.dart';
 import 'package:it_can_cook/src/screens/history/history_shipper.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:mime/mime.dart';
+import 'package:path/path.dart';
+import 'package:http_parser/http_parser.dart';
 
 class ShippingScreen extends StatefulWidget {
   const ShippingScreen({super.key});
@@ -27,6 +33,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    XFile? _image;
     return BlocBuilder<OrderGroupBloc, List<OrderGroup>>(
       builder: (context, lstOrderGroup) {
         var list =
@@ -235,6 +242,84 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                               .current.cancel)),
                                                       TextButton(
                                                           onPressed: () async {
+                                                            Future
+                                                                _getImage() async {
+                                                              final picker =
+                                                                  ImagePicker();
+                                                              var image = await picker.pickImage(
+                                                                  source:
+                                                                      ImageSource
+                                                                          .camera,
+                                                                  imageQuality:
+                                                                      70,
+                                                                  maxHeight:
+                                                                      1080,
+                                                                  maxWidth:
+                                                                      1920);
+                                                              setState(() {
+                                                                _image = image;
+                                                              });
+                                                            }
+
+                                                            await _getImage();
+
+                                                            Future<String>
+                                                                uploadFile(
+                                                                    File
+                                                                        file) async {
+                                                              final uri = Uri.parse(
+                                                                  'https://api.wemealkit.ddns.net/api/util/UploadFile');
+                                                              var request = http
+                                                                  .MultipartRequest(
+                                                                      'POST',
+                                                                      uri);
+
+                                                              // Add file to the request
+                                                              var mimeType =
+                                                                  lookupMimeType(
+                                                                          file.path) ??
+                                                                      'application/octet-stream';
+                                                              var fileStream = http
+                                                                  .ByteStream(file
+                                                                      .openRead());
+                                                              var fileLength =
+                                                                  await file
+                                                                      .length();
+
+                                                              var multipartFile =
+                                                                  http.MultipartFile(
+                                                                'File',
+                                                                fileStream,
+                                                                fileLength,
+                                                                filename:
+                                                                    basename(file
+                                                                        .path), // Get the file name
+                                                                contentType:
+                                                                    MediaType.parse(
+                                                                        mimeType), // Set the content type
+                                                              );
+
+                                                              request.files.add(
+                                                                  multipartFile);
+
+                                                              // Add headers (if needed)
+                                                              request.headers
+                                                                  .addAll({
+                                                                'accept': '*/*',
+                                                              });
+                                                              var response =
+                                                                  await request
+                                                                      .send();
+                                                              return response
+                                                                  .stream
+                                                                  .bytesToString();
+                                                            }
+
+                                                            var dataurl =
+                                                                await uploadFile(
+                                                                    File(_image!
+                                                                        .path));
+
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
