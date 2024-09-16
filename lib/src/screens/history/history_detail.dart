@@ -481,95 +481,136 @@ class _HistoryDetailState extends State<HistoryDetail> {
                     height: 20,
                   ),
                   //feedback
-                  Container(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              "${S.current.feedback}: ",
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.w500),
-                            ),
-                            StarRating(
-                              size: 40.0,
-                              rating: rating,
-                              color: Colors.orange,
-                              borderColor: Colors.grey,
-                              allowHalfRating: true,
-                              starCount: starCount,
-                              onRatingChanged: (rating) => setState(() {
-                                this.rating = rating;
-                              }),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        //textarea
-
-                        //textarea ratting form
-                        Column(
-                          children: [
-                            Container(
-                              padding:
-                                  const EdgeInsets.only(left: 10, right: 10),
-                              margin: const EdgeInsets.only(right: 10),
-                              width: MediaQuery.of(context).size.width * 1 - 30,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: const Color.fromARGB(
-                                        255, 255, 255, 255)!),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(3),
+                  !isShowFeedback
+                      ? const SizedBox()
+                      : Container(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "${S.current.feedback}: ",
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  StarRating(
+                                    size: 40.0,
+                                    rating: rating,
+                                    color: Colors.orange,
+                                    borderColor: Colors.grey,
+                                    allowHalfRating: true,
+                                    starCount: starCount,
+                                    onRatingChanged: (rating) => setState(() {
+                                      if (isShowFeedback) {
+                                        this.rating = rating;
+                                      }
+                                    }),
+                                  ),
+                                ],
                               ),
-                              child: TextField(
-                                controller: _controller,
-                                readOnly: !isShowFeedback,
-                                maxLines: 5,
+                              const SizedBox(
+                                height: 10,
                               ),
-                            ),
-                            //button send feedback
-                            !isShowFeedback
-                                ? const SizedBox()
-                                : Container(
-                                    margin: const EdgeInsets.only(top: 10),
-                                    padding: const EdgeInsets.only(
-                                        left: 10, right: 10),
-                                    child: ElevatedButton(
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            WidgetStateProperty.all<Color>(
-                                                const Color.fromARGB(
-                                                    255, 29, 96, 19)),
-                                        foregroundColor:
-                                            WidgetStateProperty.all<Color>(
-                                                Colors.white),
-                                        //borderRadius: BorderRadius.circular(10
-                                      ),
-                                      onPressed: () {
-                                        var feedback = _controller.text;
+                              //textarea
 
-                                        //call api
-                                        //show snackbar
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content: Text(feedback)));
-                                      },
-                                      child: Text(S.current.feedback),
+                              //textarea ratting form
+                              !isShowFeedback
+                                  ? const SizedBox()
+                                  : Column(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(
+                                              left: 10, right: 10),
+                                          margin:
+                                              const EdgeInsets.only(right: 10),
+                                          width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  1 -
+                                              30,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: const Color.fromARGB(
+                                                    255, 255, 255, 255)!),
+                                            color: const Color.fromARGB(
+                                                255, 255, 255, 255),
+                                            borderRadius:
+                                                BorderRadius.circular(3),
+                                          ),
+                                          child: TextField(
+                                            controller: _controller,
+                                            readOnly: !isShowFeedback,
+                                            maxLines: 5,
+                                          ),
+                                        ),
+                                        //button send feedback
+                                        !isShowFeedback
+                                            ? const SizedBox()
+                                            : Container(
+                                                margin: const EdgeInsets.only(
+                                                    top: 10),
+                                                padding: const EdgeInsets.only(
+                                                    left: 10, right: 10),
+                                                child: ElevatedButton(
+                                                  style: ButtonStyle(
+                                                    backgroundColor:
+                                                        WidgetStateProperty.all<
+                                                                Color>(
+                                                            const Color
+                                                                .fromARGB(255,
+                                                                29, 96, 19)),
+                                                    foregroundColor:
+                                                        WidgetStateProperty.all<
+                                                                Color>(
+                                                            Colors.white),
+                                                    //borderRadius: BorderRadius.circular(10
+                                                  ),
+                                                  onPressed: () {
+                                                    var feedback =
+                                                        _controller.text;
+                                                    var rating =
+                                                        this.rating.toInt();
+                                                    var createdBy =
+                                                        account?.id ?? "";
+                                                    OrderController()
+                                                        .FeedbackOrder(
+                                                            select.id ?? "",
+                                                            rating,
+                                                            feedback,
+                                                            createdBy)
+                                                        .then((value) {
+                                                      //show snackbar
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                              SnackBar(
+                                                                  content: Text(
+                                                                      value)));
+                                                    });
+
+                                                    context
+                                                        .read<OrderBloc>()
+                                                        .add(
+                                                            GetHistoryOrderEvent(
+                                                                account?.id ??
+                                                                    ""));
+                                                    //call api
+                                                    //show snackbar
+                                                  },
+                                                  child:
+                                                      Text(S.current.feedback),
+                                                ),
+                                              )
+                                      ],
                                     ),
-                                  )
-                          ],
+                              const SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             );
