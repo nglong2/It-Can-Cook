@@ -148,5 +148,7 @@
   "canceled": "Canceled",
   "menu_today": "Menu today",
   "your_plan": "Your current weekly plan",
-  "category": "Category"
+  "category": "Category",
+  "feedback": "Feedback",
+  "enter_your_feedback": "Please enter feedback"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating/flutter_rating.dart';
 import 'package:intl/intl.dart';
 import 'package:it_can_cook/generated/l10n.dart';
 import 'package:it_can_cook/src/bloc/account_bloc/account_bloc.dart';
@@ -24,6 +25,11 @@ class HistoryDetail extends StatefulWidget {
 }
 
 class _HistoryDetailState extends State<HistoryDetail> {
+  double rating = 0;
+  int starCount = 5;
+  //controller form rating
+  final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     context.read<RecipesAllBloc>().add(FetchRecipesAllEvent(""));
@@ -55,6 +61,10 @@ class _HistoryDetailState extends State<HistoryDetail> {
           builder: (context, state) {
             var select = state
                 .firstWhere((element) => element.id == widget.orderHistorys.id);
+            bool isDoneOrder =
+                select.status == "Delivered" || select.status == "Shipped";
+            // bool isShowFeedback = isDoneOrder && select.rating == 0;
+            bool isShowFeedback = isDoneOrder && 0 == 0;
 
             return SingleChildScrollView(
               child: Column(
@@ -464,6 +474,99 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                 )
                               : Container(),
                         )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  //feedback
+                  Container(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "${S.current.feedback}: ",
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w500),
+                            ),
+                            StarRating(
+                              size: 40.0,
+                              rating: rating,
+                              color: Colors.orange,
+                              borderColor: Colors.grey,
+                              allowHalfRating: true,
+                              starCount: starCount,
+                              onRatingChanged: (rating) => setState(() {
+                                this.rating = rating;
+                              }),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        //textarea
+
+                        //textarea ratting form
+                        Column(
+                          children: [
+                            Container(
+                              padding:
+                                  const EdgeInsets.only(left: 10, right: 10),
+                              margin: const EdgeInsets.only(right: 10),
+                              width: MediaQuery.of(context).size.width * 1 - 30,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: const Color.fromARGB(
+                                        255, 255, 255, 255)!),
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: TextField(
+                                controller: _controller,
+                                readOnly: !isShowFeedback,
+                                maxLines: 5,
+                              ),
+                            ),
+                            //button send feedback
+                            !isShowFeedback
+                                ? const SizedBox()
+                                : Container(
+                                    margin: const EdgeInsets.only(top: 10),
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 10),
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            WidgetStateProperty.all<Color>(
+                                                const Color.fromARGB(
+                                                    255, 29, 96, 19)),
+                                        foregroundColor:
+                                            WidgetStateProperty.all<Color>(
+                                                Colors.white),
+                                        //borderRadius: BorderRadius.circular(10
+                                      ),
+                                      onPressed: () {
+                                        var feedback = _controller.text;
+
+                                        //call api
+                                        //show snackbar
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(feedback)));
+                                      },
+                                      child: Text(S.current.feedback),
+                                    ),
+                                  )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
                       ],
                     ),
                   ),

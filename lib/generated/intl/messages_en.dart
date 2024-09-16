@@ -72,9 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dont have an account?"),
         "enter_verification_code":
             MessageLookupByLibrary.simpleMessage("Enter verification code"),
+        "enter_your_feedback":
+            MessageLookupByLibrary.simpleMessage("Please enter feedback"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "estimated_delivery_time":
             MessageLookupByLibrary.simpleMessage("Estimated delivery time"),
+        "feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
         "first_name": MessageLookupByLibrary.simpleMessage("First name"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password"),

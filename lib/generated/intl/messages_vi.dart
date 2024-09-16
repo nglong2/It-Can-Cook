@@ -71,9 +71,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
         "enter_verification_code":
             MessageLookupByLibrary.simpleMessage("Nhập mã xác thực"),
+        "enter_your_feedback":
+            MessageLookupByLibrary.simpleMessage("Nhập đánh giá của bạn"),
         "error": MessageLookupByLibrary.simpleMessage("Lỗi"),
         "estimated_delivery_time":
             MessageLookupByLibrary.simpleMessage("Thời gian giao hàng dự kiến"),
+        "feedback": MessageLookupByLibrary.simpleMessage("Đánh giá"),
         "first_name": MessageLookupByLibrary.simpleMessage("Tên"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),

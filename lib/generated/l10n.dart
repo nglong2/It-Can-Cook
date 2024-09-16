@@ -1509,6 +1509,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Feedback`
+  String get feedback {
+    return Intl.message(
+      'Feedback',
+      name: 'feedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter feedback`
+  String get enter_your_feedback {
+    return Intl.message(
+      'Please enter feedback',
+      name: 'enter_your_feedback',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
