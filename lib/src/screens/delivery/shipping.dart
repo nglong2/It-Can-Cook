@@ -9,6 +9,7 @@ import 'package:it_can_cook/src/bloc/order_bloc/order_bloc.dart';
 import 'package:it_can_cook/src/bloc/order_group/order_group_bloc.dart';
 import 'package:it_can_cook/src/bloc/trigger_bloc/trigger_bloc.dart';
 import 'package:it_can_cook/src/controller/order.dart';
+import 'package:it_can_cook/src/controller/util.dart';
 import 'package:it_can_cook/src/models/order/history_order.dart';
 import 'package:it_can_cook/src/models/shipper/ordergroup.dart';
 import 'package:it_can_cook/src/screens/history/history_shipper.dart';
@@ -34,6 +35,18 @@ class _ShippingScreenState extends State<ShippingScreen> {
   @override
   Widget build(BuildContext context) {
     XFile? _image;
+    Future _getImage() async {
+      final picker = ImagePicker();
+      var image = await picker.pickImage(
+          source: ImageSource.camera,
+          imageQuality: 65,
+          maxHeight: 1920,
+          maxWidth: 1080);
+      setState(() {
+        _image = image;
+      });
+    }
+
     return BlocBuilder<OrderGroupBloc, List<OrderGroup>>(
       builder: (context, lstOrderGroup) {
         var list =
@@ -186,6 +199,13 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                               .current.cancel)),
                                                       TextButton(
                                                           onPressed: () async {
+                                                            await _getImage();
+
+                                                            var dataurl = await Util()
+                                                                .uploadFile(
+                                                                    File(_image!
+                                                                        .path));
+
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
@@ -242,84 +262,6 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                               .current.cancel)),
                                                       TextButton(
                                                           onPressed: () async {
-                                                            Future
-                                                                _getImage() async {
-                                                              final picker =
-                                                                  ImagePicker();
-                                                              var image = await picker.pickImage(
-                                                                  source:
-                                                                      ImageSource
-                                                                          .camera,
-                                                                  imageQuality:
-                                                                      70,
-                                                                  maxHeight:
-                                                                      1080,
-                                                                  maxWidth:
-                                                                      1920);
-                                                              setState(() {
-                                                                _image = image;
-                                                              });
-                                                            }
-
-                                                            await _getImage();
-
-                                                            Future<String>
-                                                                uploadFile(
-                                                                    File
-                                                                        file) async {
-                                                              final uri = Uri.parse(
-                                                                  'https://api.wemealkit.ddns.net/api/util/UploadFile');
-                                                              var request = http
-                                                                  .MultipartRequest(
-                                                                      'POST',
-                                                                      uri);
-
-                                                              // Add file to the request
-                                                              var mimeType =
-                                                                  lookupMimeType(
-                                                                          file.path) ??
-                                                                      'application/octet-stream';
-                                                              var fileStream = http
-                                                                  .ByteStream(file
-                                                                      .openRead());
-                                                              var fileLength =
-                                                                  await file
-                                                                      .length();
-
-                                                              var multipartFile =
-                                                                  http.MultipartFile(
-                                                                'File',
-                                                                fileStream,
-                                                                fileLength,
-                                                                filename:
-                                                                    basename(file
-                                                                        .path), // Get the file name
-                                                                contentType:
-                                                                    MediaType.parse(
-                                                                        mimeType), // Set the content type
-                                                              );
-
-                                                              request.files.add(
-                                                                  multipartFile);
-
-                                                              // Add headers (if needed)
-                                                              request.headers
-                                                                  .addAll({
-                                                                'accept': '*/*',
-                                                              });
-                                                              var response =
-                                                                  await request
-                                                                      .send();
-                                                              return response
-                                                                  .stream
-                                                                  .bytesToString();
-                                                            }
-
-                                                            var dataurl =
-                                                                await uploadFile(
-                                                                    File(_image!
-                                                                        .path));
-
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
