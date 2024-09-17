@@ -116,4 +116,35 @@ class OrderController {
     }
     return "Failed to refund";
   }
+
+  //feedback
+//   curl -X 'POST' \
+//   'https://api.wemealkit.ddns.net/api/feedback/create' \
+//   -H 'accept: */*' \
+//   -H 'Content-Type: application/json' \
+//   -d '{
+//   "orderId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+//   "rating": 1,
+//   "description": "string",
+//   "createdBy": "string"
+// }'
+
+  Future<String> FeedbackOrder(
+      String orderID, int rating, String description, String createdBy) async {
+    var body = {
+      "orderId": orderID,
+      "rating": rating,
+      "description": description,
+      "createdBy": createdBy
+    };
+    var value = await api.post("api/feedback/create", body);
+    if (value.statusCode == 200) {
+      if (jsonDecode(value.body)["statusCode"] == 200) {
+        return jsonDecode(value.body)["message"];
+      } else {
+        return jsonDecode(value.body)["message"];
+      }
+    }
+    return "Failed to feedback";
+  }
 }

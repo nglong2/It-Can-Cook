@@ -360,7 +360,7 @@ class RecipePlan {
       'dayInWeek': dayInWeek,
       'mealInDay': mealInDay,
       'price': price,
-      'numberPerson': numberPerson,
+      'numberPerson': numberPerson ?? 1,
       'weeklyPlanId': weeklyPlanId,
       'recipe': recipe?.toJson(),
     };
