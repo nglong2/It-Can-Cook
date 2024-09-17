@@ -246,7 +246,7 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
                               note,
                               addressController.text,
                               lat == '' ? 0.0 : double.parse(lat),
-                              lat == "" ? 0.0 : double.parse(long),
+                              long == "" ? 0.0 : double.parse(long),
                               pice,
                               widget.weeklyPlan,
                             );
