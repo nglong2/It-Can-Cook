@@ -83,7 +83,7 @@ class OrderController {
         return jsonDecode(value.body)["message"];
       }
     }
-    return "Failed to change status";
+    return "Failed to change  status";
   }
 
   // curl -X 'GET' \
