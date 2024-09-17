@@ -29,9 +29,9 @@ class OrderController {
               transactionType: transactionType,
               standerdWeeklyPlanId: weeklyPlan.id ?? "",
               note: note,
-              longitude: long,
+              longitude: lat,
               img: weeklyPlan.urlImage ?? "test",
-              latitude: lat,
+              latitude: long,
               address: address,
               totalPrice: price,
               recipeList: weeklyPlan.recipePlans.toList())
