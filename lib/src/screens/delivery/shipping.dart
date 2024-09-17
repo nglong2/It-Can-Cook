@@ -34,8 +34,8 @@ class _ShippingScreenState extends State<ShippingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    XFile? _image;
-    Future _getImage() async {
+    XFile? image0;
+    Future getImage() async {
       final picker = ImagePicker();
       var image = await picker.pickImage(
           source: ImageSource.camera,
@@ -43,7 +43,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
           maxHeight: 1920,
           maxWidth: 1080);
       setState(() {
-        _image = image;
+        image0 = image;
       });
     }
 
@@ -199,11 +199,11 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                               .current.cancel)),
                                                       TextButton(
                                                           onPressed: () async {
-                                                            await _getImage();
+                                                            await getImage();
 
                                                             var dataurl = await Util()
                                                                 .uploadFile(
-                                                                    File(_image!
+                                                                    File(image0!
                                                                         .path));
 
                                                             await OrderController()
@@ -316,7 +316,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
-                                                                    0);
+                                                                    1);
                                                             var account = context
                                                                 .read<
                                                                     AccountBloc>()

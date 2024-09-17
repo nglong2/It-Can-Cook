@@ -326,7 +326,8 @@ class _HistoryDetailState extends State<HistoryDetail> {
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: select.status == "Processing"
+                          child: select.status == "Processing" ||
+                                  select.status == "Unship"
                               ? ElevatedButton(
                                   style: ButtonStyle(
                                       backgroundColor:
