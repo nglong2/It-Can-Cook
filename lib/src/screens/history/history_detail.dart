@@ -465,18 +465,14 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                         .showSnackBar(SnackBar(
                                                             content:
                                                                 Text(mess)));
-
+                                                    context
+                                                        .read<OrderBloc>()
+                                                        .add(
+                                                            GetHistoryOrderEvent(
+                                                                account?.id ??
+                                                                    ""));
                                                     //delay 1s
-                                                    Future.delayed(
-                                                        const Duration(
-                                                            seconds: 1), () {
-                                                      context
-                                                          .read<OrderBloc>()
-                                                          .add(
-                                                              GetHistoryOrderEvent(
-                                                                  account?.id ??
-                                                                      ""));
-                                                    });
+
                                                     // Navigator.pop(context);
                                                   },
                                                   child: Text(S.current.yes))
