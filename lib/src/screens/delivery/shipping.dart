@@ -353,7 +353,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
-                                                                    0,
+                                                                    1,
                                                                     '',
                                                                     '');
                                                             var account = context
