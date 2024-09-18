@@ -29,9 +29,9 @@ class OrderController {
               transactionType: transactionType,
               standerdWeeklyPlanId: weeklyPlan.id ?? "",
               note: note,
-              longitude: lat,
+              longitude: long,
               img: weeklyPlan.urlImage ?? "test",
-              latitude: long,
+              latitude: lat,
               address: address,
               totalPrice: price,
               recipeList: weeklyPlan.recipePlans.toList())
@@ -73,9 +73,11 @@ class OrderController {
 //   'https://api.wemealkit.ddns.net/api/order/change-status/97C52DCE-9A2C-465F-E85B-08DCB136598F?Status=0' \
 //   -H 'accept: */*'
 
-  Future<String> ChangeOrderStatus(String orderID, int status) async {
-    var value = await api
-        .put("api/order/change-status-test/$orderID?Status=$status", {});
+  Future<String> ChangeOrderStatus(
+      String orderID, int status, String ShipperNote, String img) async {
+    var value = await api.put(
+        "api/order/change-status/$orderID?Status=$status&ShipperNote=$ShipperNote&Img=$img",
+        {});
     if (value.statusCode == 200) {
       if (jsonDecode(value.body)["statusCode"] == 200) {
         return jsonDecode(value.body)["message"];

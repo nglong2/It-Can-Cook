@@ -311,6 +311,68 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  //img
+                  !(select.status == "Shipped" || select.status == "Delivered")
+                      ? SizedBox()
+                      : Container(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "${S.current.img_when_shipped}: ",
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              //textarea
+                              Container(
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                margin: const EdgeInsets.only(right: 10),
+                                width:
+                                    MediaQuery.of(context).size.width * 1 - 30,
+                                height: 400,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[400]!),
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(3),
+                                ),
+                                child: Image.network(
+                                  select.img ?? "",
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                              //if status is processing, show button cancel
+                              ,
+                            ],
+                          ),
+                        ),
+
+                  //message
+                  !(select.message != '')
+                      ? SizedBox()
+                      : Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "     " + S.current.unshippednote,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(select.message ?? "")
+                              ],
+                            )
+                          ],
+                        )
                 ],
               ),
             );
