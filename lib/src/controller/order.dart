@@ -74,8 +74,8 @@ class OrderController {
 //   -H 'accept: */*'
 
   Future<String> ChangeOrderStatus(String orderID, int status) async {
-    var value =
-        await api.put("api/order/change-status/$orderID?Status=$status", {});
+    var value = await api
+        .put("api/order/change-status-test/$orderID?Status=$status", {});
     if (value.statusCode == 200) {
       if (jsonDecode(value.body)["statusCode"] == 200) {
         return jsonDecode(value.body)["message"];

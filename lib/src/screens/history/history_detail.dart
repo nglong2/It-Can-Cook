@@ -364,91 +364,92 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                                 select.id ?? "",
                                                                 7);
 
-                                                    if (select.transaction
-                                                                ?.type ==
-                                                            "ZaloPay" &&
-                                                        select.transaction
-                                                                ?.status ==
-                                                            "PAID") {
-                                                      //call api
-                                                      TransactionController()
-                                                          .createTransaction(Transaction(
-                                                              orderId:
-                                                                  select.id ??
-                                                                      "",
-                                                              transactionType:
-                                                                  2,
-                                                              amount: select
-                                                                  .totalPrice!
-                                                                  .toInt(),
-                                                              transactionDate:
-                                                                  DateTime.now()
-                                                                      .toIso8601String(),
-                                                              notice: "Refund",
-                                                              extraData:
-                                                                  "Refund",
-                                                              signature:
-                                                                  "Refund",
-                                                              status: 2));
+                                                    // if (select.transaction
+                                                    //             ?.type ==
+                                                    //         "ZaloPay" &&
+                                                    //     select.transaction
+                                                    //             ?.status ==
+                                                    //         "PAID") {
+                                                    //   //call api
+                                                    //   TransactionController()
+                                                    //       .createTransaction(Transaction(
+                                                    //           orderId:
+                                                    //               select.id ??
+                                                    //                   "",
+                                                    //           transactionType:
+                                                    //               2,
+                                                    //           amount: select
+                                                    //               .totalPrice!
+                                                    //               .toInt(),
+                                                    //           transactionDate:
+                                                    //               DateTime.now()
+                                                    //                   .toIso8601String(),
+                                                    //           notice: "Refund",
+                                                    //           extraData:
+                                                    //               "Refund",
+                                                    //           signature:
+                                                    //               "Refund",
+                                                    //           status: 2));
 
-                                                      var yymmdd = DateFormat(
-                                                              "yyMMdd")
-                                                          .format(
-                                                              DateTime.now());
-                                                      var mRefundId =
-                                                          "${yymmdd}_2554_${DateTime.now().millisecondsSinceEpoch.toString().substring(2, 12)}";
-                                                      var zpTransId = select
-                                                              .transaction
-                                                              ?.signature!
-                                                              .split('_')[1] ??
-                                                          "";
-                                                      var amount = select
-                                                          .totalPrice!
-                                                          .toInt();
-                                                      var refundFeeAmount = 0;
-                                                      var timestamp = DateTime
-                                                              .now()
-                                                          .millisecondsSinceEpoch;
-                                                      var description =
-                                                          "Refund";
-                                                      var mac = getMacCreateOrder(
-                                                          "2554|$zpTransId|$amount|0|$description|$timestamp");
-                                                      Refund re = Refund(
-                                                          appId: 2554,
-                                                          zpTransId: zpTransId,
-                                                          mRefundId: mRefundId,
-                                                          amount: amount,
-                                                          description:
-                                                              description,
-                                                          timestamp: timestamp,
-                                                          mac: mac);
-                                                      var mess =
-                                                          await OrderController()
-                                                              .RefundOrder(re);
-                                                      print(
-                                                          "datarefund :$mess");
-                                                      //show snackbar
-                                                    } else {
-                                                      TransactionController()
-                                                          .createTransaction(Transaction(
-                                                              orderId:
-                                                                  select.id ??
-                                                                      "",
-                                                              transactionType:
-                                                                  0,
-                                                              amount: select
-                                                                  .totalPrice!
-                                                                  .toInt(),
-                                                              transactionDate:
-                                                                  DateTime.now()
-                                                                      .toIso8601String(),
-                                                              notice: "Refund",
-                                                              extraData:
-                                                                  "Refund",
-                                                              signature:
-                                                                  "Refund",
-                                                              status: 4));
-                                                    }
+                                                    //   var yymmdd = DateFormat(
+                                                    //           "yyMMdd")
+                                                    //       .format(
+                                                    //           DateTime.now());
+                                                    //   var mRefundId =
+                                                    //       "${yymmdd}_2554_${DateTime.now().millisecondsSinceEpoch.toString().substring(2, 12)}";
+                                                    //   var zpTransId = select
+                                                    //           .transaction
+                                                    //           ?.signature!
+                                                    //           .split('_')[1] ??
+                                                    //       "";
+                                                    //   var amount = select
+                                                    //       .totalPrice!
+                                                    //       .toInt();
+                                                    //   var refundFeeAmount = 0;
+                                                    //   var timestamp = DateTime
+                                                    //           .now()
+                                                    //       .millisecondsSinceEpoch;
+                                                    //   var description =
+                                                    //       "Refund";
+                                                    //   var mac = getMacCreateOrder(
+                                                    //       "2554|$zpTransId|$amount|0|$description|$timestamp");
+                                                    //   Refund re = Refund(
+                                                    //       appId: 2554,
+                                                    //       zpTransId: zpTransId,
+                                                    //       mRefundId: mRefundId,
+                                                    //       amount: amount,
+                                                    //       description:
+                                                    //           description,
+                                                    //       timestamp: timestamp,
+                                                    //       mac: mac);
+                                                    //   var mess =
+                                                    //       await OrderController()
+                                                    //           .RefundOrder(re);
+                                                    //   print(
+                                                    //       "datarefund :$mess");
+                                                    //   //show snackbar
+                                                    // } else {
+                                                    //   TransactionController()
+                                                    //       .createTransaction(Transaction(
+                                                    //           orderId:
+                                                    //               select.id ??
+                                                    //                   "",
+                                                    //           transactionType:
+                                                    //               0,
+                                                    //           amount: select
+                                                    //               .totalPrice!
+                                                    //               .toInt(),
+                                                    //           transactionDate:
+                                                    //               DateTime.now()
+                                                    //                   .toIso8601String(),
+                                                    //           notice: "Refund",
+                                                    //           extraData:
+                                                    //               "Refund",
+                                                    //           signature:
+                                                    //               "Refund",
+                                                    //           status: 4));
+                                                    // }
+
                                                     //show snackbar
                                                     Navigator.pop(context);
                                                     //show snackbar
