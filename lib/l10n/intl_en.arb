@@ -150,5 +150,8 @@
   "your_plan": "Your current weekly plan",
   "category": "Category",
   "feedback": "Feedback",
-  "enter_your_feedback": "Please enter feedback"
+  "enter_your_feedback": "Please enter feedback",
+  "please_enter_reason": "Please enter reason",
+  "img_when_shipped": "Image when shipped",
+  "unshippednote": "Note when not shipped: "
 }

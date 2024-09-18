@@ -25,6 +25,8 @@ class ShippingScreen extends StatefulWidget {
   _ShippingScreenState createState() => _ShippingScreenState();
 }
 
+final TextEditingController _controller = TextEditingController();
+
 class _ShippingScreenState extends State<ShippingScreen> {
   @override
   void initState() {
@@ -209,7 +211,9 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
-                                                                    3);
+                                                                    3,
+                                                                    '',
+                                                                    dataurl);
                                                             var account = context
                                                                 .read<
                                                                     AccountBloc>()
@@ -251,7 +255,23 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                     title: Text(S.current
                                                         .customer_not_take_order),
                                                     content:
-                                                        Text(S.current.cancel),
+
+                                                        //text form area
+                                                        Container(
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        border: Border.all(
+                                                            color: const Color
+                                                                .fromARGB(255,
+                                                                145, 138, 138)),
+                                                      ),
+                                                      child: TextField(
+                                                        controller: _controller,
+                                                        maxLines: 5,
+                                                      ),
+                                                    ),
                                                     actions: [
                                                       TextButton(
                                                           onPressed: () {
@@ -262,10 +282,27 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                               .current.cancel)),
                                                       TextButton(
                                                           onPressed: () async {
+                                                            if (_controller
+                                                                .text.isEmpty) {
+                                                              //show snackbar
+
+                                                              ScaffoldMessenger
+                                                                      .of(
+                                                                          context)
+                                                                  .showSnackBar(SnackBar(
+                                                                      content: Text(S
+                                                                          .current
+                                                                          .please_enter_reason)));
+                                                              return;
+                                                            }
+
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
-                                                                    4);
+                                                                    4,
+                                                                    _controller
+                                                                        .text,
+                                                                    '');
                                                             var account = context
                                                                 .read<
                                                                     AccountBloc>()
@@ -316,7 +353,9 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
-                                                                    0);
+                                                                    0,
+                                                                    '',
+                                                                    '');
                                                             var account = context
                                                                 .read<
                                                                     AccountBloc>()

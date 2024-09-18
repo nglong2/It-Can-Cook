@@ -1529,6 +1529,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Please enter reason`
+  String get please_enter_reason {
+    return Intl.message(
+      'Please enter reason',
+      name: 'please_enter_reason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image when shipped`
+  String get img_when_shipped {
+    return Intl.message(
+      'Image when shipped',
+      name: 'img_when_shipped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note when not shipped: `
+  String get unshippednote {
+    return Intl.message(
+      'Note when not shipped: ',
+      name: 'unshippednote',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

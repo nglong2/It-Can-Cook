@@ -24,11 +24,12 @@ class HistoryDetail extends StatefulWidget {
   _HistoryDetailState createState() => _HistoryDetailState();
 }
 
+final TextEditingController _controller = TextEditingController();
+
 class _HistoryDetailState extends State<HistoryDetail> {
   double rating = 0;
   int starCount = 5;
   //controller form rating
-  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +64,12 @@ class _HistoryDetailState extends State<HistoryDetail> {
                 .firstWhere((element) => element.id == widget.orderHistorys.id);
             bool isDoneOrder =
                 select.status == "Delivered" || select.status == "Shipped";
-            // bool isShowFeedback = isDoneOrder && select.rating == 0;
-            bool isShowFeedback = isDoneOrder && 0 == 0;
+
+            bool feedBackyet = select.feedBacks != null;
+            _controller.text = select.feedBacks?.description ?? "";
+            if (feedBackyet) {
+              rating = select.feedBacks?.rating?.toDouble() ?? 0;
+            }
 
             return SingleChildScrollView(
               child: Column(
@@ -361,7 +366,9 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                         await OrderController()
                                                             .ChangeOrderStatus(
                                                                 select.id ?? "",
-                                                                7);
+                                                                7,
+                                                                '',
+                                                                '');
 
                                                     if (select.transaction
                                                                 ?.type ==
@@ -457,12 +464,17 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                             content:
                                                                 Text(mess)));
 
-                                                    context
-                                                        .read<OrderBloc>()
-                                                        .add(
-                                                            GetHistoryOrderEvent(
-                                                                account?.id ??
-                                                                    ""));
+                                                    //delay 1s
+                                                    Future.delayed(
+                                                        const Duration(
+                                                            seconds: 1), () {
+                                                      context
+                                                          .read<OrderBloc>()
+                                                          .add(
+                                                              GetHistoryOrderEvent(
+                                                                  account?.id ??
+                                                                      ""));
+                                                    });
                                                     // Navigator.pop(context);
                                                   },
                                                   child: Text(S.current.yes))
@@ -481,7 +493,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                     height: 20,
                   ),
                   //feedback
-                  !isShowFeedback
+                  !isDoneOrder
                       ? const SizedBox()
                       : Container(
                           padding: const EdgeInsets.only(left: 20),
@@ -502,7 +514,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                     allowHalfRating: true,
                                     starCount: starCount,
                                     onRatingChanged: (rating) => setState(() {
-                                      if (isShowFeedback) {
+                                      if (!feedBackyet) {
                                         this.rating = rating;
                                       }
                                     }),
@@ -515,7 +527,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                               //textarea
 
                               //textarea ratting form
-                              !isShowFeedback
+                              !isDoneOrder
                                   ? const SizedBox()
                                   : Column(
                                       children: [
@@ -541,12 +553,12 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                           ),
                                           child: TextField(
                                             controller: _controller,
-                                            readOnly: !isShowFeedback,
+                                            readOnly: feedBackyet,
                                             maxLines: 5,
                                           ),
                                         ),
                                         //button send feedback
-                                        !isShowFeedback
+                                        feedBackyet
                                             ? const SizedBox()
                                             : Container(
                                                 margin: const EdgeInsets.only(
@@ -590,12 +602,20 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                                                       value)));
                                                     });
 
-                                                    context
-                                                        .read<OrderBloc>()
-                                                        .add(
-                                                            GetHistoryOrderEvent(
-                                                                account?.id ??
-                                                                    ""));
+                                                    //delay 1s
+
+                                                    //reload order
+                                                    Future.delayed(
+                                                        const Duration(
+                                                            seconds: 1), () {
+                                                      context
+                                                          .read<OrderBloc>()
+                                                          .add(
+                                                              GetHistoryOrderEvent(
+                                                                  account?.id ??
+                                                                      ""));
+                                                    });
+
                                                     //call api
                                                     //show snackbar
                                                   },
@@ -611,6 +631,65 @@ class _HistoryDetailState extends State<HistoryDetail> {
                             ],
                           ),
                         ),
+
+                  !(select.status == "Shipped" || select.status == "Delivered")
+                      ? SizedBox()
+                      : Container(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "${S.current.img_when_shipped}: ",
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              //textarea
+                              Container(
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                margin: const EdgeInsets.only(right: 10),
+                                width:
+                                    MediaQuery.of(context).size.width * 1 - 30,
+                                height: 400,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[400]!),
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(3),
+                                ),
+                                child: Image.network(
+                                  select.img ?? "",
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                              //if status is processing, show button cancel
+                              ,
+                            ],
+                          ),
+                        ),
+
+                  //message
+                  !(select.message != '')
+                      ? SizedBox()
+                      : Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "     " + S.current.unshippednote,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(select.message ?? "")
+                              ],
+                            )
+                          ],
+                        )
                 ],
               ),
             );

@@ -18,6 +18,8 @@ class PendingScreen extends StatefulWidget {
   _PendingScreenState createState() => _PendingScreenState();
 }
 
+final TextEditingController _controller = TextEditingController();
+
 class _PendingScreenState extends State<PendingScreen> {
   @override
   void initState() {
@@ -176,7 +178,10 @@ class _PendingScreenState extends State<PendingScreen> {
                                                     onPressed: () async {
                                                       await OrderController()
                                                           .ChangeOrderStatus(
-                                                              e.id ?? '', 2);
+                                                              e.id ?? '',
+                                                              2,
+                                                              '',
+                                                              '');
                                                       var account = context
                                                           .read<AccountBloc>()
                                                           .state;

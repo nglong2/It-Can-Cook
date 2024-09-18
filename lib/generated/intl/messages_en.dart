@@ -91,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "img_when_shipped":
+            MessageLookupByLibrary.simpleMessage("Image when shipped"),
         "ingredients": MessageLookupByLibrary.simpleMessage("Ingredients"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "last_name": MessageLookupByLibrary.simpleMessage("Last name"),
@@ -179,6 +181,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter password"),
         "please_enter_phone_number":
             MessageLookupByLibrary.simpleMessage("Please enter phone number"),
+        "please_enter_reason":
+            MessageLookupByLibrary.simpleMessage("Please enter reason"),
         "please_enter_valid_email":
             MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
         "please_enter_valid_password": MessageLookupByLibrary.simpleMessage(
@@ -223,6 +227,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_fat": MessageLookupByLibrary.simpleMessage("Total Fat"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
         "unpaid": MessageLookupByLibrary.simpleMessage("Unpaid"),
+        "unshippednote":
+            MessageLookupByLibrary.simpleMessage("Note when not shipped: "),
         "update_plan": MessageLookupByLibrary.simpleMessage("Update plan"),
         "update_plan_confirmation": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to update this plan?"),

@@ -16,9 +16,12 @@ class OrderHistory {
   String? orderDate;
   double? totalPrice;
   String? status;
+  String? img;
+  String? message;
   WeeklyPlan? weeklyPlan;
   Transactions? transaction;
   List<OrderDetails> orderDetails = [];
+  FeedBacks? feedBacks;
 
   OrderHistory({
     this.id,
@@ -34,9 +37,12 @@ class OrderHistory {
     this.orderDate,
     this.totalPrice,
     this.status,
+    this.img,
+    this.message,
     this.weeklyPlan,
     this.transaction,
     this.orderDetails = const [],
+    this.feedBacks,
   });
 
   factory OrderHistory.fromJson(Map<String, dynamic> json) {
@@ -48,8 +54,10 @@ class OrderHistory {
       receivePhone: json['receivePhone'],
       note: json['note'],
       address: json['address'],
+      message: json['message'],
       shipDate: json['shipDate'],
       orderDate: json['orderDate'],
+      img: json['img'],
       longitude: json['longitude'] != null
           ? double.parse(json['longitude'].toString())
           : null,
@@ -70,6 +78,9 @@ class OrderHistory {
           ? List<OrderDetails>.from(
               json['orderDetails'].map((x) => OrderDetails.fromJson(x)))
           : [],
+      feedBacks: json['feedBacks'] != null
+          ? FeedBacks.fromJson(json['feedBacks'])
+          : null,
     );
   }
 }
@@ -153,6 +164,46 @@ class Transactions {
       extraData: json['extraData'],
       signature: json['signature'],
       status: json['status'],
+    );
+  }
+}
+
+//feedback
+// "feedBacks": {
+//         "id": "55dc85b8-5ba9-418b-6d2c-08dcd7b21da8",
+//         "orderId": "ca995b29-d0ec-42ab-07a1-08dcd726725b",
+//         "rating": 2,
+//         "description": "test",
+//         "createdAt": "2024-09-18T07:18:38.1381454",
+//         "createdBy": "string"
+//       }
+//     }
+
+class FeedBacks {
+  String? id;
+  String? orderId;
+  int? rating;
+  String? description;
+  String? createdAt;
+  String? createdBy;
+
+  FeedBacks({
+    this.id,
+    this.orderId,
+    this.rating,
+    this.description,
+    this.createdAt,
+    this.createdBy,
+  });
+
+  factory FeedBacks.fromJson(Map<String, dynamic> json) {
+    return FeedBacks(
+      id: json['id'],
+      orderId: json['orderId'],
+      rating: json['rating'],
+      description: json['description'],
+      createdAt: json['createdAt'],
+      createdBy: json['createdBy'],
     );
   }
 }

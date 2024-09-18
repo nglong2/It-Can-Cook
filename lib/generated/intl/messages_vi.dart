@@ -90,6 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage("Xin chào"),
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử"),
         "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "img_when_shipped":
+            MessageLookupByLibrary.simpleMessage("Ảnh khi đã giao hàng"),
         "ingredients": MessageLookupByLibrary.simpleMessage("Nguyên liệu"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "last_name": MessageLookupByLibrary.simpleMessage("Họ"),
@@ -176,6 +178,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mật khẩu"),
         "please_enter_phone_number":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập số điện thoại"),
+        "please_enter_reason":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập lý do"),
         "please_enter_valid_email":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập email hợp lệ"),
         "please_enter_valid_password": MessageLookupByLibrary.simpleMessage(
@@ -221,6 +225,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_fat": MessageLookupByLibrary.simpleMessage("Tổng chất béo"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Thứ 3"),
         "unpaid": MessageLookupByLibrary.simpleMessage("Chưa thanh toán"),
+        "unshippednote": MessageLookupByLibrary.simpleMessage(
+            "Ghi chú khi chưa giao hàng: "),
         "update_plan":
             MessageLookupByLibrary.simpleMessage("Cập nhật kế hoạch"),
         "update_plan_confirmation": MessageLookupByLibrary.simpleMessage(
