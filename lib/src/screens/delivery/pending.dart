@@ -36,10 +36,8 @@ class _PendingScreenState extends State<PendingScreen> {
         for (var item in list) {
           listorder.addAll(item.orders);
         }
-        listorder = listorder
-            .where((element) =>
-                element.status == "Processing" || element.status == "Confirm")
-            .toList();
+        listorder =
+            listorder.where((element) => element.status == "Confirm").toList();
 
         return LoaderOverlay(
             child: Scaffold(
