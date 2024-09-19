@@ -52,10 +52,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                       Row(
                                         children: [
                                           CachedNetworkImage(
-                                            imageUrl: state[index]
-                                                    .weeklyPlan
-                                                    ?.urlImage ??
-                                                "",
+                                            imageUrl:
+                                                state[index].orderImg ?? "",
                                             width: 80,
                                             fit: BoxFit.cover,
                                             height: 80,
@@ -73,8 +71,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                                 children: [
                                                   Text(
                                                     state[index]
-                                                            .weeklyPlan
-                                                            ?.title
+                                                            .orderTitle
                                                             .toString() ??
                                                         "",
                                                     style: const TextStyle(

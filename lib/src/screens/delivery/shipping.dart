@@ -207,7 +207,9 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                                 .uploadFile(
                                                                     File(image0!
                                                                         .path));
-
+                                                            context
+                                                                .loaderOverlay
+                                                                .show();
                                                             await OrderController()
                                                                 .ChangeOrderStatus(
                                                                     e.id ?? '',
@@ -236,6 +238,9 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                                                       TriggerShipEvent(
                                                                           2));
                                                             });
+                                                            context
+                                                                .loaderOverlay
+                                                                .hide();
                                                             Navigator.pop(
                                                                 context);
                                                           },

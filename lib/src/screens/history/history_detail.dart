@@ -349,8 +349,8 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                         builder: (context) {
                                           return AlertDialog(
                                             title: Text(S.current.cancle_order),
-                                            content: Text(
-                                                select.weeklyPlan?.title ?? ""),
+                                            content:
+                                                Text(select.orderTitle ?? ""),
                                             actions: [
                                               TextButton(
                                                   onPressed: () {

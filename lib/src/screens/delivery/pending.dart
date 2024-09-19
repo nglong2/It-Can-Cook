@@ -174,6 +174,8 @@ class _PendingScreenState extends State<PendingScreen> {
                                                         Text(S.current.cancel)),
                                                 TextButton(
                                                     onPressed: () async {
+                                                      context.loaderOverlay
+                                                          .show();
                                                       await OrderController()
                                                           .ChangeOrderStatus(
                                                               e.id ?? '',
@@ -193,6 +195,8 @@ class _PendingScreenState extends State<PendingScreen> {
                                                           .read<TriggerBloc>()
                                                           .add(TriggerShipEvent(
                                                               1));
+                                                      context.loaderOverlay
+                                                          .hide();
                                                       Navigator.pop(context);
                                                     },
                                                     child: Text(S.current.ship))

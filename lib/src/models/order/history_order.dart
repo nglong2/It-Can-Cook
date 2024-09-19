@@ -17,6 +17,8 @@ class OrderHistory {
   double? totalPrice;
   String? status;
   String? img;
+  String? orderImg;
+  String? orderTitle;
   String? message;
   WeeklyPlan? weeklyPlan;
   Transactions? transaction;
@@ -40,6 +42,8 @@ class OrderHistory {
     this.img,
     this.message,
     this.weeklyPlan,
+    this.orderImg,
+    this.orderTitle,
     this.transaction,
     this.orderDetails = const [],
     this.feedBacks,
@@ -58,6 +62,8 @@ class OrderHistory {
       shipDate: json['shipDate'],
       orderDate: json['orderDate'],
       img: json['img'],
+      orderImg: json['orderImg'],
+      orderTitle: json['orderTitle'],
       longitude: json['longitude'] != null
           ? double.parse(json['longitude'].toString())
           : null,
