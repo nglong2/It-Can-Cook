@@ -61,7 +61,7 @@ class OrderController {
         for (var item in jsonDecode(value.body)["data"]) {
           orders.add(OrderHistory.fromJson(item));
         }
-        return orders.reversed.toList();
+        return orders.toList();
       } else {
         return [];
       }
