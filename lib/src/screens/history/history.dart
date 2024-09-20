@@ -70,10 +70,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
+                                                      "#${state[index].orderCode}"),
+                                                  Text(
                                                     state[index]
-                                                            .orderTitle
-                                                            .toString() ??
-                                                        "",
+                                                        .orderTitle
+                                                        .toString(),
                                                     style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,

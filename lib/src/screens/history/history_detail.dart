@@ -130,8 +130,11 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                   ],
                                 ),
                                 onTap: () {
-                                  MapUtils.openMap(double.parse("10.819139"),
-                                      double.parse("106.6973554"));
+                                  MapUtils.openMap(
+                                      select.latitude ??
+                                          double.parse("10.819139"),
+                                      select.longitude ??
+                                          double.parse("106.6973554"));
                                 },
                               ),
                               Row(
