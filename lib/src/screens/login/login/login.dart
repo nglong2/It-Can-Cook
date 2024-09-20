@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:it_can_cook/generated/l10n.dart';
@@ -70,7 +72,8 @@ class LoginPageState extends State<LoginPage> {
       }
     }).onError((error, stackTrace) {
       context.loaderOverlay.hide();
-      if (error.toString() == 'Exception: emailnotconfirm') {
+      print("error" + error.toString());
+      if (error.toString().contains("check mail")) {
         handleVerifite(email);
         return;
       } else {

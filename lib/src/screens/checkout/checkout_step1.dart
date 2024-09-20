@@ -52,7 +52,9 @@ class _CheckoutStep1State extends State<CheckoutStep1> {
       pice += recipe.recipe!.price! * numberPerson;
     }
     setState(() {
-      name = accountBloc?.userName ?? accountBloc?.lastName ?? '';
+      name =
+          (accountBloc?.firstName ?? "") + " " + (accountBloc?.lastName ?? "");
+      ;
       // address = accountBloc?.address ?? '';
       phone = accountBloc?.phone ?? '';
     });
