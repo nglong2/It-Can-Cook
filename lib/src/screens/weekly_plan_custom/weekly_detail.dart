@@ -35,7 +35,10 @@ class WeeklyCustomDetailPageState extends State<WeeklyCustomDetailPage> {
       var numberPerson = recipe.numberPerson ?? systemBloc.numberPersonInHouse;
       pice += recipe.recipe!.price! * numberPerson;
     }
+    DateTime today = DateTime.now();
+    DateTime nextWeek = getNextWeek(today.add(const Duration(days: 1)));
 
+    print("Next week: ${nextWeek.day} of ${nextWeek.month}");
     return BlocListener<TriggerBloc, Trigger>(listener: (context, state) {
       setState(() {
         _selectedValue = _selectedValue;
@@ -196,8 +199,8 @@ class WeeklyCustomDetailPageState extends State<WeeklyCustomDetailPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          """ ${S.of(context).week} ${getCurrentWeekInMonth(DateTime.now().add(const Duration(days: 7)))}, ${DateFormat('MMMM').format(DateTime.now().add(const Duration(days: 7)))}, ${DateTime.now().add(Duration(days: DateTime.monday - DateTime.now().weekday + 7)).year}""",
                           // get moth name
+                          S.current.week + " 1" + " 10/2024",
 
                           style: const TextStyle(
                             fontSize: 24,
@@ -296,4 +299,34 @@ int getCurrentWeekInMonth(DateTime time) {
   int weekOfMonth = ((time.day + offset) / 7).ceil();
 
   return weekOfMonth;
+}
+
+DateTime getNextWeek(DateTime date) {
+  // Get the first day of the current month
+  DateTime firstDayOfMonth = DateTime(date.year, date.month, 1);
+
+  // Get the day of the week for the first day of the month (1 = Monday, 7 = Sunday)
+  int firstDayWeekday = firstDayOfMonth.weekday;
+
+  // Calculate the current week of the month
+  int currentWeek = ((date.day + firstDayWeekday - 1) / 7).ceil();
+
+  // Get the total number of days in the current month
+  DateTime nextMonth = DateTime(date.year, date.month + 1, 1);
+  int totalDaysInMonth = nextMonth.subtract(Duration(days: 1)).day;
+
+  // Calculate total weeks in the current month
+  int totalWeeksInMonth = ((totalDaysInMonth + firstDayWeekday - 1) / 7).ceil();
+
+  // Calculate the next week
+  int nextWeek = currentWeek + 1;
+
+  // If the next week exceeds the total weeks in the current month, move to the first week of the next month
+  if (nextWeek > totalWeeksInMonth) {
+    nextWeek = 1; // First week of the next month
+    date = DateTime(date.year, date.month + 1, 1); // Move to the next month
+  }
+
+  // Return the week and the corresponding month
+  return DateTime(date.year, date.month, nextWeek);
 }
