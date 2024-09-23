@@ -40,7 +40,7 @@ class OrderController {
 
       if (value.statusCode == 200) {
         if (jsonDecode(value.body)["statusCode"] == 200) {
-          return "";
+          return jsonDecode(value.body)["data"]["id"];
         } else {
           return jsonDecode(value.body)["message"];
         }
