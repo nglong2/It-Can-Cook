@@ -189,7 +189,7 @@ class MyApp extends StatelessWidget {
                       return accountState != null
                           ? accountState.role?.toLowerCase() == 'shipper'
                               ? const DeliveryHome()
-                              : const CalendarScreen()
+                              : const HomePage()
                           : const Onboarding();
                   }
                 },

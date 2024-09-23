@@ -80,20 +80,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               fontWeight: FontWeight.bold, fontSize: 25),
                         ),
                         //selected
-                        DropdownButton<OrderHistory>(
-                          value: selectedValue,
-                          onChanged: (newValue) {
-                            setState(() {
-                              selectedValue = newValue!;
-                            });
-                          },
-                          items: listToday.map((item) {
-                            return DropdownMenuItem<OrderHistory>(
-                              value: item,
-                              child: Text(item.weeklyPlan?.title ?? ""),
-                            );
-                          }).toList(),
-                        )
+                        (!selectedValue.orderDetails.isNotEmpty)
+                            ? SizedBox()
+                            : DropdownButton<OrderHistory>(
+                                value: selectedValue,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    selectedValue = newValue!;
+                                  });
+                                },
+                                items: listToday.map((item) {
+                                  return DropdownMenuItem<OrderHistory>(
+                                    value: item,
+                                    child: Text(item.weeklyPlan?.title ?? ""),
+                                  );
+                                }).toList(),
+                              )
                       ],
                     ),
                     const SizedBox(

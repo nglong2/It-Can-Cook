@@ -658,19 +658,23 @@ class _HistoryDetailState extends State<HistoryDetail> {
                                 margin: const EdgeInsets.only(right: 10),
                                 width:
                                     MediaQuery.of(context).size.width * 1 - 30,
-                                height: 400,
+                                height: 600,
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey[400]!),
                                   color: Colors.grey[200],
                                   borderRadius: BorderRadius.circular(3),
                                 ),
                                 child: Image.network(
+                                  height: 500,
                                   select.img ?? "",
                                   fit: BoxFit.cover,
                                 ),
                               )
                               //if status is processing, show button cancel
                               ,
+                              SizedBox(
+                                height: 100,
+                              )
                             ],
                           ),
                         ),

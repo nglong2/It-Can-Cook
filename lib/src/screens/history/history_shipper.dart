@@ -343,7 +343,7 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
                                 margin: const EdgeInsets.only(right: 10),
                                 width:
                                     MediaQuery.of(context).size.width * 1 - 30,
-                                height: 400,
+                                height: 600,
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey[400]!),
                                   color: Colors.grey[200],
@@ -356,6 +356,9 @@ class _HistoryShipperDetailState extends State<HistoryShipperDetail> {
                               )
                               //if status is processing, show button cancel
                               ,
+                              SizedBox(
+                                height: 100,
+                              )
                             ],
                           ),
                         ),

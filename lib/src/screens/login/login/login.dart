@@ -73,7 +73,7 @@ class LoginPageState extends State<LoginPage> {
     }).onError((error, stackTrace) {
       context.loaderOverlay.hide();
       print("error" + error.toString());
-      if (error.toString().contains("check mail")) {
+      if (error.toString().contains("tra email")) {
         handleVerifite(email);
         return;
       } else {
