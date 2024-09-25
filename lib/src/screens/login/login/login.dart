@@ -320,11 +320,11 @@ class LoginPageState extends State<LoginPage> {
                                               .of(context)
                                               .please_enter_password;
                                         }
-                                        if (value.length < 6) {
-                                          return S
-                                              .of(context)
-                                              .please_enter_valid_password;
-                                        }
+                                        // if (value.length < 6) {
+                                        //   return S
+                                        //       .of(context)
+                                        //       .please_enter_valid_password;
+                                        // }
                                         // Add your password validation logic here
                                         return null;
                                       },
