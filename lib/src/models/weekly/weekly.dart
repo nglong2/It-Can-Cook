@@ -87,6 +87,7 @@ class WeeklyPlan {
   Map<String, dynamic> toJsonCreate() {
     return {
       'id': id,
+      'weeklyPlanId': id,
       'beginDate': DateTime.now().toIso8601String(),
       'endDate': DateTime.now().toIso8601String(),
       'description': description,
