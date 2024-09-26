@@ -135,7 +135,7 @@
   "re_payment": "Thanh toán lại",
   "paid": "Đã thanh toán",
   "pending_momo": "Chờ thanh toán Momo",
-  "pending_zalopay": "Chờ thanh toán ZaloPay",
+  "pending_zalopay": "Chờ hoàn tiền",
   "unpaid": "Chưa thanh toán",
   "pending": "Chờ xác nhận",
   "ship": "Lấy hàng",
@@ -152,5 +152,8 @@
   "enter_your_feedback": "Nhập đánh giá của bạn",
   "please_enter_reason": "Vui lòng nhập lý do",
   "img_when_shipped": "Ảnh khi đã giao hàng",
-  "unshippednote": "Ghi chú khi chưa giao hàng: "
+  "unshippednote": "Ghi chú khi chưa giao hàng: ",
+  "confirm_ship": "Xác nhận đã giao hàng",
+  "refund_done": "Hoàn tiền thành công",
+  "show_img": "Hiển thị ảnh giao hàng"
 }

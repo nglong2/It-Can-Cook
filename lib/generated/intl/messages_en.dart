@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "confirm_ship": MessageLookupByLibrary.simpleMessage("Confirm shipped"),
         "custom_package":
             MessageLookupByLibrary.simpleMessage("Custom package"),
         "custom_plan_description": MessageLookupByLibrary.simpleMessage(
@@ -197,6 +198,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "preservationMethod":
             MessageLookupByLibrary.simpleMessage("Preservation method: "),
         "re_payment": MessageLookupByLibrary.simpleMessage("Repayment"),
+        "refund_done": MessageLookupByLibrary.simpleMessage("Refund done"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
@@ -211,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Shipped confirm"),
         "shipped": MessageLookupByLibrary.simpleMessage("Shipped"),
         "shipping": MessageLookupByLibrary.simpleMessage("Shipping"),
+        "show_img": MessageLookupByLibrary.simpleMessage("Show image"),
         "sodium": MessageLookupByLibrary.simpleMessage("Sodium"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "step": MessageLookupByLibrary.simpleMessage("Steps"),

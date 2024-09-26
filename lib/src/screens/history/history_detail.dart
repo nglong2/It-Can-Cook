@@ -29,6 +29,7 @@ final TextEditingController _controller = TextEditingController();
 class _HistoryDetailState extends State<HistoryDetail> {
   double rating = 0;
   int starCount = 5;
+  bool isShowimg = false;
   //controller form rating
 
   @override
@@ -83,22 +84,63 @@ class _HistoryDetailState extends State<HistoryDetail> {
                           "${S.current.delivery_to} :",
                           style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        Row(
+                        Column(
                           children: [
-                            Text(
-                              "${S.current.status}: ",
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+                            Row(
+                              children: [
+                                Text(
+                                  "${S.current.status}: ",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(right: 20),
+                                  child: Text(
+                                    "${select.status}",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: getColorByStatus(
+                                            select.status ?? "")),
+                                  ),
+                                )
+                              ],
                             ),
-                            Container(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Text(
-                                "${select.status}",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color:
-                                        getColorByStatus(select.status ?? "")),
-                              ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                select.status == "Shipped"
+                                    ?
+                                    //button confirm
+
+                                    TextButton(
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.green),
+                                            foregroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.white)),
+                                        onPressed: () => {
+                                              OrderController()
+                                                  .ChangeOrderStatus(
+                                                      select.id ?? "",
+                                                      5,
+                                                      '',
+                                                      '')
+                                                  .then((value) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(SnackBar(
+                                                        content: Text(value)));
+                                                context.read<OrderBloc>().add(
+                                                    GetHistoryOrderEvent(
+                                                        account?.id ?? ""));
+                                              })
+                                            },
+                                        child: Text(S.current.confirm_ship))
+                                    : const SizedBox()
+                              ],
                             )
                           ],
                         )
@@ -637,46 +679,67 @@ class _HistoryDetailState extends State<HistoryDetail> {
                       ? SizedBox()
                       : Container(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "${S.current.img_when_shipped}: ",
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              //textarea
-                              Container(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                margin: const EdgeInsets.only(right: 10),
-                                width:
-                                    MediaQuery.of(context).size.width * 1 - 30,
-                                height: 600,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey[400]!),
-                                  color: Colors.grey[200],
-                                  borderRadius: BorderRadius.circular(3),
+                          child: !isShowimg
+                              ? Row(
+                                  children: [
+                                    TextButton(
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.blue),
+                                            foregroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.white)),
+                                        onPressed: () => {
+                                              setState(() {
+                                                isShowimg = true;
+                                              })
+                                            },
+                                        child: Text(S.current.show_img)),
+                                  ],
+                                )
+                              : Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "${S.current.img_when_shipped}: ",
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    //textarea
+                                    Container(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
+                                      margin: const EdgeInsets.only(right: 10),
+                                      width: MediaQuery.of(context).size.width *
+                                              1 -
+                                          30,
+                                      height: 600,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.grey[400]!),
+                                        color: Colors.grey[200],
+                                        borderRadius: BorderRadius.circular(3),
+                                      ),
+                                      child: Image.network(
+                                        height: 500,
+                                        select.img ?? "",
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )
+                                    //if status is processing, show button cancel
+                                    ,
+                                    SizedBox(
+                                      height: 100,
+                                    )
+                                  ],
                                 ),
-                                child: Image.network(
-                                  height: 500,
-                                  select.img ?? "",
-                                  fit: BoxFit.cover,
-                                ),
-                              )
-                              //if status is processing, show button cancel
-                              ,
-                              SizedBox(
-                                height: 100,
-                              )
-                            ],
-                          ),
                         ),
 
                   //message
@@ -782,9 +845,9 @@ String getNamePayment(String? name) {
   switch (name) {
     case "PAID":
       return S.current.paid;
-    case "PendingMomo":
-      return S.current.pending_momo;
-    case "PendingZaloPay":
+    case "RefundDone":
+      return S.current.refund_done;
+    case "RefundPending":
       return S.current.pending_zalopay;
     case "UNPAID":
       return S.current.unpaid;

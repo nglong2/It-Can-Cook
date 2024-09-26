@@ -153,5 +153,8 @@
   "enter_your_feedback": "Please enter feedback",
   "please_enter_reason": "Please enter reason",
   "img_when_shipped": "Image when shipped",
-  "unshippednote": "Note when not shipped: "
+  "unshippednote": "Note when not shipped: ",
+  "confirm_ship": "Confirm shipped",
+  "refund_done": "Refund done",
+  "show_img": "Show image"
 }

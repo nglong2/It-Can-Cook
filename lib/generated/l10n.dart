@@ -1559,6 +1559,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Confirm shipped`
+  String get confirm_ship {
+    return Intl.message(
+      'Confirm shipped',
+      name: 'confirm_ship',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refund done`
+  String get refund_done {
+    return Intl.message(
+      'Refund done',
+      name: 'refund_done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show image`
+  String get show_img {
+    return Intl.message(
+      'Show image',
+      name: 'show_img',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

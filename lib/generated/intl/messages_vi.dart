@@ -51,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
+        "confirm_ship":
+            MessageLookupByLibrary.simpleMessage("Xác nhận đã giao hàng"),
         "custom_package": MessageLookupByLibrary.simpleMessage("Gói tùy chỉnh"),
         "custom_plan_description": MessageLookupByLibrary.simpleMessage(
             "Nếu bạn không tìm thấy bất kỳ kế hoạch nào, bạn có thể tạo riêng của mình, chúng tôi có thể cung cấp cho bạn danh sách món ăn, bạn có thể thêm vào"),
@@ -152,7 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pending_momo":
             MessageLookupByLibrary.simpleMessage("Chờ thanh toán Momo"),
         "pending_zalopay":
-            MessageLookupByLibrary.simpleMessage("Chờ thanh toán ZaloPay"),
+            MessageLookupByLibrary.simpleMessage("Chờ hoàn tiền"),
         "person": MessageLookupByLibrary.simpleMessage("Người"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_number_must_contain_only_digits":
@@ -193,6 +195,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "preservationMethod":
             MessageLookupByLibrary.simpleMessage("Phương pháp bảo quản: "),
         "re_payment": MessageLookupByLibrary.simpleMessage("Thanh toán lại"),
+        "refund_done":
+            MessageLookupByLibrary.simpleMessage("Hoàn tiền thành công"),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "remove": MessageLookupByLibrary.simpleMessage("Xóa"),
         "saturday": MessageLookupByLibrary.simpleMessage("Thứ 7"),
@@ -209,6 +213,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đã xác nhận giao hàng"),
         "shipped": MessageLookupByLibrary.simpleMessage("Đã giao hàng"),
         "shipping": MessageLookupByLibrary.simpleMessage("Đang giao hàng"),
+        "show_img":
+            MessageLookupByLibrary.simpleMessage("Hiển thị ảnh giao hàng"),
         "sodium": MessageLookupByLibrary.simpleMessage("Muối"),
         "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),
         "step": MessageLookupByLibrary.simpleMessage("Bước"),
