@@ -127,7 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardDescription3": MessageLookupByLibrary.simpleMessage(
             "Bạn có thắc mắc? Hãy trò chuyện với những đầu bếp thật nhé"),
         "onboardTitle1": MessageLookupByLibrary.simpleMessage(
-            "Khám phá thực đơn đáp ứng đầy đủ sức khóe!"),
+            "Khám phá thực đơn đáp ứng đầy đủ sức khoẻ!"),
         "onboardTitle2":
             MessageLookupByLibrary.simpleMessage("Cần gì ư, Chúng tôi có đủ!"),
         "onboardTitle3": MessageLookupByLibrary.simpleMessage(
