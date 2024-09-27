@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "amount": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "appDescription":
             MessageLookupByLibrary.simpleMessage("Ứng dụng nấu ăn"),
-        "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
+        "appTitle": MessageLookupByLibrary.simpleMessage("wemealkit"),
         "back": MessageLookupByLibrary.simpleMessage("Quay lại"),
         "breakfast": MessageLookupByLibrary.simpleMessage("Bữa sáng"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),

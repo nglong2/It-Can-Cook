@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "amount": MessageLookupByLibrary.simpleMessage("Amount: "),
         "appDescription":
             MessageLookupByLibrary.simpleMessage("A simple recipe app"),
-        "appTitle": MessageLookupByLibrary.simpleMessage("it_can_cook"),
+        "appTitle": MessageLookupByLibrary.simpleMessage("we_meal_kit"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "breakfast": MessageLookupByLibrary.simpleMessage("Breakfast"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
